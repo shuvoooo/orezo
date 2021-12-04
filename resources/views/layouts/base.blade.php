@@ -45,6 +45,8 @@
 @include('shared._header')
 @yield('content')
 @include('shared._footer')
+
+
 <!-- jquery js -->
 <script type="text/javascript" src="{{asset('assets/js/vendor/jquery-3.2.1.min.js')}}"></script>
 <!-- bootstrap js -->
