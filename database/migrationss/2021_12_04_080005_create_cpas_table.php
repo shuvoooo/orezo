@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateCommentsTable extends Migration
+class CreateCpasTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,13 @@ class CreateCommentsTable extends Migration
      */
     public function up()
     {
-        Schema::create('comments', function (Blueprint $table) {
+        Schema::create('cpas', function (Blueprint $table) {
             $table->id();
+            $table->enum('type',['email','phone'])->nullable();
+            $table->integer('min_question')->nullable();
+            $table->integer('max_question')->nullable();
+            $table->integer('phone_time')->default(0);
+            $table->decimal('cost', 8, 2)->nullable();
             $table->timestamps();
         });
     }
@@ -26,6 +31,6 @@ class CreateCommentsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('comments');
+        Schema::dropIfExists('cpas');
     }
 }
