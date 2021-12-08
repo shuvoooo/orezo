@@ -59,6 +59,7 @@
                         <li><a href="{{route('about')}}">About Us</a></li>
                         <li><a href="{{route('contact')}}">Contact Us</a></li>
                         <li><a href="{{route('faq')}}">FAQ</a></li>
+                        <li><a href="{{route('tips')}}">Tips</a></li>
                     </ul>
                     <div class="donate-btn-header">
                         <a class="dtbtn" href="#">Get A Quote</a>
@@ -80,6 +81,7 @@
                 <li><a href="{{route('about')}}">About Us</a></li>
                 <li><a href="{{route('contact')}}">Contact Us</a></li>
                 <li><a href="{{route('faq')}}">FAQ</a></li>
+                <li><a href="{{route('tips')}}">Tips</a></li>
             </ul>
         </nav>
     </div>

@@ -30,147 +30,6 @@
     <!-- ============================================================== -->
 
 
-    <div class="accordion_area pt-90 pb-90">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="section_title text_center mb-50">
-                        <div class="section_main_title">
-                            <h1>Some Question & Answer</h1>
-                        </div>
-                        <div class="em_bar">
-                            <div class="em_bar_bg"></div>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-6 col-md-6 col-sm-12">
-                    <div class="panel-group default symb" id="accordion">
-                        <div class="panel panel-default">
-                            <div class="panel-heading mb-3">
-                                <h4 class="panel-title">
-                                    <a data-toggle="collapse" data-parent="#accordion" href="#ac1"><i
-                                            class="fa fa-check-circle"></i>
-                                        Best IT Solution Provider
-                                    </a>
-                                </h4>
-                            </div>
-                            <div id="ac1" class="panel-collapse in">
-                                <div class="panel-body pl-4 pr-4">
-                                    <p>
-                                        There are many variations of passages of Lorem Ipsum available, but the majority
-                                        have suffered alteration in some form, by injected humour, or randomised words
-                                        which
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="panel panel-default">
-                            <div class="panel-heading mb-3">
-                                <h4 class="panel-title">
-                                    <a data-toggle="collapse" data-parent="#accordion" href="#ac2"><i
-                                            class="fa fa-check-circle"></i>
-                                        Experienced Engineers
-                                    </a>
-                                </h4>
-                            </div>
-                            <div id="ac2" class="panel-collapse collapse">
-                                <div class="panel-body pl-4 pr-4">
-                                    <p>
-                                        There are many variations of passages of Lorem Ipsum available, but the majority
-                                        have suffered alteration in some form,
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="panel panel-default">
-                            <div class="panel-heading mb-3">
-                                <h4 class="panel-title">
-                                    <a data-toggle="collapse" data-parent="#accordion" href="#ac3"><i
-                                            class="fa fa-check-circle"></i>
-                                        Internet Of Things
-                                    </a>
-                                </h4>
-                            </div>
-                            <div id="ac3" class="panel-collapse collapse">
-                                <div class="panel-body pl-4 pr-4">
-                                    <p>
-                                        There are many variations of passages of Lorem Ipsum available, but the majority
-                                        have suffered alteration in some form, by injected humour, or randomised words
-                                        which
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-6 col-md-6 col-sm-12">
-                    <div class="panel-group default symb" id="accordion">
-                        <div class="panel panel-default">
-                            <div class="panel-heading mb-3">
-                                <h4 class="panel-title">
-                                    <a data-toggle="collapse" data-parent="#accordion" href="#ac4"><i
-                                            class="fa fa-check-circle"></i>
-                                        Best IT Solution Provider
-                                    </a>
-                                </h4>
-                            </div>
-                            <div id="ac4" class="panel-collapse in">
-                                <div class="panel-body pl-4 pr-4">
-                                    <p>
-                                        There are many variations of passages of Lorem Ipsum available, but the majority
-                                        have suffered alteration in some form, by injected humour, or randomised words
-                                        which
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="panel panel-default">
-                            <div class="panel-heading mb-3">
-                                <h4 class="panel-title">
-                                    <a data-toggle="collapse" data-parent="#accordion" href="#ac5"><i
-                                            class="fa fa-check-circle"></i>
-                                        Experienced Engineers
-                                    </a>
-                                </h4>
-                            </div>
-                            <div id="ac5" class="panel-collapse collapse">
-                                <div class="panel-body pl-4 pr-4">
-                                    <p>
-                                        There are many variations of passages of Lorem Ipsum available, but the majority
-                                        have suffered alteration in some form,
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="panel panel-default">
-                            <div class="panel-heading mb-3">
-                                <h4 class="panel-title">
-                                    <a data-toggle="collapse" data-parent="#accordion" href="#ac6"><i
-                                            class="fa fa-check-circle"></i>
-                                        Internet Of Things
-                                    </a>
-                                </h4>
-                            </div>
-                            <div id="ac6" class="panel-collapse collapse">
-                                <div class="panel-body pl-4 pr-4">
-                                    <p>
-                                        There are many variations of passages of Lorem Ipsum available, but the majority
-                                        have suffered alteration in some form, by injected humour, or randomised words
-                                        which
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </div>
-
     <!-- ============================================================== -->
     <!-- Start - Techno FAQ Area -->
     <!-- ============================================================== -->
@@ -287,4 +146,41 @@
     <!-- ============================================================== -->
     <!-- End - Techno Team Area -->
     <!-- ============================================================== -->
+
+
+
+    <!--==================================================-->
+    <!----- Start Techno Call Do Action Area ----->
+    <!--==================================================-->
+    <div class="call_do_action pt-85 pb-50 bg_color" style="background-image:url(assets/images/slider/slider-4.jpg)">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="section_title white text_center mb-60 mt-3">
+                        <div class="phone_number mb-3">
+                            <h5>+880 013 143 206</h5>
+                        </div>
+                        <div class="section_main_title">
+                            <h1>To make requests for the</h1>
+                            <h1>further information</h1>
+                        </div>
+                        <div class="button three mt-40">
+                            <a href="#">Join With Now<i class="fa fa-long-arrow-right"></i></a>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--==================================================-->
+    <!----- End Techno Call Do Action Area ----->
+    <!--==================================================-->
+
+
+    <x-team></x-team>
+
+    <x-testimonial></x-testimonial>
+
+    <x-brand></x-brand>
 @endsection

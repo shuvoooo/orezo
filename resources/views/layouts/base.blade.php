@@ -49,18 +49,25 @@
 
 <!-- jquery js -->
 <script type="text/javascript" src="{{asset('assets/js/vendor/jquery-3.2.1.min.js')}}"></script>
+
 <!-- bootstrap js -->
 <script type="text/javascript" src="{{asset('assets/js/bootstrap.min.js')}}"></script>
+
 <!-- carousel js -->
 <script type="text/javascript" src="{{asset('assets/js/owl.carousel.min.js')}}"></script>
+
 <!-- counterup js -->
 <script type="text/javascript" src="{{asset('assets/js/jquery.counterup.min.js')}}"></script>
+
 <!-- waypoints js -->
 <script type="text/javascript" src="{{asset('assets/js/waypoints.min.js')}}"></script>
+
 <!-- wow js -->
 <script type="text/javascript" src="{{asset('assets/js/wow.js')}}"></script>
+
 <!-- imagesloaded js -->
 <script type="text/javascript" src="{{asset('assets/js/imagesloaded.pkgd.min.js')}}"></script>
+
 <!-- venobox js -->
 <script type="text/javascript" src="{{asset('venobox/venobox.js')}}"></script>
 <!-- ajax mail js -->

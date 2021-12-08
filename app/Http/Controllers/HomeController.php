@@ -31,5 +31,8 @@ class HomeController extends Controller
         return view('faq');
     }
 
-
+    public function tips()
+    {
+        return view('tips');
+    }
 }
