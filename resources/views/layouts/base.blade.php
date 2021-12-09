@@ -89,10 +89,5 @@
 <!-- theme js -->
 <script type="text/javascript" src="{{asset('assets/js/theme.js')}}"></script>
 <!-- jquery js -->
-
-
-
-
-
 </body>
 </html>

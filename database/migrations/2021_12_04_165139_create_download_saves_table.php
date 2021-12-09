@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreatePageNamesTable extends Migration
+class CreateDownloadSavesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,11 @@ class CreatePageNamesTable extends Migration
      */
     public function up()
     {
-        Schema::create('page_names', function (Blueprint $table) {
+        Schema::create('download_saves', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id')->constrained();
+            $table->longText('details')->nullable();
+            $table->longText('comments')->nullable();
             $table->timestamps();
         });
     }
@@ -26,6 +29,6 @@ class CreatePageNamesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('page_names');
+        Schema::dropIfExists('download_saves');
     }
 }

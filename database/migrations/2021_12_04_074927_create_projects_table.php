@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateDownloadSavesTable extends Migration
+class CreateProjectsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,16 @@ class CreateDownloadSavesTable extends Migration
      */
     public function up()
     {
-        Schema::create('download_saves', function (Blueprint $table) {
+        Schema::create('projects', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->nullable()->constrained();
-            $table->longText('details')->nullable();
-            $table->longText('comments')->nullable();
+            $table->string('client',191);
+            $table->string('project',191);
+            $table->date('start_date');
+            $table->date('end_date');
+            $table->string('city',191)->nullable();
+            $table->string('state',191)->nullable();
+            $table->string('country',191)->nullable();
             $table->timestamps();
         });
     }
@@ -29,6 +34,6 @@ class CreateDownloadSavesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('download_saves');
+        Schema::dropIfExists('projects');
     }
 }

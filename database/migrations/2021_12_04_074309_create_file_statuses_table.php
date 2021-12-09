@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateSpouseInformationTable extends Migration
+class CreateFileStatusesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,11 @@ class CreateSpouseInformationTable extends Migration
      */
     public function up()
     {
-        Schema::create('spouse_information', function (Blueprint $table) {
+        Schema::create('file_statuses', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id')->nullable()->constrained();
+            $table->boolean('status');
+            $table->unsignedInteger('added_by')->nullable();
             $table->timestamps();
         });
     }
@@ -26,6 +29,6 @@ class CreateSpouseInformationTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('spouse_information');
+        Schema::dropIfExists('file_statuses');
     }
 }

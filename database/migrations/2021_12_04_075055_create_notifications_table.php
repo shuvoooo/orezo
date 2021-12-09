@@ -15,6 +15,11 @@ class CreateNotificationsTable extends Migration
     {
         Schema::create('notifications', function (Blueprint $table) {
             $table->id();
+            $table->integer('msg_from')->default(0);
+            $table->integer('msg_to')->default(0);
+            $table->string('msg_subject')->nullable();
+            $table->text('msg_details')->nullable();
+            $table->boolean('msg_read')->default(0);
             $table->timestamps();
         });
     }

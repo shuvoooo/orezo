@@ -15,6 +15,13 @@ class CreateRefersTable extends Migration
     {
         Schema::create('refers', function (Blueprint $table) {
             $table->id();
+            $table->string('name')->nullable();
+            $table->string('email')->nullable();
+            $table->string('mobile')->nullable();
+            $table->string('phone')->nullable();
+            $table->string('by_name')->nullable();
+            $table->string('by_email')->nullable();
+            $table->string('by_phone')->nullable();
             $table->timestamps();
         });
     }

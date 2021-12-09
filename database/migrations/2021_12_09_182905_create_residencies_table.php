@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateFileStatusesTable extends Migration
+class CreateResidenciesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,15 @@ class CreateFileStatusesTable extends Migration
      */
     public function up()
     {
-        Schema::create('file_statuses', function (Blueprint $table) {
+        Schema::create('residencies', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->nullable()->constrained();
-            $table->boolean('status')->nullable();
-            $table->unsignedInteger('added_by')->nullable();
+            $table->string('payer',20)->nullable();
+            $table->string('spouse',20)->nullable();
+            $table->date('start_date')->nullable();
+            $table->date('end_date')->nullable();
+            $table->date('spouse_start_date')->nullable();
+            $table->date('spouse_end_date')->nullable();
             $table->timestamps();
         });
     }
@@ -29,6 +33,6 @@ class CreateFileStatusesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('file_statuses');
+        Schema::dropIfExists('residencies');
     }
 }

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreatePageContentsTable extends Migration
+class CreateMiscellaneousesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,10 @@ class CreatePageContentsTable extends Migration
      */
     public function up()
     {
-        Schema::create('page_contents', function (Blueprint $table) {
+        Schema::create('miscellaneouses', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id')->nullable()->constrained();
+            $table->longText('details')->nullable();
             $table->timestamps();
         });
     }
@@ -26,6 +28,6 @@ class CreatePageContentsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('page_contents');
+        Schema::dropIfExists('miscellaneouses');
     }
 }

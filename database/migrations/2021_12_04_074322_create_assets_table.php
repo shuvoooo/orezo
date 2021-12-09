@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateMiscellaneousesTable extends Migration
+class CreateAssetsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,10 @@ class CreateMiscellaneousesTable extends Migration
      */
     public function up()
     {
-        Schema::create('miscellaneouses', function (Blueprint $table) {
+        Schema::create('assets', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id')->nullable()->constrained();
+            $table->mediumText('details');
             $table->timestamps();
         });
     }
@@ -26,6 +28,6 @@ class CreateMiscellaneousesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('miscellaneouses');
+        Schema::dropIfExists('assets');
     }
 }

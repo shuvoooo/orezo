@@ -1,4 +1,4 @@
-@extends('layouts.admin-base')
+@extends('layouts.base')
 
 
 @section('content')
@@ -16,7 +16,10 @@
                         </div>
                         <div class="breatcome_content">
                             <ul>
-                                <li><a href="index.html">Home</a> <i class="fa fa-angle-right"></i> <a href="#">
+                                <li>
+                                    <a href="index.html">Home</a>
+                                    <i class="fa fa-angle-right"></i>
+                                    <a href="#">
                                         Pages</a> <i class="fa fa-angle-right"></i> <span>FAQ'S</span></li>
                             </ul>
                         </div>
