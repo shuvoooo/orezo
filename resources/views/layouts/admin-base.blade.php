@@ -24,18 +24,13 @@
 
 
     <style>
-        .menu-container {
-            display: flex;
-            flex-wrap: nowrap;
-        }
-
-        .menubar {
+        .sidebar-container {
             width: 15rem;
             background-color: #f1f1f1;
             border-right: 1px solid #ccc;
         }
 
-        .main-content {
+        .main-container {
             flex: 1;
             background-color: #fff;
             padding: 1.2rem;
@@ -51,12 +46,12 @@
 
 <hr class="p-0 m-0"/>
 
-<div class="menu-container">
-    <div class="menubar">
+<div class="d-flex flex-nowrap">
+    <div class="sidebar-container">
         @include('shared._sidebar')
     </div>
 
-    <div class="main-content">
+    <div class="main-container">
         @yield('content')
     </div>
 </div>
@@ -69,6 +64,35 @@
 
 <!-- bootstrap js -->
 <script type="text/javascript" src="{{asset('assets/js/bootstrap.min.js')}}"></script>
+
+
+<script>
+    $(document).ready(function () {
+        $('.sidebar .sub-menu > a').click(function () {
+            var last = $('.sub-menu.open', $('#sidebar'));
+            last.removeClass("open");
+            $('.arrow', last).removeClass("open");
+            $('.sub', last).slideUp(200);
+            var sub = $(this).next();
+            if (sub.is(":visible")) {
+                $('.arrow', $(this)).removeClass("open");
+                $(this).parent().removeClass("open");
+                sub.slideUp(200);
+            } else {
+                $('.arrow', $(this)).addClass("open");
+                $(this).parent().addClass("open");
+                sub.slideDown(200);
+            }
+            var o = ($(this).offset());
+            diff = 200 - o.top;
+            if (diff > 0)
+                $(".sidebar-scroll").scrollTo("-=" + Math.abs(diff), 500);
+            else
+                $(".sidebar-scroll").scrollTo("+=" + Math.abs(diff), 500);
+        });
+    });
+</script>
+
 </body>
 </html>
 
