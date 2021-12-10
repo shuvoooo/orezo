@@ -8,4 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class DepartmentDetails extends Model
 {
     use HasFactory;
+
+    protected $guarded = ['id'];
 }

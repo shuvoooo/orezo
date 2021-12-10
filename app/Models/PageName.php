@@ -7,5 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class PageName extends Model
 {
-    use HasFactory;
+    protected $guarded = [];
+
+    public function Pagecontent(){
+        return $this->hasMany(PageContent::class);
+    }
 }

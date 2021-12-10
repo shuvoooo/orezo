@@ -14,7 +14,7 @@ class CreateQuestionsTable extends Migration
     public function up()
     {
         Schema::create('questions', function (Blueprint $table) {
-            $table->id();
+            $table->id('question_id');
             $table->foreignId('order_id')->nullable()->constrained();
             $table->string('title')->nullable();
             $table->mediumText('ans')->nullable();
