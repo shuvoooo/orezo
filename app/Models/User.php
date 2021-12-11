@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Auth;
 
 class User extends Model
 {
@@ -30,7 +31,7 @@ class User extends Model
     public function scopeHasPermission($query, $permission)
     {
         if (Auth::user()->role == 'staff') {
-            $permissions = Permission::getByUser(Auth::user()->id);
+            $permissions = RolePermission::getByUser(Auth::user()->id);
             if (in_array($permission, $permissions)) {
                 return true;
             } else {
@@ -48,7 +49,7 @@ class User extends Model
 
     public function permissions()
     {
-        return $this->hasOne(Permission::class, 'user_id');
+        return $this->hasOne(RolePermission::class, 'user_id');
     }
 
     public function address()
@@ -66,9 +67,9 @@ class User extends Model
         return $this->hasOne(SpouseInformation::class, 'user_id');
     }
 
-    public function bankDetail()
+    public function bank()
     {
-        return $this->hasOne(BankDetail::class, 'user_id');
+        return $this->hasOne(Bank::class, 'user_id');
     }
 
     public function expense()
