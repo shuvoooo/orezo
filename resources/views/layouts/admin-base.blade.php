@@ -7,6 +7,8 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
+    <!-- Laravel CSRF Token -->
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <!-- font-awesome CSS -->
     <link type="text/css" rel="stylesheet" href="{{asset('assets/fonts/font-awesome/css/font-awesome.min.css')}}">
@@ -51,7 +53,7 @@
         @include('shared._sidebar')
     </div>
 
-    <div class="main-container">
+    <div class="main-container" id="app">
         @yield('content')
     </div>
 </div>
@@ -65,6 +67,8 @@
 <!-- bootstrap js -->
 <script type="text/javascript" src="{{asset('assets/js/bootstrap.min.js')}}"></script>
 
+<!-- Main App Script -->
+<script type="text/javascript" src="{{asset('js/app.js')}}"></script>
 
 <script>
     $(document).ready(function () {

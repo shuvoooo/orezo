@@ -7,6 +7,8 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
+    <!-- Laravel CSRF Token -->
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <!-- font-awesome CSS -->
     <link type="text/css" rel="stylesheet" href="{{asset('assets/fonts/font-awesome/css/font-awesome.min.css')}}">
@@ -106,7 +108,9 @@
 
 <hr class="p-0 m-0 mb-4"/>
 
-@yield('content')
+<div id="app">
+    @yield('content')
+</div>
 
 
 <!-- jquery js -->
@@ -115,6 +119,9 @@
 <!-- bootstrap js -->
 <script type="text/javascript" src="{{asset('assets/js/bootstrap.min.js')}}"></script>
 
+
+<!-- Main js -->
+<script type="text/javascript" src="{{mix('js/app.js')}}"></script>
 
 <script>
     $(function () {
