@@ -17,7 +17,7 @@
                         </div>
                         <div class="breatcome_content">
                             <ul>
-                                <li><a href="index.html">Home</a> <i class="fa fa-angle-right"></i> <a href="#">
+                                <li><a href="{{route('home')}}">Home</a> <i class="fa fa-angle-right"></i> <a href="#">
                                         Pages</a> <i class="fa fa-angle-right"></i> <span>Service Two</span></li>
                             </ul>
                         </div>

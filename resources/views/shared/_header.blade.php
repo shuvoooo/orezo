@@ -43,10 +43,10 @@
         <div class="row">
             <div class="col-md-3">
                 <div class="logo mt-4">
-                    <a class="logo_img" href="index.html" title="techno">
+                    <a class="logo_img" href="{{route('home')}}" title="techno">
                         <img src="{{asset('assets/images/1.png')}}" alt=""/>
                     </a>
-                    <a class="main_sticky" href="index.html" title="techno">
+                    <a class="main_sticky" href="{{route('home')}}" title="techno">
                         <img src="{{asset('assets/images/logo.png')}}" alt="astute"/>
                     </a>
                 </div>
@@ -62,7 +62,17 @@
                         <li><a href="{{route('tips')}}">Tips</a></li>
                     </ul>
                     <div class="donate-btn-header">
-                        <a class="dtbtn" href="#">Get A Quote</a>
+                        @auth('web')
+                            <a href="{{route('dashboard')}}" class="btn btn-primary">Dashboard</a>
+                        @else
+                            @if(\Route::currentRouteName() != 'login')
+                                <a class="dtbtn" href="{{route('login')}}">Login</a>
+                            @endif
+
+                            @if(\Route::currentRouteName() != 'register')
+                                <a class="dtbtn" href="{{route('register')}}">Register</a>
+                            @endif
+                        @endauth
                     </div>
                 </nav>
 

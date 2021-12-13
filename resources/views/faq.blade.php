@@ -17,7 +17,7 @@
                         <div class="breatcome_content">
                             <ul>
                                 <li>
-                                    <a href="index.html">Home</a>
+                                    <a href="{{route('home')}}">Home</a>
                                     <i class="fa fa-angle-right"></i>
                                     <a href="#">
                                         Pages</a> <i class="fa fa-angle-right"></i> <span>FAQ'S</span></li>
