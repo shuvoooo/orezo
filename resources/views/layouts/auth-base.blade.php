@@ -14,8 +14,11 @@
     <link type="text/css" rel="stylesheet" href="{{asset('assets/fonts/font-awesome/css/font-awesome.min.css')}}">
     <!-- Favicon -->
     <link rel="icon" type="image/png" sizes="56x56" href="{{asset('assets/images/fav-icon/icon.png')}}">
-    <!-- bootstrap CSS -->
-    <link rel="stylesheet" href="{{asset('assets/css/bootstrap.min.css')}}" type="text/css" media="all"/>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"
+          integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+
     <!-- theme-default CSS -->
     <link rel="stylesheet" href="{{asset('assets/css/theme-default.css')}}" type="text/css" media="all"/>
     <!-- Main Style CSS -->
@@ -32,36 +35,6 @@
             border-width: 2px;
         }
 
-        .btn-facebook {
-            background: #405D9D;
-            border: none;
-        }
-
-        .btn-facebook:hover, .btn-facebook:focus {
-            background: #314879;
-        }
-
-        .btn-twitter {
-            background: #42AEEC;
-            border: none;
-        }
-
-        .btn-twitter:hover, .btn-twitter:focus {
-            background: #1799e4;
-        }
-
-
-        /*
-        *
-        * ==========================================
-        * FOR DEMO PURPOSES
-        * ==========================================
-        *
-        */
-
-        body {
-            min-height: 100vh;
-        }
 
         .form-control:not(select) {
             padding: 1.5rem 0.5rem;

@@ -20,7 +20,32 @@ files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(
 
 //Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 
-Vue.use(VeeValidate);
+Vue.use(VeeValidate); // Install the VeeValidate plugin
+
+Vue.mixin({
+    data: function () {
+        return {
+            loading: false
+        }
+    },
+    methods: {
+        backendError(errors) {
+            this.loading = false;
+
+            if (errors.response.status === 422) {
+                for (let field in errors.response.data.errors) {
+                    this.errors.add({
+                        field: field,
+                        msg: errors.response.data.errors[field].join(', '),
+                    });
+                }
+            } else {
+                alert(errors.response.data.message);
+            }
+        }
+    }
+})
+
 
 const app = new Vue({
     el: '#app',

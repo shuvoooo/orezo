@@ -82,11 +82,11 @@
             </a>
         </li>
         <li>
-            <a href="http://localhost:8000/logout"
+            <a href="javascript:void(0);"
                onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><i
                     class="icon-key"></i> Log Out</a>
-            <form id="logout-form" action="http://localhost:8000/logout" method="POST" style="display: none;">
-                <input type="hidden" name="_token" value="RiLmM5WMagRZ16OI5ItL5Gh5UqjbkVo1rUextgaQ">
+            <form id="logout-form" action="{{route('logout')}}" method="POST" style="display: none;">
+                @csrf
             </form>
         </li>
 

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PersonalInformationController;
 use App\Http\Middleware\UserMiddleware;
@@ -17,6 +18,8 @@ Route::get("/tips", [HomeController::class, "tips"])->name('tips');
 Auth::routes();
 
 Route::group(['prefix' => 'user', 'middleware' => UserMiddleware::class], function () {
+
+    Route::get('dashboard',[DashboardController::class,'user_dashboard'])->name('dashboard');
 
     Route::get('personal-information', [PersonalInformationController::class, 'personal_information'])->name('personal-information');
 

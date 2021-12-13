@@ -2,8 +2,8 @@
     <div class="container">
         <div class="row py-5 mt-4 align-items-center">
 
-            <div class="col-md-5 pr-lg-5 mb-5 mb-md-0">
-                <img src="https://bootstrapious.com/i/snippets/sn-registeration/illustration.svg" alt=""
+            <div class="col-md-5 pr-lg-5 mb-5 mb-md-0 d-flex flex-column align-items-center justify-content-center">
+                <img src="/assets/svg/auth.svg" alt=""
                      class="img-fluid mb-3 d-none d-md-block">
                 <h1>Create an Account</h1>
                 <p class="font-italic text-muted mb-0">
@@ -26,20 +26,17 @@
                             </div>
 
                             <input id="fname" v-validate="'required'" type="text" name="fname" v-model="fname"
-                                   placeholder="First Name"
-                                   :class="{
-                                       'form-control bg-white border-left-0 border-md': true,
-                                       'is-invalid': errors.has('fname')
-                                   }">
+                                   placeholder="First Name" class="form-control bg-white border-left-0 border-md">
 
-                            <span v-if="errors.has('fname')" class="invalid-feedback">{{
+                            <span v-if="errors.has('fname')" class="small text-danger w-100 w-100">{{
                                     errors.first('fname')
                                 }}</span>
-
                         </div>
 
                         <!-- Last Name -->
                         <div class="input-group col-lg-6 mb-4">
+
+
                             <div class="input-group-prepend">
                             <span class="input-group-text bg-white px-4 border-md border-right-0">
                                 <i class="fa fa-user text-muted"></i>
@@ -47,14 +44,11 @@
                             </div>
                             <input id="lname" v-validate="'required'" type="text" name="lname" placeholder="Last Name"
                                    v-model="lname"
-                                   :class="{
-                                       'form-control bg-white border-left-0 border-md': true,
-                                       'is-invalid': errors.has('lname')
-                                   }">
+                                   class="form-control bg-white border-left-0 border-md">
 
-                            <span v-if="errors.has('lname')" class="invalid-feedback">{{
-                                    errors.first('lname')
-                                }}</span>
+                            <span v-if="errors.has('lname')" class="small text-danger w-100">
+                                {{ errors.first('lname') }}
+                            </span>
                         </div>
 
                         <!-- Email Address -->
@@ -66,11 +60,8 @@
                             </div>
                             <input id="email" type="email" v-validate="'required|email'" name="email"
                                    placeholder="Email Address" v-model="email"
-                                   :class="{
-                                       'form-control bg-white border-left-0 border-md': true,
-                                       'is-invalid': errors.has('email')
-                                   }">
-                            <span v-if="errors.has('email')" class="invalid-feedback">{{
+                                   class="form-control bg-white border-left-0 border-md">
+                            <span v-if="errors.has('email')" class="small text-danger w-100 w-100">{{
                                     errors.first('email')
                                 }}</span>
 
@@ -84,29 +75,28 @@
                                 <i class="fa fa-phone-square text-muted"></i>
                             </span>
                             </div>
-                            <select id="countryCode" name="countryCode" style="max-width: 80px" v-model="countryCode"
+
+                            <select id="countryCode" name="countryCode" style="max-width: 80px; height: 3.4rem;"
+                                    v-model="countryCode"
                                     v-validate="'required'"
-                                    :class="{
-                                       'custom-select form-control bg-white border-left-0 border-md h-100 ont-weight-bold text-muted': true,
-                                       'is-invalid': errors.has('countryCode')
-                                   }">
-                                <option value="">+12</option>
-                                <option value="">+10</option>
-                                <option value="">+15</option>
-                                <option value="">+18</option>
+                                    class="custom-select form-control bg-white border-left-0 border-md font-weight-bold text-muted ">
+                                <option value="+12">+12</option>
+                                <option value="+10">+10</option>
+                                <option value="+15">+15</option>
+                                <option value="+18">+18</option>
                             </select>
-                            <span v-if="errors.has('countryCode')" class="invalid-feedback">{{
-                                    errors.first('countryCode')
-                                }}</span>
+
 
                             <input id="phone" type="tel" name="phone" placeholder="Phone Number" v-model="phone"
-                                   :class="{
-                                       'form-control bg-white border-md border-left-0 pl-3': true,
-                                       'is-invalid': errors.has('phone')
-                                   }">
+                                   v-validate="'required'"
+                                   class="form-control bg-white border-md border-left-0 pl-3">
 
-                            <span v-if="errors.has('phone')" class="invalid-feedback">{{
+                            <span v-if="errors.has('phone')" class="small text-danger w-100">{{
                                     errors.first('phone')
+                                }}</span>
+
+                            <span v-if="errors.has('countryCode')" class="small text-danger w-100">{{
+                                    errors.first('countryCode')
                                 }}</span>
                         </div>
 
@@ -119,14 +109,12 @@
                             </span>
                             </div>
                             <select id="country" name="country" v-model="country"
-                                    :class="{
-                                       'form-control custom-select bg-white border-left-0 border-md': true,
-                                       'is-invalid': errors.has('country')
-                                   }">
+                                    class="form-control custom-select bg-white border-left-0 border-md">
+                                <option value="">Select Country</option>
                                 <option value="USA">United State</option>
                             </select>
 
-                            <span v-if="errors.has('country')" class="invalid-feedback">{{
+                            <span v-if="errors.has('country')" class="small text-danger w-100">{{
                                     errors.first('country')
                                 }}</span>
                         </div>
@@ -135,17 +123,15 @@
                         <!-- State -->
                         <div class="input-group col-lg-12 mb-4">
                             <div class="input-group-prepend">
-                            <span class="input-group-text bg-white px-4 border-md border-right-0">
-                                <i class="fa fa-black-tie text-muted"></i>
-                            </span>
+                                <span class="input-group-text bg-white px-4 border-md border-right-0">
+                                    <i class="fa fa-black-tie text-muted"></i>
+                                </span>
                             </div>
-                            <select id="state" name="state" v-model="state"
-                                    :class="{
-                                       'form-control custom-select bg-white border-left-0 border-md': true,
-                                       'is-invalid': errors.has('state')
-                                   }">
 
-                                <option selected="selected" value="-1">Select State</option>
+                            <select id="state" name="state" v-model="state"
+                                    class="form-control custom-select bg-white border-left-0 border-md">
+
+                                <option selected="selected" value="">Select State</option>
                                 <option value="AL">Alabama</option>
                                 <option value="AK">Alaska</option>
                                 <option value="AZ">Arizona</option>
@@ -200,7 +186,7 @@
                                 <option value="WY">none of this</option>
                             </select>
 
-                            <span v-if="errors.has('state')" class="invalid-feedback">{{
+                            <span v-if="errors.has('state')" class="small text-danger w-100">{{
                                     errors.first('state')
                                 }}</span>
                         </div>
@@ -209,35 +195,30 @@
                         <div class="input-group col-lg-12 mb-4">
                             <div class="input-group-prepend">
                             <span class="input-group-text bg-white px-4 border-md border-right-0">
-                                <i class="fa fa-phone-square text-muted"></i>
+                                <i class="fa fa-home text-muted"></i>
                             </span>
                             </div>
-                            <input id="HomeNo" type="tel" name="home_no" placeholder="Home Number" v-model="home_no"
-                                   :class="{
-                                       'form-control bg-white border-md border-left-0 pl-3': true,
-                                       'is-invalid': errors.has('home_no')
-                                   }">
+                            <input id="HomeNo" v-validate="'required'" type="tel" name="home_no"
+                                   placeholder="Home Number" v-model="home_no"
+                                   class="form-control bg-white border-md border-left-0 pl-3">
 
-                            <span v-if="errors.has('home_no')" class="invalid-feedback">{{
+                            <span v-if="errors.has('home_no')" class="small text-danger w-100">{{
                                     errors.first('home_no')
                                 }}</span>
                         </div>
 
-                        <!-- Refered -->
+                        <!-- Referred -->
                         <div class="input-group col-lg-12 mb-4">
                             <div class="input-group-prepend">
                             <span class="input-group-text bg-white px-4 border-md border-right-0">
-                                <i class="fa fa-phone-square text-muted"></i>
+                                <i class="fa fa-rebelna  text-muted"></i>
                             </span>
                             </div>
-                            <input id="refered" type="tel" name="refered" placeholder="Refrered By" v-model="refered"
-                                   :class="{
-                                       'form-control bg-white border-md border-left-0 pl-3': true,
-                                       'is-invalid': errors.has('refered')
-                                   }">
+                            <input id="referrer" type="tel" name="referrer" placeholder="Refrered By" v-model="referrer"
+                                   class=" form-control bg-white border-md border-left-0 pl-3">
 
-                            <span v-if="errors.has('refered')" class="invalid-feedback">{{
-                                    errors.first('refered')
+                            <span v-if="errors.has('referrer')" class="small text-danger w-100">{{
+                                    errors.first('referrer')
                                 }}</span>
                         </div>
 
@@ -251,42 +232,42 @@
                             </div>
                             <input id="password" type="password" name="password" placeholder="Password"
                                    v-model="password" v-validate="'required'"
-                                   :class="{
-                                       'form-control bg-white border-left-0 border-md': true,
-                                       'is-invalid': errors.has('password')
-                                   }">
+                                   class="form-control bg-white border-left-0 border-md">
 
-                            <span v-if="errors.has('password')" class="invalid-feedback">{{
+                            <span v-if="errors.has('password')" class="small text-danger w-100">{{
                                     errors.first('password')
                                 }}</span>
                         </div>
 
                         <!-- Password Confirmation -->
-                        <div class="input-group col-lg-6 mb-4">
-                            <div class="input-group-prepend">
+                        <div class="col-lg-6 mb-4">
+                            <div class="input-group">
+                                <div class="input-group-prepend">
                             <span class="input-group-text bg-white px-4 border-md border-right-0">
                                 <i class="fa fa-lock text-muted"></i>
                             </span>
+                                </div>
+                                <input id="password_confirmation" type="password" name="password_confirmation"
+                                       v-model="password_confirmation" v-validate="'required'"
+                                       class="form-control bg-white border-left-0 border-md"
+
+                                       placeholder="Confirm Password">
+
+                                <span v-if="errors.has('password_confirmation')" class="small text-danger w-100">{{
+                                        errors.first('password_confirmation')
+                                    }}</span>
                             </div>
-                            <input id="passwordConfirmation" type="text" name="passwordConfirmation"
-                                   v-model="passwordConfirmation" v-validate="'required|confirmed:password'"
-                                   :class="{
-                                       'form-control bg-white border-left-0 border-md': true,
-                                       'is-invalid': errors.has('passwordConfirmation')
-                                   }"
-
-                                   placeholder="Confirm Password">
-
-                            <span v-if="errors.has('passwordConfirmation')" class="invalid-feedback">{{
-                                    errors.first('passwordConfirmation')
-                                }}</span>
                         </div>
 
                         <!-- Submit Button -->
                         <div class="form-group col-lg-12 mx-auto mb-0">
-                            <botton role="submit" class="btn btn-primary btn-block py-3">
+                            <button role="button" class="btn btn-primary btn-block py-3" :disabled="loading"
+                                    @click="register">
+                                <span class="spinner" v-if="loading">
+                                    <i class="fa fa-spinner fa-spin"></i>
+                                </span>
                                 <span class="font-weight-bold">Create your account</span>
-                            </botton>
+                            </button>
                         </div>
 
                         <!-- Divider Text -->
@@ -299,7 +280,7 @@
                         <!-- Already Registered -->
                         <div class="text-center w-100">
                             <p class="text-muted font-weight-bold">Already Registered?
-                                <a href="#"
+                                <a href="/login"
                                    class="text-primary ml-2">Login</a>
                             </p>
                         </div>
@@ -319,19 +300,40 @@ export default {
             fname: '',
             lname: '',
             email: '',
-            countryCode: '',
+            countryCode: '+12',
             phone: '',
             state: '',
             country: '',
-            refered: '',
+            referrer: '',
             home_no: '',
             password: '',
-            passwordConfirmation: ''
+            password_confirmation: ''
         }
     },
     methods: {
-        register() {
+        register(e) {
+            e.preventDefault();
 
+            this.$validator.validateAll().then(result => {
+                if (result) {
+                    this.loading = true;
+                    axios.post('/register', {
+                        fname: this.fname,
+                        lname: this.lname,
+                        email: this.email,
+                        phone: this.countryCode + this.phone,
+                        state: this.state,
+                        country: this.country,
+                        referrer: this.referrer,
+                        home_no: this.home_no,
+                        password: this.password,
+                        password_confirmation: this.password_confirmation
+                    }).then(response => {
+                        this.loading = false;
+                        location.href = '/dashboard';
+                    }).catch(e => this.backendError(e));
+                }
+            });
         }
     }
 }
