@@ -21,9 +21,9 @@ Route::group(['prefix' => 'user', 'middleware' => UserMiddleware::class], functi
 
     Route::get('dashboard',[DashboardController::class,'user_dashboard'])->name('dashboard');
 
-    Route::get('personal-information', [PersonalInformationController::class, 'personal_information'])->name('personal-information');
+    Route::get('personal-information', [PersonalInformationController::class, 'personal_information'])->name('personal_information');
 
-    Route::post('personal-information-save', 'UsersController@personal_information_save')->name('personal-information-save');
+    Route::post('personal-information', [PersonalInformationController::class, 'personal_information_store'])->name('personal_information_store');
 
 //    Route::post('/personal-information-save-spouse', 'UsersController@personal_information_save_spouse')->name('personal-information-save-spouse');
 //

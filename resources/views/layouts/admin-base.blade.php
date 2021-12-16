@@ -54,7 +54,32 @@
     </div>
 
     <div class="main-container" id="app">
-        @yield('content')
+        <div class="container-fluid">
+            <!-- BEGIN PAGE HEADER-->
+            <ul class="breadcrumb">
+                <li>
+                    <a href="" target="_blank">Home</a>
+                    <span class="divider"> / </span>
+                </li>
+
+                <li>
+                    <a href="" target="_blank">&nbsp;User</a>
+                    <span class="divider"> / </span>
+                </li>
+
+                @for($i = 2; $i <= count(Request::segments()); $i++)
+                    <li>
+                        <a class="text-capitalize"
+                           href="{{ URL::to( implode( '/', array_slice(Request::segments(), 0 ,$i, true)))}}">
+                            &nbsp;{{Request::segment($i)}}</a>
+                        <span class="divider"> / </span>
+                    </li>
+                @endfor
+            </ul>
+
+            @yield('content')
+
+        </div>
     </div>
 </div>
 
