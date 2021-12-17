@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\BankDetail;
+use App\Models\Bank;
 use App\Models\DepartmentDetails;
 use App\Models\PersonalInformation;
 use App\Models\SpouseInformation;
@@ -132,12 +134,22 @@ class PersonalInformationController extends Controller
 
     public function bank_details()
     {
-        return view('user.bank');
+        $bank = Auth::user()->bank;
+        return view('user.bank', ['bank_details' => $bank]);
     }
 
     public function bank_details_store(Request $request)
     {
-        $request->validate([]);
+        $request->validate(['name' => 'required']);
+
+        $bank = Auth::user()->bank;
+        if ($bank) {
+            $bank->update($request->all());
+        } else {
+            $bank = Bank::create($request->all());
+            $bank->user()->associate(Auth::user());
+            $bank->save();
+        }
 
         return response()->json([
             'success' => 'Bank Details saved successfully.',

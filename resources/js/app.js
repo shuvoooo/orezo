@@ -26,7 +26,8 @@ Vue.use(VeeValidate); // Install the VeeValidate plugin
 Vue.mixin({
     data: function () {
         return {
-            isLoading: false
+            isLoading: false,
+            msg: ""
         }
     },
     methods: {
@@ -43,6 +44,7 @@ Vue.mixin({
             } else {
                 alert(errors.response.data.message);
             }
+            this.msg = errors.response.data.message;
         }
     }
 })

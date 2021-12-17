@@ -32,8 +32,8 @@ Route::group(['prefix' => 'user', 'middleware' => UserMiddleware::class], functi
     Route::post('dependent-details', [PersonalInformationController::class, 'dependent_details_store'])->name('dependent_details_store');
     Route::delete('dependent-details', [PersonalInformationController::class, 'dependent_details_destroy'])->name('dependent_details_destroy');
 
-    Route::get('bank-details', [PersonalInformationController::class, 'bank_details'])->name('bank_details');
-    Route::post('bank-details-save', [PersonalInformationController::class, 'bank_details_store'])->name('bank_details_store');
+    Route::get('bank_details', [PersonalInformationController::class, 'bank_details'])->name('bank_details');
+    Route::post('bank_details', [PersonalInformationController::class, 'bank_details_store'])->name('bank_details_store');
 
 //    Route::post('/personal-information-save-spouse', 'UsersController@personal_information_save_spouse')->name('personal-information-save-spouse');
 //
