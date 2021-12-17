@@ -3706,6 +3706,239 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/ResidencyDetails.vue?vue&type=script&lang=js&":
+/*!***********************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/ResidencyDetails.vue?vue&type=script&lang=js& ***!
+  \***********************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  data: function data() {
+    return {
+      payer: '',
+      start_date: '',
+      end_date: '',
+      spouse: '',
+      spouse_start_date: '',
+      spouse_end_date: ''
+    };
+  },
+  methods: {
+    onSubmit: function onSubmit() {
+      var _this = this;
+
+      axios.post('/tax/residency', {
+        payer: this.payer,
+        start_date: this.start_date,
+        end_date: this.end_date,
+        spouse: this.spouse,
+        spouse_start_date: this.spouse_start_date,
+        spouse_end_date: this.spouse_end_date
+      }).then(function (response) {
+        location.reload();
+      })["catch"](function (error) {
+        _this.backendError(error);
+      });
+    }
+  }
+});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/SpouseDetails.vue?vue&type=script&lang=js&":
 /*!********************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/SpouseDetails.vue?vue&type=script&lang=js& ***!
@@ -15702,6 +15935,45 @@ component.options.__file = "resources/js/components/Register.vue"
 
 /***/ }),
 
+/***/ "./resources/js/components/ResidencyDetails.vue":
+/*!******************************************************!*\
+  !*** ./resources/js/components/ResidencyDetails.vue ***!
+  \******************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _ResidencyDetails_vue_vue_type_template_id_5651cc33___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ResidencyDetails.vue?vue&type=template&id=5651cc33& */ "./resources/js/components/ResidencyDetails.vue?vue&type=template&id=5651cc33&");
+/* harmony import */ var _ResidencyDetails_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ResidencyDetails.vue?vue&type=script&lang=js& */ "./resources/js/components/ResidencyDetails.vue?vue&type=script&lang=js&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! !../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+;
+var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _ResidencyDetails_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _ResidencyDetails_vue_vue_type_template_id_5651cc33___WEBPACK_IMPORTED_MODULE_0__.render,
+  _ResidencyDetails_vue_vue_type_template_id_5651cc33___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns,
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/ResidencyDetails.vue"
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (component.exports);
+
+/***/ }),
+
 /***/ "./resources/js/components/SpouseDetails.vue":
 /*!***************************************************!*\
   !*** ./resources/js/components/SpouseDetails.vue ***!
@@ -15853,6 +16125,22 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/components/ResidencyDetails.vue?vue&type=script&lang=js&":
+/*!*******************************************************************************!*\
+  !*** ./resources/js/components/ResidencyDetails.vue?vue&type=script&lang=js& ***!
+  \*******************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ResidencyDetails_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./ResidencyDetails.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/ResidencyDetails.vue?vue&type=script&lang=js&");
+ /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ResidencyDetails_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
 /***/ "./resources/js/components/SpouseDetails.vue?vue&type=script&lang=js&":
 /*!****************************************************************************!*\
   !*** ./resources/js/components/SpouseDetails.vue?vue&type=script&lang=js& ***!
@@ -15984,6 +16272,23 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "staticRenderFns": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Register_vue_vue_type_template_id_97358ae4___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns)
 /* harmony export */ });
 /* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Register_vue_vue_type_template_id_97358ae4___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./Register.vue?vue&type=template&id=97358ae4& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/Register.vue?vue&type=template&id=97358ae4&");
+
+
+/***/ }),
+
+/***/ "./resources/js/components/ResidencyDetails.vue?vue&type=template&id=5651cc33&":
+/*!*************************************************************************************!*\
+  !*** ./resources/js/components/ResidencyDetails.vue?vue&type=template&id=5651cc33& ***!
+  \*************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ResidencyDetails_vue_vue_type_template_id_5651cc33___WEBPACK_IMPORTED_MODULE_0__.render),
+/* harmony export */   "staticRenderFns": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ResidencyDetails_vue_vue_type_template_id_5651cc33___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns)
+/* harmony export */ });
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ResidencyDetails_vue_vue_type_template_id_5651cc33___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./ResidencyDetails.vue?vue&type=template&id=5651cc33& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/ResidencyDetails.vue?vue&type=template&id=5651cc33&");
 
 
 /***/ }),
@@ -20049,6 +20354,755 @@ var staticRenderFns = [
           { staticClass: "text-primary ml-2", attrs: { href: "/login" } },
           [_vm._v("Login")]
         ),
+      ]),
+    ])
+  },
+]
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/ResidencyDetails.vue?vue&type=template&id=5651cc33&":
+/*!****************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/ResidencyDetails.vue?vue&type=template&id=5651cc33& ***!
+  \****************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* binding */ render),
+/* harmony export */   "staticRenderFns": () => (/* binding */ staticRenderFns)
+/* harmony export */ });
+var render = function () {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("form", { attrs: { action: "" } }, [
+    _c("div", { staticClass: "card" }, [
+      _vm._m(0),
+      _vm._v(" "),
+      _c("div", { staticClass: "card-body" }, [
+        _c("div", { staticClass: "form-group row" }, [
+          _c(
+            "label",
+            {
+              staticClass: "col-md-3 col-form-label text-dark",
+              attrs: { for: "payer" },
+            },
+            [_vm._v(" Tax Payer State")]
+          ),
+          _vm._v(" "),
+          _c("div", { staticClass: "col-md-9" }, [
+            _c(
+              "select",
+              {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.payer,
+                    expression: "payer",
+                  },
+                ],
+                staticClass: "form-control",
+                attrs: { name: "payer", id: "payer" },
+                on: {
+                  change: function ($event) {
+                    var $$selectedVal = Array.prototype.filter
+                      .call($event.target.options, function (o) {
+                        return o.selected
+                      })
+                      .map(function (o) {
+                        var val = "_value" in o ? o._value : o.value
+                        return val
+                      })
+                    _vm.payer = $event.target.multiple
+                      ? $$selectedVal
+                      : $$selectedVal[0]
+                  },
+                },
+              },
+              [
+                _c("option", { attrs: { value: "", selected: "" } }, [
+                  _vm._v("Select State"),
+                ]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "Alabama" } }, [
+                  _vm._v("Alabama"),
+                ]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "Alaska" } }, [
+                  _vm._v("Alaska"),
+                ]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "Arizona" } }, [
+                  _vm._v("Arizona"),
+                ]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "Arkansas" } }, [
+                  _vm._v("Arkansas"),
+                ]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "California" } }, [
+                  _vm._v("California"),
+                ]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "Colorado" } }, [
+                  _vm._v("Colorado"),
+                ]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "Connecticut" } }, [
+                  _vm._v("Connecticut"),
+                ]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "Delaware" } }, [
+                  _vm._v("Delaware"),
+                ]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "District of Columbia" } }, [
+                  _vm._v("District of Columbia"),
+                ]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "Florida" } }, [
+                  _vm._v("Florida"),
+                ]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "Georgia" } }, [
+                  _vm._v("Georgia"),
+                ]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "Guam" } }, [_vm._v("Guam")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "Hawaii" } }, [
+                  _vm._v("Hawaii"),
+                ]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "Idaho" } }, [_vm._v("Idaho")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "Illinois" } }, [
+                  _vm._v("Illinois"),
+                ]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "Indiana" } }, [
+                  _vm._v("Indiana"),
+                ]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "Iowa" } }, [_vm._v("Iowa")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "Kansas" } }, [
+                  _vm._v("Kansas"),
+                ]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "Kentucky" } }, [
+                  _vm._v("Kentucky"),
+                ]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "Louisiana" } }, [
+                  _vm._v("Louisiana"),
+                ]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "Maine" } }, [_vm._v("Maine")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "Maryland" } }, [
+                  _vm._v("Maryland"),
+                ]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "Massachusetts" } }, [
+                  _vm._v("Massachusetts"),
+                ]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "Michigan" } }, [
+                  _vm._v("Michigan"),
+                ]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "Minnesota" } }, [
+                  _vm._v("Minnesota"),
+                ]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "Mississippi" } }, [
+                  _vm._v("Mississippi"),
+                ]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "Missouri" } }, [
+                  _vm._v("Missouri"),
+                ]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "Montana" } }, [
+                  _vm._v("Montana"),
+                ]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "Nebraska" } }, [
+                  _vm._v("Nebraska"),
+                ]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "Nevada" } }, [
+                  _vm._v("Nevada"),
+                ]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "New Hampshire" } }, [
+                  _vm._v("New Hampshire"),
+                ]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "New Jersey" } }, [
+                  _vm._v("New Jersey"),
+                ]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "New Mexico" } }, [
+                  _vm._v("New Mexico"),
+                ]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "New York" } }, [
+                  _vm._v("New York"),
+                ]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "North Carolina" } }, [
+                  _vm._v("North Carolina"),
+                ]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "North Dakota" } }, [
+                  _vm._v("North Dakota"),
+                ]),
+                _vm._v(" "),
+                _c(
+                  "option",
+                  { attrs: { value: "Northern Marianas Islands" } },
+                  [_vm._v("Northern Marianas Islands")]
+                ),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "Ohio" } }, [_vm._v("Ohio")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "Oklahoma" } }, [
+                  _vm._v("Oklahoma"),
+                ]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "Oregon" } }, [
+                  _vm._v("Oregon"),
+                ]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "Pennsylvania" } }, [
+                  _vm._v("Pennsylvania"),
+                ]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "Puerto Rico" } }, [
+                  _vm._v("Puerto Rico"),
+                ]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "Rhode Island" } }, [
+                  _vm._v("Rhode Island"),
+                ]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "South Carolina" } }, [
+                  _vm._v("South Carolina"),
+                ]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "South Dakota" } }, [
+                  _vm._v("South Dakota"),
+                ]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "Tennessee" } }, [
+                  _vm._v("Tennessee"),
+                ]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "Texas" } }, [_vm._v("Texas")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "Utah" } }, [_vm._v("Utah")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "Vermont" } }, [
+                  _vm._v("Vermont"),
+                ]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "Virginia" } }, [
+                  _vm._v("Virginia"),
+                ]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "Virgin Islands" } }, [
+                  _vm._v("Virgin Islands"),
+                ]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "Washington" } }, [
+                  _vm._v("Washington"),
+                ]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "West Virginia" } }, [
+                  _vm._v("West Virginia"),
+                ]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "Wisconsin" } }, [
+                  _vm._v("Wisconsin"),
+                ]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "Wyoming" } }, [
+                  _vm._v("Wyoming"),
+                ]),
+              ]
+            ),
+          ]),
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "form-group row" }, [
+          _c(
+            "label",
+            {
+              staticClass: " col-md-3 col-form-label text-dark",
+              attrs: { for: "start_date" },
+            },
+            [_vm._v(" Start Date ")]
+          ),
+          _vm._v(" "),
+          _c("div", { staticClass: "col-md-9" }, [
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.start_date,
+                  expression: "start_date",
+                },
+              ],
+              staticClass: "form-control",
+              attrs: {
+                type: "date",
+                id: "start_date",
+                name: "start_date",
+                placeholder: "Start Date",
+              },
+              domProps: { value: _vm.start_date },
+              on: {
+                input: function ($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.start_date = $event.target.value
+                },
+              },
+            }),
+          ]),
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "form-group row" }, [
+          _c(
+            "label",
+            {
+              staticClass: " col-md-3 col-form-label text-dark",
+              attrs: { for: "end_date" },
+            },
+            [_vm._v("End Date ")]
+          ),
+          _vm._v(" "),
+          _c("div", { staticClass: "col-md-9" }, [
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.end_date,
+                  expression: "end_date",
+                },
+              ],
+              staticClass: "form-control",
+              attrs: {
+                type: "date",
+                id: "end_date",
+                name: "end_date",
+                placeholder: "End Date",
+              },
+              domProps: { value: _vm.end_date },
+              on: {
+                input: function ($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.end_date = $event.target.value
+                },
+              },
+            }),
+          ]),
+        ]),
+        _vm._v(" "),
+        _c("hr"),
+        _vm._v(" "),
+        _c("div", { staticClass: "form-group row" }, [
+          _c(
+            "label",
+            {
+              staticClass: "col-md-3 col-form-label text-dark",
+              attrs: { for: "spouse" },
+            },
+            [_vm._v(" Spouse State ")]
+          ),
+          _vm._v(" "),
+          _c("div", { staticClass: "col-md-9" }, [
+            _c(
+              "select",
+              {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.spouse,
+                    expression: "spouse",
+                  },
+                ],
+                staticClass: "form-control",
+                attrs: { name: "spouse", id: "spouse" },
+                on: {
+                  change: function ($event) {
+                    var $$selectedVal = Array.prototype.filter
+                      .call($event.target.options, function (o) {
+                        return o.selected
+                      })
+                      .map(function (o) {
+                        var val = "_value" in o ? o._value : o.value
+                        return val
+                      })
+                    _vm.spouse = $event.target.multiple
+                      ? $$selectedVal
+                      : $$selectedVal[0]
+                  },
+                },
+              },
+              [
+                _c("option", { attrs: { value: "", selected: "" } }, [
+                  _vm._v("Select State"),
+                ]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "Alabama" } }, [
+                  _vm._v("Alabama"),
+                ]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "Alaska" } }, [
+                  _vm._v("Alaska"),
+                ]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "Arizona" } }, [
+                  _vm._v("Arizona"),
+                ]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "Arkansas" } }, [
+                  _vm._v("Arkansas"),
+                ]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "California" } }, [
+                  _vm._v("California"),
+                ]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "Colorado" } }, [
+                  _vm._v("Colorado"),
+                ]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "Connecticut" } }, [
+                  _vm._v("Connecticut"),
+                ]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "Delaware" } }, [
+                  _vm._v("Delaware"),
+                ]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "District of Columbia" } }, [
+                  _vm._v("District of Columbia"),
+                ]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "Florida" } }, [
+                  _vm._v("Florida"),
+                ]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "Georgia" } }, [
+                  _vm._v("Georgia"),
+                ]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "Guam" } }, [_vm._v("Guam")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "Hawaii" } }, [
+                  _vm._v("Hawaii"),
+                ]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "Idaho" } }, [_vm._v("Idaho")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "Illinois" } }, [
+                  _vm._v("Illinois"),
+                ]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "Indiana" } }, [
+                  _vm._v("Indiana"),
+                ]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "Iowa" } }, [_vm._v("Iowa")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "Kansas" } }, [
+                  _vm._v("Kansas"),
+                ]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "Kentucky" } }, [
+                  _vm._v("Kentucky"),
+                ]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "Louisiana" } }, [
+                  _vm._v("Louisiana"),
+                ]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "Maine" } }, [_vm._v("Maine")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "Maryland" } }, [
+                  _vm._v("Maryland"),
+                ]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "Massachusetts" } }, [
+                  _vm._v("Massachusetts"),
+                ]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "Michigan" } }, [
+                  _vm._v("Michigan"),
+                ]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "Minnesota" } }, [
+                  _vm._v("Minnesota"),
+                ]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "Mississippi" } }, [
+                  _vm._v("Mississippi"),
+                ]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "Missouri" } }, [
+                  _vm._v("Missouri"),
+                ]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "Montana" } }, [
+                  _vm._v("Montana"),
+                ]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "Nebraska" } }, [
+                  _vm._v("Nebraska"),
+                ]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "Nevada" } }, [
+                  _vm._v("Nevada"),
+                ]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "New Hampshire" } }, [
+                  _vm._v("New Hampshire"),
+                ]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "New Jersey" } }, [
+                  _vm._v("New Jersey"),
+                ]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "New Mexico" } }, [
+                  _vm._v("New Mexico"),
+                ]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "New York" } }, [
+                  _vm._v("New York"),
+                ]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "North Carolina" } }, [
+                  _vm._v("North Carolina"),
+                ]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "North Dakota" } }, [
+                  _vm._v("North Dakota"),
+                ]),
+                _vm._v(" "),
+                _c(
+                  "option",
+                  { attrs: { value: "Northern Marianas Islands" } },
+                  [_vm._v("Northern Marianas Islands")]
+                ),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "Ohio" } }, [_vm._v("Ohio")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "Oklahoma" } }, [
+                  _vm._v("Oklahoma"),
+                ]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "Oregon" } }, [
+                  _vm._v("Oregon"),
+                ]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "Pennsylvania" } }, [
+                  _vm._v("Pennsylvania"),
+                ]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "Puerto Rico" } }, [
+                  _vm._v("Puerto Rico"),
+                ]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "Rhode Island" } }, [
+                  _vm._v("Rhode Island"),
+                ]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "South Carolina" } }, [
+                  _vm._v("South Carolina"),
+                ]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "South Dakota" } }, [
+                  _vm._v("South Dakota"),
+                ]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "Tennessee" } }, [
+                  _vm._v("Tennessee"),
+                ]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "Texas" } }, [_vm._v("Texas")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "Utah" } }, [_vm._v("Utah")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "Vermont" } }, [
+                  _vm._v("Vermont"),
+                ]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "Virginia" } }, [
+                  _vm._v("Virginia"),
+                ]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "Virgin Islands" } }, [
+                  _vm._v("Virgin Islands"),
+                ]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "Washington" } }, [
+                  _vm._v("Washington"),
+                ]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "West Virginia" } }, [
+                  _vm._v("West Virginia"),
+                ]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "Wisconsin" } }, [
+                  _vm._v("Wisconsin"),
+                ]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "Wyoming" } }, [
+                  _vm._v("Wyoming"),
+                ]),
+              ]
+            ),
+          ]),
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "form-group row" }, [
+          _c(
+            "label",
+            {
+              staticClass: " col-md-3 col-form-label text-dark",
+              attrs: { for: "spouse_start_date" },
+            },
+            [_vm._v("Start Date ")]
+          ),
+          _vm._v(" "),
+          _c("div", { staticClass: "col-md-9" }, [
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.spouse_start_date,
+                  expression: "spouse_start_date",
+                },
+              ],
+              staticClass: "form-control",
+              attrs: {
+                type: "date",
+                id: "spouse_start_date",
+                name: "spouse_start_date",
+                placeholder: "Start Date",
+              },
+              domProps: { value: _vm.spouse_start_date },
+              on: {
+                input: function ($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.spouse_start_date = $event.target.value
+                },
+              },
+            }),
+          ]),
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "form-group row" }, [
+          _c(
+            "label",
+            {
+              staticClass: " col-md-3 col-form-label text-dark",
+              attrs: { for: "spouse_end_date" },
+            },
+            [_vm._v("End Date ")]
+          ),
+          _vm._v(" "),
+          _c("div", { staticClass: "col-md-9" }, [
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.spouse_end_date,
+                  expression: "spouse_end_date",
+                },
+              ],
+              staticClass: "form-control",
+              attrs: {
+                type: "date",
+                id: "spouse_end_date",
+                name: "spouse_end_date",
+                placeholder: "End Date",
+              },
+              domProps: { value: _vm.spouse_end_date },
+              on: {
+                input: function ($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.spouse_end_date = $event.target.value
+                },
+              },
+            }),
+          ]),
+        ]),
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "card-footer text-center bg-white" }, [
+        _c(
+          "button",
+          {
+            staticClass: "btn btn-primary",
+            attrs: { type: "submit", disabled: _vm.isLoading },
+            on: {
+              click: function ($event) {
+                $event.preventDefault()
+                return _vm.onSubmit.apply(null, arguments)
+              },
+            },
+          },
+          [
+            _vm.isLoading
+              ? _c("span", { staticClass: "spinner" }, [
+                  _c("i", { staticClass: "fa fa-spinner fa-spin" }),
+                ])
+              : _vm._e(),
+            _vm._v("\n                Add Residency Details\n            "),
+          ]
+        ),
+        _vm._v(" "),
+        _vm.msg
+          ? _c("span", { staticClass: "badge badge-info ml-4" }, [
+              _vm._v(_vm._s(_vm.msg)),
+            ])
+          : _vm._e(),
+      ]),
+    ]),
+  ])
+}
+var staticRenderFns = [
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "card-header" }, [
+      _c("h4", [
+        _c("i", { staticClass: "fa fa-user" }),
+        _vm._v("Residency Details"),
       ]),
     ])
   },
@@ -33366,6 +34420,7 @@ var map = {
 	"./components/PersonalInfo.vue": "./resources/js/components/PersonalInfo.vue",
 	"./components/ProjectDetails.vue": "./resources/js/components/ProjectDetails.vue",
 	"./components/Register.vue": "./resources/js/components/Register.vue",
+	"./components/ResidencyDetails.vue": "./resources/js/components/ResidencyDetails.vue",
 	"./components/SpouseDetails.vue": "./resources/js/components/SpouseDetails.vue"
 };
 

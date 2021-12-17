@@ -39,7 +39,7 @@
             <ul class="sub" style="display: block;">
                 <li class=""><a class="" href="{{route('employer_details')}}">Employer Details</a></li>
                 <li class=""><a class="" href="{{route('project_details')}}">Project Details</a></li>
-                <li class=""><a class="" href="{{route('dependent_details')}}">Residency Details</a></li>
+                <li class=""><a class="" href="{{route('residency_details')}}">Residency Details</a></li>
                 <li class=""><a class="" href="{{route('bank_details')}}">Expenses 2016</a></li>
                 <li class=""><a class="" href="{{route('bank_details')}}">Asset Details</a></li>
                 <li class=""><a class="" href="{{route('bank_details')}}">Miscellaneous Information</a></li>
