@@ -40,9 +40,9 @@
                 <li class=""><a class="" href="{{route('employer_details')}}">Employer Details</a></li>
                 <li class=""><a class="" href="{{route('project_details')}}">Project Details</a></li>
                 <li class=""><a class="" href="{{route('residency_details')}}">Residency Details</a></li>
-                <li class=""><a class="" href="{{route('bank_details')}}">Expenses 2016</a></li>
-                <li class=""><a class="" href="{{route('bank_details')}}">Asset Details</a></li>
-                <li class=""><a class="" href="{{route('bank_details')}}">Miscellaneous Information</a></li>
+                <li class=""><a class="" href="{{route('expense_details')}}">Expenses 2016</a></li>
+                <li class=""><a class="" href="{{route('asset_details')}}">Asset Details</a></li>
+                <li class=""><a class="" href="{{route('miscellaneous_details')}}">Miscellaneous Information</a></li>
             </ul>
         </li>
 

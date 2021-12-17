@@ -1,8 +1,11 @@
 <?php
 
+use App\Http\Controllers\AssetController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\EmployerController;
+use App\Http\Controllers\ExpenseController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\MiscellaneousController;
 use App\Http\Controllers\PersonalInformationController;
 use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\ResidencyController;
@@ -45,7 +48,7 @@ Route::group(['middleware' => UserMiddleware::class], function () {
     Route::group(['prefix' => 'tax'], function () {
         Route::get('employer_details', [EmployerController::class, 'employer_details'])->name('employer_details');
         Route::post('employer_details', [EmployerController::class, 'employer_details_store'])->name('employer_details_store');
-        Route::delete('employer_details/{employer}', [EmployerController::class, 'employer_details_destroy'])->name('employer_details_destroy');
+        Route::delete('employer_details/{tax}', [EmployerController::class, 'employer_details_destroy'])->name('employer_details_destroy');
 
         Route::get('project', [ProjectController::class, 'project_details'])->name('project_details');
         Route::post('project', [ProjectController::class, 'project_details_store'])->name('project_details_store');
@@ -54,5 +57,16 @@ Route::group(['middleware' => UserMiddleware::class], function () {
         Route::get('residency', [ResidencyController::class, 'residency_details'])->name('residency_details');
         Route::post('residency', [ResidencyController::class, 'residency_details_store'])->name('residency_details_store');
         Route::delete('residency/{residency}', [ResidencyController::class, 'residency_details_destroy'])->name('residency_details_destroy');
+
+        Route::get('expense', [ExpenseController::class, 'expense_details'])->name('expense_details');
+        Route::post('expense', [ExpenseController::class, 'expense_details_store'])->name('expense_details_store');
+
+
+        Route::get('asset', [AssetController::class, 'asset_details'])->name('asset_details');
+        Route::post('asset', [AssetController::class, 'asset_details_store'])->name('asset_details_store');
+
+
+        Route::get('miscellaneous', [MiscellaneousController::class, 'miscellaneous_details'])->name('miscellaneous_details');
+        Route::post('miscellaneous', [MiscellaneousController::class, 'miscellaneous_details_store'])->name('miscellaneous_details_store');
     });
 });

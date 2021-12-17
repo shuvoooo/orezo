@@ -11,10 +11,10 @@ class EmployerController extends Controller
     public function employer_details()
     {
         $employer_details = Employer::where('user_id', Auth::user()->id)->get();
-        return view('user.employer.employer_details', compact('employer_details'));
+        return view('user.tax.employer_details', compact('employer_details'));
     }
 
-    //create employer store function
+    //create tax store function
     public function employer_details_store(Request $request)
     {
         $request->validate([

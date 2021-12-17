@@ -11,7 +11,7 @@ class ResidencyController extends Controller
     public function residency_details()
     {
         $residency_details = residency::where('user_id', Auth::id())->get();
-        return response()->view('user.employer.residency_details', compact('residency_details'));
+        return response()->view('user.tax.residency_details', compact('residency_details'));
     }
 
     public function residency_details_store(Request $request)

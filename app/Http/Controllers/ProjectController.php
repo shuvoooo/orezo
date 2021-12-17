@@ -11,7 +11,7 @@ class ProjectController extends Controller
     public function project_details()
     {
         $project_details = Project::where('user_id', Auth::id())->get();
-        return response()->view('user.employer.project_details', compact('project_details'));
+        return response()->view('user.tax.project_details', compact('project_details'));
     }
 
     public function project_details_store(Request $request)

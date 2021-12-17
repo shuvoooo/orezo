@@ -9,6 +9,9 @@ class Expense extends Model
 {
     use HasFactory;
 
+    protected $casts = [
+        'details' => 'json'
+    ];
 
     protected $guarded = ['id'];
 }
