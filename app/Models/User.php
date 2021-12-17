@@ -70,7 +70,7 @@ class User extends Authenticatable
 
     public function bank()
     {
-        return $this->hasOne(Bank::class, );
+        return $this->hasOne(Bank::class);
     }
 
     public function expense()

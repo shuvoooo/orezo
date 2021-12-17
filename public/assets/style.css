@@ -1383,14 +1383,14 @@ a.em-active-button:hover {
 	background:#181b2d;
 }
 .dark1 {
-    background-image: url(assets/images/slider/dark1.jpg);
+    background-image: url('/assets/images/slider/dark1.jpg');
     background-size: cover;
     background-position: center center;
     background-repeat: no-repeat;
     height: 900px;
 }
 .dark2 {
-    background-image: url(assets/images/slider/dark2.jpg);
+    background-image: url('/assets/images/slider/dark2.jpg');
     background-size: cover;
     background-position: center center;
     background-repeat: no-repeat;

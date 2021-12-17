@@ -23,11 +23,29 @@
 
 
         <li class="sub-menu">
-            <a class="" href="">
+            <a class="" href="{{route('process_flow_chart')}}">
                 <i class="icon-dashboard"></i>
-                <span>Pages</span>
+                <span>Process Flow Chart</span>
             </a>
         </li>
+
+        <li class="sub-menu">
+            <a href="javascript:void(0);" class="">
+                <i class="icon-user"></i>
+                <span>Fill Tex Information</span>
+                <span class="arrow"></span>
+            </a>
+
+            <ul class="sub" style="display: block;">
+                <li class=""><a class="" href="{{route('employer_details')}}">Employer Details</a></li>
+                <li class=""><a class="" href="{{route('project_details')}}">Project Details</a></li>
+                <li class=""><a class="" href="{{route('dependent_details')}}">Residency Details</a></li>
+                <li class=""><a class="" href="{{route('bank_details')}}">Expenses 2016</a></li>
+                <li class=""><a class="" href="{{route('bank_details')}}">Asset Details</a></li>
+                <li class=""><a class="" href="{{route('bank_details')}}">Miscellaneous Information</a></li>
+            </ul>
+        </li>
+
 
         <li class="sub-menu ">
             <a href="" class="">

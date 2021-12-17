@@ -15,7 +15,7 @@ class PersonalInformationController extends Controller
     public function personal_information()
     {
         $personal = Auth::user()->personalInformation;
-        return view('user.personal', ['personal_information' => $personal]);
+        return view('user.personal_info.personal', ['personal_information' => $personal]);
     }
 
     public function personal_information_store(Request $request)
@@ -57,7 +57,7 @@ class PersonalInformationController extends Controller
     public function spouse_information()
     {
         $spouse = Auth::user()->spouseInformation;
-        return view('user.spouse', ['spouse_information' => $spouse, 'spouse_status' => Auth::user()->spouse]);
+        return view('user.personal_info.spouse', ['spouse_information' => $spouse, 'spouse_status' => Auth::user()->spouse]);
     }
 
     public function spouse_information_store(Request $request)
@@ -98,7 +98,7 @@ class PersonalInformationController extends Controller
     {
         $department = DepartmentDetails::where('user_id', Auth::user()->id)->get();
 
-        return view('user.dependent', ['department_details' => $department]);
+        return view('user.personal_info.dependent', ['department_details' => $department]);
     }
 
     public function dependent_details_store(Request $request)
@@ -135,7 +135,7 @@ class PersonalInformationController extends Controller
     public function bank_details()
     {
         $bank = Auth::user()->bank;
-        return view('user.bank', ['bank_details' => $bank]);
+        return view('user.personal_info.bank', ['bank_details' => $bank]);
     }
 
     public function bank_details_store(Request $request)
