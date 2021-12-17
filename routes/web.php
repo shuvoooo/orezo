@@ -19,11 +19,16 @@ Auth::routes();
 
 Route::group(['prefix' => 'user', 'middleware' => UserMiddleware::class], function () {
 
-    Route::get('dashboard',[DashboardController::class,'user_dashboard'])->name('dashboard');
+    Route::get('dashboard', [DashboardController::class, 'user_dashboard'])->name('dashboard');
 
     Route::get('personal-information', [PersonalInformationController::class, 'personal_information'])->name('personal_information');
 
     Route::post('personal-information', [PersonalInformationController::class, 'personal_information_store'])->name('personal_information_store');
+
+
+    Route::get('spouse-details', [PersonalInformationController::class, 'spouse_information'])->name('spouse_details');
+
+    Route::post('spouse-details', [PersonalInformationController::class, 'spouse_information_store'])->name('spouse_details_store');
 
 //    Route::post('/personal-information-save-spouse', 'UsersController@personal_information_save_spouse')->name('personal-information-save-spouse');
 //

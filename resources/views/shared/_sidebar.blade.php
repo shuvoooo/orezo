@@ -15,7 +15,7 @@
             </a>
             <ul class="sub" style="display: block;">
                 <li class=""><a class="" href="{{route('personal_information')}}">Tax Payer Details</a></li>
-                <li class=""><a class="" href="http://127.0.0.1:8001/user/spouse-details">Spouse Details</a></li>
+                <li class=""><a class="" href="{{route('spouse_details')}}">Spouse Details</a></li>
                 <li class=""><a class="" href="http://127.0.0.1:8001/user/dependent-details">Dependent Details</a></li>
                 <li class=""><a class="" href="http://127.0.0.1:8001/user/bank-details">Bank Details</a></li>
             </ul>

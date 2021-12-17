@@ -26,8 +26,7 @@
                                     v-if="errors.has('fname')"
                                     id="fnameHelp"
                                     class="form-text text-danger"
-                                >{{ errors.first('fname') }}</small
-                                >
+                                >{{ errors.first('fname') }}</small>
                             </div>
                         </div>
 
@@ -175,7 +174,7 @@
                                     class="form-control"
                                     id="occupation"
                                     v-model="occupation"
-                                    placeholder=""
+                                    placeholder="Occupation"
                                 />
                                 <small
                                     v-if="errors.has('occupation')"
@@ -195,6 +194,7 @@
                                     class="form-control"
                                     id="street_no"
                                     v-model="street_no"
+                                    placeholder="Street No"
                                 />
                                 <small
                                     v-if="errors.has('street_no')"
@@ -216,6 +216,7 @@
                                     class="form-control"
                                     id="apartment_no"
                                     v-model="apartment_no"
+                                    placeholder="Apartment No"
                                 />
                                 <small
                                     v-if="errors.has('apartment_no')"
@@ -235,6 +236,7 @@
                                     class="form-control"
                                     id="zip_code"
                                     v-model="zip_code"
+                                    placeholder="Zip Code"
                                 />
                                 <small
                                     v-if="errors.has('zip_code')"
@@ -254,6 +256,7 @@
                                     class="form-control"
                                     id="city"
                                     v-model="city"
+                                    placeholder="City"
                                 />
                                 <small v-if="errors.has('city')" class="form-text text-danger">{{
                                         errors.first('city')
@@ -271,6 +274,7 @@
                                     class="form-control"
                                     id="state"
                                     v-model="state"
+
                                 >
                                     <option value="">Select State</option>
                                     <option value="Alabama">Alabama</option>
@@ -345,6 +349,7 @@
                                     class="form-control"
                                     id="country"
                                     v-model="country"
+
                                 >
                                     <option value="USA">USA</option>
                                 </select>
@@ -367,6 +372,8 @@
                                     class="form-control"
                                     id="mobile"
                                     v-model="mobile"
+                                    name="mobile"
+                                    placeholder="Mobile Number"
                                 />
                                 <small
                                     v-if="errors.has('mobile')"
@@ -386,6 +393,8 @@
                                     class="form-control"
                                     id="work"
                                     v-model="work"
+                                    name="work"
+                                    placeholder="Work Number"
                                 />
                                 <small v-if="errors.has('work')" class="form-text text-danger">{{
                                         errors.first('work')
@@ -404,6 +413,7 @@
                                     id="email"
                                     v-model="email"
                                     name="email"
+                                    placeholder="Email Address"
                                 />
                                 <small
                                     v-if="errors.has('email')"
@@ -424,6 +434,7 @@
                                     id="visa_status"
                                     name="visa_status"
                                     v-model="visa_status"
+                                    placeholder="Visa Status"
                                 />
                                 <small
                                     v-if="errors.has('visa_status')"
@@ -446,6 +457,7 @@
                                     id="date_of_entry"
                                     v-model="date_of_entry_in_us"
                                     name="date_of_entry_in_us"
+                                    placeholder="Date Of Entry in US"
                                 />
                                 <small
                                     v-if="errors.has('date_of_entry_in_us')"
