@@ -2,5 +2,5 @@
 
 
 @section('content')
-    <personal-info></personal-info>
+    <personal-info :personal-info='@json($personal_information)'></personal-info>
 @endsection

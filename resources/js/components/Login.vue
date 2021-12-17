@@ -1,5 +1,5 @@
 <template>
-    <div class="container">
+    <div class="container" >
         <div class="row py-5 mt-4 align-items-center justify-content-center">
             <div class="col-md-7 col-lg-6">
                 <div class="row">
@@ -41,8 +41,8 @@
 
                     <!-- Submit Button -->
                     <div class="form-group col-lg-12 mx-auto mb-0">
-                        <button role="button" class="btn btn-primary btn-block py-3" @click="login" :disabled="loading">
-                            <span class="spinner" v-if="loading">
+                        <button role="button" class="btn btn-primary btn-block py-3" @click="login" :disabled="isLoading">
+                            <span class="spinner" v-if="isLoading">
                                 <i class="fa fa-spinner fa-spin"></i>
                             </span>
                             <span class="font-weight-bold">Login</span>
@@ -84,14 +84,14 @@ export default {
             e.preventDefault()
             this.$validator.validateAll().then(result => {
                 if (result) {
-                    this.loading = true;
+                    this.isLoading = true;
 
                     axios.post('/login', {
                         email: this.email,
                         password: this.password
                     }).then(response => {
-                        this.loading = false;
-                        location.href = '/dashboard';
+                        this.isLoading = false;
+                        location.href = '/user/dashboard';
                     }).catch(error => {
                         this.backendError(error);
                     });

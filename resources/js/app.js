@@ -26,12 +26,12 @@ Vue.use(VeeValidate); // Install the VeeValidate plugin
 Vue.mixin({
     data: function () {
         return {
-            loading: false
+            isLoading: false
         }
     },
     methods: {
         backendError(errors) {
-            this.loading = false;
+            this.isLoading = false;
 
             if (errors.response.status === 422) {
                 for (let field in errors.response.data.errors) {

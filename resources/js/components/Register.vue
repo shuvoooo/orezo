@@ -261,9 +261,9 @@
 
                         <!-- Submit Button -->
                         <div class="form-group col-lg-12 mx-auto mb-0">
-                            <button role="button" class="btn btn-primary btn-block py-3" :disabled="loading"
+                            <button role="button" class="btn btn-primary btn-block py-3" :disabled="isLoading"
                                     @click="register">
-                                <span class="spinner" v-if="loading">
+                                <span class="spinner" v-if="isLoading">
                                     <i class="fa fa-spinner fa-spin"></i>
                                 </span>
                                 <span class="font-weight-bold">Create your account</span>
@@ -316,7 +316,7 @@ export default {
 
             this.$validator.validateAll().then(result => {
                 if (result) {
-                    this.loading = true;
+                    this.isLoading = true;
                     axios.post('/register', {
                         fname: this.fname,
                         lname: this.lname,
@@ -329,7 +329,7 @@ export default {
                         password: this.password,
                         password_confirmation: this.password_confirmation
                     }).then(response => {
-                        this.loading = false;
+                        this.isLoading = false;
                         location.href = '/user/dashboard';
                     }).catch(e => this.backendError(e));
                 }

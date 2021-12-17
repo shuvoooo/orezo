@@ -2,7 +2,7 @@
 
 Template Name: techno - IT Solutions & Services HTML5 Template
 Version: 0.1
- 
+
 ================================================*/
 
 /*TABLE OF CONTENTS*/
@@ -25,11 +25,11 @@ Version: 0.1
 16. techno Blog Area  Css
 17. techno Subscribe Area CSS
 18. techno Subscribe Area CSS
-19. techno Contact Now Area Css 
+19. techno Contact Now Area Css
 20. techno Contact Form Area Css
 21. techno GOOGLE MAP AREA CSS
 22. techno Middle Footer CSS
-23. techno Footer Bottom Area Css 
+23. techno Footer Bottom Area Css
 24. techno BLOG DETAILS AREA CSS
 25. techno Team Details Area Css
 26. techno Skill Area Css
@@ -71,7 +71,7 @@ Version: 0.1
 
 /* logo Css*/
 .logo {
- 
+
 }
 /* techno Menu Css*/
 .techno_menu {
@@ -507,7 +507,7 @@ a.dtbtn:hover {
 }
 .button a i {
     margin-left: 5px;
-	
+
 }
 .button a:before {
     position: absolute;
@@ -1249,12 +1249,11 @@ a.em-active-button:hover {
     background: #fff;
     border-radius: 7px;
     box-shadow: 0 2px 4px 0 rgba(0,0,0,0.12);
-    
+
 }
 .form-control {
-    height: 54px;
+    /*height: 54px;*/
     background-color: #fff;
-    border-color: transparent;
     -webkit-transition: .5s;
     -o-transition: .5s;
     transition: .5s;
@@ -1501,7 +1500,7 @@ a.em-active-button:hover {
 	height: 2px;
 	margin: 0 auto 5px;
 	width: 62px;
-	
+
 }
 .text_left .em_bar {
     margin: 0;
@@ -1802,8 +1801,8 @@ a.em-active-button:hover {
 .feature_style_four_button a{
 	transition:.5s;
 }
-.feature_style_four.active .feature_style_four_title h4, 
-.feature_style_four.active .feature_style_four_text p, 
+.feature_style_four.active .feature_style_four_title h4,
+.feature_style_four.active .feature_style_four_text p,
 .feature_style_four.active .feature_style_four_button a {
     color:#fff;
 }
@@ -1814,9 +1813,9 @@ a.em-active-button:hover {
 	background: #0C5ADB;
 	transform:translateY(-10px);
 }
-.feature_style_four:hover .feature_style_four_title h4, 
-.feature_style_four:hover .feature_style_four_text p, 
-.feature_style_four:hover .feature_style_four_button a{ 
+.feature_style_four:hover .feature_style_four_title h4,
+.feature_style_four:hover .feature_style_four_text p,
+.feature_style_four:hover .feature_style_four_button a{
 	color:#fff;
 }
 /* Feature Style Five */
@@ -2401,7 +2400,7 @@ a.em-active-button:hover {
 }
 .single_about_shape_thumb img {
     width: 70%;
-	
+
 }
 .single_about_signesur_thumb {
     float: left;
@@ -2820,7 +2819,7 @@ a.em-active-button:hover {
 }
 .single_service_inner:hover .single_service_icon i{
 	color:#0c5adb;
-} 
+}
 
 /* Service Style Seven */
 
@@ -3356,7 +3355,7 @@ a.em-active-button:hover {
     -moz-transform: skew(-30deg);
     -ms-transform: skew(-30deg);
     -o-transform: skew(-30deg);
-    opacity: 0; 
+    opacity: 0;
     transition: .5s;
     z-index: -1;
 }
@@ -4045,10 +4044,10 @@ a.em-active-button:hover {
     color: #fff;
     font-weight: 600;
 	position:relative;
-	height:45px; 
-	width:45px; 
-	line-height:45px; 
-	display:inline-block; 
+	height:45px;
+	width:45px;
+	line-height:45px;
+	display:inline-block;
 		transition:.3s;
 }
 .single_work_content_title h4 {
@@ -5035,8 +5034,8 @@ to{-webkit-transform:rotate(360deg) translate(-10px) rotate(-360deg);-moz-transf
 .single_choose_us_content:hover .single_choose_us_icon .icon{
 	background:transparent;
 	color:#0c5adb;
-	
-	
+
+
 }
 /*====================================================
 --<	Techno Fun Faq Area Css -->
@@ -5103,7 +5102,7 @@ to{-webkit-transform:rotate(360deg) translate(-10px) rotate(-360deg);-moz-transf
     margin-right: 10px;
 }
 .panel-group.symb .panel-heading a::after {
-  
+
   content:"-";
   font-size: 20px;
   position: absolute;
@@ -5167,7 +5166,7 @@ to{-webkit-transform:rotate(360deg) translate(-10px) rotate(-360deg);-moz-transf
     padding: 70px 70px 70px 70px;
     border-radius: 10px 10px 10px 10px;
     box-shadow: 0 5px 30px rgba(0,0,0,0.15);
-} 
+}
 .appointment_title h1 {
     text-align: center;
     font-weight: 800;
@@ -5224,7 +5223,7 @@ to{-webkit-transform:rotate(360deg) translate(-10px) rotate(-360deg);-moz-transf
 .google_map_area .col-lg-12{
     padding: 0;
 }
-/* Contact Style Three */ 
+/* Contact Style Three */
 .style_three .contact_address_company ul li {
     list-style: none;
     display: block;
