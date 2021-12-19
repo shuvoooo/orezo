@@ -24,7 +24,7 @@
                     </div>
 
 
-                    <div class="row no-gutters" v-for="(n,i) in expenses.title">
+                    <div class="row no-gutters" v-for="(n,i) in expenses.title" :key='i'>
                         <div class="col-1">
                             {{ i + 1 }}
                         </div>

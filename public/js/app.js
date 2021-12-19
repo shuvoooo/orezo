@@ -2083,7 +2083,103 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({});
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  name: 'ExpenseDetails',
+  props: ['assetDetails'],
+  data: function data() {
+    return {
+      assets: {
+        title: this.assetDetails.title || ["Desktop", "Laptop", "Hardware Accessories", "Printer", "Software", "Scanner", "Fax", "Copier", "Computer Furniture", "Cell Phone"],
+        dateofpurchase: this.assetDetails.dateofpurchase || new Array(10).fill(''),
+        business: this.assetDetails.business || new Array(10).fill(''),
+        acquisition: this.assetDetails.acquisition || new Array(10).fill(''),
+        reiumbersement: this.assetDetails.reiumbersement || new Array(10).fill('')
+      }
+    };
+  },
+  methods: {
+    onSubmit: function onSubmit() {
+      var _this = this;
+
+      this.isLoading = true;
+      axios.post('/tax/asset', {
+        details: this.assets
+      }).then(function (response) {
+        //
+        _this.isLoading = false;
+        _this.msg = response.data.message;
+      })["catch"](function (error) {
+        _this.backendError(error);
+      });
+    }
+  }
+});
 
 /***/ }),
 
@@ -2771,6 +2867,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 //
 //
 //
@@ -2789,7 +2891,144 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({});
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  name: 'ExpenseDetails',
+  props: ['miscellaneousDetails'],
+  data: function data() {
+    return {
+      miscellaneous: {
+        title: ["Are you Paying any Mortgage Interest ?", "Have you made any contributions to Retirement Savings ?", "Have you earned any interest Income ?", "Have you earned any dividend Income ?", "Have you sold any Stocks during TY2017 ?", "Do you have any Carry forward \/ Brought forward Loss amount from Stock sales in previous years?", "Have you received any State Tax refund during TY2017 ?", "Any Contribution amount paid towards Health Savings Account ?", "Have you incurred any Medical expenses ?", "Have you Incurred any expenses towards your Spouse Maternity ?", "Have you made any Charitable\/Non Charitable Contributions ?"],
+        taxpayer: (this.miscellaneousDetails.taxpayer || []).map(function (item) {
+          return item == "Yes";
+        }) || new Array(11).fill(false),
+        amount: this.miscellaneousDetails.amount || new Array(11).fill(''),
+        remark: this.miscellaneousDetails.remark || new Array(11).fill(''),
+        spouse: (this.miscellaneousDetails.spouse || []).map(function (item) {
+          return item == "Yes";
+        }) || new Array(11).fill(false),
+        s_amount: this.miscellaneousDetails.s_amount || new Array(11).fill(''),
+        s_remark: this.miscellaneousDetails.s_remark || new Array(11).fill('')
+      }
+    };
+  },
+  methods: {
+    onSubmit: function onSubmit() {
+      var _this = this;
+
+      this.isLoading = true;
+      axios.post('/tax/miscellaneous', {
+        details: _objectSpread(_objectSpread({}, this.miscellaneous), {}, {
+          taxpayer: this.miscellaneous.taxpayer.map(function (item) {
+            return item == true ? "Yes" : "No";
+          }),
+          spouse: this.miscellaneous.spouse.map(function (item) {
+            return item == true ? "Yes" : "No";
+          })
+        })
+      }).then(function (response) {
+        //
+        _this.isLoading = false;
+        _this.msg = response.data.message;
+      })["catch"](function (error) {
+        _this.backendError(error);
+      });
+    }
+  }
+});
 
 /***/ }),
 
@@ -16724,26 +16963,235 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c("div", { staticClass: "row" }, [
+    _c("div", { staticClass: "col" }, [
+      _c("div", { staticClass: "card" }, [
+        _vm._m(0),
+        _vm._v(" "),
+        _c(
+          "div",
+          { staticClass: "card-body" },
+          [
+            _vm._m(1),
+            _vm._v(" "),
+            _vm._l(_vm.assets.title, function (n, i) {
+              return _c("div", { key: i, staticClass: "row no-gutters" }, [
+                _c("div", { staticClass: "col-1" }, [
+                  _vm._v(
+                    "\n                        " +
+                      _vm._s(i + 1) +
+                      "\n                    "
+                  ),
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "col-2" }, [
+                  _c("p", { staticClass: "py-2" }, [_vm._v(_vm._s(n) + " ")]),
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "col-2 px-1" }, [
+                  _c("div", { staticClass: "form-group" }, [
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.assets.dateofpurchase[i],
+                          expression: "assets.dateofpurchase[i]",
+                        },
+                      ],
+                      staticClass: "form-control",
+                      attrs: { type: "text", name: "title" + 1 },
+                      domProps: { value: _vm.assets.dateofpurchase[i] },
+                      on: {
+                        input: function ($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.$set(
+                            _vm.assets.dateofpurchase,
+                            i,
+                            $event.target.value
+                          )
+                        },
+                      },
+                    }),
+                  ]),
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "col-2  px-1" }, [
+                  _c("div", { staticClass: "form-group" }, [
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.assets.business[i],
+                          expression: "assets.business[i]",
+                        },
+                      ],
+                      staticClass: "form-control",
+                      attrs: { type: "text", name: "title" + 1 },
+                      domProps: { value: _vm.assets.business[i] },
+                      on: {
+                        input: function ($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.$set(_vm.assets.business, i, $event.target.value)
+                        },
+                      },
+                    }),
+                  ]),
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "col-2 pl-1" }, [
+                  _c("div", { staticClass: "form-group" }, [
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.assets.acquisition[i],
+                          expression: "assets.acquisition[i]",
+                        },
+                      ],
+                      staticClass: "form-control",
+                      attrs: { type: "text", name: "title" + 1 },
+                      domProps: { value: _vm.assets.acquisition[i] },
+                      on: {
+                        input: function ($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.$set(
+                            _vm.assets.acquisition,
+                            i,
+                            $event.target.value
+                          )
+                        },
+                      },
+                    }),
+                  ]),
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "col-3 pl-1" }, [
+                  _c("div", { staticClass: "form-group" }, [
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.assets.reiumbersement[i],
+                          expression: "assets.reiumbersement[i]",
+                        },
+                      ],
+                      staticClass: "form-control",
+                      attrs: { type: "text", name: "title" + 1 },
+                      domProps: { value: _vm.assets.reiumbersement[i] },
+                      on: {
+                        input: function ($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.$set(
+                            _vm.assets.reiumbersement,
+                            i,
+                            $event.target.value
+                          )
+                        },
+                      },
+                    }),
+                  ]),
+                ]),
+              ])
+            }),
+          ],
+          2
+        ),
+        _vm._v(" "),
+        _c("div", { staticClass: "card-footer" }, [
+          _c(
+            "button",
+            {
+              staticClass: "btn btn-primary",
+              attrs: { type: "submit", disabled: _vm.isLoading },
+              on: {
+                click: function ($event) {
+                  $event.preventDefault()
+                  return _vm.onSubmit.apply(null, arguments)
+                },
+              },
+            },
+            [
+              _vm.isLoading
+                ? _c("span", { staticClass: "spinner" }, [
+                    _c("i", { staticClass: "fa fa-spinner fa-spin" }),
+                  ])
+                : _vm._e(),
+              _vm._v("\n                    Save\n                "),
+            ]
+          ),
+          _vm._v(" "),
+          _vm.msg
+            ? _c("span", { staticClass: "badge badge-info ml-4" }, [
+                _vm._v(_vm._s(_vm.msg)),
+              ])
+            : _vm._e(),
+        ]),
+      ]),
+    ]),
+  ])
 }
 var staticRenderFns = [
   function () {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "row" }, [
-      _c("div", { staticClass: "col" }, [
-        _c("div", { staticClass: "card" }, [
-          _c("div", { staticClass: "card-header" }, [
-            _c("h5", [_vm._v("Expenses Details")]),
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "card-body" }),
-          _vm._v(" "),
-          _c("div", { staticClass: "card-footer" }),
-        ]),
-      ]),
+    return _c("div", { staticClass: "card-header" }, [
+      _c("h5", [_vm._v("Asset Details")]),
     ])
+  },
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      { staticClass: "row no-gutters bg-info py-2 px-1 text-white mb-2" },
+      [
+        _c("div", { staticClass: "col-1" }, [
+          _vm._v("\n                        SL\n                    "),
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "col-2 px-1" }, [
+          _vm._v("\n                        Asset Name\n                    "),
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "col-2 px-1" }, [
+          _vm._v(
+            "\n                        Date Of Purchase\n                    "
+          ),
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "col-2 px-1" }, [
+          _vm._v(
+            "\n                        % Used in Business\n                    "
+          ),
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "col-2 pl-1" }, [
+          _vm._v(
+            "\n                        Cost of Acquisition\n                    "
+          ),
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "col-3 pl-1" }, [
+          _vm._v(
+            "\n                        Any Requirement\n                    "
+          ),
+        ]),
+      ]
+    )
   },
 ]
 render._withStripped = true
@@ -17914,7 +18362,7 @@ var render = function () {
             _vm._m(1),
             _vm._v(" "),
             _vm._l(_vm.expenses.title, function (n, i) {
-              return _c("div", { staticClass: "row no-gutters" }, [
+              return _c("div", { key: i, staticClass: "row no-gutters" }, [
                 _c("div", { staticClass: "col-1" }, [
                   _vm._v(
                     "\n                        " +
@@ -18337,26 +18785,385 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c("div", { staticClass: "row" }, [
+    _c("div", { staticClass: "col" }, [
+      _c("div", { staticClass: "card" }, [
+        _vm._m(0),
+        _vm._v(" "),
+        _c(
+          "div",
+          { staticClass: "card-body" },
+          [
+            _vm._m(1),
+            _vm._v(" "),
+            _vm._l(_vm.miscellaneous.title, function (n, i) {
+              return _c("div", { key: i, staticClass: "row no-gutters" }, [
+                _c(
+                  "div",
+                  { staticClass: "col-1   d-flex align-items-center " },
+                  [
+                    _vm._v(
+                      "\n                        " +
+                        _vm._s(i + 1) +
+                        "\n                    "
+                    ),
+                  ]
+                ),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  { staticClass: "col-3   d-flex align-items-center " },
+                  [_c("p", { staticClass: "py-2" }, [_vm._v(_vm._s(n) + " ")])]
+                ),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  {
+                    staticClass:
+                      "col-1 pl-1  d-flex align-items-center justify-content-center",
+                  },
+                  [
+                    _c("div", { staticClass: "custom-control custom-switch" }, [
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.miscellaneous.taxpayer[i],
+                            expression: "miscellaneous.taxpayer[i]",
+                          },
+                        ],
+                        staticClass: "custom-control-input",
+                        attrs: { type: "checkbox", id: "idCustomSw" + i },
+                        domProps: {
+                          checked: Array.isArray(_vm.miscellaneous.taxpayer[i])
+                            ? _vm._i(_vm.miscellaneous.taxpayer[i], null) > -1
+                            : _vm.miscellaneous.taxpayer[i],
+                        },
+                        on: {
+                          change: function ($event) {
+                            var $$a = _vm.miscellaneous.taxpayer[i],
+                              $$el = $event.target,
+                              $$c = $$el.checked ? true : false
+                            if (Array.isArray($$a)) {
+                              var $$v = null,
+                                $$i = _vm._i($$a, $$v)
+                              if ($$el.checked) {
+                                $$i < 0 &&
+                                  _vm.$set(
+                                    _vm.miscellaneous.taxpayer,
+                                    i,
+                                    $$a.concat([$$v])
+                                  )
+                              } else {
+                                $$i > -1 &&
+                                  _vm.$set(
+                                    _vm.miscellaneous.taxpayer,
+                                    i,
+                                    $$a.slice(0, $$i).concat($$a.slice($$i + 1))
+                                  )
+                              }
+                            } else {
+                              _vm.$set(_vm.miscellaneous.taxpayer, i, $$c)
+                            }
+                          },
+                        },
+                      }),
+                      _vm._v(" "),
+                      _c("label", {
+                        staticClass: "custom-control-label text-dark",
+                        attrs: { for: "idCustomSw" + i },
+                      }),
+                    ]),
+                  ]
+                ),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  { staticClass: "col-1   d-flex align-items-center  pl-1" },
+                  [
+                    _c("div", { staticClass: "form-group" }, [
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.miscellaneous.amount[i],
+                            expression: "miscellaneous.amount[i]",
+                          },
+                        ],
+                        staticClass: "form-control",
+                        attrs: { type: "text", name: "amount" + i },
+                        domProps: { value: _vm.miscellaneous.amount[i] },
+                        on: {
+                          input: function ($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(
+                              _vm.miscellaneous.amount,
+                              i,
+                              $event.target.value
+                            )
+                          },
+                        },
+                      }),
+                    ]),
+                  ]
+                ),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  { staticClass: "col-2   d-flex align-items-center  pl-1" },
+                  [
+                    _c("div", { staticClass: "form-group" }, [
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.miscellaneous.remark[i],
+                            expression: "miscellaneous.remark[i]",
+                          },
+                        ],
+                        staticClass: "form-control",
+                        attrs: { type: "text", name: "remarks" + i },
+                        domProps: { value: _vm.miscellaneous.remark[i] },
+                        on: {
+                          input: function ($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(
+                              _vm.miscellaneous.remark,
+                              i,
+                              $event.target.value
+                            )
+                          },
+                        },
+                      }),
+                    ]),
+                  ]
+                ),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  {
+                    staticClass:
+                      "col-1   d-flex align-items-center  pl-1 d-flex align-items-center justify-content-center",
+                  },
+                  [
+                    _c("div", { staticClass: "custom-control custom-switch" }, [
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.miscellaneous.spouse[i],
+                            expression: "miscellaneous.spouse[i]",
+                          },
+                        ],
+                        staticClass: "custom-control-input",
+                        attrs: { type: "checkbox", id: "idCustomSw2" + i },
+                        domProps: {
+                          checked: Array.isArray(_vm.miscellaneous.spouse[i])
+                            ? _vm._i(_vm.miscellaneous.spouse[i], null) > -1
+                            : _vm.miscellaneous.spouse[i],
+                        },
+                        on: {
+                          change: function ($event) {
+                            var $$a = _vm.miscellaneous.spouse[i],
+                              $$el = $event.target,
+                              $$c = $$el.checked ? true : false
+                            if (Array.isArray($$a)) {
+                              var $$v = null,
+                                $$i = _vm._i($$a, $$v)
+                              if ($$el.checked) {
+                                $$i < 0 &&
+                                  _vm.$set(
+                                    _vm.miscellaneous.spouse,
+                                    i,
+                                    $$a.concat([$$v])
+                                  )
+                              } else {
+                                $$i > -1 &&
+                                  _vm.$set(
+                                    _vm.miscellaneous.spouse,
+                                    i,
+                                    $$a.slice(0, $$i).concat($$a.slice($$i + 1))
+                                  )
+                              }
+                            } else {
+                              _vm.$set(_vm.miscellaneous.spouse, i, $$c)
+                            }
+                          },
+                        },
+                      }),
+                      _vm._v(" "),
+                      _c("label", {
+                        staticClass: "custom-control-label text-dark",
+                        attrs: { for: "idCustomSw2" + i },
+                      }),
+                    ]),
+                  ]
+                ),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  { staticClass: "col-1   d-flex align-items-center  px-1" },
+                  [
+                    _c("div", { staticClass: "form-group" }, [
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.miscellaneous.s_amount[i],
+                            expression: "miscellaneous.s_amount[i]",
+                          },
+                        ],
+                        staticClass: "form-control",
+                        attrs: { type: "text", name: "s_amount" + i },
+                        domProps: { value: _vm.miscellaneous.s_amount[i] },
+                        on: {
+                          input: function ($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(
+                              _vm.miscellaneous.s_amount,
+                              i,
+                              $event.target.value
+                            )
+                          },
+                        },
+                      }),
+                    ]),
+                  ]
+                ),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  { staticClass: "col-2   d-flex align-items-center  pl-1" },
+                  [
+                    _c("div", { staticClass: "form-group" }, [
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.miscellaneous.s_remark[i],
+                            expression: "miscellaneous.s_remark[i]",
+                          },
+                        ],
+                        staticClass: "form-control",
+                        attrs: { type: "text", name: "s_remarks" + i },
+                        domProps: { value: _vm.miscellaneous.s_remark[i] },
+                        on: {
+                          input: function ($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(
+                              _vm.miscellaneous.s_remark,
+                              i,
+                              $event.target.value
+                            )
+                          },
+                        },
+                      }),
+                    ]),
+                  ]
+                ),
+              ])
+            }),
+          ],
+          2
+        ),
+        _vm._v(" "),
+        _c("div", { staticClass: "card-footer" }, [
+          _c(
+            "button",
+            {
+              staticClass: "btn btn-primary",
+              attrs: { type: "submit", disabled: _vm.isLoading },
+              on: {
+                click: function ($event) {
+                  $event.preventDefault()
+                  return _vm.onSubmit.apply(null, arguments)
+                },
+              },
+            },
+            [
+              _vm.isLoading
+                ? _c("span", { staticClass: "spinner" }, [
+                    _c("i", { staticClass: "fa fa-spinner fa-spin" }),
+                  ])
+                : _vm._e(),
+              _vm._v("\n                    Save\n                "),
+            ]
+          ),
+          _vm._v(" "),
+          _vm.msg
+            ? _c("span", { staticClass: "badge badge-info ml-4" }, [
+                _vm._v(_vm._s(_vm.msg)),
+              ])
+            : _vm._e(),
+        ]),
+      ]),
+    ]),
+  ])
 }
 var staticRenderFns = [
   function () {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "row" }, [
-      _c("div", { staticClass: "col" }, [
-        _c("div", { staticClass: "card" }, [
-          _c("div", { staticClass: "card-header" }, [
-            _c("h5", [_vm._v("Expenses Details")]),
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "card-body" }),
-          _vm._v(" "),
-          _c("div", { staticClass: "card-footer" }),
-        ]),
-      ]),
+    return _c("div", { staticClass: "card-header" }, [
+      _c("h5", [_vm._v("Miscellaneous Details")]),
     ])
+  },
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      { staticClass: "row no-gutters bg-info py-2 px-1 text-white mb-2" },
+      [
+        _c("div", { staticClass: "col-1   d-flex align-items-center " }, [
+          _vm._v("\n                        SL\n                    "),
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "col-3   d-flex align-items-center  pl-1" }, [
+          _vm._v("\n                        Particulars\n                    "),
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "col-1   d-flex align-items-center  pl-1" }, [
+          _vm._v("\n                        Tax Payer\n                    "),
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "col-1   d-flex align-items-center  pl-1" }, [
+          _vm._v("\n                        Amount\n                    "),
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "col-2   d-flex align-items-center  pl-1" }, [
+          _vm._v("\n                        Remarks\n                    "),
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "col-1   d-flex align-items-center  px-1" }, [
+          _vm._v("\n                        Spouse\n                    "),
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "col-1   d-flex align-items-center  pl-1" }, [
+          _vm._v("\n                        Amount\n                    "),
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "col-2   d-flex align-items-center  pl-1" }, [
+          _vm._v("\n                        Remarks\n                    "),
+        ]),
+      ]
+    )
   },
 ]
 render._withStripped = true
