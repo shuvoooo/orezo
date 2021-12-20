@@ -9,6 +9,8 @@
 
     <!-- Laravel CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
+    <!-- Current Year -->
+    <meta name="year" content="{{ request()->route('year') ?? date('Y') }}">
 
     <!-- Favicon -->
     <link rel="icon" type="image/png" sizes="56x56" href="{{asset('assets/images/fav-icon/icon.png')}}">

@@ -22189,36 +22189,13 @@ var render = function () {
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "container" }, [
     _c("div", { staticClass: "row py-5 mt-4 align-items-center" }, [
-      _c(
-        "div",
-        {
-          staticClass:
-            "col-md-5 pr-lg-5 mb-5 mb-md-0 d-flex flex-column align-items-center justify-content-center",
-        },
-        [
-          _c("img", {
-            staticClass: "img-fluid mb-3 d-none d-md-block",
-            attrs: {
-              src: _vm.process.env.MIX_APP_URL + "/assets/svg/auth.svg",
-              alt: "",
-            },
-          }),
-          _vm._v(" "),
-          _c("h1", [_vm._v("Create an Account")]),
-          _vm._v(" "),
-          _c("p", { staticClass: "font-italic text-muted mb-0" }, [
-            _vm._v(
-              "\n                Register to eTaxPlanner and enjoy the benefits of\n                eTaxPlanner.\n            "
-            ),
-          ]),
-        ]
-      ),
+      _vm._m(0),
       _vm._v(" "),
       _c("div", { staticClass: "col-md-7 col-lg-6 ml-auto" }, [
         _c("form", { attrs: { action: "#" } }, [
           _c("div", { staticClass: "row" }, [
             _c("div", { staticClass: "input-group col-lg-6 mb-4" }, [
-              _vm._m(0),
+              _vm._m(1),
               _vm._v(" "),
               _c("input", {
                 directives: [
@@ -22261,7 +22238,7 @@ var render = function () {
             ]),
             _vm._v(" "),
             _c("div", { staticClass: "input-group col-lg-6 mb-4" }, [
-              _vm._m(1),
+              _vm._m(2),
               _vm._v(" "),
               _c("input", {
                 directives: [
@@ -22308,7 +22285,7 @@ var render = function () {
             ]),
             _vm._v(" "),
             _c("div", { staticClass: "input-group col-lg-12 mb-4" }, [
-              _vm._m(2),
+              _vm._m(3),
               _vm._v(" "),
               _c("input", {
                 directives: [
@@ -22351,7 +22328,7 @@ var render = function () {
             ]),
             _vm._v(" "),
             _c("div", { staticClass: "input-group col-lg-12 mb-4" }, [
-              _vm._m(3),
+              _vm._m(4),
               _vm._v(" "),
               _c(
                 "select",
@@ -22449,7 +22426,7 @@ var render = function () {
             ]),
             _vm._v(" "),
             _c("div", { staticClass: "input-group col-lg-12 mb-4" }, [
-              _vm._m(4),
+              _vm._m(5),
               _vm._v(" "),
               _c(
                 "select",
@@ -22500,7 +22477,7 @@ var render = function () {
             ]),
             _vm._v(" "),
             _c("div", { staticClass: "input-group col-lg-12 mb-4" }, [
-              _vm._m(5),
+              _vm._m(6),
               _vm._v(" "),
               _c(
                 "select",
@@ -22717,7 +22694,7 @@ var render = function () {
             ]),
             _vm._v(" "),
             _c("div", { staticClass: "input-group col-lg-12 mb-4" }, [
-              _vm._m(6),
+              _vm._m(7),
               _vm._v(" "),
               _c("input", {
                 directives: [
@@ -22761,7 +22738,7 @@ var render = function () {
             ]),
             _vm._v(" "),
             _c("div", { staticClass: "input-group col-lg-12 mb-4" }, [
-              _vm._m(7),
+              _vm._m(8),
               _vm._v(" "),
               _c("input", {
                 directives: [
@@ -22799,7 +22776,7 @@ var render = function () {
             ]),
             _vm._v(" "),
             _c("div", { staticClass: "input-group col-lg-6 mb-4" }, [
-              _vm._m(8),
+              _vm._m(9),
               _vm._v(" "),
               _c("input", {
                 directives: [
@@ -22843,7 +22820,7 @@ var render = function () {
             _vm._v(" "),
             _c("div", { staticClass: "col-lg-6 mb-4" }, [
               _c("div", { staticClass: "input-group" }, [
-                _vm._m(9),
+                _vm._m(10),
                 _vm._v(" "),
                 _c("input", {
                   directives: [
@@ -22908,9 +22885,9 @@ var render = function () {
               ),
             ]),
             _vm._v(" "),
-            _vm._m(10),
-            _vm._v(" "),
             _vm._m(11),
+            _vm._v(" "),
+            _vm._m(12),
           ]),
         ]),
       ]),
@@ -22918,6 +22895,32 @@ var render = function () {
   ])
 }
 var staticRenderFns = [
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      {
+        staticClass:
+          "col-md-5 pr-lg-5 mb-5 mb-md-0 d-flex flex-column align-items-center justify-content-center",
+      },
+      [
+        _c("img", {
+          staticClass: "img-fluid mb-3 d-none d-md-block",
+          attrs: { src: "/assets/svg/auth.svg", alt: "Register" },
+        }),
+        _vm._v(" "),
+        _c("h1", [_vm._v("Create an Account")]),
+        _vm._v(" "),
+        _c("p", { staticClass: "font-italic text-muted mb-0" }, [
+          _vm._v(
+            "\n                Register to eTaxPlanner and enjoy the benefits of\n                eTaxPlanner.\n            "
+          ),
+        ]),
+      ]
+    )
+  },
   function () {
     var _vm = this
     var _h = _vm.$createElement

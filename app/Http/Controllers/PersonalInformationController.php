@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\BankDetail;
+
 use App\Models\Bank;
 use App\Models\DepartmentDetails;
 use App\Models\PersonalInformation;

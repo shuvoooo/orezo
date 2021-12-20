@@ -9,6 +9,8 @@
 
     <!-- Laravel CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
+    <!-- Current Year -->
+    <meta name="year" content="{{ request()->route('year') ?? date('Y') }}">
 
     <!-- font-awesome CSS -->
     <link type="text/css" rel="stylesheet" href="{{asset('assets/fonts/font-awesome/css/font-awesome.min.css')}}">
