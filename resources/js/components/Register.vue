@@ -330,7 +330,7 @@ export default {
                         password_confirmation: this.password_confirmation
                     }).then(response => {
                         this.isLoading = false;
-                        location.href = '/user/dashboard';
+                        location.href = '/dashboard';
                     }).catch(e => this.backendError(e));
                 }
             });

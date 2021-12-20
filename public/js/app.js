@@ -4391,7 +4391,7 @@ __webpack_require__.r(__webpack_exports__);
             password_confirmation: _this.password_confirmation
           }).then(function (response) {
             _this.isLoading = false;
-            location.href = '/user/dashboard';
+            location.href = '/dashboard';
           })["catch"](function (e) {
             return _this.backendError(e);
           });
