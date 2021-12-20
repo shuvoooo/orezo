@@ -33,7 +33,7 @@
                         <td>{{$item->spouse_end_date}}</td>
                         <td>
                             <form method="post"
-                                  action="{{route('residency_details_destroy',['residency'=>$item->id])}}">
+                                  action="{{route_with_year('residency_details_destroy',['residency'=>$item->id])}}">
                                 @method('DELETE')
                                 @csrf
                                 <button type="submit" class="btn btn-danger btn-sm">

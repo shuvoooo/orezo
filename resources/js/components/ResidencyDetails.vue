@@ -202,7 +202,7 @@ export default {
 
     methods: {
         onSubmit() {
-            axios.post('/tax/residency', {
+            axios.post(Year + '/tax/residency', {
                 payer: this.payer,
                 start_date: this.start_date,
                 end_date: this.end_date,

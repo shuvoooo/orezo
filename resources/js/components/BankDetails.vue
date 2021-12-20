@@ -92,7 +92,7 @@ export default {
     methods: {
         save() {
             this.isLoading = true;
-            axios.post('/user/bank_details', {
+            axios.post(Year + '/info/bank_details', {
                 account_number: this.account_number,
                 name: this.name,
                 account_holder_name: this.account_holder_name,

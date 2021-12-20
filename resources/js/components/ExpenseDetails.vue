@@ -104,7 +104,7 @@ export default {
     methods: {
         onSubmit() {
             this.isLoading = true;
-            axios.post('/tax/expense', {details: this.expenses}).then(response => {
+            axios.post(Year + '/tax/expense', {details: this.expenses}).then(response => {
                 location.reload();
             }).catch(error => {
                 this.backendError(error)

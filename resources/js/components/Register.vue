@@ -3,7 +3,7 @@
         <div class="row py-5 mt-4 align-items-center">
 
             <div class="col-md-5 pr-lg-5 mb-5 mb-md-0 d-flex flex-column align-items-center justify-content-center">
-                <img src="/assets/svg/auth.svg" alt=""
+                <img :src="process.env.MIX_APP_URL + '/assets/svg/auth.svg'" alt=""
                      class="img-fluid mb-3 d-none d-md-block">
                 <h1>Create an Account</h1>
                 <p class="font-italic text-muted mb-0">

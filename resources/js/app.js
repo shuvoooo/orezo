@@ -15,6 +15,8 @@ window.axios.defaults.headers.common = {
     'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
     'Accept': 'application/json'
 };
+window.axios.defaults.baseURL = process.env.MIX_APP_URL;
+window.Year = document.querySelector('meta[name="year"]').getAttribute('content')
 
 const files = require.context('./', true, /\.vue$/i)
 files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
@@ -47,7 +49,7 @@ Vue.mixin({
             this.msg = errors.response.data.message;
         }
     }
-})
+});
 
 
 const app = new Vue({

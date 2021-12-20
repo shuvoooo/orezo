@@ -8,9 +8,9 @@ use Illuminate\Support\Facades\Auth;
 
 class ProjectController extends Controller
 {
-    public function project_details()
+    public function project_details(Request $request)
     {
-        $project_details = Project::where('user_id', Auth::id())->get();
+        $project_details = Project::where('user_id', Auth::id())->whereYear('created_at', $request->route('year'))->get();
         return response()->view('user.tax.project_details', compact('project_details'));
     }
 

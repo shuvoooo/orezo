@@ -8,9 +8,9 @@ use Illuminate\Support\Facades\Auth;
 
 class EmployerController extends Controller
 {
-    public function employer_details()
+    public function employer_details(Request $request)
     {
-        $employer_details = Employer::where('user_id', Auth::user()->id)->get();
+        $employer_details = Employer::where('user_id', Auth::user()->id)->whereYear('created_at', $request->route('year'))->get();
         return view('user.tax.employer_details', compact('employer_details'));
     }
 

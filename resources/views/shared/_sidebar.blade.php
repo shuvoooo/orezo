@@ -7,111 +7,12 @@
             </a>
         </li>
 
-        <li class="sub-menu">
-            <a href="javascript:void(0);" class="">
-                <i class="icon-user"></i>
-                <span>User Information</span>
-                <span class="arrow"></span>
-            </a>
-            <ul class="sub" style="display: block;">
-                <li class=""><a class="" href="{{route('personal_information')}}">Tax Payer Details</a></li>
-                <li class=""><a class="" href="{{route('spouse_details')}}">Spouse Details</a></li>
-                <li class=""><a class="" href="{{route('dependent_details')}}">Dependent Details</a></li>
-                <li class=""><a class="" href="{{route('bank_details')}}">Bank Details</a></li>
-            </ul>
-        </li>
-
-
-        <li class="sub-menu">
-            <a class="" href="{{route('process_flow_chart')}}">
-                <i class="icon-dashboard"></i>
-                <span>Process Flow Chart</span>
-            </a>
-        </li>
-
-        <li class="sub-menu">
-            <a href="javascript:void(0);" class="">
-                <i class="icon-user"></i>
-                <span>Fill Tex Information</span>
-                <span class="arrow"></span>
-            </a>
-
-            <ul class="sub" style="display: block;">
-                <li class=""><a class="" href="{{route('employer_details')}}">Employer Details</a></li>
-                <li class=""><a class="" href="{{route('project_details')}}">Project Details</a></li>
-                <li class=""><a class="" href="{{route('residency_details')}}">Residency Details</a></li>
-                <li class=""><a class="" href="{{route('expense_details')}}">Expenses 2016</a></li>
-                <li class=""><a class="" href="{{route('asset_details')}}">Asset Details</a></li>
-                <li class=""><a class="" href="{{route('miscellaneous_details')}}">Miscellaneous Information</a></li>
-            </ul>
-        </li>
-
-
-        <li class="sub-menu ">
-            <a href="" class="">
-                <i class="icon-user"></i>
-                <span>Client List</span>
-            </a>
-        </li>
-
-
-        <li class="sub-menu">
-            <a href="javascript:void(0);" class="">
-                <i class="icon-user"></i>
-                <span>Staffs</span>
-                <span class="arrow"></span>
-            </a>
-            <ul class="sub" style="display: none;">
-                <li class=""><a class="" href="">Add Staff</a></li>
-                <li class=""><a class="" href="">Staff List</a></li>
-            </ul>
-        </li>
-
-        <li class="sub-menu hide ">
-            <a href="javascript:void(0);" class="">
-                <i class="icon-cogs"></i>
-                <span>Invoices</span>
-                <span class="arrow"></span>
-            </a>
-            <ul class="sub">
-
-
-                <li><a class="" href="">Create Invoice</a></li>
-                <li><a class="" href="">Invoice List</a></li>
-            </ul>
-        </li>
-
-        <li class="sub-menu  ">
-            <a href="javascript:;" class="">
-                <i class="icon-eye-open"></i>
-                <span>File Status</span>
-                <span class="arrow"></span>
-            </a>
-            <ul class="sub">
-                <li><a class="" href="http://localhost:8000/admin/file-status-completed">Completed</a></li>
-                <li><a class="" href="http://localhost:8000/admin/file-status-incompleted">Incompleted</a></li>
-            </ul>
-        </li>
-
-        <li class="sub-menu ">
-            <a href="http://localhost:8000/admin/referal-list" class="">
-                <i class="icon-user"></i>
-                <span>Referal List</span>
-            </a>
-        </li>
-
+        <x-side-menu></x-side-menu>
 
         <li class="">
-            <a href="http://localhost:8000/admin/system-settings">
+            <a href="">
                 <i class="icon-cog"></i>
-                <span>System Settings</span>
-            </a>
-        </li>
-
-        <li class="">
-            <a href="http://localhost:8000/admin/admin-account-setting">
-                <i class="icon-cog"></i>
-                <span>Profile Settings</span>
+                <span>Account Settings</span>
             </a>
         </li>
         <li>

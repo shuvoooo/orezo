@@ -526,7 +526,7 @@ export default {
                 if (result) {
                     this.isLoading = true;
 
-                    axios.post('/user/personal-information', {
+                    axios.post(Year + '/info/personal-information', {
                         fname: this.fname,
                         mname: this.mname,
                         lname: this.lname,

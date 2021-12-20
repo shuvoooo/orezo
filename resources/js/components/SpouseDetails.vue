@@ -291,7 +291,7 @@ export default {
 
     methods: {
         submit() {
-            axios.post('/user/spouse-details', {
+            axios.post(Year + '/info/spouse-details', {
                 fname: this.fname,
                 mname: this.mname,
                 lname: this.lname,

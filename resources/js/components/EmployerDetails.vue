@@ -129,7 +129,7 @@ export default {
         onSubmit() {
             this.isLoading = true;
 
-            axios.post('/tax/employer_details', {
+            axios.post(Year + '/tax/employer_details', {
                 name: this.name,
                 start_date: this.start_date,
                 end_date: this.end_date,

@@ -137,7 +137,7 @@ export default {
 
     methods: {
         onSubmit() {
-            axios.post('/tax/project', {
+            axios.post(Year + '/tax/project', {
                 client: this.client,
                 project: this.project,
                 start_date: this.start_date,

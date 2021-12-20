@@ -144,7 +144,7 @@ export default {
     methods: {
         onSubmit() {
             this.isLoading = true;
-            axios.post('/tax/miscellaneous', {
+            axios.post(Year + '/tax/miscellaneous', {
                 details: {
                     ...this.miscellaneous,
                     taxpayer: this.miscellaneous.taxpayer.map(item => item == true ? "Yes" : "No"),

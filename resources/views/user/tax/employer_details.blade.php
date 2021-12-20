@@ -31,7 +31,8 @@
                         <td>{{$item->state}}</td>
                         <td>{{$item->country}}</td>
                         <td>
-                            <form method="post" action="{{route('employer_details_destroy',['tax'=>$item->id])}}">
+                            <form method="post"
+                                  action="{{route_with_year('employer_details_destroy',['tax'=>$item->id])}}">
                                 @method('DELETE')
                                 @csrf
                                 <button type="submit" class="btn btn-danger btn-sm">

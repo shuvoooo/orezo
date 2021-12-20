@@ -32,7 +32,7 @@
                         <td>{{$item->city}}</td>
                         <td>{{$item->state}}</td>
                         <td>
-                            <form method="post" action="{{route('project_details_destroy',['project'=>$item->id])}}">
+                            <form method="post" action="{{route_with_year('project_details_destroy',['project'=>$item->id])}}">
                                 @method('DELETE')
                                 @csrf
                                 <button type="submit" class="btn btn-danger btn-sm">

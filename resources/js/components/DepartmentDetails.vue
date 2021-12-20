@@ -123,7 +123,7 @@ export default {
 
         onSubmit() {
             this.isLoading = true;
-            axios.post('/user/dependent-details', {
+            axios.post(Year + '/info/dependent-details', {
                 fname: this.fname,
                 mname: this.mname,
                 lname: this.lname,
