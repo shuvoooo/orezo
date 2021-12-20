@@ -22,6 +22,7 @@ class CreateResidenciesTable extends Migration
             $table->date('end_date')->nullable();
             $table->date('spouse_start_date')->nullable();
             $table->date('spouse_end_date')->nullable();
+            $table->string('year')->default(date('Y'))->nullable();
             $table->timestamps();
         });
     }

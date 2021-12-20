@@ -3,5 +3,5 @@
 @section('title', 'Expense Details')
 
 @section('content')
-    <expense-details :expense='@json($expense->details)'></expense-details>
+    <expense-details :expense='@json($expense_details)'></expense-details>
 @endsection

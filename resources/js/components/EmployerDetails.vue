@@ -22,7 +22,8 @@
 
                 <div class="form-group">
                     <label for="end_date" class="text-dark form-label">End Date</label>
-                    <input type="date" class="form-control" id="end_date" v-model="end_date" name="end_date" placeholder="End Date"/>
+                    <input type="date" class="form-control" id="end_date" v-model="end_date" name="end_date"
+                           placeholder="End Date"/>
                     <small v-if="errors.has('end_date')" class="form-text text-danger">{{
                             errors.first('end_date')
                         }}</small>
@@ -90,7 +91,7 @@
                         <option value="Wyoming">Wyoming</option>
                         <option value="none of this">none of this</option>
                     </select>
-                    <small  class="form-text text-danger">{{ errors.first('state') }}</small>
+                    <small class="form-text text-danger">{{ errors.first('state') }}</small>
                 </div>
             </form>
         </div>
@@ -137,7 +138,8 @@ export default {
                 state: this.state,
             }).then(response => {
                 this.isLoading = false;
-                //  location.reload();
+                this.msg = response.data.message;
+                location.reload();
             }).catch(error => {
                 this.backendError(error);
                 this.isLoading = false;

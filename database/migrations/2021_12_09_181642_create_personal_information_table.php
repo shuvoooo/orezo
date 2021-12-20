@@ -35,6 +35,7 @@ class CreatePersonalInformationTable extends Migration
             $table->string('email',100)->nullable();
             $table->string('visa_status',100)->nullable();
             $table->date('date_of_entry_in_us')->nullable();
+            $table->string('year')->default(date('Y'))->nullable();
             $table->timestamps();
         });
     }

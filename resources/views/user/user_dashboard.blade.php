@@ -10,7 +10,7 @@
     </div>
 
     <div class="row">
-        @foreach(range(date('Y')+1, 2016) as $year)
+        @foreach(range(date('Y')+1, 2020) as $year)
             <div class="col-auto">
                 <a class="py-3 px-5 shadow-sm m-3 border d-flex flex-column rounded-lg"
                    href="{{route_with_year('year_redirect',['year'=>$year])}}">

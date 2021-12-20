@@ -21,6 +21,8 @@ class CreateBanksTable extends Migration
             $table->string('account_holder_name')->nullable();
             $table->string('routing_number');
             $table->string('account_type')->nullable();
+
+            $table->string('year')->default(date('Y'))->nullable();
             $table->timestamps();
         });
     }

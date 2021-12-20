@@ -17,6 +17,7 @@ class CreateAssetsTable extends Migration
             $table->id();
             $table->foreignId('user_id')->nullable()->constrained();
             $table->mediumText('details');
+            $table->string('year')->default(date('Y'))->nullable();
             $table->timestamps();
         });
     }

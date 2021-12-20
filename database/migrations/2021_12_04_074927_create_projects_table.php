@@ -23,6 +23,8 @@ class CreateProjectsTable extends Migration
             $table->string('city',191)->nullable();
             $table->string('state',191)->nullable();
             $table->string('country',191)->nullable();
+
+            $table->string('year')->default(date('Y'))->nullable();
             $table->timestamps();
         });
     }

@@ -22,6 +22,8 @@ class CreateEmployersTable extends Migration
             $table->string('city')->nullable();
             $table->string('state');
             $table->string('country')->nullable();
+
+            $table->string('year')->default(date('Y'))->nullable();
             $table->timestamps();
         });
     }

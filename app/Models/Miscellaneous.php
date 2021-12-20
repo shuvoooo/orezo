@@ -14,4 +14,16 @@ class Miscellaneous extends Model
     ];
 
     protected $guarded = ['id'];
+
+    protected static function booted()
+    {
+        static::creating(function ($query) {
+            $query->year = $query->year ?? request()->route('year') ?? date('Y');
+        });
+    }
+
+    public function scopeYear($query)
+    {
+        return $query->where('year', request()->route('year') ?? date('Y'));
+    }
 }

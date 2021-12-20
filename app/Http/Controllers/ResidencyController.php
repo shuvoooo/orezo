@@ -10,7 +10,7 @@ class ResidencyController extends Controller
 {
     public function residency_details(Request $request)
     {
-        $residency_details = residency::where('user_id', Auth::id())->whereYear('created_at', $request->route('year'))->get();
+        $residency_details = residency::where('user_id', Auth::id())->year()->get();
         return response()->view('user.tax.residency_details', compact('residency_details'));
     }
 

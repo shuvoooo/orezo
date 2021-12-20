@@ -15,8 +15,20 @@ class DepartmentDetails extends Model
         'date_of_birth' => 'date',
     ];
 
+    protected static function booted()
+    {
+        static::creating(function ($query) {
+            $query->year = $query->year ?? request()->route('year') ?? date('Y');
+        });
+    }
+
     public function department()
     {
         return $this->belongsTo(User::class);
+    }
+
+    public function scopeYear($query)
+    {
+        return $query->where('year', request()->route('year') ?? date('Y'));
     }
 }

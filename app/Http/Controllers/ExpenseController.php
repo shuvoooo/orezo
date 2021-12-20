@@ -9,13 +9,15 @@ class ExpenseController extends Controller
 {
     public function expense_details(Request $request)
     {
-        $expense = Expense::where('user_id', auth()->user()->id)->whereYear('created_at', $request->route('year'))->first();
-        return view('user.tax.expense_details', ['expense' => $expense]);
+        $expense_details = Expense::where('user_id', auth()->user()->id)->year()->first();
+
+        $expense_details = $expense_details->details ?? [];
+        return view('user.tax.expense_details', ['expense_details' => $expense_details]);
     }
 
     public function expense_details_store(Request $request)
     {
-        $expense = Expense::where('user_id', auth()->user()->id)->whereYear('created_at', $request->route('year'))->first();
+        $expense = Expense::where('user_id', auth()->user()->id)->year()->first();
 
         if (!$expense) {
             $expense = new Expense();

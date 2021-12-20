@@ -17,6 +17,7 @@ class CreateMiscellaneousesTable extends Migration
             $table->id();
             $table->foreignId('user_id')->nullable()->constrained();
             $table->longText('details')->nullable();
+            $table->string('year')->default(date('Y'))->nullable();
             $table->timestamps();
         });
     }

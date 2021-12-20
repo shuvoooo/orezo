@@ -10,7 +10,9 @@ class AssetController extends Controller
 {
     public function asset_details(Request $request)
     {
-        $asset_details = Asset::where('user_id', auth()->user()->id)->whereYear('created_at', $request->route('year'))->first()->details;
+        $asset_details = Asset::where('user_id', auth()->user()->id)->year()->first();
+        $asset_details = $asset_details->details ?? [];
+
         return view('user.tax.asset_details', compact('asset_details'));
     }
 
@@ -18,7 +20,7 @@ class AssetController extends Controller
     {
         try {
 
-            $asset = Asset::where('user_id', auth()->user()->id)->whereYear('created_at', $request->route('year'))->first();
+            $asset = Asset::where('user_id', auth()->user()->id)->year()->first();
 
             if (!$asset) {
                 $asset = new Asset();

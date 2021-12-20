@@ -2590,6 +2590,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
@@ -2613,7 +2614,9 @@ __webpack_require__.r(__webpack_exports__);
         city: this.city,
         state: this.state
       }).then(function (response) {
-        _this.isLoading = false; //  location.reload();
+        _this.isLoading = false;
+        _this.msg = response.data.message;
+        location.reload();
       })["catch"](function (error) {
         _this.backendError(error);
 

@@ -9,7 +9,7 @@ class MiscellaneousController extends Controller
 {
     public function miscellaneous_details(Request $request)
     {
-        $miscellaneous_details = Miscellaneous::where('user_id', auth()->user()->id)->whereYear('created_at', $request->route('year'))->first()->details ?? [];
+        $miscellaneous_details = Miscellaneous::where('user_id', auth()->user()->id)->year()->first()->details ?? [];
 
 
         return view('user.tax.miscellaneous_details', compact('miscellaneous_details'));
@@ -17,7 +17,7 @@ class MiscellaneousController extends Controller
 
     public function miscellaneous_details_store(Request $request)
     {
-        $miscellaneous = Miscellaneous::where('user_id', auth()->user()->id)->whereYear('created_at', $request->route('year'))->first();
+        $miscellaneous = Miscellaneous::where('user_id', auth()->user()->id)->year()->first();
 
         if (!$miscellaneous) {
             $miscellaneous = new Miscellaneous();

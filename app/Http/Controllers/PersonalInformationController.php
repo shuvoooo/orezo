@@ -14,7 +14,9 @@ class PersonalInformationController extends Controller
 {
     public function personal_information(Request $request)
     {
-        $personal = PersonalInformation::where('user_id', Auth::user()->id)->whereYear('created_at', $request->route('year'))->first();
+        $personal = PersonalInformation::where('user_id', Auth::user()->id)->year()->first();
+        //dd($personal);
+
         return view('user.personal_info.personal', ['personal_information' => $personal]);
     }
 
@@ -32,7 +34,7 @@ class PersonalInformationController extends Controller
 //            'country' => 'required',
         ]);
 
-        $personalInfo = PersonalInformation::where('user_id', Auth::user()->id)->whereYear('created_at', $request->route('year'))->first();
+        $personalInfo = PersonalInformation::where('user_id', Auth::user()->id)->year()->first();
 
         try {
             if ($personalInfo) {
@@ -56,7 +58,7 @@ class PersonalInformationController extends Controller
 
     public function spouse_information(Request $request)
     {
-        $spouse = SpouseInformation::where('user_id', Auth::user()->id)->whereYear('created_at', $request->route('year'))->first();
+        $spouse = SpouseInformation::where('user_id', Auth::user()->id)->year()->first();
 
 
         return view('user.personal_info.spouse', ['spouse_information' => $spouse, 'spouse_status' => Auth::user()->spouse]);
@@ -71,7 +73,7 @@ class PersonalInformationController extends Controller
 
         try {
             if ($request->spouse_status == '1') {
-                $spouseInfo = SpouseInformation::where('user_id', Auth::user()->id)->whereYear('created_at', $request->route('year'))->first();
+                $spouseInfo = SpouseInformation::where('user_id', Auth::user()->id)->year()->first();
                 $user->spouse = true;
                 if ($spouseInfo) {
                     $spouseInfo->update($request->all());
@@ -88,7 +90,7 @@ class PersonalInformationController extends Controller
 
             return response()->json([
                 'success' => 'Spouse Information saved successfully.',
-                'url' => route_with_year('spouse_details')
+                'url' => route_with_year('dependent_details')
             ]);
 
 
@@ -101,7 +103,7 @@ class PersonalInformationController extends Controller
 
     public function dependent_details(Request $request)
     {
-        $department = DepartmentDetails::where('user_id', Auth::user()->id)->whereYear('created_at', $request->route('year'))->first();
+        $department = DepartmentDetails::where('user_id', Auth::user()->id)->year()->get();
 
         return view('user.personal_info.dependent', ['department_details' => $department]);
     }
@@ -118,7 +120,7 @@ class PersonalInformationController extends Controller
             DepartmentDetails::create($data);
             return response()->json([
                 'success' => 'Dependent Details saved successfully.',
-                'url' => route_with_year('dependent_details')
+                'url' => route_with_year('bank_details')
             ]);
         } catch (\Exception $e) {
             return response()->json([
@@ -139,7 +141,7 @@ class PersonalInformationController extends Controller
 
     public function bank_details(Request $request)
     {
-        $bank = Bank::where('user_id', Auth::user()->id)->whereYear('created_at', $request->route('year'))->first();
+        $bank = Bank::where('user_id', Auth::user()->id)->year()->first();
         return view('user.personal_info.bank', ['bank_details' => $bank]);
     }
 
@@ -147,7 +149,7 @@ class PersonalInformationController extends Controller
     {
         $request->validate(['name' => 'required']);
 
-        $bank = Bank::where('user_id', Auth::user()->id)->whereYear('created_at', $request->route('year'))->first();
+        $bank = Bank::where('user_id', Auth::user()->id)->year()->first();
         if ($bank) {
             $bank->update($request->all());
         } else {
