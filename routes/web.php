@@ -79,6 +79,7 @@ Route::group(['middleware' => UserMiddleware::class], function () {
             Route::post('miscellaneous', [MiscellaneousController::class, 'miscellaneous_details_store'])->name('miscellaneous_details_store');
 
             Route::get('upload-tax-documents', [DocumentController::class, 'upload_tax_documents'])->name('upload_tax_documents');
+            Route::post('upload-tax-documents', [DocumentController::class, 'upload_tax_documents_store'])->name('upload_tax_documents_store');
         });
     });
 });

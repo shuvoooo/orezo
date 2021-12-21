@@ -16,10 +16,10 @@ class CreateDocumentsTable extends Migration
         Schema::create('documents', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->nullable()->constrained();
-            $table->integer('upload_point')->nullable();
-            $table->string('doc_type', 20);
+            $table->string('title')->nullable();
             $table->string('comments')->nullable();
             $table->boolean('status')->default(0);
+            $table->string('year')->default(date('Y'))->nullable();
             $table->timestamps();
         });
     }

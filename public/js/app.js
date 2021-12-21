@@ -4986,74 +4986,140 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _FileUploader__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./FileUploader */ "./resources/js/components/FileUploader.vue");
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
+function _createForOfIteratorHelper(o, allowArrayLike) { var it = typeof Symbol !== "undefined" && o[Symbol.iterator] || o["@@iterator"]; if (!it) { if (Array.isArray(o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e) { throw _e; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = it.call(o); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e2) { didErr = true; err = _e2; }, f: function f() { try { if (!normalCompletion && it["return"] != null) it["return"](); } finally { if (didErr) throw err; } } }; }
 
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  components: {
-    FileUploader: _FileUploader__WEBPACK_IMPORTED_MODULE_0__["default"]
-  },
   data: function data() {
     return {
       title: ['W2 Form ( Wage Tax Statement)', 'Form 1099 (Miscellaneous Income Statement)', '1099 Int (Interest Income Statement)', '1099 G ( State Tax Refund)', '1099 - R (Individual Retirement Arrangement)', '1098 (Home Mortgage Statement)', '1098 - T (Tuition fee Statement)', '1098 - E (Education Interest Loan)', '1065 K(Partnership)', 'Upload other document'],
-      files: [[{}], [{}], [{}], [{}], [{}], [{}], [{}], [{}], [{}], [{}]],
-      comments: []
+      files: [[], [], [], [], [], [], [], [], [], []],
+      comment: new Array(10).fill(''),
+      fileLoading: new Array(10).fill(false)
     };
   },
   methods: {
-    onFileChange: function onFileChange(i) {
-      this.files[i] = this.$refs.fileUploader.files;
+    handleFile: function handleFile(event, i) {
+      this.files[i].push({
+        id: Math.floor(Math.random() * (99999999 - 111 + 1)) + 111,
+        file: event.target.files[0],
+        name: event.target.files[0].name,
+        origin: 'local'
+      });
+    },
+    removeFile: function removeFile(i, j) {
+      this.files[i].splice(j, 1);
+    },
+    handleSave: function handleSave(i) {
+      var _this = this;
+
+      if (this.fileLoading[i]) return;
+      var formData = new FormData();
+      formData.append('title', this.title[i]);
+      formData.append('comment', this.comment[i]);
+
+      var _iterator = _createForOfIteratorHelper(this.files[i]),
+          _step;
+
+      try {
+        for (_iterator.s(); !(_step = _iterator.n()).done;) {
+          var file = _step.value;
+          formData.append('files[]', file.file);
+        }
+      } catch (err) {
+        _iterator.e(err);
+      } finally {
+        _iterator.f();
+      }
+
+      this.fileLoading[i] = true;
+      axios.post(Year + '/tax/upload-tax-documents', formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data'
+        }
+      }).then(function (response) {
+        _this.fileLoading[i] = false;
+        alert(response.data.message);
+      })["catch"](function (error) {
+        _this.fileLoading[i] = false;
+        alert(error.response.data.message);
+      });
     }
   }
 });
@@ -5083,7 +5149,7 @@ window.axios.defaults.headers.common = {
   'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
   'Accept': 'application/json'
 };
-window.axios.defaults.baseURL = "http://127.0.0.1:8000";
+window.axios.defaults.baseURL = "http://127.0.0.1:8001";
 window.Year = document.querySelector('meta[name="year"]').getAttribute('content');
 
 var files = __webpack_require__("./resources/js sync recursive \\.vue$/");
@@ -25033,65 +25099,136 @@ var render = function () {
             _vm._m(1),
             _vm._v(" "),
             _vm._l(_vm.title, function (n, i) {
-              return _c("div", { key: i, staticClass: "row no-gutters" }, [
-                _c("div", { staticClass: "col-1" }, [
-                  _vm._v(
-                    "\n                        " +
-                      _vm._s(i + 1) +
-                      "\n                    "
-                  ),
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "col-3 px-1" }, [
-                  _vm._v(
-                    "\n                        " +
-                      _vm._s(n) +
-                      "\n                    "
-                  ),
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "col-3 px-1" }, [
-                  _c("input", {
-                    staticClass: "form-control-file",
-                    attrs: { type: "file", id: "exampleFormControlFile1" },
-                    on: {
-                      change: function ($event) {
-                        return _vm.onFileChange(i)
-                      },
-                    },
-                  }),
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "col-3 px-1" }, [
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.comments[i],
-                        expression: "comments[i]",
-                      },
+              return _c(
+                "div",
+                { key: i, staticClass: "row no-gutters py-2 border-bottom" },
+                [
+                  _c("div", { staticClass: "col-1" }, [
+                    _vm._v(
+                      "\n                        " +
+                        _vm._s(i + 1) +
+                        "\n                    "
+                    ),
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "col-4 px-1" }, [
+                    _vm._v(
+                      "\n                        " +
+                        _vm._s(n) +
+                        "\n                    "
+                    ),
+                  ]),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    { staticClass: "col-4 px-1" },
+                    [
+                      _vm._l(_vm.files[i], function (f, j) {
+                        return _c("div", { staticClass: "d-flex" }, [
+                          _c(
+                            "div",
+                            {
+                              staticClass: "rounded d-flex",
+                              staticStyle: { "background-color": "#adc7f155" },
+                            },
+                            [
+                              _c("div", [_vm._v(_vm._s(f.name))]),
+                              _vm._v(" "),
+                              _c(
+                                "button",
+                                {
+                                  staticClass:
+                                    "btn btn-primary badge border-0 align-self-center",
+                                  on: {
+                                    click: function ($event) {
+                                      return _vm.removeFile(i, j)
+                                    },
+                                  },
+                                },
+                                [
+                                  _vm._v(
+                                    "\n                                    ×\n                                "
+                                  ),
+                                ]
+                              ),
+                            ]
+                          ),
+                        ])
+                      }),
+                      _vm._v(" "),
+                      _c(
+                        "label",
+                        {
+                          staticClass: "text-danger",
+                          attrs: { for: "fileSelector" + i },
+                        },
+                        [
+                          _c("i", { staticClass: "fa fa-plus-circle" }),
+                          _vm._v(" Add\n                        "),
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _c("input", {
+                        staticClass: "d-none",
+                        attrs: { type: "file", id: "fileSelector" + i },
+                        on: {
+                          change: function ($event) {
+                            return _vm.handleFile($event, i)
+                          },
+                        },
+                      }),
                     ],
-                    staticClass: "form-control",
-                    attrs: { type: "text" },
-                    domProps: { value: _vm.comments[i] },
-                    on: {
-                      input: function ($event) {
-                        if ($event.target.composing) {
-                          return
-                        }
-                        _vm.$set(_vm.comments, i, $event.target.value)
-                      },
-                    },
-                  }),
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "col-2 pl-1" }, [
-                  _vm._v(
-                    "\n                        Action\n                    "
+                    2
                   ),
-                ]),
-              ])
+                  _vm._v(" "),
+                  _c("div", { staticClass: "col-2 px-1" }, [
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.comment[i],
+                          expression: "comment[i]",
+                        },
+                      ],
+                      staticClass: "form-control",
+                      attrs: { type: "text" },
+                      domProps: { value: _vm.comment[i] },
+                      on: {
+                        input: function ($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.$set(_vm.comment, i, $event.target.value)
+                        },
+                      },
+                    }),
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "col-1 pl-1" }, [
+                    _c(
+                      "button",
+                      {
+                        staticClass: "btn btn-success ",
+                        on: {
+                          click: function ($event) {
+                            return _vm.handleSave(i)
+                          },
+                        },
+                      },
+                      [
+                        _vm.fileLoading[i]
+                          ? _c("span", { staticClass: "spinner" }, [
+                              _c("i", { staticClass: "fa fa-spinner fa-spin" }),
+                            ])
+                          : _vm._e(),
+                        _vm._v(" "),
+                        _c("i", { staticClass: "fa fa-save" }),
+                      ]
+                    ),
+                  ]),
+                ]
+              )
             }),
           ],
           2
@@ -25121,19 +25258,19 @@ var staticRenderFns = [
           _vm._v("\n                        SL\n                    "),
         ]),
         _vm._v(" "),
-        _c("div", { staticClass: "col-3 px-1" }, [
+        _c("div", { staticClass: "col-4 px-1" }, [
           _vm._v("\n                        Title\n                    "),
         ]),
         _vm._v(" "),
-        _c("div", { staticClass: "col-3 px-1" }, [
+        _c("div", { staticClass: "col-4 px-1" }, [
           _vm._v("\n                        Browse File\n                    "),
         ]),
         _vm._v(" "),
-        _c("div", { staticClass: "col-3 px-1" }, [
+        _c("div", { staticClass: "col-2 px-1" }, [
           _vm._v("\n                        Comments\n                    "),
         ]),
         _vm._v(" "),
-        _c("div", { staticClass: "col-2 pl-1" }, [
+        _c("div", { staticClass: "col-1 pl-1" }, [
           _vm._v("\n                        Action\n                    "),
         ]),
       ]

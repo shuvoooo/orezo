@@ -63,6 +63,10 @@ return [
             'miscellaneous_details' => [
                 'text' => 'Miscellaneous Details',
                 'url' => route_with_year('miscellaneous_details'),
+            ],
+            'upload_tax_documents' => [
+                'text' => 'Upload Tax Documents',
+                'url' => route_with_year('upload_tax_documents'),
             ]
         ],
     ],

@@ -17,6 +17,7 @@ class CreateUploadsTable extends Migration
             $table->id();
             $table->foreignId('document_id')->nullable()->constrained();
             $table->string('filename')->nullable();
+            $table->string('doc_type')->nullable();
             $table->timestamps();
         });
     }
