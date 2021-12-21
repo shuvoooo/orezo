@@ -5065,15 +5065,67 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 //
 //
 //
+var TITLE = ['W2 Form ( Wage Tax Statement)', 'Form 1099 (Miscellaneous Income Statement)', '1099 Int (Interest Income Statement)', '1099 G ( State Tax Refund)', '1099 - R (Individual Retirement Arrangement)', '1098 (Home Mortgage Statement)', '1098 - T (Tuition fee Statement)', '1098 - E (Education Interest Loan)', '1065 K(Partnership)', 'Upload other document'];
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  props: ['documentDetails'],
   data: function data() {
+    var _this = this;
+
     return {
-      title: ['W2 Form ( Wage Tax Statement)', 'Form 1099 (Miscellaneous Income Statement)', '1099 Int (Interest Income Statement)', '1099 G ( State Tax Refund)', '1099 - R (Individual Retirement Arrangement)', '1098 (Home Mortgage Statement)', '1098 - T (Tuition fee Statement)', '1098 - E (Education Interest Loan)', '1065 K(Partnership)', 'Upload other document'],
-      files: [[], [], [], [], [], [], [], [], [], []],
-      comment: new Array(10).fill(''),
-      fileLoading: new Array(10).fill(false)
+      title: TITLE,
+      files: TITLE.map(function (t, i) {
+        var dataIndex = _this.documentDetails.findIndex(function (d) {
+          return d.title === t;
+        });
+
+        if (dataIndex !== -1) {
+          return _this.documentDetails[dataIndex].files.map(function (f) {
+            return {
+              id: f.id,
+              file: null,
+              name: f.filename,
+              origin: 'server'
+            };
+          });
+        }
+
+        return [];
+      }),
+      comments: TITLE.map(function (t, i) {
+        var dataIndex = _this.documentDetails.findIndex(function (d) {
+          return d.title === t;
+        });
+
+        if (dataIndex !== -1) {
+          return _this.documentDetails[dataIndex].comments;
+        }
+
+        return '';
+      }),
+      fileLoading: new Array(10).fill(false),
+      deletedFileIds: [[], [], [], [], [], [], [], [], [], [], []]
     };
   },
+  // mounted() {
+  //     this.documentDetails.map(n => {
+  //         const index = this.title.findIndex(t => t === n.title);
+  //
+  //
+  //         if (index !== -1) {
+  //             this.files[index] = n.files.map(f => {
+  //                 return {
+  //                     id: f.id,
+  //                     file: null,
+  //                     name: f.name,
+  //                     origin: 'server'
+  //                 }
+  //             });
+  //
+  //             this.comments[index] = n.comments;
+  //             alert(this.comments[index]);
+  //         }
+  //     });
+  // },
   methods: {
     handleFile: function handleFile(event, i) {
       this.files[i].push({
@@ -5084,15 +5136,20 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
       });
     },
     removeFile: function removeFile(i, j) {
+      if (this.files[i][j].origin === 'server') {
+        this.deletedFileIds[i].push(this.files[i][j].id);
+      }
+
       this.files[i].splice(j, 1);
     },
     handleSave: function handleSave(i) {
-      var _this = this;
+      var _this2 = this;
 
       if (this.fileLoading[i]) return;
       var formData = new FormData();
       formData.append('title', this.title[i]);
-      formData.append('comment', this.comment[i]);
+      formData.append('comments', this.comments[i]);
+      formData.append('deletedFileIds', JSON.stringify(this.deletedFileIds[i]));
 
       var _iterator = _createForOfIteratorHelper(this.files[i]),
           _step;
@@ -5100,7 +5157,10 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
       try {
         for (_iterator.s(); !(_step = _iterator.n()).done;) {
           var file = _step.value;
-          formData.append('files[]', file.file);
+
+          if (file.origin === 'local') {
+            formData.append('files[]', file.file);
+          }
         }
       } catch (err) {
         _iterator.e(err);
@@ -5114,10 +5174,27 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
           'Content-Type': 'multipart/form-data'
         }
       }).then(function (response) {
-        _this.fileLoading[i] = false;
+        _this2.fileLoading[i] = false;
         alert(response.data.message);
+
+        var _iterator2 = _createForOfIteratorHelper(_this2.files[i]),
+            _step2;
+
+        try {
+          for (_iterator2.s(); !(_step2 = _iterator2.n()).done;) {
+            var file = _step2.value;
+
+            if (file.origin === 'local') {
+              file.origin = 'server';
+            }
+          }
+        } catch (err) {
+          _iterator2.e(err);
+        } finally {
+          _iterator2.f();
+        }
       })["catch"](function (error) {
-        _this.fileLoading[i] = false;
+        _this2.fileLoading[i] = false;
         alert(error.response.data.message);
       });
     }
@@ -25124,7 +25201,7 @@ var render = function () {
                     { staticClass: "col-4 px-1" },
                     [
                       _vm._l(_vm.files[i], function (f, j) {
-                        return _c("div", { staticClass: "d-flex" }, [
+                        return _c("div", { staticClass: "d-flex my-1 px-2" }, [
                           _c(
                             "div",
                             {
@@ -25187,19 +25264,19 @@ var render = function () {
                         {
                           name: "model",
                           rawName: "v-model",
-                          value: _vm.comment[i],
-                          expression: "comment[i]",
+                          value: _vm.comments[i],
+                          expression: "comments[i]",
                         },
                       ],
                       staticClass: "form-control",
                       attrs: { type: "text" },
-                      domProps: { value: _vm.comment[i] },
+                      domProps: { value: _vm.comments[i] },
                       on: {
                         input: function ($event) {
                           if ($event.target.composing) {
                             return
                           }
-                          _vm.$set(_vm.comment, i, $event.target.value)
+                          _vm.$set(_vm.comments, i, $event.target.value)
                         },
                       },
                     }),

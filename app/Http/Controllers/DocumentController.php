@@ -5,28 +5,60 @@ namespace App\Http\Controllers;
 use App\Models\Document;
 use App\Models\Upload;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class DocumentController extends Controller
 {
     public function upload_tax_documents()
     {
-        return view('user.documents.tax_document_upload');
+        $document = Document::where('user_id', auth()->user()->id)->year()->get()->map(function ($item) {
+            return [
+                'title' => $item->title,
+                'comments' => $item->comments,
+                'files' => $item->upload->map(function ($file) {
+                    return [
+                        'id' => $file->id,
+                        'filename' => $file->filename,
+                    ];
+                }),
+            ];
+        });
+
+
+        return view('user.documents.tax_document_upload', compact('document'));
     }
 
     public function upload_tax_documents_store(Request $request)
     {
         $request->validate([
             'files.*' => 'required|mimes:pdf,doc,docx,jpg,jpeg,png,bmp,gif,svg,xlsx,csv',
-            'title' => 'required'
+            'title' => 'required',
+            'comments' => 'nullable',
+            'deletedFileIds' => 'json'
         ]);
 
+        foreach (json_decode($request->deletedFileIds) ?? [] as $deletedFileId) {
+            $fileDelete = Upload::find($deletedFileId);
+            if ($fileDelete) {
+                Storage::delete($fileDelete->path);
+                $fileDelete->delete();
+            }
+        }
+
+
         $file_url = collect();
-        foreach ($request->file('files') as $file) {
-            $file_name = $file->getClientOriginalName();
-            $file_ext = $file->getClientOriginalExtension();
-            $file_name_only = basename($file_name, '.' . $file_ext);
-            $file_new_name = $file_name_only . '_' . time() . '.' . $file_ext;
-            $file_url->push($file->storeAs('public/tax_documents', $file_new_name));
+        if ($request->hasFile('files')) {
+            foreach ($request->file('files') as $file) {
+                $file_name = $file->getClientOriginalName();
+                $file_ext = $file->getClientOriginalExtension();
+                $file_name_only = basename($file_name, '.' . $file_ext);
+                $file_new_name = $file_name_only . '_' . time() . '.' . $file_ext;
+
+                $file_url->push([
+                    'filename' => $file_name,
+                    'path' => $file->storeAs('public/tax_documents', $file_new_name)
+                ]);
+            }
         }
 
         $document = Document::where([
@@ -37,22 +69,21 @@ class DocumentController extends Controller
         if ($document) {
             $document->update([
                 'title' => $request->title,
-                'description' => $request->description,
-                'comment' => $request->comment
+                'comments' => $request->comments
             ]);
         } else {
             $document = Document::create([
                 'user_id' => auth()->user()->id,
-                'files' => $file_url->implode(','),
                 'title' => $request->title,
-                'description' => $request->description
+                'comments' => $request->comments
             ]);
         }
 
         foreach ($file_url as $item) {
             Upload::create([
                 'document_id' => $document->id,
-                'filename' => $item
+                'filename' => $item['filename'],
+                'path' => $item['path']
             ]);
         }
 

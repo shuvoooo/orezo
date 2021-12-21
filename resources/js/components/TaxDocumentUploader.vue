@@ -32,7 +32,7 @@
                         </div>
 
                         <div class="col-4 px-1">
-                            <div class="d-flex" v-for="(f,j) in files[i]">
+                            <div class="d-flex my-1 px-2" v-for="(f,j) in files[i]">
                                 <div style="background-color:#adc7f155;" class="rounded d-flex">
                                     <div>{{ f.name }}</div>
                                     <button @click="removeFile(i,j)"
@@ -50,7 +50,7 @@
                         </div>
 
                         <div class="col-2 px-1">
-                            <input type="text" class="form-control" v-model="comment[i]">
+                            <input type="text" class="form-control" v-model="comments[i]">
                         </div>
 
                         <div class="col-1 pl-1">
@@ -72,28 +72,75 @@
 
 
 <script>
+const TITLE = [
+    'W2 Form ( Wage Tax Statement)',
+    'Form 1099 (Miscellaneous Income Statement)',
+    '1099 Int (Interest Income Statement)',
+    '1099 G ( State Tax Refund)',
+    '1099 - R (Individual Retirement Arrangement)',
+    '1098 (Home Mortgage Statement)',
+    '1098 - T (Tuition fee Statement)',
+    '1098 - E (Education Interest Loan)',
+    '1065 K(Partnership)',
+    'Upload other document'
+];
 
 export default {
+    props: ['documentDetails'],
 
     data() {
         return {
-            title: [
-                'W2 Form ( Wage Tax Statement)',
-                'Form 1099 (Miscellaneous Income Statement)',
-                '1099 Int (Interest Income Statement)',
-                '1099 G ( State Tax Refund)',
-                '1099 - R (Individual Retirement Arrangement)',
-                '1098 (Home Mortgage Statement)',
-                '1098 - T (Tuition fee Statement)',
-                '1098 - E (Education Interest Loan)',
-                '1065 K(Partnership)',
-                'Upload other document'
-            ],
-            files: [[], [], [], [], [], [], [], [], [], []],
-            comment: new Array(10).fill(''),
+            title: TITLE,
+            files: TITLE.map((t, i) => {
+                const dataIndex = this.documentDetails.findIndex(d => d.title === t);
+
+                if (dataIndex !== -1) {
+                    return this.documentDetails[dataIndex].files.map(f => {
+                        return {
+                            id: f.id,
+                            file: null,
+                            name: f.filename,
+                            origin: 'server'
+                        }
+                    });
+                }
+                return [];
+
+            }),
+            comments: TITLE.map((t, i) => {
+                const dataIndex = this.documentDetails.findIndex(d => d.title === t);
+
+                if (dataIndex !== -1) {
+                    return this.documentDetails[dataIndex].comments;
+                }
+                return '';
+
+            }),
             fileLoading: new Array(10).fill(false),
+            deletedFileIds: [[], [], [], [], [], [], [], [], [], [], []],
         }
     },
+
+    // mounted() {
+    //     this.documentDetails.map(n => {
+    //         const index = this.title.findIndex(t => t === n.title);
+    //
+    //
+    //         if (index !== -1) {
+    //             this.files[index] = n.files.map(f => {
+    //                 return {
+    //                     id: f.id,
+    //                     file: null,
+    //                     name: f.name,
+    //                     origin: 'server'
+    //                 }
+    //             });
+    //
+    //             this.comments[index] = n.comments;
+    //             alert(this.comments[index]);
+    //         }
+    //     });
+    // },
 
     methods: {
         handleFile(event, i) {
@@ -105,6 +152,9 @@ export default {
             });
         },
         removeFile(i, j) {
+            if (this.files[i][j].origin === 'server') {
+                this.deletedFileIds[i].push(this.files[i][j].id);
+            }
             this.files[i].splice(j, 1);
         },
 
@@ -113,10 +163,13 @@ export default {
 
             let formData = new FormData();
             formData.append('title', this.title[i]);
-            formData.append('comment', this.comment[i]);
+            formData.append('comments', this.comments[i]);
+            formData.append('deletedFileIds', JSON.stringify(this.deletedFileIds[i]));
 
             for (let file of this.files[i]) {
-                formData.append('files[]', file.file);
+                if (file.origin === 'local') {
+                    formData.append('files[]', file.file);
+                }
             }
 
             this.fileLoading[i] = true;
@@ -128,6 +181,11 @@ export default {
             }).then(response => {
                 this.fileLoading[i] = false;
                 alert(response.data.message);
+                for (let file of this.files[i]) {
+                    if (file.origin === 'local') {
+                        file.origin = 'server';
+                    }
+                }
             }).catch(error => {
                 this.fileLoading[i] = false;
                 alert(error.response.data.message);

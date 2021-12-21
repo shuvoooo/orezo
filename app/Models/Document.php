@@ -18,6 +18,11 @@ class Document extends Model
         });
     }
 
+    public function upload()
+    {
+        return $this->hasMany(Upload::class);
+    }
+
     public function scopeYear($query)
     {
         return $query->where('year', request()->route('year') ?? date('Y'));

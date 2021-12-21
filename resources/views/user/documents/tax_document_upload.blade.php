@@ -4,7 +4,5 @@
 @section('title', 'Tax Document Upload')
 
 @section('content')
-
-    <tax-document-uploader></tax-document-uploader>
-
+    <tax-document-uploader :document-details='@json($document??[])'></tax-document-uploader>
 @endsection
