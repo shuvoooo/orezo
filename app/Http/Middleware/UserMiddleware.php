@@ -21,6 +21,6 @@ class UserMiddleware
             return $next($request);
         }
 
-        return redirect('/home');
+        return redirect()->route('login');
     }
 }

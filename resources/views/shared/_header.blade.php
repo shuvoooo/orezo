@@ -63,7 +63,7 @@
                     </ul>
                     <div class="donate-btn-header">
                         @auth('web')
-                            <a href="{{route('dashboard')}}" class="btn btn-primary">Dashboard</a>
+                            <a href="{{route_with_year('dashboard')}}" class="btn btn-primary">Dashboard</a>
                         @else
                             @if(\Route::currentRouteName() != 'login')
                                 <a class="dtbtn" href="{{route('login')}}">Login</a>

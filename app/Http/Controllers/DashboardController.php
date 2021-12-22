@@ -8,4 +8,9 @@ class DashboardController extends Controller
     {
         return view('user.user_dashboard');
     }
+
+    public function year_dashboard()
+    {
+        return view('user.year_dashboard');
+    }
 }

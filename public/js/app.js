@@ -3123,7 +3123,7 @@ __webpack_require__.r(__webpack_exports__);
             password: _this.password
           }).then(function (response) {
             _this.isLoading = false;
-            location.href = '/dashboard';
+            location.href = '/dashboard/year';
           })["catch"](function (error) {
             _this.backendError(error);
           });
@@ -4394,7 +4394,7 @@ __webpack_require__.r(__webpack_exports__);
             password_confirmation: _this.password_confirmation
           }).then(function (response) {
             _this.isLoading = false;
-            location.href = '/dashboard';
+            location.href = '/dashboard/year';
           })["catch"](function (e) {
             return _this.backendError(e);
           });

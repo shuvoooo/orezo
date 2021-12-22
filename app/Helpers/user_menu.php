@@ -69,5 +69,32 @@ return [
                 'url' => route_with_year('upload_tax_documents'),
             ]
         ],
+
+
+    ],
+
+    'my_status' => [
+        'text' => 'My Status',
+        'url' => null,
+        'icon' => 'fa fa-dashboard',
+        'type' => 'submenu',
+        'submenu' => [
+            'my_file_status' => [
+                'text' => 'My File Status',
+                'url' => route_with_year('my_file_status'),
+            ],
+            'view_tax_summary' => [
+                'text' => 'View Tax Summary',
+                'url' => route_with_year('view_tax_summary'),
+            ],
+            'payment_info' => [
+                'text' => 'Payment Info',
+                'url' => route_with_year('payment_info'),
+            ],
+            'my_tax_return_status' => [
+                'text' => 'Refund Status',
+                'url' => 'https://sa.www4.irs.gov/irfof/lang/en/irfofgetstatus.jsp',
+            ],
+        ]
     ],
 ];

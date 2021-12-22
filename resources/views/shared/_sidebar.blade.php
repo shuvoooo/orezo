@@ -1,7 +1,7 @@
 <div class="sidebar">
     <ul class="sidebar-menu">
         <li class="sub-menu">
-            <a class="" href="{{route('dashboard')}}">
+            <a class="" href="{{route_with_year('dashboard')}}">
                 <i class="fa fa-dashboard"></i>
                 <span>Dashboard</span>
             </a>

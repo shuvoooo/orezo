@@ -60,7 +60,7 @@ class User extends Authenticatable
 
     public function personalInformation()
     {
-        return $this->hasOne(PersonalInformation::class, 'user_id');
+        return $this->hasMany(PersonalInformation::class);
     }
 
     public function spouseInformation()

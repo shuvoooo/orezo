@@ -92,7 +92,7 @@ export default {
                         password: this.password
                     }).then(response => {
                         this.isLoading = false;
-                        location.href = '/dashboard';
+                        location.href = '/dashboard/year';
                     }).catch(error => {
                         this.backendError(error);
                     });

@@ -15,6 +15,9 @@
 
     <!-- font-awesome CSS -->
     <link type="text/css" rel="stylesheet" href="{{asset('assets/fonts/font-awesome/css/font-awesome.min.css')}}">
+    <!-- font-flaticon CSS -->
+    <link rel="stylesheet" href="{{asset('assets/css/flaticon.css')}}" type="text/css" media="all"/>
+
     <!-- Favicon -->
     <link rel="icon" type="image/png" sizes="56x56" href="{{asset('assets/images/fav-icon/icon.png')}}">
     <!-- bootstrap CSS -->
@@ -82,7 +85,7 @@
                 <li class="ml-auto"></li>
                 @foreach(range(date('Y')+1, date('Y')-1) as $year)
                     <li class="ml-3 pl-3 border-left">
-                        <a href="{{route_with_year('year_redirect',['year'=>$year])}}"
+                        <a href="{{route_with_year('dashboard',['year'=>$year])}}"
                            class="@if(request()->route('year') == $year) font-weight-bold text-success @endif ">{{$year}}</a>
                     </li>
                 @endforeach
