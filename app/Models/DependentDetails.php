@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class DepartmentDetails extends Model
+class DependentDetails extends Model
 {
     use HasFactory;
 
@@ -22,7 +22,7 @@ class DepartmentDetails extends Model
         });
     }
 
-    public function department()
+    public function dependent()
     {
         return $this->belongsTo(User::class);
     }

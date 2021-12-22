@@ -15,7 +15,7 @@ return [
                 'url' => route_with_year('spouse_details'),
             ],
             'dependent_details' => [
-                'text' => 'Department Details',
+                'text' => 'Dependent Details',
                 'url' => route_with_year('dependent_details'),
             ],
             'bank_details' => [

@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 
 use App\Models\Bank;
-use App\Models\DepartmentDetails;
+use App\Models\DependentDetails;
 use App\Models\PersonalInformation;
 use App\Models\SpouseInformation;
 use Illuminate\Http\Request;
@@ -103,9 +103,9 @@ class PersonalInformationController extends Controller
 
     public function dependent_details(Request $request)
     {
-        $department = DepartmentDetails::where('user_id', Auth::user()->id)->year()->get();
+        $dependent = DependentDetails::where('user_id', Auth::user()->id)->year()->get();
 
-        return view('user.personal_info.dependent', ['department_details' => $department]);
+        return view('user.personal_info.dependent', ['dependent_details' => $dependent]);
     }
 
     public function dependent_details_store(Request $request)
@@ -117,7 +117,7 @@ class PersonalInformationController extends Controller
         $data['user_id'] = Auth::id();
 
         try {
-            DepartmentDetails::create($data);
+            DependentDetails::create($data);
             return response()->json([
                 'success' => 'Dependent Details saved successfully.',
                 'url' => route_with_year('bank_details')
@@ -129,14 +129,19 @@ class PersonalInformationController extends Controller
         }
     }
 
-    public function dependent_details_destroy(Request $request)
+    public function dependent_details_destroy(DependentDetails $dependentDetails)
     {
-
-
-        return response()->json([
-            'success' => 'Dependent Details saved successfully.',
-            'url' => route_with_year('dependent_details')
-        ]);
+        try {
+            $dependentDetails->delete();
+            return response()->json([
+                'success' => 'Dependent Details deleted successfully.',
+                'url' => route_with_year('dependent_details')
+            ]);
+        } catch (\Exception $e) {
+            return response()->json([
+                'error' => $e->getMessage()
+            ]);
+        }
     }
 
     public function bank_details(Request $request)

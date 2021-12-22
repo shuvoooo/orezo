@@ -9,42 +9,45 @@
         </div>
 
         <div class="col-md-6">
-            <table class="table table-bordered table-responsive table-sm">
-                <thead>
-                <tr>
-                    <th>Tax Payer</th>
-                    <th>Start Time</th>x
-                    <th>End Date</th>
-                    <th>Spouse</th>
-                    <th>Start Time</th>
-                    <th>End Date</th>
-                    <th>Action</th>
-                </tr>
-                </thead>
-
-                <tbody>
-                @foreach($residency_details as $item)
+            <div class="table-responsive">
+                <table class="table table-bordered table-sm">
+                    <thead>
                     <tr>
-                        <td>{{$item->payer}}</td>
-                        <td>{{$item->start_date}}</td>
-                        <td>{{$item->end_date}}</td>
-                        <td>{{$item->spouse}}</td>
-                        <td>{{$item->spouse_start_date}}</td>
-                        <td>{{$item->spouse_end_date}}</td>
-                        <td>
-                            <form method="post"
-                                  action="{{route_with_year('residency_details_destroy',['residency'=>$item->id])}}">
-                                @method('DELETE')
-                                @csrf
-                                <button type="submit" class="btn btn-danger btn-sm">
-                                    <i class="fa fa-trash"></i>
-                                </button>
-                            </form>
-                        </td>
+                        <th>Tax Payer</th>
+                        <th>Start Time</th>
+                        x
+                        <th>End Date</th>
+                        <th>Spouse</th>
+                        <th>Start Time</th>
+                        <th>End Date</th>
+                        <th>Action</th>
                     </tr>
-                @endforeach
-                </tbody>
-            </table>
+                    </thead>
+
+                    <tbody>
+                    @foreach($residency_details as $item)
+                        <tr>
+                            <td>{{$item->payer}}</td>
+                            <td>{{$item->start_date}}</td>
+                            <td>{{$item->end_date}}</td>
+                            <td>{{$item->spouse}}</td>
+                            <td>{{$item->spouse_start_date}}</td>
+                            <td>{{$item->spouse_end_date}}</td>
+                            <td>
+                                <form method="post"
+                                      action="{{route_with_year('residency_details_destroy',['residency'=>$item->id])}}">
+                                    @method('DELETE')
+                                    @csrf
+                                    <button type="submit" class="btn btn-danger btn-sm">
+                                        <i class="fa fa-trash"></i>
+                                    </button>
+                                </form>
+                            </td>
+                        </tr>
+                    @endforeach
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
 

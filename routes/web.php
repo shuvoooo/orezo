@@ -44,7 +44,7 @@ Route::group(['prefix' => '{year}', 'middleware' => [UserMiddleware::class, Year
 
         Route::get('dependent-details', [PersonalInformationController::class, 'dependent_details'])->name('dependent_details');
         Route::post('dependent-details', [PersonalInformationController::class, 'dependent_details_store'])->name('dependent_details_store');
-        Route::delete('dependent-details', [PersonalInformationController::class, 'dependent_details_destroy'])->name('dependent_details_destroy');
+        Route::delete('dependent-details/{dependent_details}', [PersonalInformationController::class, 'dependent_details_destroy'])->name('dependent_details_destroy');
 
         Route::get('bank_details', [PersonalInformationController::class, 'bank_details'])->name('bank_details');
         Route::post('bank_details', [PersonalInformationController::class, 'bank_details_store'])->name('bank_details_store');
