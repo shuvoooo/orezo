@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\ClientListController;
 use App\Http\Controllers\AssetController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DocumentController;
@@ -11,7 +12,6 @@ use App\Http\Controllers\MyStatusController;
 use App\Http\Controllers\PersonalInformationController;
 use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\ResidencyController;
-use App\Http\Middleware\UserMiddleware;
 use App\Http\Middleware\YearMiddleware;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -29,7 +29,10 @@ Auth::routes();
 
 Route::get('dashboard/year', [DashboardController::class, 'year_dashboard'])->name('year_dashboard');
 
-Route::group(['prefix' => '{year}', 'middleware' => [UserMiddleware::class, YearMiddleware::class]], function () {
+Route::group(['prefix' => '{year}', 'middleware' => [YearMiddleware::class]], function () {
+
+    Route::get("/table", [ClientListController::class, "client"]);
+
 
     Route::get('', [DashboardController::class, 'year_dashboard'])->name('year_dashboard');
     Route::get('dashboard', [DashboardController::class, 'user_dashboard'])->name('dashboard');

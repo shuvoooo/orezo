@@ -19,6 +19,7 @@
                         <th>Visa Status</th>
                         <th>Action</th>
                     </tr>
+
                     @foreach( $dependent_details as $item)
                         <tr>
                             <td>{{implode(" ",[$item->fname, $item->mname, $item->lname])}}</td>
@@ -38,6 +39,7 @@
                             </td>
                         </tr>
                     @endforeach
+
                 </table>
             </div>
         </div>

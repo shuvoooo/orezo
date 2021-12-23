@@ -28,7 +28,7 @@
                         <div class="col-lg-12">
                             <div class="single_brand">
                                 <div class="single_brand_thumb">
-                                    <img src="assets/images/brand/brand-1.png" alt="" />
+                                    <img src="{{asset('assets/images/brand/brand-1.png')}}" alt="" />
                                 </div>
                             </div>
                         </div>
@@ -36,7 +36,7 @@
                         <div class="col-lg-12">
                             <div class="single_brand">
                                 <div class="single_brand_thumb">
-                                    <img src="assets/images/brand/brand-2.png" alt="" />
+                                    <img src="{{asset('assets/images/brand/brand-2.png')}}" alt="" />
                                 </div>
                             </div>
                         </div>
@@ -44,7 +44,7 @@
                         <div class="col-lg-12">
                             <div class="single_brand">
                                 <div class="single_brand_thumb">
-                                    <img src="assets/images/brand/brand-3.png" alt="" />
+                                    <img src="{{asset('assets/images/brand/brand-3.png')}}" alt="" />
                                 </div>
                             </div>
                         </div>
@@ -52,7 +52,7 @@
                         <div class="col-lg-12">
                             <div class="single_brand">
                                 <div class="single_brand_thumb">
-                                    <img src="assets/images/brand/brand-4.png" alt="" />
+                                    <img src="{{asset('assets/images/brand/brand-4.png')}}" alt="" />
                                 </div>
                             </div>
                         </div>
@@ -60,7 +60,7 @@
                         <div class="col-lg-12">
                             <div class="single_brand">
                                 <div class="single_brand_thumb">
-                                    <img src="assets/images/brand/brand-2.png" alt="" />
+                                    <img src="{{asset('assets/images/brand/brand-2.png')}}" alt="" />
                                 </div>
                             </div>
                         </div>

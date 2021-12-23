@@ -45,6 +45,7 @@
         }
     </style>
 
+    @yield('css')
 </head>
 
 <body>
@@ -107,6 +108,8 @@
 <!-- bootstrap js -->
 <script type="text/javascript" src="{{asset('assets/js/bootstrap.min.js')}}"></script>
 
+{{--<script src="//cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>--}}
+
 <!-- Main App Script -->
 <script type="text/javascript" src="{{asset('js/app.js')}}"></script>
 
@@ -136,6 +139,9 @@
         });
     });
 </script>
+
+
+@stack('scripts')
 
 </body>
 </html>
