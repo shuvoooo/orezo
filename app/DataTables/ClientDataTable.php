@@ -18,7 +18,7 @@ class ClientDataTable extends DataTable
     public function dataTable($query)
     {
         return datatables()
-            ->eloquent($query);
+            ->eloquent($query)->addColumn('action', view('datatables.client_action'));
     }
 
     /**
@@ -39,32 +39,19 @@ class ClientDataTable extends DataTable
      */
     public function html()
     {
-//        return $this->builder()
-//                    ->setTableId('client-table')
-//                    ->columns($this->getColumns())
-//                    ->minifiedAjax()
-//                    ->dom('Bfrtip')
-//                    ->orderBy(1)
-//                    ->buttons(
-//                        Button::make('create'),
-//                        Button::make('export'),
-//                        Button::make('print'),
-//                        Button::make('reset'),
-//                        Button::make('reload')
-//                    );
         return $this->builder()
-            ->setTableId('users-table')
+            ->setTableId('client-table')
             ->columns($this->getColumns())
             ->minifiedAjax()
             ->dom('Bfrtip')
             ->orderBy(1)
             ->buttons(
-                Button::make('create'),
                 Button::make('export'),
                 Button::make('print'),
                 Button::make('reset'),
                 Button::make('reload')
             );
+
     }
 
     /**
@@ -74,29 +61,16 @@ class ClientDataTable extends DataTable
      */
     protected function getColumns()
     {
-//        return [
-//            Column::computed('action')
-//                ->exportable(false)
-//                ->printable(false)
-//                ->width(60)
-//                ->addClass('text-center'),
-//            Column::make('id'),
-//            Column::make('add your columns'),
-//            Column::make('created_at'),
-//            Column::make('updated_at'),
-//        ];
-
         return [
+            Column::make('name'),
+            Column::make('email'),
+            Column::make('phone'),
+            Column::make('Reg DateTime'),
             Column::computed('action')
                 ->exportable(false)
                 ->printable(false)
                 ->width(60)
                 ->addClass('text-center'),
-            Column::make('id'),
-            Column::make('name'),
-            Column::make('email'),
-            Column::make('created_at'),
-            Column::make('updated_at'),
         ];
     }
 

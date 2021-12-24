@@ -7,7 +7,7 @@ use App\Http\Controllers\Controller;
 
 class ClientListController extends Controller
 {
-    public function client(ClientDataTable $dataTable)
+    public function client_list(ClientDataTable $dataTable)
     {
         return $dataTable->render('admin.client_list');
     }

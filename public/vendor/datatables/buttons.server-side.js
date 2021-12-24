@@ -1,9 +1,3 @@
-require('jquery');
-require('datatables.net')(window, $);
-require('datatables.net-bs4')(window, $);
-require('datatables.net-buttons')(window, $);
-require('datatables.net-buttons-bs4')(window, $);
-
 (function ($, DataTable) {
     "use strict";
 
@@ -17,10 +11,10 @@ require('datatables.net-buttons-bs4')(window, $);
         } else {
             params.visible_columns = null;
         }
-
+        
         return params;
     };
-
+    
     var _getVisibleColumns = function () {
 
         var visible_columns = [];
@@ -83,7 +77,7 @@ require('datatables.net-buttons-bs4')(window, $);
         xhr.send($.param(params));
     };
 
-    var _buildUrl = function (dt, action) {
+    var _buildUrl = function(dt, action) {
         var url = dt.ajax.url() || '';
         var params = dt.ajax.params();
         params.action = action;
@@ -91,7 +85,7 @@ require('datatables.net-buttons-bs4')(window, $);
         if (url.indexOf('?') > -1) {
             return url + '&' + $.param(params);
         }
-
+        
         return url + '?' + $.param(params);
     };
 
@@ -122,7 +116,7 @@ require('datatables.net-buttons-bs4')(window, $);
             _downloadFromUrl(url, params);
         }
     };
-
+    
     DataTable.ext.buttons.postExcelVisibleColumns = {
         className: 'buttons-excel',
 
@@ -177,7 +171,7 @@ require('datatables.net-buttons-bs4')(window, $);
             _downloadFromUrl(url, params);
         }
     };
-
+    
     DataTable.ext.buttons.postCsv = {
         className: 'buttons-csv',
 
@@ -225,7 +219,7 @@ require('datatables.net-buttons-bs4')(window, $);
         className: 'buttons-print',
 
         text: function (dt) {
-            return '<i class="fa fa-print"></i> ' + dt.i18n('buttons.print', 'Print');
+            return  '<i class="fa fa-print"></i> ' + dt.i18n('buttons.print', 'Print');
         },
 
         action: function (e, dt, button, config) {
