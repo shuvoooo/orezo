@@ -7,5 +7,12 @@ return [
         'type' => 'single',
         'submenu' => []
     ],
+    'invoice'=> [
+        'text' => 'Invoice',
+        'url' => route('admin.invoice'),
+        'icon' => 'fa fa-dashboard',
+        'type' => 'single',
+        'submenu' => []
+    ],
 
 ];

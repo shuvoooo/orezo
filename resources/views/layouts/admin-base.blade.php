@@ -63,9 +63,8 @@
     <div class="main-container" id="app">
         <div class="container-fluid">
 
-        @if(auth()->user()->role =='user')
             <!-- BEGIN PAGE HEADER-->
-                <ul class="breadcrumb">
+            <ul class="breadcrumb">
                     <li>
                         <a href="" target="_blank">Home</a>
                         <span class="divider"> / </span>
@@ -94,7 +93,7 @@
                     @endforeach
 
                 </ul>
-            @endif
+
 
             @yield('content')
 

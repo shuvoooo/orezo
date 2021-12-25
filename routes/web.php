@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\AdminDashboardController;
 use App\Http\Controllers\Admin\ClientListController;
+use App\Http\Controllers\Admin\InvoiceController;
 use App\Http\Controllers\AssetController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DocumentController;
@@ -16,6 +17,7 @@ use App\Http\Controllers\ResidencyController;
 use App\Http\Middleware\AdminMiddleware;
 use App\Http\Middleware\UserMiddleware;
 use App\Http\Middleware\YearMiddleware;
+use App\Models\Invoice;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -96,5 +98,7 @@ Route::group(['middleware' => ['auth', UserMiddleware::class]], function () {
 Route::group(['middleware' => ['auth', AdminMiddleware::class], 'prefix' => 'admin', 'as' => 'admin.'], function () {
     Route::get('/', [AdminDashboardController::class, 'dashboard'])->name('dashboard');
 
+    Route::get('client-details', [ClientListController::class, 'client_details'])->name('client_details');
     Route::get('client-list', [ClientListController::class, 'client_list'])->name('client_list');
+    Route::get('invoice', [InvoiceController::class, 'invoice'])->name('invoice');
 });
