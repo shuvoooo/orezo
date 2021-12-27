@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Document;
 use App\Models\Upload;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
@@ -28,7 +29,7 @@ class DocumentController extends Controller
         return view('user.documents.tax_document_upload', compact('document'));
     }
 
-    public function upload_tax_documents_store(Request $request)
+    public function upload_tax_documents_store(Request $request): JsonResponse
     {
         $request->validate([
             'files.*' => 'required|mimes:pdf,doc,docx,jpg,jpeg,png,bmp,gif,svg,xlsx,csv',

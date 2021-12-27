@@ -4,11 +4,12 @@ namespace App\Http\Controllers;
 
 use App\Models\Asset;
 use Exception;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
 class AssetController extends Controller
 {
-    public function asset_details(Request $request)
+    public function asset_details()
     {
         $asset_details = Asset::where('user_id', auth()->user()->id)->year()->first();
         $asset_details = $asset_details->details ?? [];
@@ -16,7 +17,7 @@ class AssetController extends Controller
         return view('user.tax.asset_details', compact('asset_details'));
     }
 
-    public function asset_details_store(Request $request)
+    public function asset_details_store(Request $request): JsonResponse
     {
         try {
 

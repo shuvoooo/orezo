@@ -3,19 +3,21 @@
 namespace App\Http\Controllers;
 
 use App\Models\Employer;
+use Illuminate\Http\JsonResponse;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class EmployerController extends Controller
 {
-    public function employer_details(Request $request)
+    public function employer_details()
     {
         $employer_details = Employer::where('user_id', Auth::user()->id)->year()->get();
         return view('user.tax.employer_details', compact('employer_details'));
     }
 
     //create tax store function
-    public function employer_details_store(Request $request)
+    public function employer_details_store(Request $request): JsonResponse
     {
         $request->validate([
             'name' => 'required',
@@ -38,7 +40,7 @@ class EmployerController extends Controller
     }
 
 
-    public function employer_details_destroy(Employer $employer)
+    public function employer_details_destroy(Employer $employer): RedirectResponse
     {
         $employer->delete();
         return redirect()->back()->with('message', 'Employer Details Deleted Successfully');
