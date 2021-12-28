@@ -1,7 +1,7 @@
 @extends('layouts.admin-base')
 
 
-@section('title', 'Create Service')
+@section('title', 'Create Testimonial')
 
 
 @section('content')
@@ -12,10 +12,10 @@
                     <div class="card-header">
                         <div class="row">
                             <div class="col-md-6">
-                                <h4 class="card-title">Create Services</h4>
+                                <h4 class="card-title">Create Testimonials</h4>
                             </div>
                             <div class="col-md-6 text-right">
-                                <a href="{{ route('admin.service.index') }}" class="btn btn-primary">
+                                <a href="{{ route('admin.testimonial.index') }}" class="btn btn-primary">
                                     <i class="fa fa-plus"></i>
                                     View All
                                 </a>
@@ -24,7 +24,7 @@
                     </div>
 
                     <div class="card-body">
-                        <form action="{{route('admin.service.store')}}" method="post" enctype="multipart/form-data">
+                        <form action="{{route('admin.testimonial.store')}}" method="post" enctype="multipart/form-data">
                             @csrf
 
                             <div class="form-group">
@@ -37,40 +37,41 @@
                             </div>
 
                             <div class="form-group">
-                                <label class="text-dark" for="description">Description</label>
-                                <textarea class="form-control @error('description') is-invalid @endif " id="description"
-                                          name="description" rows="3"
-                                          placeholder="Description">{{old('description')}}</textarea>
-                                @error('description')
+                                <label class="text-dark" for="designation">Designation</label>
+                                <textarea class="form-control @error('designation') is-invalid @endif " id="designation"
+                                          name="designation" rows="3"
+                                          placeholder="Designation">{{old('designation')}}</textarea>
+                                @error('designation')
                                 <span class="invalid-feedback">{{ $message }}</span>
                                 @enderror
                             </div>
 
                             <div class="form-group">
-                                <label class="text-dark" for="url">Redirect Url</label>
-                                <input type="url" class="form-control @error('url') is-invalid @endif " id="url"
-                                       name="url" value="{{old('url')}}"
-                                       placeholder="Enter Redirect Url">
-                                @error('url')
+                                <label class="text-dark" for="company">Company</label>
+                                <textarea class="form-control @error('company') is-invalid @endif " id="company"
+                                          name="company" rows="3"
+                                          placeholder="Company">{{old('company')}}</textarea>
+                                @error('company')
                                 <span class="invalid-feedback">{{ $message }}</span>
                                 @enderror
                             </div>
 
-                            <div class="form-group">
-                                <label class="text-dark" for="icon">Icon</label>
-                                <input type="text" class="form-control @error('icon') is-invalid @endif " id="icon"
-                                       name="icon" value="{{old('icon')}}"
-                                       placeholder="Enter Icon Name">
-                                @error('icon')
-                                <span class="invalid-feedback">{{ $message }}</span>
-                                @enderror
-                            </div>
 
                             <div class="form-group">
                                 <label class="text-dark" for="image">Image</label>
                                 <input type="file" class="custom-file @error('image') is-invalid @endif " id="image"
                                        name="image">
                                 @error('image')
+                                <span class="invalid-feedback">{{ $message }}</span>
+                                @enderror
+                            </div>
+
+                            <div class="form-group">
+                                <label class="text-dark" for="description">Description</label>
+                                <textarea class="form-control @error('description') is-invalid @endif " id="description"
+                                          name="description" rows="3"
+                                          placeholder="Description">{{old('description')}}</textarea>
+                                @error('description')
                                 <span class="invalid-feedback">{{ $message }}</span>
                                 @enderror
                             </div>

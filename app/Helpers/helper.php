@@ -1,5 +1,7 @@
 <?php
 
+use Illuminate\Support\Facades\Storage;
+
 if (!function_exists('route_with_year')) {
     function route_with_year($route, $params = []): string
     {
@@ -7,5 +9,12 @@ if (!function_exists('route_with_year')) {
             $params['year'] = request()->route('year') ?? date('Y');
         }
         return route($route, $params);
+    }
+}
+
+if (!function_exists('storage_asset')) {
+    function storage_asset($path): string
+    {
+        return asset(Storage::url($path));
     }
 }

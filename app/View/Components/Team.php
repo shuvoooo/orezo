@@ -3,6 +3,7 @@
 namespace App\View\Components;
 
 use Illuminate\View\Component;
+use App\Models\Team as TeamModel;
 
 class Team extends Component
 {
@@ -23,6 +24,7 @@ class Team extends Component
      */
     public function render()
     {
-        return view('components.team');
+        $teams = TeamModel::where('is_active', 1)->get();
+        return view('components.team', compact('teams'));
     }
 }

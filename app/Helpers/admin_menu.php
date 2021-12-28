@@ -24,6 +24,22 @@ return [
                 'text' => 'Service',
                 'url' => route('admin.service.index'),
             ],
+            'brand' => [
+                'text' => 'Brand',
+                'url' => route('admin.brand.index'),
+            ],
+            'team' => [
+                'text' => 'Team',
+                'url' => route('admin.team.index'),
+            ],
+            'testimonial' => [
+                'text' => 'Testimonial',
+                'url' => route('admin.testimonial.index'),
+            ],
+            'faq' => [
+                'text' => 'FAQ',
+                'url' => route('admin.faq.index'),
+            ]
         ]
     ],
 

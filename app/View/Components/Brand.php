@@ -3,6 +3,7 @@
 namespace App\View\Components;
 
 use Illuminate\View\Component;
+use App\Models\Brand as BrandModel;
 
 class Brand extends Component
 {
@@ -23,6 +24,7 @@ class Brand extends Component
      */
     public function render()
     {
-        return view('components.brand');
+        $brands = BrandModel::where('is_active', 1)->get();
+        return view('components.brand', compact('brands'));
     }
 }

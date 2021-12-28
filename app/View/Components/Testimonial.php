@@ -3,6 +3,7 @@
 namespace App\View\Components;
 
 use Illuminate\View\Component;
+use App\Models\Testimonial as TestimonialModel;
 
 class Testimonial extends Component
 {
@@ -23,6 +24,8 @@ class Testimonial extends Component
      */
     public function render()
     {
-        return view('components.testimonial');
+        $testimonials = TestimonialModel::where('is_active', 1)->get();
+
+        return view('components.testimonial', compact('testimonials'));
     }
 }

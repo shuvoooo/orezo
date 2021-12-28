@@ -1,9 +1,13 @@
 <?php
 
 use App\Http\Controllers\Admin\AdminDashboardController;
+use App\Http\Controllers\Admin\BrandController;
 use App\Http\Controllers\Admin\ClientListController;
+use App\Http\Controllers\Admin\FaqController;
 use App\Http\Controllers\Admin\InvoiceController;
 use App\Http\Controllers\Admin\ServiceController;
+use App\Http\Controllers\Admin\TeamController;
+use App\Http\Controllers\Admin\TestimonialController;
 use App\Http\Controllers\AssetController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DocumentController;
@@ -104,4 +108,8 @@ Route::group(['middleware' => ['auth', AdminMiddleware::class], 'prefix' => 'adm
     Route::get('invoice', [InvoiceController::class, 'invoice'])->name('invoice');
 
     Route::resource('service', ServiceController::class);
+    Route::resource('brand', BrandController::class);
+    Route::resource('testimonial', TestimonialController::class);
+    Route::resource('team', TeamController::class);
+    Route::resource('faq', FaqController::class);
 });

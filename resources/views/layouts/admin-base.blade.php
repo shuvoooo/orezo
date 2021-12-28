@@ -63,37 +63,37 @@
     <div class="main-container" id="app">
         <div class="container-fluid">
 
-            @if(auth()->user()->role == 'user')
-                <!-- BEGIN PAGE HEADER-->
-                    <ul class="breadcrumb">
+        @if(auth()->user()->role == 'user')
+            <!-- BEGIN PAGE HEADER-->
+                <ul class="breadcrumb">
+                    <li>
+                        <a href="" target="_blank">Home</a>
+                        <span class="divider"> / </span>
+                    </li>
+
+                    <li>
+                        <a href="" target="_blank">&nbsp;User</a>
+                        <span class="divider"> / </span>
+                    </li>
+
+                    @for($i = 2; $i <= count(Request::segments()); $i++)
                         <li>
-                            <a href="" target="_blank">Home</a>
+                            <a class="text-capitalize"
+                               href="{{ URL::to( implode( '/', array_slice(Request::segments(), 0 ,$i, true)))}}">
+                                &nbsp;{{Request::segment($i)}}</a>
                             <span class="divider"> / </span>
                         </li>
+                    @endfor
 
-                        <li>
-                            <a href="" target="_blank">&nbsp;User</a>
-                            <span class="divider"> / </span>
+                    <li class="ml-auto"></li>
+                    @foreach(range(date('Y')+1, date('Y')-1) as $year)
+                        <li class="ml-3 pl-3 border-left">
+                            <a href="{{route_with_year('dashboard',['year'=>$year])}}"
+                               class="@if(request()->route('year') == $year) font-weight-bold text-success @endif ">{{$year}}</a>
                         </li>
+                    @endforeach
 
-                        @for($i = 2; $i <= count(Request::segments()); $i++)
-                            <li>
-                                <a class="text-capitalize"
-                                   href="{{ URL::to( implode( '/', array_slice(Request::segments(), 0 ,$i, true)))}}">
-                                    &nbsp;{{Request::segment($i)}}</a>
-                                <span class="divider"> / </span>
-                            </li>
-                        @endfor
-
-                        <li class="ml-auto"></li>
-                        @foreach(range(date('Y')+1, date('Y')-1) as $year)
-                            <li class="ml-3 pl-3 border-left">
-                                <a href="{{route_with_year('dashboard',['year'=>$year])}}"
-                                   class="@if(request()->route('year') == $year) font-weight-bold text-success @endif ">{{$year}}</a>
-                            </li>
-                        @endforeach
-
-                    </ul>
+                </ul>
             @endif
 
 
@@ -147,6 +147,12 @@
             else
                 $(".sidebar-scroll").scrollTo("+=" + Math.abs(diff), 500);
         });
+
+        for (const sel in $('select')) {
+            if ($('select')[sel].dataset.old) {
+                $('select')[sel].value = $('select')[sel].dataset.old;
+            }
+        }
     });
 </script>
 
