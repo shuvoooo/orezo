@@ -5341,7 +5341,7 @@ window.axios.defaults.headers.common = {
   'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
   'Accept': 'application/json'
 };
-window.axios.defaults.baseURL = "http://127.0.0.1:8001";
+window.axios.defaults.baseURL = "http://127.0.0.1:8000";
 window.Year = document.querySelector('meta[name="year"]').getAttribute('content');
 
 var files = __webpack_require__("./resources/js sync recursive \\.vue$/");

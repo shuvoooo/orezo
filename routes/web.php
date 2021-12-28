@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\AdminDashboardController;
 use App\Http\Controllers\Admin\ClientListController;
 use App\Http\Controllers\Admin\InvoiceController;
+use App\Http\Controllers\Admin\ServiceController;
 use App\Http\Controllers\AssetController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DocumentController;
@@ -24,7 +25,7 @@ use Illuminate\Support\Facades\Route;
 Route::get("/", [HomeController::class, "index"])->name("home");
 Route::get("/about_us", [HomeController::class, "about"])->name('about');
 Route::get("/contact_us", [HomeController::class, "contact"])->name('contact');
-Route::get("/services", [HomeController::class, "services"])->name('services');
+Route::get("service", [HomeController::class, "services"])->name('services');
 Route::get("/faq", [HomeController::class, "faq"])->name('faq');
 Route::get("/tips", [HomeController::class, "tips"])->name('tips');
 
@@ -101,4 +102,6 @@ Route::group(['middleware' => ['auth', AdminMiddleware::class], 'prefix' => 'adm
     Route::get('client-details', [ClientListController::class, 'client_details'])->name('client_details');
     Route::get('client-list', [ClientListController::class, 'client_list'])->name('client_list');
     Route::get('invoice', [InvoiceController::class, 'invoice'])->name('invoice');
+
+    Route::resource('service', ServiceController::class);
 });

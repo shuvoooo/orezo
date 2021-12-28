@@ -3,6 +3,7 @@
 namespace App\View\Components;
 
 use Illuminate\View\Component;
+use App\Models\Service as ServiceModel;
 
 class Service extends Component
 {
@@ -23,6 +24,7 @@ class Service extends Component
      */
     public function render()
     {
-        return view('components.service');
+        $services = ServiceModel::all();
+        return view('components.service', compact('services'));
     }
 }

@@ -4,7 +4,7 @@
 <div class="footer-middle pt-95" style="background-image:url({{asset('assets/images/call-bg.png')}})">
     <div class="container">
         <div class="row">
-            <div class="col-lg-3 col-md-6 col-sm-12">
+            <div class="col-lg-4 col-md-6 col-sm-12">
                 <div class="widget widgets-company-info">
                     <div class="footer-bottom-logo pb-40">
                         <img src="{{asset('assets/images/logo.png')}}" alt=""/>
@@ -27,7 +27,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-lg-3 col-md-6 col-sm-12">
+            <div class="col-lg-4 col-md-6 col-sm-12">
                 <div class="widget widget-nav-menu">
                     <h4 class="widget-title pb-4">Our Services</h4>
                     <div class="menu-quick-link-container ml-4">
@@ -42,7 +42,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-lg-3 col-md-6 col-sm-12">
+            <div class="col-lg-4 col-md-6 col-sm-12">
                 <div class="widget widgets-company-info">
                     <h3 class="widget-title pb-4">Company Address</h3>
                     <div class="company-info-desc">
@@ -61,44 +61,11 @@
 
                 </div>
             </div>
-            <div class="col-lg-3 col-md-6 col-sm-12">
-                <div id="em-recent-post-widget">
-                    <div class="single-widget-item">
-                        <h4 class="widget-title pb-3">Popular Post</h4>
-                        <div class="recent-post-item active pb-3">
-                            <div class="recent-post-image mr-3">
-                                <a href="#">
-                                    <img width="80" height="80" src="{{asset('assets/images/recent1.jpg')}}" alt="">
-                                </a>
-                            </div>
-                            <div class="recent-post-text">
-                                <h6><a href="#">
-                                        Tiktok Illegally collecting data sharing
-                                    </a>
-                                </h6>
-                                <span class="rcomment">December 12, 2020</span>
-                            </div>
-                        </div>
-                        <div class="recent-post-item pt-1">
-                            <div class="recent-post-image mr-3">
-                                <a href="#">
-                                    <img width="80" height="80" src="{{asset('assets/images/recent3.jpg')}}" alt="">
-                                </a>
-                            </div>
-                            <div class="recent-post-text">
-                                <h6><a href="#">
-                                        How can use our latest news by
-                                    </a>
-                                </h6>
-                                <span class="rcomment">December 15, 2020</span>
-                            </div>
-                        </div>
 
-                    </div>
-                </div>
-            </div>
 
         </div>
+
+
         <div class="row footer-bottom mt-70 pt-3 pb-1">
             <div class="col-lg-6 col-md-6">
                 <div class="footer-bottom-content">
