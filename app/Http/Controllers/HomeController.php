@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Faq;
+
 class HomeController extends Controller
 {
     public function index()
@@ -29,7 +31,8 @@ class HomeController extends Controller
 
     public function faq()
     {
-        return view('faq');
+        $faqs= Faq::where('is_active',1)->get();
+        return view('faq',compact('faqs'));
     }
 
     public function tips()

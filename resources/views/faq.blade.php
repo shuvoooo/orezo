@@ -52,96 +52,22 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-lg-6 col-md-6">
-                    <div class="single_faq mb-4">
-                        <div class="single_faq_content">
-                            <div class="single_faq_title pb-2">
-                                <h4>How can I pay for this?</h4>
-                            </div>
-                            <div class="single_faq_text">
-                                <p>Intrinsicly implement high standards in strategic theme areas via inexpensive
-                                    solutions. Assertively conceptualize prospective intuitive services rather than
-                                    process-centric.</p>
-                            </div>
+                @foreach($faqs as $faq)
+                    <div class="col-lg-6 col-md-6">
+                        <div class="single_faq mb-4">
+                            <div class="single_faq_content">
+                                <div class="single_faq_title pb-2">
+                                    <h4>{{$faq->question}}</h4>
+                                </div>
+                                <div class="single_faq_text">
+                                    <p>{{$faq->answer}}</p>
+                                </div>
 
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-lg-6 col-md-6">
-                    <div class="single_faq mb-4">
-                        <div class="single_faq_content">
-                            <div class="single_faq_title pb-2">
-                                <h4>Is it possible to pay yearly?</h4>
-                            </div>
-                            <div class="single_faq_text">
-                                <p>Assertively implement high standards in strategic theme areas via inexpensive
-                                    solutions. Assertively conceptualize prospective intuitive services rather than
-                                    relationships.</p>
-                            </div>
+                @endforeach
 
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-6 col-md-6">
-                    <div class="single_faq mb-4">
-                        <div class="single_faq_content">
-                            <div class="single_faq_title pb-2">
-                                <h4>Why there no limits the number of messages?</h4>
-                            </div>
-                            <div class="single_faq_text">
-                                <p>Intrinsicly implement high standards in strategic theme areas via inexpensive
-                                    solutions. Assertively conceptualize prospective intuitive services rather than
-                                    process-centric.</p>
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-6 col-md-6">
-                    <div class="single_faq mb-4">
-                        <div class="single_faq_content">
-                            <div class="single_faq_title pb-2">
-                                <h4>Do you offer discounts on multiple items?</h4>
-                            </div>
-                            <div class="single_faq_text">
-                                <p>Dramatically implement high standards in strategic theme areas via inexpensive
-                                    solutions. Assertively conceptualize prospective intuitive services rather than
-                                    process-centric.</p>
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-6 col-md-6">
-                    <div class="single_faq mb-4">
-                        <div class="single_faq_content">
-                            <div class="single_faq_title pb-2">
-                                <h4>Is VAT included in plan prices?</h4>
-                            </div>
-                            <div class="single_faq_text">
-                                <p>Intrinsicly implement high standards in strategic theme areas via inexpensive
-                                    solutions. Assertively conceptualize prospective intuitive services rather than
-                                    process-centric.</p>
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-6 col-md-6">
-                    <div class="single_faq mb-4">
-                        <div class="single_faq_content">
-                            <div class="single_faq_title pb-2">
-                                <h4>Will I pay more for some features?</h4>
-                            </div>
-                            <div class="single_faq_text">
-                                <p>Company implement high standards in strategic theme areas via inexpensive solutions.
-                                    Assertively conceptualize prospective intuitive services rather than
-                                    process-centric.</p>
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
 
             </div>
         </div>

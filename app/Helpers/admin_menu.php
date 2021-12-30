@@ -20,6 +20,13 @@ return [
         'icon' => 'fa fa-dashboard',
         'type' => 'submenu',
         'submenu' => [
+            'general_config' => [
+                'text' => 'General',
+                'url' => route('admin.general-config.index'),
+                'icon' => 'fa fa-dashboard',
+                'type' => 'single',
+                'submenu' => []
+            ],
             'service' => [
                 'text' => 'Service',
                 'url' => route('admin.service.index'),

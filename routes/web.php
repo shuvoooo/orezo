@@ -13,6 +13,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DocumentController;
 use App\Http\Controllers\EmployerController;
 use App\Http\Controllers\ExpenseController;
+use App\Http\Controllers\GeneralConfigController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\MiscellaneousController;
 use App\Http\Controllers\MyStatusController;
@@ -112,4 +113,6 @@ Route::group(['middleware' => ['auth', AdminMiddleware::class], 'prefix' => 'adm
     Route::resource('testimonial', TestimonialController::class);
     Route::resource('team', TeamController::class);
     Route::resource('faq', FaqController::class);
+
+    Route::resource('general-config', GeneralConfigController::class);
 });

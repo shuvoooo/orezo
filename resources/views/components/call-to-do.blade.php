@@ -7,7 +7,7 @@
             <div class="col-lg-12">
                 <div class="section_title white text_center mb-60 mt-3">
                     <div class="phone_number mb-3">
-                        <h5>+880 013 143 206</h5>
+                        <h5>{{general_config('help center')}}</h5>
                     </div>
                     <div class="section_main_title">
                         <h1>To make requests for the</h1>

@@ -3,7 +3,7 @@
 <!--==================================================-->
 <div class="header_top_menu bg_color">
     <marquee class="p-0 m-0 text-white ">
-        Hello World
+        {{general_config('notification')}}
     </marquee>
 </div>
 <!--==================================================-->
