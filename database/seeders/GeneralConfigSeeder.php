@@ -15,12 +15,14 @@ class GeneralConfigSeeder extends Seeder
     public function run()
     {
         GeneralConfig::create([
+            'Name' => 'Notification',
             'key' => 'notification',
             'value' => 'Hello This is a notification',
         ]);
 
         GeneralConfig::create([
-            'key' => 'help center',
+            'Name' => 'Help Center',
+            'key' => 'help_center',
             'value' => 'success',
         ]);
     }

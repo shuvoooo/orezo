@@ -15,6 +15,7 @@ class CreateGeneralConfigsTable extends Migration
     {
         Schema::create('general_configs', function (Blueprint $table) {
             $table->id();
+            $table->string('Name');
             $table->string('key')->unique();
             $table->string('value');
         });
