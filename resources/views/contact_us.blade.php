@@ -135,7 +135,7 @@
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="form_box mb-30">
-                                        <input type="text" name="web" placeholder="Website">
+                                        <input type="text" name="subject" placeholder="Subject">
                                     </div>
                                 </div>
 
@@ -181,6 +181,8 @@
 
                 // Serialize the form data.
                 var formData = $(form).serialize();
+
+                alert(formData);
 
                 // Submit the form using AJAX.
                 $.ajax({
