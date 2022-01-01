@@ -15,6 +15,7 @@ use App\Http\Controllers\EmployerController;
 use App\Http\Controllers\ExpenseController;
 use App\Http\Controllers\GeneralConfigController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\HomePageController;
 use App\Http\Controllers\MiscellaneousController;
 use App\Http\Controllers\MyStatusController;
 use App\Http\Controllers\PersonalInformationController;
@@ -115,4 +116,7 @@ Route::group(['middleware' => ['auth', AdminMiddleware::class], 'prefix' => 'adm
     Route::resource('faq', FaqController::class);
 
     Route::resource('general-config', GeneralConfigController::class);
+
+    Route::get("home-page", [HomePageController::class, 'edit'])->name('home_page.edit');
+    Route::post("home-page", [HomePageController::class, 'update'])->name('home_page.update');
 });

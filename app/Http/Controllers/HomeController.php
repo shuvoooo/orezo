@@ -3,12 +3,15 @@
 namespace App\Http\Controllers;
 
 use App\Models\Faq;
+use App\Models\HomePage;
 
 class HomeController extends Controller
 {
     public function index()
     {
-        return view('home');
+        $homePage = HomePage::first();
+
+        return view('home', compact('homePage'));
     }
 
 
@@ -31,8 +34,8 @@ class HomeController extends Controller
 
     public function faq()
     {
-        $faqs= Faq::where('is_active',1)->get();
-        return view('faq',compact('faqs'));
+        $faqs = Faq::where('is_active', 1)->get();
+        return view('faq', compact('faqs'));
     }
 
     public function tips()

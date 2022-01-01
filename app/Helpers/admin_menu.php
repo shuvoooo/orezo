@@ -23,9 +23,6 @@ return [
             'general_config' => [
                 'text' => 'General',
                 'url' => route('admin.general-config.index'),
-                'icon' => 'fa fa-dashboard',
-                'type' => 'single',
-                'submenu' => []
             ],
             'service' => [
                 'text' => 'Service',
@@ -49,6 +46,19 @@ return [
             ]
         ]
     ],
+
+    'pages' => [
+        'text' => 'Pages',
+        'url' => null,
+        'icon' => 'fa fa-pages',
+        'type' => 'submenu',
+        'submenu' => [
+            'home_page' => [
+                'text' => 'General',
+                'url' => route('admin.home_page.edit'),
+            ],
+        ]
+    ]
 
 ];
 
