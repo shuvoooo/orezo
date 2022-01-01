@@ -1,9 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Controller;
 use App\Models\HomePage;
 use Illuminate\Http\Request;
+use function redirect;
+use function view;
 
 class HomePageController extends Controller
 {

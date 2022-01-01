@@ -56,7 +56,7 @@
                             <h4>Enter Your Address</h4>
                         </div>
                         <div class="contact_address_text">
-                            <p>54/1 New sorini Asut, Melbord Austria.</p>
+                            <p>{{general_config('your_address')}}</p>
                         </div>
                     </div>
                 </div>
@@ -69,7 +69,7 @@
                             <h4>Opening Hours</h4>
                         </div>
                         <div class="contact_address_text">
-                            <p>Mon - Thu: 10:00am - 05:00pm</p>
+                            <p>{{general_config('opening_hours')}}</p>
                         </div>
                     </div>
                 </div>
@@ -82,7 +82,7 @@
                             <h4>Contact Directly</h4>
                         </div>
                         <div class="contact_address_text">
-                            <p>demo@example.com, 54786547521</p>
+                            <p>{{general_config('contact_directly')}}</p>
                         </div>
                     </div>
                 </div>
@@ -116,7 +116,7 @@
             <div class="row">
                 <div class="col-xl-12">
                     <div class="contact_from">
-                        <form id="contact_form" action="mail.php" method="POST">
+                        <form id="contact_form" action="{{route('contact_us_mail')}}" method="POST">
                             <div class="row">
                                 <div class="col-lg-6">
                                     <div class="form_box mb-30">
@@ -161,3 +161,61 @@
     <!--==================================================-->
     <x-brand></x-brand>
 @endsection
+
+
+@push('scripts')
+
+    <script>
+        $(function () {
+
+            // Get the form.
+            var form = $('#contact_form');
+
+            // Get the messages div.
+            var formMessages = $('.form-message');
+
+            // Set up an event listener for the contact form.
+            $(form).submit(function (e) {
+                // Stop the browser from submitting the form.
+                e.preventDefault();
+
+                // Serialize the form data.
+                var formData = $(form).serialize();
+
+                // Submit the form using AJAX.
+                $.ajax({
+                    type: 'POST',
+                    url: $(form).attr('action'),
+                    data: formData,
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    },
+                })
+                    .done(function (response) {
+                        // Make sure that the formMessages div has the 'success' class.
+                        $(formMessages).removeClass('error');
+                        $(formMessages).addClass('success');
+
+                        // Set the message text.
+                        $(formMessages).text(response);
+
+                        // Clear the form.
+                        $('#contact-form input,#contact-form textarea').val('');
+                    })
+                    .fail(function (data) {
+                        // Make sure that the formMessages div has the 'error' class.
+                        $(formMessages).removeClass('success');
+                        $(formMessages).addClass('error');
+
+                        // Set the message text.
+                        if (data.responseText !== '') {
+                            $(formMessages).text(data.responseText);
+                        } else {
+                            $(formMessages).text('Oops! An error occured and your message could not be sent.');
+                        }
+                    });
+            });
+
+        });
+    </script>
+@endpush

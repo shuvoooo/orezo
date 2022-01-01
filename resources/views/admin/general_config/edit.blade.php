@@ -18,10 +18,18 @@
                         @method('PUT')
                         <div class="form-group">
                             <label for="name" class="text-dark">Name</label>
+                            <input type="text" class="form-control" id="name" name="name"
+                                   value="{{$general_config->name}}">
+
+                        </div>
+
+                        <div class="form-group">
+                            <label for="name" class="text-dark">Key</label>
                             <input type="text" class="form-control" id="name" name="key" disabled
                                    value="{{$general_config->key}}">
 
                         </div>
+
 
                         <div class="form-group">
                             <label for="value"  class="text-dark">Value</label>

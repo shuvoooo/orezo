@@ -21,11 +21,13 @@ class GeneralConfigController extends Controller
     public function store(Request $request)
     {
         $request->validate([
+            'name' => 'required',
             'key' => 'required',
             'value' => 'required',
         ]);
 
         $general_config = new GeneralConfig;
+        $general_config->name = $request->name;
         $general_config->key = $request->key;
         $general_config->value = $request->value;
         $general_config->save();
@@ -38,14 +40,18 @@ class GeneralConfigController extends Controller
         return view('admin.general_config.edit', compact('general_config'));
     }
 
-    public function show(){
+    public function show()
+    {
 
     }
+
     public function update(Request $request, GeneralConfig $general_config)
     {
         $request->validate([
+            'name' => 'required',
             'value' => 'required',
         ]);
+        $general_config->name = $request->name;
         $general_config->value = $request->value;
         $general_config->save();
 

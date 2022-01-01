@@ -5,7 +5,7 @@
 @section('content')
 
     <div class="row">
-        <div class="col-md-6">
+        <div class="col-md-10">
             <div class="card">
                 <div class="card-header">
                     <h4 class="card-title">General Configuration</h4>
@@ -18,6 +18,9 @@
                                 Name
                             </th>
                             <th>
+                                Key
+                            </th>
+                            <th>
                                 Value
                             </th>
                             <th>
@@ -27,7 +30,11 @@
                             <tbody>
                             @foreach($configs as $config)
                                 <tr>
-                                    <td class="text-capitalize">
+                                    <td >
+                                        {{ $config->name }}
+                                    </td>
+
+                                    <td class="user-select-all">
                                         {{ $config->key }}
                                     </td>
                                     <td>

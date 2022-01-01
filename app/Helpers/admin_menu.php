@@ -57,6 +57,10 @@ return [
                 'text' => 'General',
                 'url' => route('admin.home_page.edit'),
             ],
+            'about_page' => [
+                'text' => 'About',
+                'url' => route('admin.about_page.edit'),
+            ],
         ]
     ]
 

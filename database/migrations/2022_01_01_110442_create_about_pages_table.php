@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateGeneralConfigsTable extends Migration
+class CreateAboutPagesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,14 @@ class CreateGeneralConfigsTable extends Migration
      */
     public function up()
     {
-        Schema::create('general_configs', function (Blueprint $table) {
+        Schema::create('about_pages', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('key')->unique();
-            $table->string('value');
+            $table->string('image');
+            $table->string('note');
+            $table->string('heading');
+            $table->string('subheading');
+            $table->longText('description');
+            $table->timestamps();
         });
     }
 
@@ -28,6 +31,6 @@ class CreateGeneralConfigsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('general_configs');
+        Schema::dropIfExists('about_pages');
     }
 }

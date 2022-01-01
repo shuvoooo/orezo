@@ -13,12 +13,12 @@
                 <div class="col-lg-12">
                     <div class="breatcome_title">
                         <div class="breatcome_title_inner pb-2">
-                            <h2>Service Two</h2>
+                            <h2>Our Service</h2>
                         </div>
                         <div class="breatcome_content">
                             <ul>
                                 <li><a href="{{route('home')}}">Home</a> <i class="fa fa-angle-right"></i> <a href="#">
-                                        Pages</a> <i class="fa fa-angle-right"></i> <span>Service Two</span></li>
+                                        Pages</a> <i class="fa fa-angle-right"></i> <span>Our Service</span></li>
                             </ul>
                         </div>
                     </div>

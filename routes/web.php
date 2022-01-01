@@ -1,21 +1,23 @@
 <?php
 
+use App\Http\Controllers\Admin\AboutPageController;
 use App\Http\Controllers\Admin\AdminDashboardController;
 use App\Http\Controllers\Admin\BrandController;
 use App\Http\Controllers\Admin\ClientListController;
 use App\Http\Controllers\Admin\FaqController;
+use App\Http\Controllers\Admin\HomePageController;
 use App\Http\Controllers\Admin\InvoiceController;
 use App\Http\Controllers\Admin\ServiceController;
 use App\Http\Controllers\Admin\TeamController;
 use App\Http\Controllers\Admin\TestimonialController;
 use App\Http\Controllers\AssetController;
+use App\Http\Controllers\ContactRequestController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DocumentController;
 use App\Http\Controllers\EmployerController;
 use App\Http\Controllers\ExpenseController;
 use App\Http\Controllers\GeneralConfigController;
 use App\Http\Controllers\HomeController;
-use App\Http\Controllers\HomePageController;
 use App\Http\Controllers\MiscellaneousController;
 use App\Http\Controllers\MyStatusController;
 use App\Http\Controllers\PersonalInformationController;
@@ -24,7 +26,6 @@ use App\Http\Controllers\ResidencyController;
 use App\Http\Middleware\AdminMiddleware;
 use App\Http\Middleware\UserMiddleware;
 use App\Http\Middleware\YearMiddleware;
-use App\Models\Invoice;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -34,6 +35,7 @@ Route::get("/contact_us", [HomeController::class, "contact"])->name('contact');
 Route::get("service", [HomeController::class, "services"])->name('services');
 Route::get("/faq", [HomeController::class, "faq"])->name('faq');
 Route::get("/tips", [HomeController::class, "tips"])->name('tips');
+Route::post("/contact_us_mail", [ContactRequestController::class, "store"])->name('contact_us_mail');
 
 
 Auth::routes();
@@ -119,4 +121,8 @@ Route::group(['middleware' => ['auth', AdminMiddleware::class], 'prefix' => 'adm
 
     Route::get("home-page", [HomePageController::class, 'edit'])->name('home_page.edit');
     Route::post("home-page", [HomePageController::class, 'update'])->name('home_page.update');
+
+
+    Route::get("about-page", [AboutPageController::class, 'edit'])->name('about_page.edit');
+    Route::post("about-page", [AboutPageController::class, 'update'])->name('about_page.update');
 });
