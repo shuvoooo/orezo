@@ -2,7 +2,7 @@
 return [
     'client_list' => [
         'text' => 'Client List',
-        'url' => route('admin.client_list'),
+        'url' => route('admin.client_details'),
         'icon' => 'fa fa-dashboard',
         'type' => 'single',
         'submenu' => []

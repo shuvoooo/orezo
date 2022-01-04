@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use App\Models\AboutPage;
 use Illuminate\Database\Seeder;
+use File;
 
 class AboutPageSeeder extends Seeder
 {
@@ -14,6 +15,8 @@ class AboutPageSeeder extends Seeder
      */
     public function run()
     {
+        File::copy(base_path('public/assets/images/about-2.jpg'), base_path('storage/app/public/about/about.jpg'));
+
         AboutPage::create([
             'image' => 'public/about/about.jpg',
             'note' => '30 YEARS OF EXPERIENCE',

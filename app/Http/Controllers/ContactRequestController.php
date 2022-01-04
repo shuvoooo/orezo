@@ -9,14 +9,18 @@ class ContactRequestController extends Controller
 {
     public function store(Request $request)
     {
-        ContactRequest::create([
-            'name' => $request->name,
-            'email' => $request->email,
-            'phone' => $request->phone,
-            'subject' => $request->subject,
-            'message' => $request->message,
-        ]);
+        try {
+            ContactRequest::create([
+                'name' => $request->name,
+                'email' => $request->email,
+                'phone' => $request->phone,
+                'subject' => $request->subject,
+                'message' => $request->message,
+            ]);
 
-        return "Thank You! Your message has been sent.";
+            return "Thank You! Your message has been sent.";
+        } catch (\Exception $e) {
+            return $e->getMessage();
+        }
     }
 }

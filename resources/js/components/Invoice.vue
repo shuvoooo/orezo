@@ -16,43 +16,96 @@
                                 <vue-select class="vue-select3" name="select3"
                                             :options="options" v-model="selectedClient">
                                 </vue-select>
+
+
                             </div>
                         </div>
 
                         <div class="col-md-3">
                             <div class="form-group">
                                 <label for="email" class="text-dark">Send to (Email)</label>
-                                <input name="email" type="email" class="form-control" id="email" placeholder="Email">
+                                <input v-model="email" name="email" type="email" class="form-control" id="email"
+                                       placeholder="Email">
                             </div>
                         </div>
                         <div class="col-md-3">
                             <div class="form-group">
                                 <label for="title" class="text-dark">Invoice Title</label>
-                                <input name="title" type="text" class="form-control" id="title"
+                                <input name="title" v-model="title" type="text" class="form-control" id="title"
                                        placeholder="Invoice Title">
                             </div>
                         </div>
                         <div class="col-md-3">
                             <div class="form-group">
                                 <label for="comment" class="text-dark">Comments</label>
-                                <input name="comment" type="text" class="form-control" id="comment"
+                                <input name="comment" v-model="comment" type="text" class="form-control" id="comment"
                                        placeholder="Comments">
                             </div>
                         </div>
 
                     </div>
 
-                    <div class="row">
-                        <div class="col-md-5"></div>
-                        <div class="col-md-5 col-9"></div>
-                        <div class="col-md-2 col-3"></div>
+                   <h5 class="py-3">Items</h5>
+
+                    <div class="row border-bottom mb-3" v-for="(n,i) in invoiceValue">
+                        <div class="col-md-5">
+                            <div class="form-group">
+                                <input :id="'item'+i" v-model="n.title" type="text" class="form-control"
+                                       placeholder="Item"/>
+                            </div>
+                        </div>
+
+                        <div class="col-md-5 col-9">
+                            <div class="form-group">
+                                <input :id="'price'+i" v-model="n.price" type="text" class="form-control"
+                                       placeholder="Price"/>
+                            </div>
+                        </div>
+                        <div class="col-md-2 col-3">
+                                <button class="btn btn-danger" @click="removeItem(i)">&times;</button>
+                        </div>
                     </div>
 
                     <div class="row">
-                        <div class="col-md-5"></div>
-                        <div class="col-md-5 col-9"></div>
-                        <div class="col-md-2 col-3"></div>
+                        <div class="col-md-5">
+                            <div class="form-group">
+                                <input id="tax" type="text" class="form-control" disabled value="Tax" placeholder="Item"/>
+                            </div>
+                        </div>
+
+                        <div class="col-md-5 col-9">
+                            <div class="form-group">
+                                <input id="taxV" type="text" class="form-control" disabled value="0" placeholder="Item"/>
+                                <span class="help-block">Tax will be auto calculated 16% once saved</span>
+                            </div>
+                        </div>
+
                     </div>
+
+                    <div class="row">
+                        <div class="col-md-5">
+                            <div class="form-group">
+                                <input id="dis" type="text" class="form-control" disabled value="Discount" placeholder="Item"/>
+                            </div>
+                        </div>
+
+                        <div class="col-md-5 col-9">
+                            <div class="form-group">
+                                <input id="dics" type="text" class="form-control"  value="0" placeholder="Item"/>
+
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="row border-info border-top pt-3 mt-2">
+                        <div class="col-md-12 d-flex justify-content-center">
+                            <button class="btn btn-info mx-2" @click="addItem">+ Add More Item</button>
+                            <button class="btn btn-primary mx-2" @click="addItem">Save</button>
+                            <button class="btn btn-success mx-2" @click="addItem">Save & Email</button>
+                        </div>
+                    </div>
+
                 </div>
             </div>
         </div>
@@ -65,6 +118,21 @@
 import vSelect from 'vue-select'
 import 'vue-select/dist/vue-select.css';
 
+const invoiceTopic = [
+    'Federal Filing',
+    'State Filing',
+    'City Filing',
+    'County Filing',
+    'Credit',
+    '2106 Planning',
+    'Schedule A',
+    'Sch E Planning',
+    'Sch C Planning',
+    'Stock Transaction',
+    'ITIN Application',
+    'Postal Charges',
+];
+
 export default {
     components: {
         "vue-select": vSelect
@@ -73,7 +141,61 @@ export default {
         return {
             clientData: [],
             options: [],
-            selectedClient: null,
+            selectedClient: {},
+            email: '',
+            title: '',
+            comment: '',
+            user_id: '',
+            invoiceValue: [
+                {
+                    title: invoiceTopic[0],
+                    price:0,
+                },
+                {
+                    title: invoiceTopic[1],
+                    price:0,
+                },
+                {
+                    title: invoiceTopic[2],
+                    price:0,
+                },
+                {
+                    title: invoiceTopic[3],
+                    price:0,
+                },
+                {
+                    title: invoiceTopic[4],
+                    price:0,
+                },
+                {
+                    title: invoiceTopic[5],
+                    price:0,
+                },
+                {
+                    title: invoiceTopic[6],
+                    price:0,
+                },
+                {
+                    title: invoiceTopic[7],
+                    price:0,
+                },
+                {
+                    title: invoiceTopic[8],
+                    price:0,
+                },
+                {
+                    title: invoiceTopic[9],
+                    price:0,
+                },
+                {
+                    title: invoiceTopic[10],
+                    price:0,
+                },
+                {
+                    title: invoiceTopic[11],
+                    price:0,
+                },
+            ]
         }
     },
 
@@ -87,16 +209,33 @@ export default {
                 }
             });
         });
+
     },
 
     methods: {
-        onChange(value) {
-            this.clientData.client_id = value;
-        },
+
         onSubmit() {
             axios.post('/admin/invoice-create', this.clientData).then(response => {
 
             });
+        },
+
+        removeItem(index) {
+            this.invoiceValue.splice(index, 1);
+        },
+
+        addItem() {
+            this.invoiceValue.push({
+                title: '',
+                price: 0,
+            });
+        },
+    },
+
+    watch: {
+        selectedClient(value) {
+            this.user_id = value.value;
+            this.email = this.clientData.find(v => v.id === value.value).email;
         }
     }
 }

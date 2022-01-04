@@ -32,9 +32,10 @@ use Illuminate\Support\Facades\Route;
 Route::get("/", [HomeController::class, "index"])->name("home");
 Route::get("/about_us", [HomeController::class, "about"])->name('about');
 Route::get("/contact_us", [HomeController::class, "contact"])->name('contact');
-Route::get("service", [HomeController::class, "services"])->name('services');
+Route::get("/service", [HomeController::class, "services"])->name('services');
 Route::get("/faq", [HomeController::class, "faq"])->name('faq');
 Route::get("/tips", [HomeController::class, "tips"])->name('tips');
+
 Route::post("/contact_us_mail", [ContactRequestController::class, "store"])->name('contact_us_mail');
 
 
@@ -121,7 +122,6 @@ Route::group(['middleware' => ['auth', AdminMiddleware::class], 'prefix' => 'adm
 
     Route::get("home-page", [HomePageController::class, 'edit'])->name('home_page.edit');
     Route::post("home-page", [HomePageController::class, 'update'])->name('home_page.update');
-
 
     Route::get("about-page", [AboutPageController::class, 'edit'])->name('about_page.edit');
     Route::post("about-page", [AboutPageController::class, 'update'])->name('about_page.update');
