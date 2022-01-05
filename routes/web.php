@@ -110,7 +110,13 @@ Route::group(['middleware' => ['auth', AdminMiddleware::class], 'prefix' => 'adm
 
     Route::get('client-details', [ClientListController::class, 'client_details'])->name('client_details');
     Route::get('client-list', [ClientListController::class, 'client_list'])->name('client_list');
-    Route::get('invoice', [InvoiceController::class, 'invoice'])->name('invoice');
+
+    Route::get('invoice', [InvoiceController::class, 'index'])->name('invoice.index');
+    Route::get('invoice/create', [InvoiceController::class, 'create'])->name('invoice.create');
+    Route::post('invoice', [InvoiceController::class, 'store'])->name('invoice.store');
+    Route::get('invoice/{invoice}/edit', [InvoiceController::class, 'edit'])->name('invoice.edit');
+    Route::post('invoice/{invoice}/edit', [InvoiceController::class, 'update'])->name('invoice.update');
+
 
     Route::resource('service', ServiceController::class);
     Route::resource('brand', BrandController::class);

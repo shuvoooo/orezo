@@ -1,6 +1,6 @@
 @extends('layouts.admin-base')
 
-@section('title', 'Invoice')
+@section('title', 'Edit Invoice')
 
 
 @section('css')
@@ -14,7 +14,8 @@
 @endpush
 
 @section('content')
-   <invoice></invoice>
+    <invoice-edit :user='@json($user)' :invoice='@json($invoice)'
+                  :last-invoice-items='@json($invoiceItems)'></invoice-edit>
 @endsection
 
 

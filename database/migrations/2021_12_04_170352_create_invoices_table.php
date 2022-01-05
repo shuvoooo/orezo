@@ -21,7 +21,7 @@ class CreateInvoicesTable extends Migration
             $table->string('description')->nullable();
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->foreignId('added_by')->constrained('users')->onDelete('cascade');
-            $table->string('invoice_id')->nullable();
+            $table->string('user_email')->nullable();
             $table->boolean('payment_status')->default(false);
             $table->timestampTz('payment_date')->default(DB::raw('CURRENT_TIMESTAMP on update CURRENT_TIMESTAMP'));
             $table->decimal('total_amount', 10, 2)->default(0.00);

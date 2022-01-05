@@ -4,7 +4,7 @@
             <div class="card">
 
                 <div class="card-header">
-                    <h5>Invoice</h5>
+                    <h5>Edit Invoice</h5>
                 </div>
 
 
@@ -13,11 +13,7 @@
                         <div class="col-md-3">
                             <div class="form-group">
                                 <label for="invoice_assign_to" class="text-dark">Invoice Assign To</label>
-                                <vue-select class="vue-select3" name="select3"
-                                            :options="options" v-model="selectedClient">
-                                </vue-select>
-
-
+                                <input class="form-control" :value="user.name" disabled>
                             </div>
                         </div>
 
@@ -98,7 +94,6 @@
 
                             </div>
                         </div>
-
                     </div>
 
                     <div class="row border-info border-top pt-3 mt-2">
@@ -108,7 +103,6 @@
                             <button class="btn btn-success mx-2" @click="onSubmit(1)">Save & Email</button>
                         </div>
                     </div>
-
                 </div>
             </div>
         </div>
@@ -118,117 +112,45 @@
 
 
 <script>
-import vSelect from 'vue-select'
 import 'vue-select/dist/vue-select.css';
 
-const invoiceTopic = [
-    'Federal Filing',
-    'State Filing',
-    'City Filing',
-    'County Filing',
-    'Credit',
-    '2106 Planning',
-    'Schedule A',
-    'Sch E Planning',
-    'Sch C Planning',
-    'Stock Transaction',
-    'ITIN Application',
-    'Postal Charges',
-];
-
 export default {
-    components: {
-        "vue-select": vSelect
-    },
+    props: ['invoice', 'lastInvoiceItems', 'user'],
     data() {
         return {
-            clientData: [],
-            options: [],
-            selectedClient: {},
             email: '',
             title: '',
             comment: '',
-            user_id: '',
-            invoiceItems: [
-                {
-                    title: invoiceTopic[0],
-                    price: 0,
-                },
-                {
-                    title: invoiceTopic[1],
-                    price: 0,
-                },
-                {
-                    title: invoiceTopic[2],
-                    price: 0,
-                },
-                {
-                    title: invoiceTopic[3],
-                    price: 0,
-                },
-                {
-                    title: invoiceTopic[4],
-                    price: 0,
-                },
-                {
-                    title: invoiceTopic[5],
-                    price: 0,
-                },
-                {
-                    title: invoiceTopic[6],
-                    price: 0,
-                },
-                {
-                    title: invoiceTopic[7],
-                    price: 0,
-                },
-                {
-                    title: invoiceTopic[8],
-                    price: 0,
-                },
-                {
-                    title: invoiceTopic[9],
-                    price: 0,
-                },
-                {
-                    title: invoiceTopic[10],
-                    price: 0,
-                },
-                {
-                    title: invoiceTopic[11],
-                    price: 0,
-                },
-            ]
+            invoiceItems: [],
         }
     },
-
-    mounted() {
-        axios.get('/admin/client-list').then(response => {
-            this.clientData = response.data;
-            this.options = response.data.map(item => {
-                return {
-                    label: item.name,
-                    value: item.id
-                }
-            });
+    created() {
+        this.email = this.invoice.user_email;
+        this.title = this.invoice.name;
+        this.comment = this.invoice.description;
+        this.invoiceItems = this.lastInvoiceItems.map(item => {
+            return {
+                id: item.id,
+                title: item.title,
+                price: item.price,
+            }
         });
-
     },
-
     methods: {
-
         onSubmit(withEmail) {
-            axios.post('/admin/invoice', {
+
+            let data = {
                 email: this.email,
                 title: this.title,
                 comment: this.comment,
-                user_id: this.user_id,
                 invoiceItems: this.invoiceItems,
-                send_email: withEmail
-            }).then(response => {
-                console.log(response);
-            }).catch(error => {
-                console.log(error);
+                withEmail: withEmail,
+            };
+
+            alert('/admin/invoice/' + this.invoice.id + '/edit');
+
+            axios.post('/admin/invoice/' + this.invoice.id + '/edit', data).then(response => {
+                alert(1);
             });
         },
 
@@ -238,17 +160,11 @@ export default {
 
         addItem() {
             this.invoiceItems.push({
+                id: null,
                 title: '',
                 price: 0,
             });
         },
     },
-
-    watch: {
-        selectedClient(value) {
-            this.user_id = value.value;
-            this.email = this.clientData.find(v => v.id === value.value).email;
-        }
-    }
 }
 </script>

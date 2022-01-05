@@ -9,7 +9,7 @@ return [
     ],
     'invoice' => [
         'text' => 'Invoice',
-        'url' => route('admin.invoice'),
+        'url' => route('admin.invoice.create'),
         'icon' => 'fa fa-dashboard',
         'type' => 'single',
         'submenu' => []
