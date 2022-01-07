@@ -147,10 +147,11 @@ export default {
                 withEmail: withEmail,
             };
 
-            alert('/admin/invoice/' + this.invoice.id + '/edit');
+
 
             axios.post('/admin/invoice/' + this.invoice.id + '/edit', data).then(response => {
-                alert(1);
+                alert(response.data.message);
+                location.href = response.data.redirect;
             });
         },
 

@@ -9,9 +9,8 @@ class Invoice extends Model
 {
     use HasFactory;
 
-    protected $table = 'invoices';
 
-    protected $guarded = ['id'];
+    protected $guarded = [];
 
     public static $tax_percent = 16;
     public static $tax_text = 'Tax';
@@ -31,7 +30,7 @@ class Invoice extends Model
         return $this->belongsTo(User::class, 'added_by');
     }
 
-    public function scopeGetTotal($query, $invoice_id, $totalOnly=true)
+    public function scopeGetTotal($query, $invoice_id, $totalOnly = true)
     {
         $total = 0;
         $tax = 0;
@@ -41,9 +40,9 @@ class Invoice extends Model
 
         $sum_items = [];
         $discount_items = [];
-        if( !empty($invoiceitem) ){
-            foreach($invoiceitem as $item){
-                if ( $item->title!=self::$tax_text) {
+        if (!empty($invoiceitem)) {
+            foreach ($invoiceitem as $item) {
+                if ($item->title != self::$tax_text) {
                     if ($item->title == 'Discount' || $item->title == 'discount') {
                         //$total = $total - $item->price;
                         $discount_items[] = $item->price;
@@ -57,14 +56,13 @@ class Invoice extends Model
 
         $total = array_sum($sum_items);
         $discount = array_sum($discount_items);
-        $tax = ($total * self::$tax_percent)/100;
+        $tax = ($total * self::$tax_percent) / 100;
         $sub_total = $total + $tax - $discount;
 
-        if($totalOnly){
+        if ($totalOnly) {
             return $sub_total;
-        }
-        else {
-            return ['total'=>$total,'tax'=>$tax,'discount'=>$discount,'sub_total'=>$sub_total];
+        } else {
+            return ['total' => $total, 'tax' => $tax, 'discount' => $discount, 'sub_total' => $sub_total];
         }
 
     }

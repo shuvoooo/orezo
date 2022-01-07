@@ -9,31 +9,91 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
+use Yajra\DataTables\Facades\DataTables;
+use Yajra\DataTables\Html\Builder;
 
 class InvoiceController extends Controller
 {
-    public function index()
+    private $encrypt = 2341347971;
+    public function index(Builder $dataTable)
     {
+        $invoices = Invoice::orderBy('updated_at', 'desc')->get();
 
+        $invCollect = collect();
+
+        foreach ($invoices as $invoice) {
+            if ($invoice->payment_status == 1)
+                $total = $invoice->total_amount ?? 0;
+            else
+                $total = Invoice::getTotal($invoice->id);
+
+            $invCollect->push([
+                'id' => $invoice->id,
+                'invoice_to' => $invoice->user->name,
+                'title' => $invoice->name,
+                'description' => $invoice->description,
+                'invoice_id' => $invoice->id,
+                'amount' => '$' . $total,
+                'status' => $invoice->payment_status == 1 ? "paid" : "pending",
+                'added_by' => $invoice->addedBy->name,
+                'datetime' => $invoice->updated_at->format('d-m-Y'),
+            ]);
+        }
+
+
+        if (request()->ajax()) {
+            return DataTables::collection($invCollect)
+                ->addColumn('action', function ($invoice) {
+                    if ($invoice['status'] == 'paid')
+                        return '<a href="' . route('admin.invoice.edit', $invoice['id']) . '" class="btn btn-xs btn-primary btn-sm"><i class="fa fa-edit"></i> Edit</a>';
+                    else
+                        return '<a href="' . route('invoice.show', ($invoice['id'] * $this->encrypt)) . '" class="btn btn-xs btn-primary btn-sm"><i class="fa fa-eye"></i> View</a>';
+                })
+                ->rawColumns(['action'])
+                ->make(true);
+        }
+
+        $dataTable->columns([
+            ['data' => 'invoice_to', 'name' => 'invoice_to', 'title' => 'Invoice To'],
+            ['data' => 'title', 'name' => 'title', 'title' => 'Title'],
+            ['data' => 'description', 'name' => 'description', 'title' => 'Description'],
+            ['data' => 'invoice_id', 'name' => 'invoice_id', 'title' => 'Invoice ID'],
+            ['data' => 'amount', 'name' => 'amount', 'title' => 'Amount'],
+            ['data' => 'status', 'name' => 'status', 'title' => 'Status'],
+            ['data' => 'added_by', 'name' => 'added_by', 'title' => 'Added By'],
+            ['data' => 'datetime', 'name' => 'datetime', 'title' => 'DateTime'],
+            ['data' => 'action', 'name' => 'action', 'title' => 'Action'],
+        ]);
+
+        return view('admin.invoice.index', compact('dataTable'));
     }
+
     public function create()
     {
         $invoices = Invoice::orderBy('id', 'desc')->get();
         return view('admin.invoice.create', compact('invoices'));
     }
 
+    public function show($id)
+    {
+        $id = $id / $this->encrypt;
+        $invoice = Invoice::findOrFail($id);
+        $invoiceItems = InvoiceItem::where('invoice_id', $invoice->id)->get();
+        return view('admin.invoice.view', compact('invoice', 'invoiceItems'));
+    }
+
+
     public function store(Request $request)
     {
         $request->validate([
-            'user_id' => 'required',
             'invoiceItems' => 'required|array',
         ]);
         try {
-            $user = User::find($request->user_id);
+            $user = auth()->user();
 
             $invoice = Invoice::create([
-                'title' => $request->title,
-                'description' => $request->commnet,
+                'name' => $request->title,
+                'description' => $request->input('comment'),
                 'user_id' => $user->id,
                 'added_by' => Auth::id(),
                 'user_email' => $request->email,
@@ -71,16 +131,15 @@ class InvoiceController extends Controller
             return response()->json([
                 'success' => true,
                 'message' => 'Invoice created successfully.',
-                'redirect' => ''
+                'redirect' => route('admin.invoice.index')
             ]);
         } catch (\Exception $e) {
             return response()->json([
                 'success' => false,
                 'error' => $e->getMessage()
-            ]);
+            ], 500);
         }
     }
-
 
     public function edit(Invoice $invoice)
     {
@@ -94,12 +153,14 @@ class InvoiceController extends Controller
     {
         $request->validate([
             'invoiceItems' => 'required|array',
+            'title' => 'required',
+            'comment' => 'required',
         ]);
 
         try {
             $invoice->update([
-                'title' => $request->title,
-                'description' => $request->commnet,
+                'name' => $request->title,
+                'description' => $request->input('comment'),
                 'user_email' => $request->email,
             ]);
 
@@ -138,7 +199,7 @@ class InvoiceController extends Controller
             return response()->json([
                 'success' => true,
                 'message' => 'Invoice updated successfully.',
-                'redirect' => ''
+                'redirect' => route('admin.invoice.index')
             ]);
         } catch (\Exception $e) {
             return response()->json([

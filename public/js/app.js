@@ -3230,7 +3230,8 @@ var invoiceTopic = ['Federal Filing', 'State Filing', 'City Filing', 'County Fil
         invoiceItems: this.invoiceItems,
         send_email: withEmail
       }).then(function (response) {
-        console.log(response);
+        alert(response.data.message);
+        location.href = response.data.redirect;
       })["catch"](function (error) {
         console.log(error);
       });
@@ -3414,9 +3415,9 @@ __webpack_require__.r(__webpack_exports__);
         invoiceItems: this.invoiceItems,
         withEmail: withEmail
       };
-      alert('/admin/invoice/' + this.invoice.id + '/edit');
       axios.post('/admin/invoice/' + this.invoice.id + '/edit', data).then(function (response) {
-        alert(1);
+        alert(response.data.message);
+        location.href = response.data.redirect;
       });
     },
     removeItem: function removeItem(index) {
@@ -5641,7 +5642,7 @@ window.axios.defaults.headers.common = {
   'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
   'Accept': 'application/json'
 };
-window.axios.defaults.baseURL = "http://127.0.0.1:8000";
+window.axios.defaults.baseURL = "http://127.0.0.1:8001";
 window.Year = document.querySelector('meta[name="year"]').getAttribute('content');
 
 var files = __webpack_require__("./resources/js sync recursive \\.vue$/");

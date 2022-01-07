@@ -2,6 +2,7 @@
 
 namespace App\DataTables;
 
+use App\Models\PersonalInformation;
 use App\Models\User;
 use Yajra\DataTables\Html\Button;
 use Yajra\DataTables\Html\Column;
@@ -17,26 +18,25 @@ class ClientDataTable extends DataTable
      */
     public function dataTable($query)
     {
-        return datatables()
-            ->eloquent($query)->addColumn('action', view('datatables.client_action'));
+        $users = User::where('role', 'user')->get();
+        $userList = collect();
+
+        foreach ($users as $user) {
+            $personInfo = PersonalInformation::where('user_id', $user->id)->orderBy('created_at', 'DESC')->first();
+            $userList->push([
+                'id' => $user->id,
+                'name' => $user->name,
+                'email' => $user->email,
+                'phone' => $personInfo->phone ?? '',
+                'created_at' => $user->created_at->format('d/m/Y'),
+            ]);
+        }
+
+
+        return datatables()->collection($userList)->addColumn('action', view('datatables.client_action', ['users' => $users]))->rawColumns(['action']);
     }
 
-    /**
-     * Get query source of dataTable.
-     *
-     * @param \App\Models\User $model
-     * @return \Illuminate\Database\Eloquent\Builder
-     */
-    public function query(User $model)
-    {
-        return $model->newQuery();
-    }
 
-    /**
-     * Optional method if you want to use html builder.
-     *
-     * @return \Yajra\DataTables\Html\Builder
-     */
     public function html()
     {
         return $this->builder()
@@ -65,7 +65,7 @@ class ClientDataTable extends DataTable
             Column::make('name'),
             Column::make('email'),
             Column::make('phone'),
-            Column::make('Reg DateTime'),
+            Column::make('created_at')->title('Reg Date'),
             Column::computed('action')
                 ->exportable(false)
                 ->printable(false)

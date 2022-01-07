@@ -37,7 +37,7 @@ Route::get("/faq", [HomeController::class, "faq"])->name('faq');
 Route::get("/tips", [HomeController::class, "tips"])->name('tips');
 
 Route::post("/contact_us_mail", [ContactRequestController::class, "store"])->name('contact_us_mail');
-
+Route::get('invoice/{id}', [InvoiceController::class, 'show'])->name('invoice.show');
 
 Auth::routes();
 
@@ -116,6 +116,7 @@ Route::group(['middleware' => ['auth', AdminMiddleware::class], 'prefix' => 'adm
     Route::post('invoice', [InvoiceController::class, 'store'])->name('invoice.store');
     Route::get('invoice/{invoice}/edit', [InvoiceController::class, 'edit'])->name('invoice.edit');
     Route::post('invoice/{invoice}/edit', [InvoiceController::class, 'update'])->name('invoice.update');
+    Route::get('invoice/{id}', [InvoiceController::class, 'show'])->name('invoice.show');
 
 
     Route::resource('service', ServiceController::class);

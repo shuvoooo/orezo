@@ -226,7 +226,8 @@ export default {
                 invoiceItems: this.invoiceItems,
                 send_email: withEmail
             }).then(response => {
-                console.log(response);
+                alert(response.data.message);
+                location.href = response.data.redirect;
             }).catch(error => {
                 console.log(error);
             });
