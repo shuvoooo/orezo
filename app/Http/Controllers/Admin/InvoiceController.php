@@ -14,7 +14,7 @@ use Yajra\DataTables\Html\Builder;
 
 class InvoiceController extends Controller
 {
-    private $encrypt = 2341347971;
+    public $encrypt = 2341347971;
     public function index(Builder $dataTable)
     {
         $invoices = Invoice::orderBy('updated_at', 'desc')->get();

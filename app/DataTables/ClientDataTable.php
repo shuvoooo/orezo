@@ -2,6 +2,7 @@
 
 namespace App\DataTables;
 
+use App\Models\Invoice;
 use App\Models\PersonalInformation;
 use App\Models\User;
 use Yajra\DataTables\Html\Button;
@@ -33,7 +34,13 @@ class ClientDataTable extends DataTable
         }
 
 
-        return datatables()->collection($userList)->addColumn('action', view('datatables.client_action', ['users' => $users]))->rawColumns(['action']);
+        return datatables()->collection($userList)->addColumn('action', function ($user) {
+            $invoice_link = Invoice::where('user_id', $user['id'])->orderBy('created_at', 'DESC')->first();
+            $invoice_link = $invoice_link ? route('invoice.show', ($invoice_link->id * 2341347971)) : '#';
+
+            return view('datatables.client_action', ['user' => $user, 'invoice_link' => $invoice_link]);
+
+        })->rawColumns(['action']);
     }
 
 

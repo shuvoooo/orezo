@@ -105,31 +105,62 @@
         margin: 0 0 1px 0px;
         padding: 0;
         border: 0px;
-        line-height: 30px;
+        line-height: 15px
     }
+
 
     .sidebar > ul > li > a {
+        background: #211e3b;
         display: block;
+        padding: 15px 0 15px 35px;
+        color: #fff;
+        text-transform: uppercase;
         position: relative;
-        margin: 0;
-        border: 0px;
-        -webkit-border-radius: 0px !important;
-        -moz-border-radius: 0px !important;
-        border-radius: 0px !important;
-        text-decoration: none;
-        font-size: 12px;
-        font-weight: normal;
-        text-align: left;
-        padding: 5px 15px;
-        /*background: #505050;*/
-
-        transition-duration: 500ms;
-        transition-property: width, background;
-        transition-timing-function: ease;
-        -webkit-transition-duration: 500ms;
-        -webkit-transition-property: width, background;
-        -webkit-transition-timing-function: ease;
+        z-index: 1;
     }
+
+    .sidebar > ul > li > a:before {
+        position: absolute;
+        left: 0;
+        content: "";
+        width: 10%;
+        height: 100%;
+        background: #0c5adb;
+        top: 0;
+        transition: .5s;
+        z-index: -1;
+    }
+
+    .sidebar > ul > li:hover > a:before {
+        width: 100%;
+    }
+
+    .sidebar > ul > li.active > a:before {
+        width: 100%;
+    }
+
+    /*.sidebar > ul > li > a {*/
+    /*    display: block;*/
+    /*    position: relative;*/
+    /*    margin: 0;*/
+    /*    border: 0px;*/
+    /*    -webkit-border-radius: 0px !important;*/
+    /*    -moz-border-radius: 0px !important;*/
+    /*    border-radius: 0px !important;*/
+    /*    text-decoration: none;*/
+    /*    font-size: 12px;*/
+    /*    font-weight: normal;*/
+    /*    text-align: left;*/
+    /*    padding: 5px 15px;*/
+    /*    !*background: #505050;*!*/
+
+    /*    transition-duration: 500ms;*/
+    /*    transition-property: width, background;*/
+    /*    transition-timing-function: ease;*/
+    /*    -webkit-transition-duration: 500ms;*/
+    /*    -webkit-transition-property: width, background;*/
+    /*    -webkit-transition-timing-function: ease;*/
+    /*}*/
 
     .sidebar > ul > li > a > span {
         display: inline-block;
@@ -152,15 +183,17 @@
 
     .sidebar > ul > li.active > a .arrow {
         margin-right: 0px;
+        padding-right: 10px;
     }
 
     .sidebar > ul > li.active > a .arrow.open {
         margin-right: 0px;
+        padding-right: 10px;
     }
 
     .sidebar ul > li > a .arrow {
         float: right;
-        margin-top: 12px;
+        margin-top: 6px;
         margin-right: 0px;
         width: 0;
         height: 0;
@@ -182,7 +215,7 @@
 
     .sidebar ul > li.active > a .arrow, .sidebar ul > li > a:hover .arrow {
         float: right;
-        margin-top: 12px;
+        margin-top: 6px;
         margin-right: 0px;
         width: 0;
         height: 0;
@@ -210,7 +243,20 @@
     }
 
     .sidebar > ul > li > ul.sub {
+        background: #211e3b;
         margin-bottom: 0 !important;
+    }
+
+    .sidebar > ul > li > ul.sub:before {
+        position: absolute;
+        left: 0;
+        content: "";
+        width: 10%;
+        height: 100%;
+        background: #0c5adb;
+        top: 0;
+        transition: .5s;
+        z-index: -1;
     }
 
     .sidebar > ul > li.active > ul.sub {
@@ -219,7 +265,7 @@
     }
 
     .sidebar > ul > li > ul.sub > li {
-        background: none !important;
+        background: inherit;
         padding: 0px;
         margin-bottom: 1px;
     }
