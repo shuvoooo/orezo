@@ -45,8 +45,7 @@ class FileStatusController extends Controller
             ['data' => 'status_by', 'name' => 'status_by', 'title' => 'Status By'],
             ['data' => 'status', 'name' => 'status', 'title' => 'Status'],
             ['data' => 'created_at', 'name' => 'created_at', 'title' => 'Date Time'],
-            ['data' => 'action', 'name' => 'action', 'title' => 'Action', 'printable' => false, 'addClass' =>
-                'text-center'],
+            ['data' => 'action', 'name' => 'action', 'title' => 'Action', 'orderable' => false, 'searchable' => false],
         ]);
 
         return response()->view('admin.file_status.index', compact('user', 'statuses', 'dataTable'));

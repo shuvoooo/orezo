@@ -2,11 +2,11 @@
 
 namespace App\Http\Middleware;
 
-use App\Models\Setting;
+use App\Models\RolePermission;
 use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Route;
 
 class AdminMiddleware
 {
@@ -21,15 +21,16 @@ class AdminMiddleware
     {
         if (Auth::check() && (Auth::user()->role == 'admin' || Auth::user()->role == 'staff')) {
             if (Auth::user()->role == 'staff') {
-                $setting = Setting::find(1);
-                if ($setting->database_offline == '1') {
-                    Redirect::to('/offline')->send();
+                $permissions = json_decode(RolePermission::where('user_id', Auth::id())->first()->details ?? "[]");
+
+                if (!in_array(Route::currentRouteName(), $permissions) && in_array(Route::currentRouteName(), get_admin_route()->toArray())) {
+                    return abort(401, 'You are not Authorize. Contact with Admin.');
                 }
             }
 
             return $next($request);
         }
 
-        return redirect('/home');
+        return redirect(route('login'))->with('error', 'You are not authorized to access this page.');
     }
 }

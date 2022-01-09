@@ -26,3 +26,21 @@ if (!function_exists('general_config')) {
         return GeneralConfig::where('key', $key)->first()->value ?? null;
     }
 }
+
+if (!function_exists('get_admin_route')) {
+    function get_admin_route()
+    {
+        $menus = collect();
+
+        foreach (include app_path("Helpers/admin_menu.php") as $key => $item) {
+            if ($item['type'] == 'single') {
+                $menus[$key] = $item['text'];
+            } else {
+                foreach ($item['submenu'] as $sub_key => $submenu) {
+                    $menus[$sub_key] = $submenu['text'];
+                }
+            }
+        }
+        return $menus;
+    }
+}

@@ -9,6 +9,7 @@ use App\Http\Controllers\Admin\FileStatusController;
 use App\Http\Controllers\Admin\HomePageController;
 use App\Http\Controllers\Admin\InvoiceController;
 use App\Http\Controllers\Admin\ServiceController;
+use App\Http\Controllers\Admin\StaffController;
 use App\Http\Controllers\Admin\TaxDocumentController;
 use App\Http\Controllers\Admin\TeamController;
 use App\Http\Controllers\Admin\TestimonialController;
@@ -141,4 +142,6 @@ Route::group(['middleware' => ['auth', AdminMiddleware::class], 'prefix' => 'adm
 
     Route::get('download-tax-document/{user}', [TaxDocumentController::class, 'download_tax_document'])->name('download_tax_document');
     Route::get('user-tax-document/{user}', [TaxDocumentController::class, 'user_tax_document'])->name('user_tax_document');
+
+    Route::resource('staff', StaffController::class);
 });

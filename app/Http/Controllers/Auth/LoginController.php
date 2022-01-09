@@ -67,6 +67,10 @@ class LoginController extends Controller
             return route('admin.dashboard');
         } elseif (auth()->user()->role == 'user') {
             return route('year_dashboard');
+        } elseif (auth()->user()->role == 'staff') {
+            return route('admin.dashboard');
+        } else {
+            return route('home');
         }
     }
 }

@@ -2,12 +2,13 @@
 
 namespace App\View\Components;
 
+use App\Models\RolePermission;
 use Illuminate\Support\Facades\Route;
 use Illuminate\View\Component;
 
 class SideMenu extends Component
 {
-    private $user_role;
+    private $user;
 
 
     /**
@@ -17,7 +18,8 @@ class SideMenu extends Component
      */
     public function __construct()
     {
-        $this->user_role = auth()->user()->role;
+
+        $this->user = auth()->user();
     }
 
     /**
@@ -27,18 +29,58 @@ class SideMenu extends Component
      */
     public function render()
     {
-        $menu = [];
-        if ($this->user_role == 'user' && request()->route('year') != null)
-            $menu = include(__DIR__ . '/../../Helpers/user_menu.php');
+        $menus = [];
+        if ($this->user->role == 'user' && request()->route('year') != null)
+            $menus = include(__DIR__ . '/../../Helpers/user_menu.php');
 
-        elseif ($this->user_role == 'admin')
-            $menu = include(__DIR__ . '/../../Helpers/admin_menu.php');
+        elseif ($this->user->role == 'admin' || $this->user->role == 'staff') {
+            $menus = include(__DIR__ . '/../../Helpers/admin_menu.php');
+        }
 
-        elseif ($this->user_role == 'staff')
-            $menu = include(__DIR__ . '/../../Helpers/staff_menu.php');
+        $staff_visible_routes = [];
 
-        $route_name = Route::currentRouteName();
+        if ($this->user->role == 'staff') {
+            $staff_visible_routes = json_decode(RolePermission::where('user_id', $this->user->id)->first()->details ?? "[]");
+        }
 
-        return view('components.side-menu', compact('menu', 'route_name'));
+        foreach ($menus as $key => $menu) {
+            if ($menu['type'] == 'single') {
+                $menus[$key]['active'] = Route::currentRouteName() == $key;
+                $menus[$key]['publish'] = true;
+
+                if ($this->user->role == 'staff') {
+                    $menus[$key]['publish'] = in_array($key, $staff_visible_routes);
+                }
+
+            } else {
+                $menus[$key]['active'] = false;
+                $menus[$key]['publish'] = true;
+                if ($this->user->role == 'staff') {
+                    $menus[$key]['publish'] = false;
+                }
+
+                foreach ($menu['submenu'] as $sub_key => $item) {
+
+                    if (Route::currentRouteName() == $sub_key) {
+                        if ($menus[$key]['active'] == false)
+                            $menus[$key]['active'] = true;
+
+                        $menus[$key]['submenu'][$sub_key]['active'] = true;
+                    } else {
+                        $menus[$key]['submenu'][$sub_key]['active'] = false;
+                    }
+
+                    $menus[$key]['submenu'][$sub_key]['publish'] = true;
+
+                    if ($this->user->role == 'staff') {
+                        $menus[$key]['publish'] = in_array($sub_key, $staff_visible_routes);
+                        $menus[$key]['submenu'][$sub_key]['publish'] = in_array($sub_key, $staff_visible_routes);
+                    }
+                }
+            }
+        }
+
+
+        return view('components.side-menu', compact('menus'));
     }
 }

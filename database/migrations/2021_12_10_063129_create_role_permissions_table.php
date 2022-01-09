@@ -15,8 +15,8 @@ class CreateRolePermissionsTable extends Migration
     {
         Schema::create('role_permissions', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained();
-            $table->string('details');
+            $table->foreignId('user_id')->constrained()->onDelete('cascade')->onUpdate('cascade');
+            $table->longText('details');
             $table->timestamps();
         });
     }

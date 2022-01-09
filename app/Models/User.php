@@ -5,7 +5,6 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Support\Facades\Auth;
 
 class User extends Authenticatable
 {
@@ -29,18 +28,9 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
-    public function scopeHasPermission($query, $permission)
+    public function scopeHasPermission($value)
     {
-        if (Auth::user()->role == 'staff') {
-            $permissions = RolePermission::getByUser(Auth::user()->id);
-            if (in_array($permission, $permissions)) {
-                return true;
-            } else {
-                return false;
-            }
-        } else {
-            return true;
-        }
+
     }
 
     public function scopeByRole($query, $role)

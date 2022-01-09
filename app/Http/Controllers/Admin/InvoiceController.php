@@ -15,6 +15,7 @@ use Yajra\DataTables\Html\Builder;
 class InvoiceController extends Controller
 {
     public $encrypt = 2341347971;
+
     public function index(Builder $dataTable)
     {
         $invoices = Invoice::orderBy('updated_at', 'desc')->get();
@@ -62,7 +63,7 @@ class InvoiceController extends Controller
             ['data' => 'status', 'name' => 'status', 'title' => 'Status'],
             ['data' => 'added_by', 'name' => 'added_by', 'title' => 'Added By'],
             ['data' => 'datetime', 'name' => 'datetime', 'title' => 'DateTime'],
-            ['data' => 'action', 'name' => 'action', 'title' => 'Action'],
+            ['data' => 'action', 'name' => 'action', 'title' => 'Action', 'orderable' => false, 'searchable' => false],
         ]);
 
         return view('admin.invoice.index', compact('dataTable'));
