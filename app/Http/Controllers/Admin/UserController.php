@@ -34,7 +34,7 @@ class UserController extends Controller
                 ->make(true);
         }
 
-        return $builder->make('admin.user.staff_index');
+        return $dataTable->make('admin.user.staff_index');
     }
 
 
@@ -48,7 +48,8 @@ class UserController extends Controller
         return redirect()->route('admin.staff.index');
     }
 
-    public function staff_edit(){
+    public function staff_edit()
+    {
 
     }
 

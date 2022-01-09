@@ -38,7 +38,17 @@
                     </ul>
                     <div class="donate-btn-header">
                         @auth('web')
-                            <a href="{{route_with_year('dashboard')}}" class="btn btn-primary">Dashboard</a>
+
+                            @if(auth()->user()->role == "admin")
+                                <a href="{{route('admin.dashboard')}}" class="btn btn-primary">Admin Panel</a>
+
+                            @elseif(auth()->user()->role == "staff")
+                                <a href="#" class="btn btn-primary">Staff Panel</a>
+
+                            @else
+                                <a href="{{route_with_year('dashboard')}}" class="btn btn-primary">Dashboard</a>
+                            @endif
+
                         @else
                             @if(\Route::currentRouteName() != 'login')
                                 <a class="dtbtn" href="{{route('login')}}">Login</a>

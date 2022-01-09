@@ -30,11 +30,13 @@ class SideMenu extends Component
     public function render()
     {
         $menus = [];
+
+
         if ($this->user->role == 'user' && request()->route('year') != null)
-            $menus = include(__DIR__ . '/../../Helpers/user_menu.php');
+            $menus = include app_path('/Helpers/user_menu.php');
 
         elseif ($this->user->role == 'admin' || $this->user->role == 'staff') {
-            $menus = include(__DIR__ . '/../../Helpers/admin_menu.php');
+            $menus = include app_path('/Helpers/admin_menu.php');
         }
 
         $staff_visible_routes = [];
