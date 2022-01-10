@@ -24,7 +24,7 @@ class Service extends Component
      */
     public function render()
     {
-        $services = ServiceModel::all();
+        $services = ServiceModel::where('is_active', 1)->get();
         return view('components.service', compact('services'));
     }
 }

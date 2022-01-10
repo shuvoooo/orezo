@@ -6,7 +6,10 @@ use App\Http\Controllers\Controller;
 use App\Models\Address;
 use App\Models\User;
 use App\Providers\RouteServiceProvider;
+use Illuminate\Auth\Events\Registered;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Http\JsonResponse;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 
@@ -88,5 +91,22 @@ class RegisterController extends Controller
         ]);
 
         return $user;
+    }
+
+    public function register(Request $request)
+    {
+        $this->validator($request->all())->validate();
+
+        event(new Registered($user = $this->create($request->all())));
+
+        $this->guard()->login($user);
+
+        if ($response = $this->registered($request, $user)) {
+            return $response;
+        }
+
+        return $request->wantsJson()
+            ? new JsonResponse(['redirect' => route('verification.notice')], 200)
+            : redirect($this->redirectPath());
     }
 }

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreatePageNamesTable extends Migration
+class CreatePagesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,11 @@ class CreatePageNamesTable extends Migration
      */
     public function up()
     {
-        Schema::create('page_names', function (Blueprint $table) {
+        Schema::create('pages', function (Blueprint $table) {
             $table->id();
-            $table->string('name')->nullable();
+            $table->string('title');
+            $table->string('slug')->unique();
+            $table->text('content');
             $table->timestamps();
         });
     }
@@ -27,6 +29,6 @@ class CreatePageNamesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('page_names');
+        Schema::dropIfExists('pages');
     }
 }

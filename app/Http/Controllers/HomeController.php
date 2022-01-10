@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\AboutPage;
 use App\Models\Faq;
 use App\Models\HomePage;
+use App\Models\Page;
 
 class HomeController extends Controller
 {
@@ -43,5 +44,16 @@ class HomeController extends Controller
     public function tips()
     {
         return view('tips');
+    }
+
+    public function page($slug)
+    {
+        $page = Page::where('slug', $slug)->first();
+
+        if (!$page) {
+            return redirect('/');
+        }
+
+        return view('page', compact('page'));
     }
 }

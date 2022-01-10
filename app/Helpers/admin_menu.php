@@ -61,6 +61,11 @@ return [
                 'text' => 'About',
                 'url' => route('admin.about_page.edit'),
             ],
+
+            'admin.page' => [
+                'text' => 'Custom Page',
+                'url' => route('admin.page.index'),
+            ],
         ]
     ],
 

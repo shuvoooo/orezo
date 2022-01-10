@@ -4810,7 +4810,7 @@ __webpack_require__.r(__webpack_exports__);
             password_confirmation: _this.password_confirmation
           }).then(function (response) {
             _this.isLoading = false;
-            location.href = '/dashboard/year';
+            location.href = response.data.redirect;
           })["catch"](function (e) {
             return _this.backendError(e);
           });

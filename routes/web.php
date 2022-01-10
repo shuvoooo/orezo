@@ -23,6 +23,7 @@ use App\Http\Controllers\GeneralConfigController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\MiscellaneousController;
 use App\Http\Controllers\MyStatusController;
+use App\Http\Controllers\PageController;
 use App\Http\Controllers\PersonalInformationController;
 use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\ResidencyController;
@@ -42,10 +43,11 @@ Route::get("/tips", [HomeController::class, "tips"])->name('tips');
 Route::post("/contact_us_mail", [ContactRequestController::class, "store"])->name('contact_us_mail');
 Route::get('invoice/{id}', [InvoiceController::class, 'show'])->name('invoice.show');
 
-Auth::routes();
+Auth::routes(['verify' => true]);
 
 
-Route::group(['middleware' => ['auth', UserMiddleware::class]], function () {
+
+Route::group(['middleware' => ['auth', UserMiddleware::class, 'verified']], function () {
     Route::get('year_profile', [DashboardController::class, 'year_dashboard'])->name('year_dashboard');
 
     Route::group(['prefix' => '{year}', 'middleware' => [YearMiddleware::class]], function () {
@@ -144,4 +146,9 @@ Route::group(['middleware' => ['auth', AdminMiddleware::class], 'prefix' => 'adm
     Route::get('user-tax-document/{user}', [TaxDocumentController::class, 'user_tax_document'])->name('user_tax_document');
 
     Route::resource('staff', StaffController::class);
+
+    Route::resource('page', PageController::class);
 });
+
+
+Route::get("{slug}", [HomeController::class, 'page'])->name('page');
