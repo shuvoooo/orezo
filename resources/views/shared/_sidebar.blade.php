@@ -10,11 +10,19 @@
         <x-side-menu></x-side-menu>
 
         <li class="">
-            <a href="">
-                <i class="icon-cog"></i>
-                <span>Account Settings</span>
-            </a>
+            @if(auth()->user()->role == 'user')
+                <a href="{{route_with_year('user_profile_view')}}">
+                    <i class="icon-cog"></i>
+                    <span>Account Settings</span>
+                </a>
+            @else
+                <a href="{{route('admin.profile_view')}}">
+                    <i class="icon-cog"></i>
+                    <span>Account Settings</span>
+                </a>
+            @endif
         </li>
+
         <li>
             <a href="javascript:void(0);"
                onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><i

@@ -27,6 +27,7 @@ use App\Http\Controllers\PageController;
 use App\Http\Controllers\PersonalInformationController;
 use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\ResidencyController;
+use App\Http\Controllers\UserController;
 use App\Http\Middleware\AdminMiddleware;
 use App\Http\Middleware\UserMiddleware;
 use App\Http\Middleware\YearMiddleware;
@@ -44,7 +45,6 @@ Route::post("/contact_us_mail", [ContactRequestController::class, "store"])->nam
 Route::get('invoice/{id}', [InvoiceController::class, 'show'])->name('invoice.show');
 
 Auth::routes(['verify' => true]);
-
 
 
 Route::group(['middleware' => ['auth', UserMiddleware::class, 'verified']], function () {
@@ -106,6 +106,8 @@ Route::group(['middleware' => ['auth', UserMiddleware::class, 'verified']], func
             Route::get('view-tax-summary', [MyStatusController::class, 'view_tax_summary'])->name('view_tax_summary');
             Route::get('payment-info', [MyStatusController::class, 'payment_info'])->name('payment_info');
         });
+
+        Route::get('account-settings', [UserController::class, 'update_profile_view'])->name('user_profile_view');
     });
 });
 
@@ -148,7 +150,14 @@ Route::group(['middleware' => ['auth', AdminMiddleware::class], 'prefix' => 'adm
     Route::resource('staff', StaffController::class);
 
     Route::resource('page', PageController::class);
+
+    Route::get('/account-settings', [UserController::class, 'update_profile_view'])->name('profile_view');
 });
 
+Route::group(['middleware' => 'auth'], function () {
+    Route::post('update-profile', [UserController::class, 'update_profile'])->name('update_profile');
+    Route::post('change-password', [UserController::class, 'change_password'])->name('change_password');
+
+});
 
 Route::get("{slug}", [HomeController::class, 'page'])->name('page');
