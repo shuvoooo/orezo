@@ -98,8 +98,7 @@
                             </label>
 
                             <div class="col-md-9">
-                                <select class="form-control" name="state" id="state"
-                                        data-old="{{$address->state??''}}">
+                                <select class="form-control" name="state" id="state" data-old="{{$address->state??''}}">
                                     <option value="AL">Alabama</option>
                                     <option value="AK">Alaska</option>
                                     <option value="AZ">Arizona</option>

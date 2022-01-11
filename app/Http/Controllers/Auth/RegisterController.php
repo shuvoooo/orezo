@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Address;
 use App\Models\User;
 use App\Providers\RouteServiceProvider;
+use App\Rules\Recaptcha;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Http\JsonResponse;
@@ -63,6 +64,7 @@ class RegisterController extends Controller
             'state' => ['required', 'string'],
             'home_no' => ['required', 'string'],
             'referrer' => ['nullable', 'string'],
+            'g-recaptcha-response' => new Recaptcha(),
         ]);
     }
 

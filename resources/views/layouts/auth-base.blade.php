@@ -29,6 +29,7 @@
 
     <title>@yield("title","Welcome to Dashboard")</title>
 
+    <script src="//www.google.com/recaptcha/api.js" async defer></script>
 
     <style>
 

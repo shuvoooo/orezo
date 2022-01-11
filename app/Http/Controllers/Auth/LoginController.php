@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
+use App\Rules\Recaptcha;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
@@ -72,5 +73,16 @@ class LoginController extends Controller
         } else {
             return route('home');
         }
+    }
+
+    protected function validateLogin(Request $request)
+    {
+
+
+        $request->validate([
+            $this->username() => 'required|string',
+            'password' => 'required|string',
+            'g-recaptcha-response' => new Recaptcha(),
+        ]);
     }
 }

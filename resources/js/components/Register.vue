@@ -259,6 +259,17 @@
                             </div>
                         </div>
 
+
+                        <div class="col-lg-12 mb-4">
+                            <!-- reCAPTCHA -->
+                            <div class="col-lg-12 mb-4">
+                                <div class="g-recaptcha" data-sitekey="6LcvjgYeAAAAADUxnyea4-5uwai5av9tow6TfIrE"></div>
+
+                                <span v-if="errors.has('g-recaptcha')" class="small text-danger w-100">{{
+                                        errors.first('g-recaptcha')
+                                    }}</span>
+                            </div>
+                        </div>
                         <!-- Submit Button -->
                         <div class="form-group col-lg-12 mx-auto mb-0">
                             <button role="button" class="btn btn-primary btn-block py-3" :disabled="isLoading"
@@ -327,7 +338,8 @@ export default {
                         referrer: this.referrer,
                         home_no: this.home_no,
                         password: this.password,
-                        password_confirmation: this.password_confirmation
+                        password_confirmation: this.password_confirmation,
+                        'g-recaptcha-response' : grecaptcha.getResponse(),
                     }).then(response => {
                         this.isLoading = false;
                         location.href = response.data.redirect
