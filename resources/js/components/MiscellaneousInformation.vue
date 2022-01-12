@@ -154,6 +154,7 @@ export default {
                 //
                 this.isLoading = false;
                 this.msg = response.data.message;
+                location.href=response.data.url;
             }).catch(error => {
                 this.backendError(error)
             });

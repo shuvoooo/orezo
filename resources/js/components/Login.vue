@@ -15,9 +15,8 @@
                             <input id="email" type="email" v-validate="'required|email'" name="email"
                                    placeholder="Email Address" v-model="email"
                                    class="form-control bg-white border-left-0 border-md">
-                            <span v-if="errors.has('email')" class="small text-danger w-100">{{
-                                    errors.first('email')
-                                }}</span>
+                            <span v-if="errors.has('email')"
+                                  class="small text-danger w-100">{{ errors.first('email') }}</span>
 
                         </div>
 

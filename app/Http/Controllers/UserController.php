@@ -59,7 +59,7 @@ class UserController extends Controller
 
         $user = auth()->user();
         if (!Hash::check($request->current_password, $user->password)) {
-            return redirect()->back()->with('error', 'Current password is incorrect');
+            return redirect()->back()->with('danger', 'Current password is incorrect');
         }
 
         $user->password = Hash::make($request->new_password);

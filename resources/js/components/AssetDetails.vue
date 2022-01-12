@@ -113,9 +113,9 @@ export default {
         onSubmit() {
             this.isLoading = true;
             axios.post(Year + '/tax/asset', {details: this.assets}).then(response => {
-                //
                 this.isLoading = false;
                 this.msg = response.data.message;
+                location.href = response.data.url;
             }).catch(error => {
                 this.backendError(error)
             });

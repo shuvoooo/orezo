@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Miscellaneous;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Route;
 
 class MiscellaneousController extends Controller
 {
@@ -17,6 +18,8 @@ class MiscellaneousController extends Controller
 
     public function miscellaneous_details_store(Request $request)
     {
+
+
         $miscellaneous = Miscellaneous::where('user_id', auth()->user()->id)->year()->first();
 
         if (!$miscellaneous) {
@@ -26,6 +29,9 @@ class MiscellaneousController extends Controller
         $miscellaneous->details = $request->details;
         $miscellaneous->save();
 
-        return response()->json(['message' => 'Miscellaneous Details Successfully Updated']);
+        return response()->json([
+            'message' => 'Miscellaneous Details Successfully Updated',
+            'url' => route_with_year('upload_tax_documents')
+        ]);
     }
 }

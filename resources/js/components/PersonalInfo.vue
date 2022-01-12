@@ -1,5 +1,8 @@
 <template>
     <div class="row">
+
+
+
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header" style="background: #ffadaa11">
@@ -495,6 +498,8 @@ export default {
     props: ['personalInfo'],
     data() {
         return {
+            progress: 40,
+
             fname: this.personalInfo.fname || '',
             mname: this.personalInfo.mname || '',
             lname: this.personalInfo.lname || '',

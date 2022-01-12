@@ -165,7 +165,7 @@ class PersonalInformationController extends Controller
 
         return response()->json([
             'success' => 'Bank Details saved successfully.',
-            'url' => route_with_year('bank_details')
+            'url' => route_with_year('employer_details')
         ]);
     }
 

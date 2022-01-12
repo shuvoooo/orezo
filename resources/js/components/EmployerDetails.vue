@@ -24,9 +24,7 @@
                     <label for="end_date" class="text-dark form-label">End Date</label>
                     <input type="date" class="form-control" id="end_date" v-model="end_date" name="end_date"
                            placeholder="End Date"/>
-                    <small v-if="errors.has('end_date')" class="form-text text-danger">{{
-                            errors.first('end_date')
-                        }}</small>
+                    <small v-if="errors.has('end_date')" class="form-text text-danger">{{errors.first('end_date') }}</small>
                 </div>
 
                 <div class="form-group">
@@ -105,8 +103,18 @@
                         <span class="spinner" v-if="isLoading">
                           <i class="fa fa-spinner fa-spin"></i>
                         </span>
+
+                         <span v-else>
+                             <i class="fa fa-plus"></i>
+                        </span>
                 Save
             </button>
+
+            <a :href="'/'+Year+'/tax/project'" class="btn btn-info">
+                <i class="fa fa-arrow-circle-o-right"></i>
+                Next
+            </a>
+
             <span class="badge badge-info ml-4" v-if="msg">{{ msg }}</span>
         </div>
     </div>

@@ -101,7 +101,7 @@ export default {
             }).then(response => {
                 this.isLoading = false;
                 this.msg = response.data.success;
-                location.reload();
+                location.href = response.data.url;
             }).catch(error => {
                 this.backendError(error);
             });

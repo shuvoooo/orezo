@@ -26,7 +26,10 @@ class ExpenseController extends Controller
         $expense->details = $request->details;
         $expense->save();
 
-        return response()->json(['success' => 'Expense Details Added Successfully']);
+        return response()->json([
+            'message' => 'Expense Details Added Successfully',
+            'url'=> route_with_year('asset_details')
+        ]);
     }
 
 }

@@ -30,7 +30,8 @@ Vue.mixin({
     data: function () {
         return {
             isLoading: false,
-            msg: ""
+            msg: "",
+            Year: window.Year,
         }
     },
     methods: {

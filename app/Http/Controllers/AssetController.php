@@ -30,7 +30,10 @@ class AssetController extends Controller
             $asset->details = $request->details;
             $asset->save();
 
-            return response()->json(['message' => 'Asset Details Successfully Updated']);
+            return response()->json([
+                'message' => 'Asset Details Successfully Updated',
+                'url'=>route_with_year('miscellaneous_details')
+            ]);
 
         } catch (Exception $e) {
             return response()->json(['message' => $e->getMessage()]);

@@ -97,11 +97,28 @@
             @endif
 
 
-            @foreach (['danger', 'warning', 'success', 'info'] as $message)
+            @foreach (['danger', 'warning', 'success', 'info','error'] as $message)
                 @if(session()->has( $message))
                     <div class="alert alert-{{ $message }}">{{ session()->get($message) }}</div>
                 @endif
             @endforeach
+
+
+            @if(\App\Helpers\ProgressControl::hasProgress())
+                <div class="alert alert-light mx-n3">
+                <span class="text-info">
+                    <i class="fa fa-exclamation"></i>
+                    Your Progress
+                </span>
+
+                    <div class="progress">
+                        <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar"
+                             style="width:{{\App\Helpers\ProgressControl::getProgress()}}%" aria-valuenow="25"
+                             aria-valuemin="0" aria-valuemax="100">{{\App\Helpers\ProgressControl::getProgress()}}%
+                        </div>
+                    </div>
+                </div>
+            @endif
 
             @yield('content')
 

@@ -103,7 +103,7 @@
                     </div>
                 </div>
             </div>
-            <div class="card-footer text-center bg-white">
+            <div class="card-footer  bg-white">
                 <button
                     type="submit"
                     class="btn btn-primary"
@@ -113,8 +113,17 @@
                         <span class="spinner" v-if="isLoading">
                           <i class="fa fa-spinner fa-spin"></i>
                         </span>
-                    Add Project Details
+
+                    <span v-else>
+                             <i class="fa fa-plus"></i>
+                        </span>
+                    Add Project
                 </button>
+
+                <a :href="'/'+Year+'/tax/residency'" class="btn btn-info">
+                    <i class="fa fa-arrow-circle-o-right"></i>
+                    Next
+                </a>
                 <span class="badge badge-info ml-4" v-if="msg">{{ msg }}</span>
             </div>
         </div>
