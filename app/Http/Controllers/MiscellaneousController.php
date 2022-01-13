@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Miscellaneous;
+use App\Models\User;
+use App\Notifications\GeneralNotification;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Notification;
 use Illuminate\Support\Facades\Route;
 
 class MiscellaneousController extends Controller
@@ -28,6 +31,9 @@ class MiscellaneousController extends Controller
         }
         $miscellaneous->details = $request->details;
         $miscellaneous->save();
+
+        $admins = User::where('role', 'admin')->where('role', 'staff')->get();
+        Notification::send($admins, new GeneralNotification('Miscellaneous',auth()->user()->name . ' has updated his/her miscellaneous details'));
 
         return response()->json([
             'message' => 'Miscellaneous Details Successfully Updated',

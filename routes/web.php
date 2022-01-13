@@ -23,6 +23,7 @@ use App\Http\Controllers\GeneralConfigController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\MiscellaneousController;
 use App\Http\Controllers\MyStatusController;
+use App\Http\Controllers\NotificationController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\PersonalInformationController;
 use App\Http\Controllers\ProjectController;
@@ -158,6 +159,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('update-profile', [UserController::class, 'update_profile'])->name('update_profile');
     Route::post('change-password', [UserController::class, 'change_password'])->name('change_password');
 
+    Route::post('notification/markAsRead', [NotificationController::class, 'markAsRead'])->name('notification.markAsRead');
 });
 
 Route::get("{slug}", [HomeController::class, 'page'])->name('page');

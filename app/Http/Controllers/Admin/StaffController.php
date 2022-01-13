@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\RolePermission;
 use App\Models\User;
+use App\Notifications\GeneralNotification;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Yajra\DataTables\Facades\DataTables;
@@ -89,6 +90,9 @@ class StaffController extends Controller
             'password' => bcrypt($request->password),
             'role' => 'staff',
         ]);
+
+        $user->notify(new GeneralNotification("Staff Created", "New Staff Account has been added by " . auth()->user()->name));
+
 
         $role = new RolePermission();
         $role->user_id = $user->id;

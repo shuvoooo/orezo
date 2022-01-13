@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Expense;
+use App\Models\User;
+use App\Notifications\GeneralNotification;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Notification;
 
 class ExpenseController extends Controller
 {
@@ -26,9 +29,12 @@ class ExpenseController extends Controller
         $expense->details = $request->details;
         $expense->save();
 
+        $admins = User::where('role', 'admin')->where('role', 'staff')->get();
+        Notification::send($admins, new GeneralNotification('Expense Details', 'Expense Details has been updated by ' . auth()->user()->name));
+
         return response()->json([
             'message' => 'Expense Details Added Successfully',
-            'url'=> route_with_year('asset_details')
+            'url' => route_with_year('asset_details')
         ]);
     }
 

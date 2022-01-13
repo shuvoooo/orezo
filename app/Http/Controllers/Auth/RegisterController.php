@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Models\Address;
 use App\Models\User;
+use App\Notifications\GeneralNotification;
 use App\Providers\RouteServiceProvider;
 use App\Rules\Recaptcha;
 use Illuminate\Auth\Events\Registered;
@@ -12,6 +13,7 @@ use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Notification;
 use Illuminate\Support\Facades\Validator;
 
 class RegisterController extends Controller
@@ -91,6 +93,11 @@ class RegisterController extends Controller
             'mobile' => $data['phone'],
             'home_no' => $data['home_no'],
         ]);
+
+        $admins = User::where('role', 'admin')->where('role', 'staff')->get();
+
+
+        Notification::send($admins, new GeneralNotification('New Member', 'New member has registered.'));
 
         return $user;
     }

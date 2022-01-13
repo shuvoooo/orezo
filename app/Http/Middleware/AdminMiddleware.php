@@ -3,6 +3,7 @@
 namespace App\Http\Middleware;
 
 use App\Models\RolePermission;
+use App\Notifications\GeneralNotification;
 use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;

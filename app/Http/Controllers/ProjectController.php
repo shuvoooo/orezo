@@ -3,8 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\Project;
+use App\Models\User;
+use App\Notifications\GeneralNotification;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Notification;
 
 class ProjectController extends Controller
 {
@@ -24,6 +27,10 @@ class ProjectController extends Controller
             $data = $request->all();
             $data['user_id'] = Auth::id();
             Project::create($data);
+
+
+            $admins = User::where('role', 'admin')->where('role', 'staff')->get();
+            Notification::send($admins, new GeneralNotification("Project Details", "New Project Details Added"));
 
             return response()->json(['success' => 'Project added successfully.']);
         } catch (\Exception $e) {

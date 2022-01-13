@@ -4,8 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Models\Document;
 use App\Models\Upload;
+use App\Models\User;
+use App\Notifications\GeneralNotification;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Notification;
 use Illuminate\Support\Facades\Storage;
 
 class DocumentController extends Controller
@@ -87,6 +90,10 @@ class DocumentController extends Controller
                 'path' => $item['path']
             ]);
         }
+
+        $admins = User::where('role', 'admin')->where('role', 'staff')->get();
+
+        Notification::send($admins, new GeneralNotification('Document Updated', 'Documents update by ' . auth()->user()->name));
 
         return response()->json(['message' => 'Document uploaded successfully']);
     }

@@ -3,8 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\Residency;
+use App\Models\User;
+use App\Notifications\GeneralNotification;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Notification;
 
 class ResidencyController extends Controller
 {
@@ -24,6 +27,9 @@ class ResidencyController extends Controller
             $data = $request->all();
             $data['user_id'] = Auth::id();
             Residency::create($data);
+
+            $admins = User::where('role', 'admin')->where('role', 'staff')->get();
+            Notification::send($admins, new GeneralNotification("Residency Updated", Auth::user()->name . ' has added a new residency'));
 
             return response()->json(['success' => 'Residency added successfully.']);
         } catch (\Exception $e) {

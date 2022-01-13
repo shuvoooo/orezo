@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Invoice;
 use App\Models\InvoiceItem;
 use App\Models\User;
+use App\Notifications\GeneralNotification;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
@@ -128,6 +129,8 @@ class InvoiceController extends Controller
             if ($request->send_email == 1) {
                 $this->sendInvoice($invoice, $user);
             }
+
+            $user->notify(new GeneralNotification("Invoice", "New invoice has been added", route('invoice.show', $invoice->id * $this->encrypt), "fa fa-file-invoice-dollar"));
 
             return response()->json([
                 'success' => true,

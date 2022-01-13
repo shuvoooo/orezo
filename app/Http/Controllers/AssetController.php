@@ -3,9 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Models\Asset;
+use App\Models\User;
+use App\Notifications\GeneralNotification;
 use Exception;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Notification;
 
 class AssetController extends Controller
 {
@@ -32,8 +35,13 @@ class AssetController extends Controller
 
             return response()->json([
                 'message' => 'Asset Details Successfully Updated',
-                'url'=>route_with_year('miscellaneous_details')
+                'url' => route_with_year('miscellaneous_details')
             ]);
+
+
+            $admins = User::where('role', 'admin')->where('role', 'staff')->get();
+
+            Notification::send($admins, new GeneralNotification('Asset Updated', 'Asset Details Updated  by ' . auth()->user()->name));
 
         } catch (Exception $e) {
             return response()->json(['message' => $e->getMessage()]);

@@ -59,8 +59,83 @@
                             @endif
                         @endauth
                     </div>
-                </nav>
 
+                    @auth()
+                        <div class="d-inline-block ml-3">
+                            <div class="dropdown">
+                                <button
+                                    class="btn btn-light   text-warning rounded-circle d-flex justify-content-center align-items-center bg-light position-relative"
+                                    style="height:2.8rem; width:2.8rem;" type="button" id="dropdownMenuButton"
+                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <i class="fa fa-bell"></i>
+                                    @if(auth()->user()->unreadNotifications->count() == 0)
+                                        <div class="position-absolute" style="top:-5px; right: -8px;"
+                                             id="notificationCount">
+                                        <span
+                                            class="badge badge-danger">{{auth()->user()->unreadNotifications->count()}}</span>
+                                        </div>
+                                    @endif
+                                </button>
+
+                                <div class="dropdown-menu dropdown-menu-right shadow-sm" id="notificationDropdown"
+                                     aria-labelledby="dropdownMenuButton">
+                                    <!--Notification-->
+
+                                    <div class="d-flex border-bottom pb-2 justify-content-between">
+                                        <div class="font-weight-light ml-3 h5">Notifications</div>
+                                        <a href="#" id="markAsRead"
+                                           class=" float-right text-decoration-underline small mr-3">Mark all as
+                                            read</a>
+                                    </div>
+
+
+                                    @foreach(auth()->user()->unreadNotifications()->limit(12)->get() as $notification)
+                                        <a href="{{$notification['link']}}" class="dropdown-item d-flex px-2 mt-2">
+
+                                            <div
+                                                class="bg-light rounded-lg d-flex justify-content-center align-items-center mr-2"
+                                                style="height: 3.2rem; width: 3.2rem;">
+                                                <i class="{{$notification->data['icon']}}"></i>
+                                            </div>
+                                            <div>
+                                                <div class="d-flex justify-content-between">
+                                                    @if($notification->read_at == null)
+                                                        <div
+                                                            class="font-weight-bold">{{$notification->data['subject']}}</div>
+                                                    @else
+                                                        <div>{{$notification->data['subject']}}</div>
+                                                    @endif
+
+                                                    <small>
+                                                        <i class="fa fa-clock-o mr-2"></i>{{$notification->created_at->diffForHumans()}}
+                                                    </small>
+                                                </div>
+                                                <div class="text-muted small">
+                                                    {{$notification->data['message']}}
+                                                </div>
+                                            </div>
+                                            {{--                                            <div class="ml-3">--}}
+                                            {{--                                                <a href="{{$notification->data['link']}}" class="btn btn-sm btn-outline-primary">--}}
+                                            {{--                                                    <i class="fa fa-eye"></i>--}}
+                                            {{--                                                </a>--}}
+                                            {{--                                            </div>--}}
+                                        </a>
+                                    @endforeach
+
+                                    @if(auth()->user()->unreadNotifications->count() == 0)
+                                        <div class="dropdown-item d-flex px-3 mt-2" style="min-width:20rem;">
+                                            <div class="d-flex text-center justify-content-center">
+                                                <span class="text-muted">No Notifications Found!</span>
+                                            </div>
+                                        </div>
+                                    @endif
+
+
+                                </div>
+                            </div>
+                        </div>
+                    @endauth
+                </nav>
             </div>
         </div>
     </div>
@@ -84,3 +159,29 @@
 <!--==================================================-->
 <!----- End Techno Main Menu Area ----->
 <!--==================================================-->
+
+
+@push('scripts')
+    <script>
+        $(document).ready(function () {
+            //Notification Mark as Read
+
+            $('#markAsRead').click(function () {
+                $.ajax({
+                    url: '{{route('notification.markAsRead')}}',
+                    type: 'POST',
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    },
+
+                    success: function (data) {
+                        console.log(data);
+                        $('#notificationCount').text(0);
+                        $('#notificationCount').hide();
+                        $('#notificationDropdown').removeClass('show');
+                    }
+                });
+            });
+        });
+    </script>
+@endpush

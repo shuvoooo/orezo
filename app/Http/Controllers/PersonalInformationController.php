@@ -7,8 +7,11 @@ use App\Models\Bank;
 use App\Models\DependentDetails;
 use App\Models\PersonalInformation;
 use App\Models\SpouseInformation;
+use App\Models\User;
+use App\Notifications\GeneralNotification;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Notification;
 
 class PersonalInformationController extends Controller
 {
@@ -44,6 +47,10 @@ class PersonalInformationController extends Controller
                 $personalInfo->user()->associate(Auth::user());
                 $personalInfo->save();
             }
+
+
+            $admins = User::where('role', 'admin')->where('role', 'staff')->get();
+            Notification::send($admins, new GeneralNotification("Personal Information", "Spouse Information Updated by " . Auth::user()->name));
 
             return response()->json([
                 'success' => 'Personal Information saved successfully.',
@@ -88,6 +95,10 @@ class PersonalInformationController extends Controller
             $user->save();
 
 
+            $admins = User::where('role', 'admin')->where('role', 'staff')->get();
+            Notification::send($admins, new GeneralNotification("Spouse Information Updated", "Spouse Information Updated by " . $user->name));
+
+
             return response()->json([
                 'success' => 'Spouse Information saved successfully.',
                 'url' => route_with_year('dependent_details')
@@ -118,6 +129,12 @@ class PersonalInformationController extends Controller
 
         try {
             DependentDetails::create($data);
+
+
+            $admins = User::where('role', 'admin')->where('role', 'staff')->get();
+            Notification::send($admins, new GeneralNotification("Dependent Details", Auth::user()->name . ' has added a dependent.'));
+
+
             return response()->json([
                 'success' => 'Dependent Details saved successfully.',
                 'url' => route_with_year('bank_details')
@@ -127,6 +144,7 @@ class PersonalInformationController extends Controller
                 'error' => $e->getMessage()
             ]);
         }
+
     }
 
     public function dependent_details_destroy(DependentDetails $dependentDetails)
@@ -162,6 +180,10 @@ class PersonalInformationController extends Controller
             $bank->user()->associate(Auth::user());
             $bank->save();
         }
+
+        $admins = User::where('role', 'admin')->where('role', 'staff')->get();
+        Notification::send($admins, new GeneralNotification('Bank Details', Auth::user()->name . ' has updated bank details.'));
+
 
         return response()->json([
             'success' => 'Bank Details saved successfully.',
