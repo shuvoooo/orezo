@@ -3,21 +3,21 @@ return [
     'admin.client_details' => [
         'text' => 'Client List',
         'url' => route('admin.client_details'),
-        'icon' => 'fa fa-dashboard',
+        'icon' => 'fa fa-users',
         'type' => 'single',
         'submenu' => []
     ],
     'admin.invoice.create' => [
         'text' => 'Invoice',
         'url' => route('admin.invoice.create'),
-        'icon' => 'fa fa-dashboard',
+        'icon' => 'fa fa-usd',
         'type' => 'single',
         'submenu' => []
     ],
     'web_setting' => [
         'text' => 'Web Setting',
         'url' => null,
-        'icon' => 'fa fa-dashboard',
+        'icon' => 'fa fa-safari',
         'type' => 'submenu',
         'submenu' => [
             'admin.general-config.index' => [
@@ -50,7 +50,7 @@ return [
     'pages' => [
         'text' => 'Pages',
         'url' => null,
-        'icon' => 'fa fa-pages',
+        'icon' => 'fa fa-file-text',
         'type' => 'submenu',
         'submenu' => [
             'admin.home_page.edit' => [

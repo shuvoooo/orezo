@@ -18,23 +18,25 @@ class HomePageSeeder extends Seeder
             'title' => 'Data Analytics/Techniques with/Detox Systems./Data Marketing/Data Services',
             'description' => 'Techno real-time data management technologies, global data science, and award-winning customer service make our unstacked data solutions dreamit authors team member.',
             'youtube_url' => 'https://youtu.be/BS4TUd7FJSg',
-            'happy_clients' => '19',
-            'total_accounts' => '1240',
-            'total_projects' => '13',
-            'winning_awards' => '999',
+            'counters' => [
+                'clients' => '100',
+                'years_in_business' => '10',
+                'tax_prepared' => '30',
+                'staff_members' => '10',
+            ],
             'info' => [
                 [
-                    'icon' => 'fa fa-laptop',
+                    'icon' => 'laptop',
                     'title' => 'Machine Learning',
                     'description' => 'We are a team of data scientists, data engineers, and data scientists. We are a team of data scientists, data engineers, and data scientists.',
                     'url' => '#'
                 ], [
-                    'icon' => 'fa fa-bullseye',
+                    'icon' => 'bullseye',
                     'title' => 'Manage Analytics',
                     'description' => 'We are a team of data scientists, data engineers, and data scientists. We are a team of data scientists, data engineers, and data scientists.',
                     'url' => '#'
                 ], [
-                    'icon' => 'fa fa-life-ring',
+                    'icon' => 'life-ring',
                     'title' => 'Business Intelligence',
                     'description' => 'We are a team of data scientists, data engineers, and data scientists. We are a team of data scientists, data engineers, and data scientists.',
                     'url' => '#'

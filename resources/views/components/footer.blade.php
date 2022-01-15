@@ -7,7 +7,11 @@
             <div class="col-lg-4 col-md-6 col-sm-12">
                 <div class="widget widgets-company-info">
                     <div class="footer-bottom-logo pb-40">
-                        <img src="{{asset('assets/images/logo.png')}}" alt=""/>
+                        <div class="d-flex">
+                            <img src="{{asset('assets/images/logo/etaxplanner_logo.png')}}" class="mr-4" width="40"
+                                 alt=""/>
+                            <div class="brand h3 font-weight-normal text-light">E Tax Planner</div>
+                        </div>
                     </div>
                     <div class="company-info-desc">
                         <p>Condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum. Nam
@@ -32,12 +36,9 @@
                     <h4 class="widget-title pb-4">Our Services</h4>
                     <div class="menu-quick-link-container ml-4">
                         <ul id="menu-quick-link" class="menu">
-                            <li><a href="#">Marketing Strategy</a></li>
-                            <li><a href="#">Interior Design</a></li>
-                            <li><a href="#">Digital Services</a></li>
-                            <li><a href="#">Product Selling</a></li>
-                            <li><a href="#">Product Design</a></li>
-                            <li><a href="#">Social Marketing</a></li>
+                            @foreach($services as $service)
+                                <li><a href="{{$service->url}}">{{$service->name}}</a></li>
+                            @endforeach
                         </ul>
                     </div>
                 </div>

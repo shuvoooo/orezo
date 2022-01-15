@@ -36,10 +36,25 @@
                                 <span>{{$team->designation}}</span>
                             </div>
                             <div class="team_style_two_icon">
-                                <a href="{{$team->social_link['facebook']??''}}"><i class="fa fa-facebook"></i></a>
-                                <a href="{{$team->social_link['twitter']??''}}"><i class="fa fa-twitter"></i></a>
-                                <a href="{{$team->social_link['linkedin']??''}}"><i class="fa fa-linkedin"></i></a>
-                                <a href="{{$team->social_link['github']??''}}"><i class="fa fa-github"></i></a>
+
+                                @if($team->social_link['email']??false)
+                                    <a href="mailto:{{$team->social_link['email']??''}}"><i class="fa fa-envelope"></i></a>
+                                @endif
+
+                                @if($team->social_link['phone']??false)
+                                    <a href="tel:{{$team->social_link['phone']??''}}"><i class="fa fa-phone"></i></a>
+                                @endif
+
+                                @if($team->social_link['google_chat']??false)
+                                    <a href="googlechat:{{$team->social_link['google_chat']??''}}"><i
+                                            class="fa fa-meetup"></i></a>
+                                @endif
+
+                                @if($team->social_link['whatsapp']??false)
+                                    <a href="whatsapp://send?abid={{$team->social_link['whatsapp']??''}}"><i
+                                            class="fa fa-whatsapp"></i></a>
+                                @endif
+
                             </div>
                         </div>
                     </div>

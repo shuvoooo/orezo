@@ -32,12 +32,22 @@ class HomePageController extends Controller
                 $info[$i][$key] = $value[$i];
             }
         }
+
+        $counters = [
+            'clients' => $request->clients,
+            'year_in_business' => $request->year_in_business,
+            'tax_prepared' => $request->tax_prepared,
+            'staff_members' => $request->staff_members,
+        ];
+
         $request->merge([
             'title' => $title,
             'info' => $info,
+            'counters' => $counters,
         ]);
 
-        $home_page->update($request->all());
+        $home_page->update($request->except(['clients', 'year_in_business', 'tax_prepared', 'staff_members']));
+
         return redirect()->route('admin.home_page.edit')->with('success', 'Home Page Updated Successfully');
     }
 }

@@ -46,22 +46,6 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="email" class="col-md-3 col-form-label text-dark">
-                                Email
-                            </label>
-
-                            <div class="col-md-9">
-                                <input type="email" class="form-control" id="Email" placeholder="Enter Email"
-                                       name="email"
-                                       value="{{old('phone', $user->email)}}"
-                                       aria-describedby="emailHelp"/>
-                                @error('email')
-                                <small class="form-text text-danger">{{$message}}</small>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
                             <label for="text" class="col-md-3 col-form-label text-dark">
                                 Phone
                             </label>
@@ -220,6 +204,10 @@
                     </div>
                 </div>
             </form>
+        </div>
+
+        <div class="col-md-6 mt-2">
+            <email-changer :user='@json(auth()->user())'></email-changer>
         </div>
     </div>
 @endsection

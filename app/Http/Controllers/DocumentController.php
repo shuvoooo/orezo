@@ -97,4 +97,23 @@ class DocumentController extends Controller
 
         return response()->json(['message' => 'Document uploaded successfully']);
     }
+
+    public function download_tax_documents()
+    {
+        return view('user.documents.tax_document_download');
+    }
+
+    public function download_tax_documents_store(Request $request)
+    {
+        $request->validate([
+            'title' => 'required'
+        ]);
+
+
+    }
+
+    public function comments_store(Request $request)
+    {
+
+    }
 }

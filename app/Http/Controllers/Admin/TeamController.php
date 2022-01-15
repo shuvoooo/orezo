@@ -47,17 +47,17 @@ class TeamController extends Controller
 
         //create social link array
         $social_links = [];
-        if ($request->has('facebook')) {
-            $social_links['facebook'] = $request->facebook;
+        if ($request->has('email')) {
+            $social_links['email'] = $request->email;
         }
-        if ($request->has('twitter')) {
-            $social_links['twitter'] = $request->twitter;
+        if ($request->has('phone')) {
+            $social_links['phone'] = $request->phone;
         }
-        if ($request->has('linkedin')) {
-            $social_links['linkedin'] = $request->linkedin;
+        if ($request->has('google_chat')) {
+            $social_links['google_chat'] = $request->google_chat;
         }
-        if ($request->has('github')) {
-            $social_links['github'] = $request->github;
+        if ($request->has('whatsapp')) {
+            $social_links['whatsapp'] = $request->whatsapp;
         }
 
         //create team
@@ -113,19 +113,20 @@ class TeamController extends Controller
             'status' => 'required',
         ]);
 
+
         //create social link array
         $social_links = [];
-        if ($request->has('facebook')) {
-            $social_links['facebook'] = $request->facebook;
+        if ($request->has('email')) {
+            $social_links['email'] = $request->email;
         }
-        if ($request->has('twitter')) {
-            $social_links['twitter'] = $request->twitter;
+        if ($request->has('phone')) {
+            $social_links['phone'] = $request->phone;
         }
-        if ($request->has('linkedin')) {
-            $social_links['linkedin'] = $request->linkedin;
+        if ($request->has('google_chat')) {
+            $social_links['google_chat'] = $request->google_chat;
         }
-        if ($request->has('github')) {
-            $social_links['github'] = $request->github;
+        if ($request->has('whatsapp')) {
+            $social_links['whatsapp'] = $request->whatsapp;
         }
 
         //update team

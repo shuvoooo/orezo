@@ -3,7 +3,7 @@ return [
     'personal_information' => [
         'text' => 'User Information',
         'url' => null,
-        'icon' => 'fa fa-user',
+        'icon' => 'fa fa-user-secret',
         'type' => 'submenu',
         'submenu' => [
             'personal_information' => [
@@ -28,7 +28,7 @@ return [
     'process_flow_chart' => [
         'text' => 'Process Flow Chart',
         'url' => route_with_year('process_flow_chart'),
-        'icon' => 'fa fa-dashboard',
+        'icon' => 'fa fa-tags',
         'type' => 'single',
         'submenu' => []
     ],
@@ -36,7 +36,7 @@ return [
     'fill_tax_information' => [
         'text' => 'Fill Tax Information',
         'url' => null,
-        'icon' => 'fa fa-dashboard',
+        'icon' => 'fa fa-info-circle',
         'type' => 'submenu',
         'submenu' => [
             'employer_details' => [
@@ -72,11 +72,18 @@ return [
 
 
     ],
+    'download_tax_documents' => [
+        'text' => 'Download Docs',
+        'url' => route_with_year('download_tax_documents'),
+        'icon' => 'fa fa-cloud-download',
+        'type' => 'single',
+        'submenu' => []
+    ],
 
     'my_status' => [
         'text' => 'My Status',
         'url' => null,
-        'icon' => 'fa fa-dashboard',
+        'icon' => 'fa fa-thermometer',
         'type' => 'submenu',
         'submenu' => [
             'my_file_status' => [

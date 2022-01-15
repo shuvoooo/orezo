@@ -108,6 +108,9 @@ Route::group(['middleware' => ['auth', UserMiddleware::class, 'verified']], func
             Route::get('payment-info', [MyStatusController::class, 'payment_info'])->name('payment_info');
         });
 
+        Route::get('download_tax_documents', [DocumentController::class, 'download_tax_documents'])->name('download_tax_documents');
+
+
         Route::get('account-settings', [UserController::class, 'update_profile_view'])->name('user_profile_view');
     });
 });
@@ -160,6 +163,10 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('change-password', [UserController::class, 'change_password'])->name('change_password');
 
     Route::post('notification/markAsRead', [NotificationController::class, 'markAsRead'])->name('notification.markAsRead');
+
+    Route::post('send_otp_email', [UserController::class, 'send_otp_email'])->name('send_otp_email');
+    Route::post('verify_otp', [UserController::class, 'verify_otp'])->name('verify_otp');
+    Route::post('change_email', [UserController::class, 'change_email'])->name('change_email');
 });
 
 Route::get("{slug}", [HomeController::class, 'page'])->name('page');

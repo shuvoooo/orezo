@@ -104,48 +104,49 @@
 
                 </div>
             </div>
+
             <div class="row">
                 <div class="col-lg-3 col-md-6 col-sm-12">
                     <div class="single_counter text_center mb-4">
                         <div class="countr_text">
                             <h1>
                                 <span class="counter">
-                                    {{$homePage->happy_clients}}
+                                    {{$homePage->counters['clients']}}
                                 </span>
                             </h1>
                         </div>
                         <div class="counter_desc">
-                            <h5>Happy Clients</h5>
+                            <h5>Clients</h5>
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6 col-sm-12">
                     <div class="single_counter text_center mb-4">
                         <div class="countr_text">
-                            <h1><span class="counter"> {{$homePage->total_accounts}}</span></h1>
+                            <h1><span class="counter">   {{$homePage->counters['years_in_business']}}</span></h1>
                         </div>
                         <div class="counter_desc">
-                            <h5>Account Number</h5>
+                            <h5>Years In Business</h5>
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6 col-sm-12">
                     <div class="single_counter text_center mb-4">
                         <div class="countr_text">
-                            <h1><span class="counter"> {{$homePage->total_projects}}</span></h1>
+                            <h1><span class="counter">   {{$homePage->counters['tax_prepared']}}</span></h1>
                         </div>
                         <div class="counter_desc">
-                            <h5>Finished Projects</h5>
+                            <h5>Tax Prepared</h5>
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6 col-sm-12">
                     <div class="single_counter text_center mb-4">
                         <div class="countr_text">
-                            <h1><span class="counter">{{$homePage->winning_awards}}</span></h1>
+                            <h1><span class="counter">  {{$homePage->counters['staff_members']}}</span></h1>
                         </div>
                         <div class="counter_desc">
-                            <h5>Win Awards</h5>
+                            <h5>Staff Members</h5>
                         </div>
                     </div>
                 </div>
@@ -186,7 +187,7 @@
                              data-wow-duration="1500ms">
                             <div class="feature_style_eight_content">
                                 <div class="feature_style_eight_icon">
-                                    <i class="{{$information['icon']}}"></i>
+                                    <i class="fa fa-{{$information['icon']}}"></i>
                                     <div class="anim-icon">
                                         <span class="icon icon-1"></span>
                                         <span class="icon icon-2"></span>

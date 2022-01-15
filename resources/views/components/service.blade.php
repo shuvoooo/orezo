@@ -27,7 +27,7 @@
                             <div class="techno_flipbox_inner">
                                 <div class="techno_flipbox_icon">
                                     <div class="icon">
-                                        <i class="{{$service->icon}}"></i>
+                                        <i class="fa fa-{{$service->icon}}"></i>
                                     </div>
                                 </div>
                                 <div class="flipbox_title">

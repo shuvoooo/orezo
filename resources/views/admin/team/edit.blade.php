@@ -60,47 +60,48 @@
                             </div>
 
                             <div class="form-group">
-                                <label class="text-dark" for="facebook">Facebook</label>
-                                <input type="url" class="form-control @error('facebook') is-invalid @endif "
-                                       id="facebook"
-                                       name="facebook" placeholder="Enter Facebook"
-                                       value="{{old('facebook', $team->social_link['facebook']??'')}}">
-                                @error('facebook')
+                                <label class="text-dark" for="facebook">Email</label>
+                                <input type="text" class="form-control @error('email') is-invalid @endif "
+                                       id="email"
+                                       name="email" placeholder="Enter email"
+                                       value="{{old('email', $team->social_link['email']??'')}}">
+                                @error('email')
                                 <span class="invalid-feedback">{{ $message }}</span>
                                 @enderror
                             </div>
 
                             <div class="form-group">
-                                <label class="text-dark" for="twitter">Twitter</label>
-                                <input type="url" class="form-control @error('twitter') is-invalid @endif "
-                                       id="twitter"
-                                       name="twitter" placeholder="Enter Twitter"
-                                       value="{{old('twitter', $team->social_link['twitter']??'')}}">
-                                @error('twitter')
+                                <label class="text-dark" for="phone">Phone</label>
+                                <input type="text" class="form-control @error('phone') is-invalid @endif "
+                                       id="phone"
+                                       name="phone" placeholder="Enter phone"
+                                       value="{{old('phone', $team->social_link['phone']??'')}}">
+                                @error('phone')
+                                <span class="invalid-feedback">{{ $message }}</span>
+                                @enderror
+                            </div>
+                            <div class="form-group">
+                                <label class="text-dark" for="google_chat">Google Chat</label>
+                                <input type="text" class="form-control @error('google_chat') is-invalid @endif "
+                                       id="google_chat"
+                                       name="google_chat" placeholder="Enter google_chat"
+                                       value="{{old('google_chat', $team->social_link['google_chat']??'')}}">
+                                @error('google_chat')
+                                <span class="invalid-feedback">{{ $message }}</span>
+                                @enderror
+                            </div>
+                            <div class="form-group">
+                                <label class="text-dark" for="whatsapp">Whats App</label>
+                                <input type="text" class="form-control @error('whatsapp') is-invalid @endif "
+                                       id="whatsapp"
+                                       name="whatsapp" placeholder="Enter whatsapp"
+                                       value="{{old('whatsapp', $team->social_link['whatsapp']??'')}}">
+                                @error('whatsapp')
                                 <span class="invalid-feedback">{{ $message }}</span>
                                 @enderror
                             </div>
 
-                            <div class="form-group">
-                                <label class="text-dark" for="linkedin">Linkedin</label>
-                                <input type="url" class="form-control @error('linkedin') is-invalid @endif "
-                                       id="linkedin"
-                                       name="linkedin" placeholder="Enter Linkedin"
-                                       value="{{old('linkedin', $team->social_link['linkedin']??'')}}">
-                                @error('linkedin')
-                                <span class="invalid-feedback">{{ $message }}</span>
-                                @enderror
-                            </div>
 
-                            <div class="form-group">
-                                <label class="text-dark" for="github">Github</label>
-                                <input type="url" class="form-control @error('github') is-invalid @endif " id="github"
-                                       name="github" placeholder="Enter Github"
-                                       value="{{old('github', $team->social_link['github']??'')}}">
-                                @error('github')
-                                <span class="invalid-feedback">{{ $message }}</span>
-                                @enderror
-                            </div>
 
                             <div class="form-group">
                                 <label class="text-dark" for="status">Status</label>

@@ -49,34 +49,34 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="happy_clients" class="text-dark">Happy Clients</label>
-                            <input type="text" class="form-control" id="happy_clients" name="happy_clients"
-                                   placeholder="Happy Clients"
-                                   value="{{ $home_page->happy_clients }}">
+                            <label for="clients" class="text-dark">Clients</label>
+                            <input type="text" class="form-control" id="clients" name="clients"
+                                   placeholder="Clients"
+                                   value="{{ $home_page->counters['clients'] }}">
 
                         </div>
 
                         <div class="form-group">
-                            <label for="total_accounts" class="text-dark">Total Amounts</label>
-                            <input type="text" class="form-control" id="total_accounts" name="total_accounts"
-                                   placeholder="Total Amounts"
-                                   value="{{ $home_page->total_accounts }}">
+                            <label for="year_in_business" class="text-dark">Years in Business</label>
+                            <input type="text" class="form-control" id="year_in_business" name="year_in_business"
+                                   placeholder="Years in Business"
+                                   value="{{ $home_page->counters['years_in_business'] }}">
 
                         </div>
 
                         <div class="form-group">
-                            <label for="total_projects" class="text-dark">Total Projects</label>
-                            <input type="text" class="form-control" id="total_projects" name="total_projects"
-                                   placeholder="Total Projects"
-                                   value="{{ $home_page->total_projects }}">
+                            <label for="tax_prepared" class="text-dark">Tax Prepared</label>
+                            <input type="text" class="form-control" id="tax_prepared" name="tax_prepared"
+                                   placeholder="Tax Prepared"
+                                   value="{{ $home_page->counters['tax_prepared'] }}">
 
                         </div>
 
                         <div class="form-group">
-                            <label for="winning_awards" class="text-dark">Winning Awards</label>
-                            <input type="text" class="form-control" id="winning_awards" name="winning_awards"
+                            <label for="staff_members" class="text-dark">Staff Members</label>
+                            <input type="text" class="form-control" id="staff_members" name="staff_members"
                                    placeholder="Winning Awards"
-                                   value="{{ $home_page->winning_awards }}">
+                                   value="{{ $home_page->counters['staff_members'] }}">
 
                         </div>
 

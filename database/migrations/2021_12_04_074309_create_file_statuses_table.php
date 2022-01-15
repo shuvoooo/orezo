@@ -18,6 +18,7 @@ class CreateFileStatusesTable extends Migration
             $table->foreignId('user_id')->nullable()->constrained();
             $table->integer('status');
             $table->unsignedInteger('added_by')->nullable();
+            $table->string('year')->nullable();
             $table->timestamps();
         });
     }

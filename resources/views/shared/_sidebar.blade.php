@@ -12,12 +12,12 @@
         <li class="">
             @if(auth()->user()->role == 'user')
                 <a href="{{route_with_year('user_profile_view')}}">
-                    <i class="icon-cog"></i>
+                    <i class="fa fa-cogs"></i>
                     <span>Account Settings</span>
                 </a>
             @else
                 <a href="{{route('admin.profile_view')}}">
-                    <i class="icon-cog"></i>
+                    <i class="fa fa-cogs"></i>
                     <span>Account Settings</span>
                 </a>
             @endif
@@ -26,7 +26,7 @@
         <li>
             <a href="javascript:void(0);"
                onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><i
-                    class="icon-key"></i> Log Out</a>
+                    class="fa fa-sign-out"></i> Log Out</a>
             <form id="logout-form" action="{{route('logout')}}" method="POST" style="display: none;">
                 @csrf
             </form>
@@ -147,28 +147,6 @@
         width: 100%;
     }
 
-    /*.sidebar > ul > li > a {*/
-    /*    display: block;*/
-    /*    position: relative;*/
-    /*    margin: 0;*/
-    /*    border: 0px;*/
-    /*    -webkit-border-radius: 0px !important;*/
-    /*    -moz-border-radius: 0px !important;*/
-    /*    border-radius: 0px !important;*/
-    /*    text-decoration: none;*/
-    /*    font-size: 12px;*/
-    /*    font-weight: normal;*/
-    /*    text-align: left;*/
-    /*    padding: 5px 15px;*/
-    /*    !*background: #505050;*!*/
-
-    /*    transition-duration: 500ms;*/
-    /*    transition-property: width, background;*/
-    /*    transition-timing-function: ease;*/
-    /*    -webkit-transition-duration: 500ms;*/
-    /*    -webkit-transition-property: width, background;*/
-    /*    -webkit-transition-timing-function: ease;*/
-    /*}*/
 
     .sidebar > ul > li > a > span {
         display: inline-block;
@@ -192,6 +170,7 @@
     .sidebar > ul > li.active > a .arrow {
         margin-right: 0px;
         padding-right: 10px;
+        font-size: 20px;
     }
 
     .sidebar > ul > li.active > a .arrow.open {
@@ -202,7 +181,7 @@
     .sidebar ul > li > a .arrow {
         float: right;
         margin-top: 6px;
-        margin-right: 0px;
+        margin-right: 6px;
         width: 0;
         height: 0;
         border-left: 4px solid #A0A0A0;
@@ -212,8 +191,8 @@
 
     .sidebar > ul > li > a .arrow.open {
         float: right;
-        margin-top: 14px;
-        margin-right: 0px;
+        margin-top: 6px;
+        margin-right: 6px;
         width: 0;
         height: 0;
         border-top: 5px solid #A0A0A0;
@@ -224,7 +203,7 @@
     .sidebar ul > li.active > a .arrow, .sidebar ul > li > a:hover .arrow {
         float: right;
         margin-top: 6px;
-        margin-right: 0px;
+        margin-right: 6px;
         width: 0;
         height: 0;
         border-left: 4px solid #fff;
@@ -234,8 +213,8 @@
 
     .sidebar > ul > li.active > a .arrow.open, .sidebar > ul > li > a:hover .arrow.open {
         float: right;
-        margin-top: 14px;
-        margin-right: 0px;
+        margin-top: 6px;
+        margin-right: 6px;
         width: 0;
         height: 0;
         border-top: 5px solid #fff;
@@ -276,6 +255,11 @@
         background: inherit;
         padding: 0px;
         margin-bottom: 1px;
+    }
+
+    .sidebar > ul > li > ul.sub > li.active > a > span {
+        font-weight: bolder;
+        font-size: .8rem;
     }
 
     .sidebar > ul > li > ul.sub > li > a {

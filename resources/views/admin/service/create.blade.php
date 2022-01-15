@@ -61,6 +61,8 @@
                                 <input type="text" class="form-control @error('icon') is-invalid @endif " id="icon"
                                        name="icon" value="{{old('icon')}}"
                                        placeholder="Enter Icon Name">
+                                <span class="help-block">For icon check : <a href="https://fontawesome.com/v4.7/icons"
+                                                                             target="_blank">Fontawesome v4.7</a></span>
                                 @error('icon')
                                 <span class="invalid-feedback">{{ $message }}</span>
                                 @enderror

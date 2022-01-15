@@ -15,9 +15,9 @@ class CreateDownloadSavesTable extends Migration
     {
         Schema::create('download_saves', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained();
-            $table->longText('details')->nullable();
-            $table->longText('comments')->nullable();
+            $table->foreignId('user_id')->nullable()->constrained()->cascadeOnDelete()->cascadeOnUpdate();
+            $table->foreignId('added_by')->constrained('users');
+            $table->string('file')->nullable();
             $table->timestamps();
         });
     }

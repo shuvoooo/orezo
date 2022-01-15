@@ -19,10 +19,16 @@
             <div class="col-md-3">
                 <div class="logo mt-4">
                     <a class="logo_img" href="{{route('home')}}" title="techno">
-                        <img src="{{asset('assets/images/1.png')}}" alt=""/>
+                        <div class="d-flex">
+                            <img src="{{asset('assets/images/logo/etaxplanner_logo.png')}}" class="mr-4" style="width:3rem"
+                                 alt=""/>
+                            <div class="brand h3 font-weight-normal align-self-center mt-2">E Tax Planner</div>
+                        </div>
                     </a>
                     <a class="main_sticky" href="{{route('home')}}" title="techno">
-                        <img src="{{asset('assets/images/logo.png')}}" alt="astute"/>
+                        <img src="{{asset('assets/images/logo/etaxplanner_logo.png')}}" style="width:3rem"
+                             alt="astute"/>
+
                     </a>
                 </div>
             </div>
@@ -152,6 +158,28 @@
                 <li><a href="{{route('contact')}}">Contact Us</a></li>
                 <li><a href="{{route('faq')}}">FAQ</a></li>
                 <li><a href="{{route('tips')}}">Tips</a></li>
+
+
+                @auth('web')
+                    @if(auth()->user()->role == "admin")
+                        <li><a href="{{route('admin.dashboard')}}">Admin Panel</a></li>
+
+                    @elseif(auth()->user()->role == "staff")
+                        <li><a href="#">Staff Panel</a></li>
+                    @else
+                        <li><a href="{{route_with_year('dashboard')}}">Dashboard</a></li>
+                    @endif
+
+                @else
+                    @if(\Route::currentRouteName() != 'login')
+                        <li><a href="{{route('login')}}">Login</a></li>
+                    @endif
+
+                    @if(\Route::currentRouteName() != 'register')
+                        <li><a href="{{route('register')}}">Register</a></li>
+                    @endif
+                @endauth
+
             </ul>
         </nav>
     </div>

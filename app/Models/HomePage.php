@@ -13,5 +13,6 @@ class HomePage extends Model
 
     protected $casts = [
         'info' => 'array',
+        'counters' => 'array',
     ];
 }

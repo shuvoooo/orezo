@@ -2476,6 +2476,152 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/EmailChanger.vue?vue&type=script&lang=js&":
+/*!*******************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/EmailChanger.vue?vue&type=script&lang=js& ***!
+  \*******************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  props: ['user'],
+  data: function data() {
+    return {
+      email: '',
+      otp: '',
+      password: '',
+      otp_sent: false,
+      otp_verified: false,
+      email_changed: false
+    };
+  },
+  methods: {
+    sendOTP: function sendOTP() {
+      var _this = this;
+
+      this.isLoading = true;
+      axios.post('/send_otp_email').then(function (res) {
+        _this.otp_sent = true;
+        _this.msg = res.data.message;
+        _this.isLoading = false;
+      })["catch"](function (err) {
+        _this.otp_sent = false;
+
+        _this.backendError(err);
+      });
+    },
+    confirmOTP: function confirmOTP() {
+      var _this2 = this;
+
+      this.isLoading = true;
+      axios.post('/verify_otp', {
+        otp: this.otp
+      }).then(function (res) {
+        _this2.otp_verified = true;
+        _this2.msg = res.data.message;
+        _this2.isLoading = false;
+      })["catch"](function (err) {
+        _this2.otp_verified = false;
+
+        _this2.backendError(err);
+      });
+    },
+    changeEmail: function changeEmail() {
+      var _this3 = this;
+
+      this.isLoading = true;
+      axios.post('/change_email', {
+        email: this.email,
+        password: this.password,
+        otp: this.otp
+      }).then(function (res) {
+        _this3.email_changed = true;
+        _this3.msg = res.data.message;
+        _this3.isLoading = false;
+      })["catch"](function (err) {
+        _this3.email_changed = false;
+
+        _this3.backendError(err);
+      });
+    }
+  }
+});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/EmployerDetails.vue?vue&type=script&lang=js&":
 /*!**********************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/EmployerDetails.vue?vue&type=script&lang=js& ***!
@@ -17667,6 +17813,45 @@ component.options.__file = "resources/js/components/DependentDetails.vue"
 
 /***/ }),
 
+/***/ "./resources/js/components/EmailChanger.vue":
+/*!**************************************************!*\
+  !*** ./resources/js/components/EmailChanger.vue ***!
+  \**************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _EmailChanger_vue_vue_type_template_id_5546e871___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./EmailChanger.vue?vue&type=template&id=5546e871& */ "./resources/js/components/EmailChanger.vue?vue&type=template&id=5546e871&");
+/* harmony import */ var _EmailChanger_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./EmailChanger.vue?vue&type=script&lang=js& */ "./resources/js/components/EmailChanger.vue?vue&type=script&lang=js&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! !../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+;
+var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _EmailChanger_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _EmailChanger_vue_vue_type_template_id_5546e871___WEBPACK_IMPORTED_MODULE_0__.render,
+  _EmailChanger_vue_vue_type_template_id_5546e871___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns,
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/EmailChanger.vue"
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (component.exports);
+
+/***/ }),
+
 /***/ "./resources/js/components/EmployerDetails.vue":
 /*!*****************************************************!*\
   !*** ./resources/js/components/EmployerDetails.vue ***!
@@ -18224,6 +18409,22 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/components/EmailChanger.vue?vue&type=script&lang=js&":
+/*!***************************************************************************!*\
+  !*** ./resources/js/components/EmailChanger.vue?vue&type=script&lang=js& ***!
+  \***************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_EmailChanger_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./EmailChanger.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/EmailChanger.vue?vue&type=script&lang=js&");
+ /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_EmailChanger_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
 /***/ "./resources/js/components/EmployerDetails.vue?vue&type=script&lang=js&":
 /*!******************************************************************************!*\
   !*** ./resources/js/components/EmployerDetails.vue?vue&type=script&lang=js& ***!
@@ -18492,6 +18693,23 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "staticRenderFns": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_DependentDetails_vue_vue_type_template_id_8d61a9a4___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns)
 /* harmony export */ });
 /* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_DependentDetails_vue_vue_type_template_id_8d61a9a4___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./DependentDetails.vue?vue&type=template&id=8d61a9a4& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/DependentDetails.vue?vue&type=template&id=8d61a9a4&");
+
+
+/***/ }),
+
+/***/ "./resources/js/components/EmailChanger.vue?vue&type=template&id=5546e871&":
+/*!*********************************************************************************!*\
+  !*** ./resources/js/components/EmailChanger.vue?vue&type=template&id=5546e871& ***!
+  \*********************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_EmailChanger_vue_vue_type_template_id_5546e871___WEBPACK_IMPORTED_MODULE_0__.render),
+/* harmony export */   "staticRenderFns": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_EmailChanger_vue_vue_type_template_id_5546e871___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns)
+/* harmony export */ });
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_EmailChanger_vue_vue_type_template_id_5546e871___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./EmailChanger.vue?vue&type=template&id=5546e871& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/EmailChanger.vue?vue&type=template&id=5546e871&");
 
 
 /***/ }),
@@ -19654,6 +19872,218 @@ var staticRenderFns = [
     ])
   },
 ]
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/EmailChanger.vue?vue&type=template&id=5546e871&":
+/*!************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/EmailChanger.vue?vue&type=template&id=5546e871& ***!
+  \************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* binding */ render),
+/* harmony export */   "staticRenderFns": () => (/* binding */ staticRenderFns)
+/* harmony export */ });
+var render = function () {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "card" }, [
+    _c("div", { staticClass: "card-header" }, [
+      _vm._v("\n        Change Your Email\n    "),
+    ]),
+    _vm._v(" "),
+    _c(
+      "div",
+      { staticClass: "card-body" },
+      [
+        _c("div", [_vm._v("Step 1 : Send OTP to Verify your current email")]),
+        _vm._v(" "),
+        _c("div", { staticClass: "input-group mb-3" }, [
+          _c("input", {
+            staticClass: "form-control",
+            attrs: {
+              type: "text",
+              placeholder: "Your Current Email Address",
+              "aria-label": "Your Current Email Address",
+              disabled: "",
+            },
+            domProps: { value: _vm.user.email },
+          }),
+          _vm._v(" "),
+          _c("div", { staticClass: "input-group-append" }, [
+            _c(
+              "button",
+              {
+                staticClass: "btn btn-outline-secondary",
+                attrs: { type: "button", disabled: _vm.otp_sent },
+                on: { click: _vm.sendOTP },
+              },
+              [
+                _vm.isLoading && _vm.otp_sent === false
+                  ? _c("span", { staticClass: "spinner" }, [
+                      _c("i", { staticClass: "fa fa-spinner fa-spin" }),
+                    ])
+                  : _vm._e(),
+                _vm._v("\n                    Send OTP\n                "),
+              ]
+            ),
+          ]),
+        ]),
+        _vm._v(" "),
+        _vm.otp_sent ? _c("div", [_vm._v("Step 2 : Confirm OTP")]) : _vm._e(),
+        _vm._v(" "),
+        _vm.otp_sent
+          ? _c("div", { staticClass: "input-group mb-3" }, [
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.otp,
+                    expression: "otp",
+                  },
+                ],
+                staticClass: "form-control",
+                attrs: {
+                  type: "text",
+                  placeholder: "Enter OTP",
+                  "aria-label": "Enter OTP",
+                },
+                domProps: { value: _vm.otp },
+                on: {
+                  input: function ($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.otp = $event.target.value
+                  },
+                },
+              }),
+              _vm._v(" "),
+              _c("div", { staticClass: "input-group-append" }, [
+                _c(
+                  "button",
+                  {
+                    staticClass: "btn btn-outline-secondary",
+                    attrs: { type: "button", disabled: _vm.otp_verified },
+                    on: { click: _vm.confirmOTP },
+                  },
+                  [
+                    _vm.isLoading && _vm.otp_verified === false
+                      ? _c("span", { staticClass: "spinner" }, [
+                          _c("i", { staticClass: "fa fa-spinner fa-spin" }),
+                        ])
+                      : _vm._e(),
+                    _vm._v(
+                      "\n                    Confirm OTP\n                "
+                    ),
+                  ]
+                ),
+              ]),
+            ])
+          : _vm._e(),
+        _vm._v(" "),
+        _vm.otp_verified
+          ? [
+              _c("div", [_vm._v("Step 3 : Change your email")]),
+              _vm._v(" "),
+              _c("div", { staticClass: "input-group mb-3" }, [
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.email,
+                      expression: "email",
+                    },
+                  ],
+                  staticClass: "form-control",
+                  attrs: {
+                    type: "text",
+                    placeholder: "Your New Email Address",
+                    "aria-label": "Your New Email Address",
+                  },
+                  domProps: { value: _vm.email },
+                  on: {
+                    input: function ($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.email = $event.target.value
+                    },
+                  },
+                }),
+              ]),
+              _vm._v(" "),
+              _c("div", [_vm._v("Password")]),
+              _vm._v(" "),
+              _c("div", { staticClass: "input-group mb-3" }, [
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.password,
+                      expression: "password",
+                    },
+                  ],
+                  staticClass: "form-control",
+                  attrs: {
+                    type: "password",
+                    placeholder: "Your Password",
+                    "aria-label": "Your Password",
+                  },
+                  domProps: { value: _vm.password },
+                  on: {
+                    input: function ($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.password = $event.target.value
+                    },
+                  },
+                }),
+              ]),
+              _vm._v(" "),
+              _c(
+                "button",
+                {
+                  staticClass: "btn btn-primary",
+                  attrs: { disabled: _vm.email_changed == true },
+                  on: { click: _vm.changeEmail },
+                },
+                [
+                  _vm.isLoading && _vm.email_changed === false
+                    ? _c("span", { staticClass: "spinner" }, [
+                        _c("i", { staticClass: "fa fa-spinner fa-spin" }),
+                      ])
+                    : _vm._e(),
+                  _vm._v("\n                Change Email\n            "),
+                ]
+              ),
+            ]
+          : _vm._e(),
+      ],
+      2
+    ),
+    _vm._v(" "),
+    _c("div", { staticClass: "card-footer" }, [
+      _vm.msg != null
+        ? _c("div", { staticClass: "badge badge-info" }, [
+            _vm._v(_vm._s(_vm.msg)),
+          ])
+        : _vm._e(),
+    ]),
+  ])
+}
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -39172,6 +39602,7 @@ var map = {
 	"./components/AssetDetails.vue": "./resources/js/components/AssetDetails.vue",
 	"./components/BankDetails.vue": "./resources/js/components/BankDetails.vue",
 	"./components/DependentDetails.vue": "./resources/js/components/DependentDetails.vue",
+	"./components/EmailChanger.vue": "./resources/js/components/EmailChanger.vue",
 	"./components/EmployerDetails.vue": "./resources/js/components/EmployerDetails.vue",
 	"./components/ExpenseDetails.vue": "./resources/js/components/ExpenseDetails.vue",
 	"./components/FileUploader.vue": "./resources/js/components/FileUploader.vue",

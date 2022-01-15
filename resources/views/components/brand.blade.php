@@ -29,7 +29,7 @@
                             <div class="col-lg-12">
                                 <div class="single_brand">
                                     <div class="single_brand_thumb">
-                                        <img style="height:4rem;" src="{{storage_asset($brand->logo)}}" alt=""/>
+                                        <img style="width:8rem;" src="{{storage_asset($brand->logo)}}" alt=""/>
                                     </div>
                                 </div>
                             </div>

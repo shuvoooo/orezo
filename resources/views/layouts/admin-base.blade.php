@@ -33,9 +33,10 @@
 
     <style>
         .sidebar-container {
-            width: 15rem;
+            width: 16rem;
             background-color: #f1f1f1;
             border-right: 1px solid #ccc;
+            font-size: .85rem;
         }
 
         .main-container {
@@ -126,14 +127,17 @@
     </div>
 </div>
 
-@include('shared._footer')
+<x-footer></x-footer>
 
 
 <!-- jquery js -->
 <script type="text/javascript" src="{{asset('assets/js/vendor/jquery-3.2.1.min.js')}}"></script>
-
-<!-- bootstrap js -->
-<script type="text/javascript" src="{{asset('assets/js/bootstrap.min.js')}}"></script>
+<script src="//cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+<script src="//stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>
 
 {{--<script src="//cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>--}}
 

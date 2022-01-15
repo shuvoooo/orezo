@@ -18,11 +18,8 @@ class CreateHomePagesTable extends Migration
             $table->string('title');
             $table->mediumText('description');
             $table->string('youtube_url');
-            $table->string('happy_clients')->default(0);
-            $table->string('total_accounts')->default(0);
-            $table->string('total_projects')->default(0);
-            $table->string('winning_awards')->default(0);
-            $table->longText('info');
+            $table->json('counters')->nullable();
+            $table->json('info')->nullable();
             $table->timestamps();
         });
     }
