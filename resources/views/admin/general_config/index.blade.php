@@ -5,7 +5,7 @@
 @section('content')
 
     <div class="row">
-        <div class="col-md-10">
+        <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
                     <h4 class="card-title">General Configuration</h4>
@@ -42,7 +42,10 @@
                                     </td>
                                     <td>
                                         <a href="{{ route('admin.general-config.edit', $config->id) }}"
-                                           class="btn btn-primary btn-sm">Edit</a>
+                                           class="btn btn-primary btn-sm">
+                                            <i class="fa fa-edit"></i>
+                                            Edit
+                                        </a>
                                     </td>
                                 </tr>
                             @endforeach

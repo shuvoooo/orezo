@@ -14,8 +14,8 @@
                         </div>
                     </div>
                     <div class="company-info-desc">
-                        <p>Condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum. Nam
-                            quam nunc, blandit vel, luctus.
+                        <p>
+                            {{general_config('footer_text')}}
                         </p>
                     </div>
                     <div class="follow-company-info pt-3">
@@ -23,10 +23,10 @@
                             <a href="#"><p>Follow Us</p></a>
                         </div>
                         <div class="follow-company-icon">
-                            <a href="#"><i class="fa fa-facebook"></i></a>
-                            <a href="#"><i class="fa fa-twitter"></i></a>
-                            <a href="#"><i class="fa fa-linkedin"></i></a>
-                            <a href="#"><i class="fa fa-skype"></i></a>
+                            <a href="{{general_config('facebook_link')}}"><i class="fa fa-facebook"></i></a>
+                            <a href="{{general_config('twitter_link')}}"><i class="fa fa-twitter"></i></a>
+                            <a href="{{general_config('linkedin_link')}}"><i class="fa fa-linkedin"></i></a>
+                            <a href="{{general_config('instagram_link')}}"><i class="fa fa-instagram"></i></a>
                         </div>
                     </div>
                 </div>
@@ -46,18 +46,19 @@
             <div class="col-lg-4 col-md-6 col-sm-12">
                 <div class="widget widgets-company-info">
                     <h3 class="widget-title pb-4">Company Address</h3>
-                    <div class="company-info-desc">
-                        <p>Porem awesome dolor sitework amet, consetur acing elit, sed do eiusmod ligal
-                        </p>
+                    {{--                    <div class="company-info-desc">--}}
+                    {{--                        <p>--}}
+                    {{--                            {{general_config('company_address')}}--}}
+                    {{--                        </p>--}}
+                    {{--                    </div>--}}
+                    <div class="footer-social-info">
+                        <p><span>Address :</span>{{general_config('company_address')}}</p>
                     </div>
                     <div class="footer-social-info">
-                        <p><span>Address :</span>54/1 New dhas sorini Asut, Melbord Austria.</p>
+                        <p><span>Phone : </span> {{general_config('contact_phone')}}</p>
                     </div>
                     <div class="footer-social-info">
-                        <p><span>Phone :</span>54786547521</p>
-                    </div>
-                    <div class="footer-social-info">
-                        <p><span>Email :</span>demo@example.com</p>
+                        <p><span>Email : </span> {{general_config('contact_email')}}</p>
                     </div>
 
                 </div>
@@ -71,15 +72,15 @@
             <div class="col-lg-6 col-md-6">
                 <div class="footer-bottom-content">
                     <div class="footer-bottom-content-copy">
-                        <p>© 2020 Techno.All Rights Reserved. </p>
+                        <p>{{general_config('copyright_text')}} </p>
                     </div>
                 </div>
             </div>
             <div class="col-lg-6 col-md-6">
                 <div class="footer-bottom-right">
                     <div class="footer-bottom-right-text">
-                        <a class="absod" href="{{url('privacy-policy')}}">Privacy Policy </a>
-                        <a href="{{url('terms-and-conditions')}}"> Terms & Conditions</a>
+                        <a class="absod" href="{{route('page','privacy-policy')}}">Privacy Policy </a>
+                        <a href="{{route('page','terms-and-conditions')}}"> Terms & Conditions</a>
                     </div>
                 </div>
             </div>

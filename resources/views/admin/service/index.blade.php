@@ -30,9 +30,10 @@
                             <thead>
                             <tr>
                                 <th>Name</th>
-                                <th>Description</th>
                                 <th>Icon</th>
-                                <th>Actions</th>
+                                <th>Description</th>
+
+                                <th width="200">Actions</th>
                             </tr>
                             </thead>
 
@@ -41,8 +42,8 @@
                             @foreach($services as $service)
                                 <tr>
                                     <td>{{$service->name}}</td>
-                                    <td>{{$service->description}}</td>
                                     <td>{{$service->icon}}</td>
+                                    <td>{!! $service->description !!}</td>
                                     <td class="d-flex">
                                         <a href="{{ route('admin.service.edit', $service->id) }}"
                                            class="btn btn-primary btn-sm">

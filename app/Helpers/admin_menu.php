@@ -21,7 +21,7 @@ return [
         'type' => 'submenu',
         'submenu' => [
             'admin.general-config.index' => [
-                'text' => 'General',
+                'text' => 'General Config',
                 'url' => route('admin.general-config.index'),
             ],
             'admin.service.index' => [

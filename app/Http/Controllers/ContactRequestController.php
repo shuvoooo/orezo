@@ -5,13 +5,20 @@ namespace App\Http\Controllers;
 use App\Models\ContactRequest;
 use App\Models\User;
 use App\Notifications\GeneralNotification;
+use App\Rules\Recaptcha;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Notification;
 
 class ContactRequestController extends Controller
 {
     public function store(Request $request)
+
     {
+
+        $request->validate([
+           'g-recaptcha-response' => ['required', new Recaptcha],
+        ]);
+
         try {
             ContactRequest::create([
                 'name' => $request->name,

@@ -20,13 +20,15 @@ class Recaptcha implements Rule
     /**
      * Determine if the validation rule passes.
      *
-     * @param  string  $attribute
-     * @param  mixed  $value
+     * @param string $attribute
+     * @param mixed $value
      * @return bool
      */
     public function passes($attribute, $value)
     {
         return true;
+
+
 
         $result = Http::post('https://www.google.com/recaptcha/api/siteverify', [
             'secret' => env('RECAPTCHA_SECRET'),
@@ -34,7 +36,7 @@ class Recaptcha implements Rule
             'remoteip' => request()->ip(),
         ]);
 
-        return json_decode($result->body())->success;
+        return (bool)json_decode($result->body())->success;
 
     }
 

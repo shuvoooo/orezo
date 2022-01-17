@@ -1,6 +1,7 @@
 <?php
 
 use App\Models\GeneralConfig;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Storage;
 
 if (!function_exists('route_with_year')) {
@@ -23,7 +24,13 @@ if (!function_exists('storage_asset')) {
 if (!function_exists('general_config')) {
     function general_config($key)
     {
-        return GeneralConfig::where('key', $key)->first()->value ?? null;
+        if (Cache::has('general_config')) {
+            $config = Cache::get('general_config');
+        } else {
+            $config = GeneralConfig::all();
+            Cache::put('general_config', $config, 60);
+        }
+        return $config->where('key', $key)->first()->value ?? null;
     }
 }
 

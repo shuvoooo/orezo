@@ -49,7 +49,7 @@
 
 @push('scripts')
     <script src="//cdnjs.cloudflare.com/ajax/libs/tinymce/4.8.0/tinymce.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/slugify@1.6.5/slugify.min.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/slugify@1.6.5/slugify.min.js"></script>
     <script>
 
         $(document).ready(function () {

@@ -6,6 +6,7 @@ use App\Models\AboutPage;
 use App\Models\Faq;
 use App\Models\HomePage;
 use App\Models\Page;
+use App\Models\Service;
 
 class HomeController extends Controller
 {
@@ -50,9 +51,17 @@ class HomeController extends Controller
     {
         $page = Page::where('slug', $slug)->first();
 
-        if (!$page) {
-            return redirect('/');
-        }
+        abort_unless($page, 404);
+
+        return view('page', compact('page'));
+    }
+
+    public function service_page($slug)
+    {
+        $page = Service::where('url', $slug)->first(['name as title', 'description as content']);
+
+        abort_unless($page, 404);
+
 
         return view('page', compact('page'));
     }

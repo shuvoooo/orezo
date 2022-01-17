@@ -30,7 +30,7 @@ class ServiceController extends Controller
             'name' => 'required',
             'description' => 'required',
             'image' => 'mimes:jpeg,png,jpg,gif,svg|max:2048',
-            'url' => 'url|nullable',
+            'url' => 'required|unique:services,url',
             'icon' => 'nullable',
             'status' => 'required',
         ]);

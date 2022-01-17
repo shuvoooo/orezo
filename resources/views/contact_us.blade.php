@@ -56,7 +56,7 @@
                             <h4>Enter Your Address</h4>
                         </div>
                         <div class="contact_address_text">
-                            <p>{{general_config('your_address')}}</p>
+                            <p>{{general_config('company_address')}}</p>
                         </div>
                     </div>
                 </div>
@@ -69,7 +69,7 @@
                             <h4>Opening Hours</h4>
                         </div>
                         <div class="contact_address_text">
-                            <p>{{general_config('opening_hours')}}</p>
+                            <p>{{general_config('operating_hours')}}</p>
                         </div>
                     </div>
                 </div>
@@ -82,7 +82,7 @@
                             <h4>Contact Directly</h4>
                         </div>
                         <div class="contact_address_text">
-                            <p>{{general_config('contact_directly')}}</p>
+                            <p>{{general_config('contact_email')}}, {{general_config('contact_phone')}}</p>
                         </div>
                     </div>
                 </div>
@@ -139,14 +139,26 @@
                                     </div>
                                 </div>
 
+
                                 <div class="col-lg-12">
                                     <div class="form_box mb-30">
                                         <textarea name="message" id="message" cols="30" rows="10"
                                                   placeholder="Write a Message"></textarea>
                                     </div>
-                                    <div class="quote_btn text_center">
+
+                                </div>
+
+                                <div class="col-lg-12 d-flex justify-content-between align-items-center">
+                                    <!-- Recaptcha -->
+                                    <div class="form_box">
+                                        <div class="g-recaptcha"
+                                             data-sitekey="{{env('RECAPTCHA_SITE_KEY')}}"></div>
+                                    </div>
+
+                                    <div class="quote_btn">
                                         <button class="btn" type="submit">Send Message</button>
                                     </div>
+
                                 </div>
                             </div>
                         </form>
@@ -165,6 +177,8 @@
 
 @push('scripts')
 
+    <script src="//www.google.com/recaptcha/api.js" async defer></script>
+
     <script>
         $(function () {
 
@@ -182,7 +196,6 @@
                 // Serialize the form data.
                 var formData = $(form).serialize();
 
-                alert(formData);
 
                 // Submit the form using AJAX.
                 $.ajax({
@@ -213,7 +226,7 @@
                         if (data.responseText !== '') {
                             $(formMessages).text(data.responseText);
                         } else {
-                            $(formMessages).text('Oops! An error occured and your message could not be sent.');
+                            $(formMessages).text('Oops! An error occurred and your message could not be sent.');
                         }
                     });
             });

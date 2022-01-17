@@ -50,10 +50,10 @@
                             </div>
 
                             <div class="form-group">
-                                <label class="text-dark" for="url">Redirect Url</label>
+                                <label class="text-dark" for="url">Redirect Url / Slug</label>
                                 <input type="url" class="form-control @error('url') is-invalid @endif " id="url"
                                        name="url" value="{{old('url',$service->url)}}"
-                                       placeholder="Enter Redirect Url">
+                                       placeholder="Enter Redirect Url / Slug">
                                 @error('url')
                                 <span class="invalid-feedback">{{ $message }}</span>
                                 @enderror
@@ -100,3 +100,43 @@
         </div>
     </div>
 @endsection
+
+
+
+@push('scripts')
+    <script src="//cdnjs.cloudflare.com/ajax/libs/tinymce/4.8.0/tinymce.min.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/slugify@1.6.5/slugify.min.js"></script>
+
+    <script>
+
+        $(document).ready(function () {
+            $('#name').on('keyup', function () {
+                var title = $(this).val();
+                var slug = slugify(title, {
+                    lower: true,
+                    replacement: '-',
+                    remove: /[*+~.()'"!:@]/g,
+                    strict: true
+                });
+                $('#url').val(slug);
+            });
+        });
+
+        tinymce.init({
+            selector: 'textarea',
+            height: 200,
+            menubar: false,
+            plugins: [
+                'advlist autolink lists link image charmap print preview anchor',
+                'searchreplace visualblocks code fullscreen',
+                'insertdatetime media table paste code help wordcount'
+            ],
+            toolbar: 'undo redo | formatselect | bold italic backcolor | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | removeformat | help',
+            content_css: [
+                '//fonts.googleapis.com/css?family=Lato:300,300i,400,400i',
+                '//www.tiny.cloud/css/codepen.min.css'
+            ]
+        });
+
+    </script>
+@endpush

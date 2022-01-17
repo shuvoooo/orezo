@@ -40,7 +40,7 @@ Route::get("/about_us", [HomeController::class, "about"])->name('about');
 Route::get("/contact_us", [HomeController::class, "contact"])->name('contact');
 Route::get("/service", [HomeController::class, "services"])->name('services');
 Route::get("/faq", [HomeController::class, "faq"])->name('faq');
-Route::get("/tips", [HomeController::class, "tips"])->name('tips');
+//Route::get("/tips", [HomeController::class, "tips"])->name('tips');
 
 Route::post("/contact_us_mail", [ContactRequestController::class, "store"])->name('contact_us_mail');
 Route::get('invoice/{id}', [InvoiceController::class, 'show'])->name('invoice.show');
@@ -170,3 +170,4 @@ Route::group(['middleware' => 'auth'], function () {
 });
 
 Route::get("{slug}", [HomeController::class, 'page'])->name('page');
+Route::get("service/{slug}", [HomeController::class, 'service_page'])->name('service-page');

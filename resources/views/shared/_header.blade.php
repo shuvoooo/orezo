@@ -20,7 +20,8 @@
                 <div class="logo mt-4">
                     <a class="logo_img" href="{{route('home')}}" title="techno">
                         <div class="d-flex">
-                            <img src="{{asset('assets/images/logo/etaxplanner_logo.png')}}" class="mr-4" style="width:3rem"
+                            <img src="{{asset('assets/images/logo/etaxplanner_logo.png')}}" class="mr-4"
+                                 style="width:3rem"
                                  alt=""/>
                             <div class="brand h3 font-weight-normal align-self-center mt-2">E Tax Planner</div>
                         </div>
@@ -40,7 +41,7 @@
                         <li><a href="{{route('about')}}">About Us</a></li>
                         <li><a href="{{route('contact')}}">Contact Us</a></li>
                         <li><a href="{{route('faq')}}">FAQ</a></li>
-                        <li><a href="{{route('tips')}}">Tips</a></li>
+                        <li><a href="{{url('tips')}}">Tips</a></li>
                     </ul>
                     <div class="donate-btn-header">
                         @auth('web')
@@ -157,7 +158,7 @@
                 <li><a href="{{route('about')}}">About Us</a></li>
                 <li><a href="{{route('contact')}}">Contact Us</a></li>
                 <li><a href="{{route('faq')}}">FAQ</a></li>
-                <li><a href="{{route('tips')}}">Tips</a></li>
+                <li><a href="{{route('page','tips')}}">Tips</a></li>
 
 
                 @auth('web')

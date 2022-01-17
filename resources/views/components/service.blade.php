@@ -34,7 +34,7 @@
                                     <h3>{{$service->name}}</h3>
                                 </div>
                                 <div class="flipbox_desc">
-                                    <p>{{$service->description}}</p>
+                                    {{\Illuminate\Support\Str::limit(strip_tags($service->description), 100, $end='...')}}
                                 </div>
                             </div>
                         </div>
@@ -45,10 +45,16 @@
                                     <h3>{{$service->name}}</h3>
                                 </div>
                                 <div class="flipbox_desc">
-                                    <p>{{$service->description}}</p>
+                                    {{\Illuminate\Support\Str::limit(strip_tags($service->description), 100, $end='...')}}
                                 </div>
                                 <div class="flipbox_button">
-                                    <a href="{{$service->url}}">Read More<i class="fa fa-angle-double-right"></i></a>
+                                    @if(filter_var($service->url, FILTER_VALIDATE_URL) === FALSE)
+                                        <a href="{{route('service-page', $service->url)}}">Read More<i
+                                                class="fa fa-angle-double-right"></i></a>
+                                    @else
+                                        <a href="{{$service->url}}">Read More<i
+                                                class="fa fa-angle-double-right"></i></a>
+                                    @endif
                                 </div>
                             </div>
                         </div>
