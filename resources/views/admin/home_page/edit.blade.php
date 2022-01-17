@@ -57,8 +57,8 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="year_in_business" class="text-dark">Years in Business</label>
-                            <input type="text" class="form-control" id="year_in_business" name="year_in_business"
+                            <label for="years_in_business" class="text-dark">Years in Business</label>
+                            <input type="text" class="form-control" id="years_in_business" name="years_in_business"
                                    placeholder="Years in Business"
                                    value="{{ $home_page->counters['years_in_business'] }}">
 

@@ -35,7 +35,7 @@ class HomePageController extends Controller
 
         $counters = [
             'clients' => $request->clients,
-            'year_in_business' => $request->year_in_business,
+            'years_in_business' => $request->years_in_business,
             'tax_prepared' => $request->tax_prepared,
             'staff_members' => $request->staff_members,
         ];
@@ -46,7 +46,7 @@ class HomePageController extends Controller
             'counters' => $counters,
         ]);
 
-        $home_page->update($request->except(['clients', 'year_in_business', 'tax_prepared', 'staff_members']));
+        $home_page->update($request->except(['clients', 'years_in_business', 'tax_prepared', 'staff_members']));
 
         return redirect()->route('admin.home_page.edit')->with('success', 'Home Page Updated Successfully');
     }
