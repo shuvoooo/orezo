@@ -23,23 +23,54 @@
 
                         <div class="col-md-8 offset-md-4">
                             <ul class="list-group">
-                                <li class="list-group-item  d-flex justify-content-between align-items-center">
-                                    <span>Hello File</span>
-                                    <div class="d-flex justify-content-center">
-                                        <a href="#" class="mx-3"><i class="fa fa-download"></i></a>
-                                        <a href="#" class="text-danger"><i class="fa fa-trash"></i></a>
-                                    </div>
-                                </li>
-                                <li class="list-group-item">Hello File</li>
+                                @foreach($user_downloads as $download)
+                                    @if(auth()->id() == $download->added_by)
+                                        <li class="list-group-item  d-flex justify-content-between align-items-center">
+                                            <span>{{$download->filename}}</span>
+                                            <div class="d-flex justify-content-center">
+                                                <form
+                                                    action="{{route_with_year('download_tax_documents_download',['id'=>$download->id])}}"
+                                                    method="post">
+                                                    @csrf
+                                                    <button type="submit" class="btn btn-primary btn-sm mr-2"><i
+                                                            class="fa fa-download"></i></button>
+                                                </form>
+
+                                                <form
+                                                    action="{{route_with_year('download_tax_documents_delete',['id'=>$download->id])}}"
+                                                    method="post">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button type="submit" class="btn btn-danger btn-sm"><i
+                                                            class="fa fa-trash"></i></button>
+                                                </form>
+                                            </div>
+                                        </li>
+                                    @endif
+                                @endforeach
+
+                                @if(count($user_downloads) == 0)
+                                    <li class="list-group-item  d-flex justify-content-between align-items-center">
+                                        <span>No documents uploaded</span>
+                                    </li>
+                                @endif
                             </ul>
 
-                            <form action="" enctype="multipart/form-data"
+                            <form action="{{route_with_year('download_tax_documents_store')}}"
+                                  enctype="multipart/form-data"
                                   method="post">
                                 @csrf
                                 <div class="mt-3">
 
-                                    <input type="file" hidden id="uploadFile" name="upload_file"
+                                    <input type="file" hidden id="uploadFile" name="file"
                                            onchange="form.submit()">
+
+                                    @error('file'))
+                                    <div class="alert alert-danger">
+                                        {{$message}}
+                                    </div>
+                                    @enderror
+
                                     <label class="btn btn-primary" for="uploadFile">
                                         <i class="fa fa-upload"></i>
                                         Upload File
@@ -59,30 +90,29 @@
 
                         <div class="col-md-8 offset-md-4">
                             <ul class="list-group">
+                                @foreach($user_downloads as $download)
+                                    @if(auth()->id() != $download->added_by)
+                                        <li class="list-group-item  d-flex justify-content-between align-items-center">
+                                            <span>{{$download->filename}}</span>
+                                            <div class="d-flex justify-content-center">
+                                                <form
+                                                    action="{{route_with_year('download_tax_documents_download',['id'=>$download->id])}}"
+                                                    method="post">
+                                                    @csrf
+                                                    <button type="submit" class="btn btn-primary btn-sm"><i
+                                                            class="fa fa-download"></i></button>
+                                                </form>
+                                            </div>
+                                        </li>
+                                    @endif
+                                @endforeach
 
-                                <li class="list-group-item  d-flex justify-content-between align-items-center">
-                                    <span>Hello File</span>
-                                    <div class="d-flex justify-content-center">
-                                        <a href="#" class="mx-3"><i class="fa fa-download"></i></a>
-                                        <a href="#" class="text-danger"><i class="fa fa-trash"></i></a>
-                                    </div>
-                                </li>
-
+                                @if(count($user_downloads) == 0)
+                                    <li class="list-group-item  d-flex justify-content-between align-items-center">
+                                        <span>No documents uploaded</span>
+                                    </li>
+                                @endif
                             </ul>
-
-                            <form action="" enctype="multipart/form-data"
-                                  method="post">
-                                @csrf
-                                <div class="mt-3">
-
-                                    <input type="file" hidden id="uploadFile" name="upload_file"
-                                           onchange="form.submit()">
-                                    <label class="btn btn-primary" for="uploadFile">
-                                        <i class="fa fa-upload"></i>
-                                        Upload File
-                                    </label>
-                                </div>
-                            </form>
                         </div>
 
 
@@ -93,13 +123,7 @@
                             </div>
                         </div>
 
-                        <div class="col-md-8 offset-md-4">
-                            <div class="form-group">
-                                <textarea rows="5" class="form-control" placeholder="Comments"></textarea>
-                            </div>
 
-                            <button class="btn btn-primary">Comment</button>
-                        </div>
                         <div class="col-md-12 mt-5">
                             <table class="table table-sm table-striped">
                                 <thead>
@@ -111,13 +135,30 @@
                                 </thead>
 
                                 <tbody>
-                                <tr>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                </tr>
+                                @foreach($comments as $comment)
+                                    <tr>
+                                        <td>{{$comment->commenter->name}}</td>
+                                        <td>{{$comment->comment}}</td>
+                                        <td>{{$comment->created_at->format("d m,Y")}}</td>
+                                    </tr>
+                                @endforeach
+
                                 </tbody>
                             </table>
+                        </div>
+
+                        <div class="col-md-8 offset-md-4">
+                            <form action="{{route_with_year('comments_store')}}" method="post">
+                                @csrf
+                                <div class="form-group">
+                                    <textarea rows="5" name="comment" class="form-control"
+                                              placeholder="Comments"></textarea>
+                                </div>
+                                @error('comment')
+                                <div class="alert alert-danger">{{$message}}</div>
+                                @enderror
+                                <button type="submit" class="btn btn-primary">Comment</button>
+                            </form>
                         </div>
                     </div>
                 </div>

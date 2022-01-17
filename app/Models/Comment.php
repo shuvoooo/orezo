@@ -2,17 +2,32 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Comment extends Model
 {
-    use HasFactory;
 
     protected $guarded = ['id'];
 
-    public function scopeByDocumentId($query, $document_id)
+    protected static function booted()
     {
-        return $query->where('document_id', $document_id);
+        static::creating(function ($query) {
+            $query->year = $query->year ?? request()->route('year') ?? date('Y');
+        });
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    public function commenter()
+    {
+        return $this->belongsTo(User::class, 'added_by');
+    }
+
+    public function scopeYear($query)
+    {
+        return $query->where('year', request()->route('year') ?? date('Y'));
     }
 }

@@ -109,7 +109,11 @@ Route::group(['middleware' => ['auth', UserMiddleware::class, 'verified']], func
         });
 
         Route::get('download_tax_documents', [DocumentController::class, 'download_tax_documents'])->name('download_tax_documents');
+        Route::post('download_tax_documents', [DocumentController::class, 'download_tax_documents_store'])->name('download_tax_documents_store');
+        Route::delete('download_tax_documents_delete/{id}', [DocumentController::class, 'download_tax_documents_delete'])->name('download_tax_documents_delete');
+        Route::post('download_tax_documents_download/{id}', [DocumentController::class, 'download_tax_documents_download'])->name('download_tax_documents_download');
 
+        Route::post("comment_store", [DocumentController::class, "comments_store"])->name("comments_store");
 
         Route::get('account-settings', [UserController::class, 'update_profile_view'])->name('user_profile_view');
     });

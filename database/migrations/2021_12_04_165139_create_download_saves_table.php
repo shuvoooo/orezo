@@ -17,7 +17,9 @@ class CreateDownloadSavesTable extends Migration
             $table->id();
             $table->foreignId('user_id')->nullable()->constrained()->cascadeOnDelete()->cascadeOnUpdate();
             $table->foreignId('added_by')->constrained('users');
-            $table->string('file')->nullable();
+            $table->string('filename')->nullable();
+            $table->string('path')->nullable();
+            $table->string('year')->default(date('Y'));
             $table->timestamps();
         });
     }

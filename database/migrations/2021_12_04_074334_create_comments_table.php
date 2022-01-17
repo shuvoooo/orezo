@@ -18,6 +18,7 @@ class CreateCommentsTable extends Migration
             $table->foreignId('user_id')->nullable()->constrained()->cascadeOnDelete()->cascadeOnUpdate();
             $table->foreignId('added_by')->constrained('users');
             $table->string('comment')->nullable();
+            $table->string('year')->default(date('Y'));
             $table->timestamps();
         });
     }

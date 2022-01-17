@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Comment;
 use App\Models\Document;
+use App\Models\DownloadSave;
 use App\Models\Upload;
 use App\Models\User;
 use App\Notifications\GeneralNotification;
@@ -100,20 +102,87 @@ class DocumentController extends Controller
 
     public function download_tax_documents()
     {
-        return view('user.documents.tax_document_download');
+        $downloads = DownloadSave::where('user_id', auth()->user()->id)->year()->get();
+        $comments = Comment::where('user_id', auth()->user()->id)->year()->orderBy('created_at', 'desc')->get();
+
+        $user_downloads = $downloads->filter(function ($item) {
+            $item->added_by == auth()->id();
+        });
+
+        $org_downloads = $downloads->filter(function ($item) {
+            $item->added_by != auth()->id();
+        });
+        return view('user.documents.tax_document_download', compact('user_downloads', 'org_downloads', 'comments'));
     }
 
     public function download_tax_documents_store(Request $request)
     {
         $request->validate([
-            'title' => 'required'
+            'file' => 'required|file'
         ]);
 
+        if ($request->hasFile('file')) {
+            $file = $request->file('file');
+            $file_name = $file->getClientOriginalName();
+            $file_ext = $file->getClientOriginalExtension();
+            $file_name_only = basename($file_name, '.' . $file_ext);
+            $file_new_name = $file_name_only . '_' . time() . '.' . $file_ext;
 
+
+            $downloadSave = DownloadSave::create([
+                'user_id' => auth()->user()->id,
+                'added_by' => auth()->user()->id,
+                'filename' => $file_name_only . "." . $file_ext,
+                'path' => $request->file('file')->storeAs('public/tax_documents', $file_new_name)
+            ]);
+        }
+
+        return redirect()->back()->with('success', 'File downloaded successfully');
+
+    }
+
+    public function download_tax_documents_delete($year, $id)
+    {
+        $downloadSave = DownloadSave::find($id);
+
+        abort_unless($downloadSave, 404);
+
+        if ($downloadSave->added_by == auth()->user()->id) {
+            Storage::delete($downloadSave->path);
+            $downloadSave->delete();
+
+            return redirect()->back()->with('success', 'File deleted successfully');
+        } else {
+            return redirect()->back()->with('error', 'You are not authorized to delete this file');
+        }
+    }
+
+    public function download_tax_documents_download($year, $id)
+    {
+
+
+        $downloadSave = DownloadSave::find($id);
+
+        abort_unless($downloadSave, 404);
+
+        if ($downloadSave) {
+            return Storage::download($downloadSave->path, $downloadSave->filename);
+        }
     }
 
     public function comments_store(Request $request)
     {
 
+        $request->validate([
+            'comment' => 'required'
+        ]);
+
+        Comment::create([
+            'user_id' => auth()->user()->id,
+            'comment' => $request->comment,
+            'added_by' => auth()->user()->id
+        ]);
+
+        return redirect()->back()->with('success', 'Comment added successfully');
     }
 }

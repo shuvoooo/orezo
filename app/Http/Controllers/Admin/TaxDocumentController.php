@@ -19,4 +19,5 @@ class TaxDocumentController extends Controller
 
         return response()->view('admin.tax_document.user_tax_document', compact('documents'));
     }
+
 }
