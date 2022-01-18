@@ -34,3 +34,10 @@ Route::group(['middleware' => 'auth'], function () {
 
 Route::get("{slug}", [HomeController::class, 'page'])->name('page');
 Route::get("service/{slug}", [HomeController::class, 'service_page'])->name('service-page');
+
+
+Route::get('/artisan/storage/link', function () {
+    // delete storage folder in public/storage
+    \Artisan::call('storage:link');
+    echo 'Symlink process successfully completed';
+});

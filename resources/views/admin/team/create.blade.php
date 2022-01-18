@@ -59,10 +59,10 @@
 
                             <div class="form-group">
                                 <label class="text-dark" for="facebook">Email</label>
-                                <input type="url" class="form-control @error('email') is-invalid @endif "
+                                <input type="email" class="form-control @error('email') is-invalid @endif "
                                        id="email"
                                        name="email" placeholder="Enter email"
-                                       value="{{old('email',  )}}">
+                                       value="{{old('email')}}">
                                 @error('email')
                                 <span class="invalid-feedback">{{ $message }}</span>
                                 @enderror
@@ -70,7 +70,7 @@
 
                             <div class="form-group">
                                 <label class="text-dark" for="phone">Phone</label>
-                                <input type="url" class="form-control @error('phone') is-invalid @endif "
+                                <input type="text" class="form-control @error('phone') is-invalid @endif "
                                        id="phone"
                                        name="phone" placeholder="Enter phone"
                                        value="{{old('phone')}}">
@@ -80,7 +80,7 @@
                             </div>
                             <div class="form-group">
                                 <label class="text-dark" for="google_chat">Google Chat</label>
-                                <input type="url" class="form-control @error('google_chat') is-invalid @endif "
+                                <input type="text" class="form-control @error('google_chat') is-invalid @endif "
                                        id="google_chat"
                                        name="google_chat" placeholder="Enter google_chat"
                                        value="{{old('google_chat')}}">
@@ -90,7 +90,7 @@
                             </div>
                             <div class="form-group">
                                 <label class="text-dark" for="whatsapp">Whats App</label>
-                                <input type="url" class="form-control @error('whatsapp') is-invalid @endif "
+                                <input type="text" class="form-control @error('whatsapp') is-invalid @endif "
                                        id="whatsapp"
                                        name="whatsapp" placeholder="Enter whatsapp"
                                        value="{{old('whatsapp')}}">

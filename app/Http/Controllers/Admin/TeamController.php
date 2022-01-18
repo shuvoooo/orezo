@@ -135,7 +135,7 @@ class TeamController extends Controller
         $team->designation = $request->designation;
         if ($request->has('image')) {
             if ($team->image) {
-                Storage::destroy($team->image);
+                Storage::delete($team->image);
             }
             $team->image = $request->image->store('public/team');
         }
@@ -158,7 +158,8 @@ class TeamController extends Controller
         abort_unless($team, 404);
 
         if ($team->image) {
-            Storage::destroy($team->image);
+            Storage::delete($team->image);
+//            Storage::destroy($team->image);
         }
         $team->delete();
 
