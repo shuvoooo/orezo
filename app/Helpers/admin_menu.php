@@ -7,12 +7,27 @@ return [
         'type' => 'single',
         'submenu' => []
     ],
-    'admin.invoice.create' => [
+    'admin.invoice' => [
         'text' => 'Invoice',
         'url' => route('admin.invoice.create'),
         'icon' => 'fa fa-usd',
-        'type' => 'single',
-        'submenu' => []
+        'type' => 'submenu',
+        'submenu' => [
+            'admin.invoice.create' => [
+                'text' => 'Create Invoice',
+                'url' => route('admin.invoice.create'),
+                'icon' => 'fa fa-plus',
+                'type' => 'single',
+                'submenu' => []
+            ],
+            'admin.invoice.index' => [
+                'text' => 'Invoice List',
+                'url' => route('admin.invoice.index'),
+                'icon' => 'fa fa-list',
+                'type' => 'single',
+                'submenu' => []
+            ],
+        ]
     ],
     'web_setting' => [
         'text' => 'Web Setting',

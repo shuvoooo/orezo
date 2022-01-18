@@ -46,10 +46,11 @@ class InvoiceController extends Controller
         if (request()->ajax()) {
             return DataTables::collection($invCollect)
                 ->addColumn('action', function ($invoice) {
-                    if ($invoice['status'] == 'paid')
-                        return '<a href="' . route('admin.invoice.edit', $invoice['id']) . '" class="btn btn-xs btn-primary btn-sm"><i class="fa fa-edit"></i> Edit</a>';
-                    else
-                        return '<a href="' . route('invoice.show', ($invoice['id'] * $this->encrypt)) . '" class="btn btn-xs btn-primary btn-sm"><i class="fa fa-eye"></i> View</a>';
+                    $view = '<a href="' . route('invoice.show', ($invoice['id'] * $this->encrypt)) . '" class="btn btn-xs btn-warning btn-sm"><i class="fa fa-eye"></i> View</a>';
+                    if ($invoice['status'] != 'paid')
+                        $view .= '<a href="' . route('admin.invoice.edit', $invoice['id']) . '" class="btn btn-xs btn-primary btn-sm ml-2"><i class="fa fa-edit"></i> Edit</a>';
+
+                    return '<div class="d-flex">' . $view . '</div>';
                 })
                 ->rawColumns(['action'])
                 ->make(true);
@@ -89,9 +90,12 @@ class InvoiceController extends Controller
     {
         $request->validate([
             'invoiceItems' => 'required|array',
+            'user_id' => 'required',
         ]);
+
+
         try {
-            $user = auth()->user();
+            $user = User::findOrFail($request->user_id);
 
             $invoice = Invoice::create([
                 'name' => $request->title,

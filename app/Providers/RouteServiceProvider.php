@@ -35,6 +35,8 @@ class RouteServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        Route::pattern('year', '^(20\d\d)$');
+
         $this->configureRateLimiting();
 
         $this->routes(function () {
@@ -46,9 +48,15 @@ class RouteServiceProvider extends ServiceProvider
             Route::middleware('web')
                 ->namespace($this->namespace)
                 ->group(base_path('routes/web.php'));
-        });
 
-        Route::pattern('year', '^(20\d\d)$');
+            Route::middleware('web')
+                ->namespace($this->namespace)
+                ->group(base_path('routes/web_admin.php'));
+
+            Route::middleware('web')
+                ->namespace($this->namespace)
+                ->group(base_path('routes/web_user.php'));
+        });
     }
 
     /**

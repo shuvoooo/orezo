@@ -1,10 +1,17 @@
 <div class="sidebar">
     <ul class="sidebar-menu">
-        <li class="sub-menu">
-            <a class="" href="{{route_with_year('dashboard')}}">
-                <i class="fa fa-dashboard"></i>
-                <span>Dashboard</span>
-            </a>
+        <li class="sub-menu @if(Route::is('*dashboard')) active @endif ">
+            @if(auth()->user()->role ==  'admin')
+                <a href="{{ route('admin.dashboard') }}">
+                    <i class="fa fa-dashboard"></i>
+                    <span>Dashboard</span>
+                </a>
+            @elseif(auth()->user()->role == 'user')
+                <a href="{{route_with_year('dashboard')}}">
+                    <i class="fa fa-dashboard"></i>
+                    <span>Dashboard</span>
+                </a>
+            @endif
         </li>
 
         <x-side-menu></x-side-menu>

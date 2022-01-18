@@ -8,8 +8,24 @@
     <div class="row">
         <div class="col-md-12">
             <div class="card">
-                <div class="card-header">
-                    <h4 class="card-title">File Status</h4>
+                <div class="card-header d-flex justify-content-between align-items-center">
+                    <div class="h4">File Status</div>
+
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb py-0 my-0">
+                            @foreach(range(request('year')-1, request('year')+1 ) as $year)
+                                <li class="breadcrumb-item @if($year == request('year')) active @endif ">
+                                    @if($year != request('year'))
+                                        <a href="{{route(\Illuminate\Support\Facades\Route::currentRouteName(),['user'=>$user->id, 'year'=>$year])}}">
+                                            {{$year}}
+                                        </a>
+                                    @else
+                                        {{$year}}
+                                    @endif
+                                </li>
+                            @endforeach
+                        </ol>
+                    </nav>
                 </div>
 
                 <div class="card-body">
@@ -18,7 +34,8 @@
                             <label for="file_status_name" class="text-dark">Update File Status of "{{$user->name}}
                                 "</label>
 
-                            <form method="post" action="{{route('admin.file_status.add_file_status',$user->id)}}">
+                            <form method="post"
+                                  action="{{route('admin.file_status.add_file_status',['user'=>$user->id,'year'=>request('year')])}}">
                                 @csrf
                                 <div class="input-group">
 
@@ -63,6 +80,13 @@
 @section('css')
     <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/v/bs4/dt-1.11.3/datatables.min.css"/>
     <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/buttons/1.0.3/css/buttons.dataTables.min.css"/>
+
+    <style>
+        .breadcrumb-item + .breadcrumb-item::before {
+            content: "|";
+        }
+
+    </style>
 @endsection
 
 @push('scripts')

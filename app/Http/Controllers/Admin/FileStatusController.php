@@ -15,11 +15,9 @@ class FileStatusController extends Controller
 
     function file_status(Builder $dataTable, Request $request, User $user)
     {
-
-
         $statuses = FileStatus::statusList();
 
-        $filestatuses = FileStatus::where('user_id', $user->id)->get();
+        $filestatuses = FileStatus::where('user_id', $user->id)->where('year', request('year'))->get();
 
         $fileStatusCollect = collect();
 
@@ -63,6 +61,7 @@ class FileStatusController extends Controller
         $file_status->user_id = $user->id;
         $file_status->status = $request->status;
         $file_status->added_by = auth()->user()->id;
+        $file_status->year = request('year') ?? date('Y');
         $file_status->save();
 
         return redirect()->back()->with('success', 'File Status Added Successfully');

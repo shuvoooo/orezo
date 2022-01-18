@@ -106,11 +106,11 @@ class DocumentController extends Controller
         $comments = Comment::where('user_id', auth()->user()->id)->year()->orderBy('created_at', 'desc')->get();
 
         $user_downloads = $downloads->filter(function ($item) {
-            $item->added_by == auth()->id();
+            return $item->added_by == auth()->id();
         });
 
         $org_downloads = $downloads->filter(function ($item) {
-            $item->added_by != auth()->id();
+            return $item->added_by != auth()->id();
         });
         return view('user.documents.tax_document_download', compact('user_downloads', 'org_downloads', 'comments'));
     }
@@ -118,7 +118,7 @@ class DocumentController extends Controller
     public function download_tax_documents_store(Request $request)
     {
         $request->validate([
-            'file' => 'required|file'
+            'file' => 'required|mimes:pdf,doc,docx,jpg,jpeg,png,bmp,gif,svg,xlsx,csv',
         ]);
 
         if ($request->hasFile('file')) {

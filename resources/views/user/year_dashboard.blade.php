@@ -21,7 +21,7 @@
                     <div class="">
                         <div class="d-flex align-items-center">
                             <i class="fa fa-phone mr-1"></i>
-                            <span>{{auth()->user()->personalInformation[0]->mobile??'N/A'}}</span>
+                            <span>{{auth()->user()->address->mobile??'N/A'}}</span>
                         </div>
 
                         <div class="d-flex align-items-center">
@@ -31,13 +31,13 @@
                     </div>
 
                     <div class="mt-4">
-                        <button type="button" class="btn btn-primary btn-sm">
+                        <a href="{{route_with_year('user_profile_view')}}" type="button" class="btn btn-primary btn-sm">
                             Change Password
-                        </button>
+                        </a>
 
-                        <button type="button" class="btn btn-light btn-sm">
+                        <a href="{{route_with_year('user_profile_view')}}" type="button" class="btn btn-light btn-sm">
                             Edit Profile
-                        </button>
+                        </a>
                     </div>
 
                 </div>

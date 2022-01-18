@@ -35,7 +35,11 @@ class ClientDataTable extends DataTable
 
 
         return datatables()->collection($userList)->addColumn('action', function ($user) {
+
+
             $invoice_link = Invoice::where('user_id', $user['id'])->orderBy('created_at', 'DESC')->first();
+
+
             $invoice_link = $invoice_link ? route('invoice.show', ($invoice_link->id * 2341347971)) : '#';
 
             return view('datatables.client_action', ['user' => $user, 'invoice_link' => $invoice_link]);
