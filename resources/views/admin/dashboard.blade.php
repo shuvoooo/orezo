@@ -13,230 +13,89 @@
 
     <div class="row">
 
-        <div class="col-lg-4 col-md-6 col-sm-12 col-xs-6">
-            <div class="techno_flipbox mb-30">
-                <div class="techno_flipbox_font">
-                    <div class="techno_flipbox_inner">
-                        <div class="techno_flipbox_icon">
-                            <div class="icon">
-                                <i class="flaticon-padlock"></i>
-                            </div>
-                        </div>
-                        <div class="flipbox_title">
-                            <h3 class="text-dark">Personal Information</h3>
-                        </div>
-                        <div class="flipbox_desc">
-                            <p class="text-dark">Porem asum molor sit amet, consectetur adipiscing do miusmod
-                                tempor.</p>
-                        </div>
-                    </div>
+
+        <a href="#" class="col-12 col-md-4 col-xl-3">
+            <div class="d-block p-2 border rounded-lg shadow-sm mb-5">
+                <div class="alert alert-info mt-n4">
+                    <i class="fa fa-users"></i>
+                    <b>Total User</b>
                 </div>
 
-                <div class="techno_flipbox_back "
-                     style="background-image:url('{{asset('assets/images/feature1.jpg')}}');">
-                    <div class="techno_flipbox_inner">
-                        <div class="flipbox_title">
-                            <h3>Personal Information</h3>
-                        </div>
-                        <div class="flipbox_desc">
-                            <p>Porem asum molor sit amet, consectetur adipiscing do miusmod tempor.</p>
-                        </div>
-                        <div class="flipbox_button">
-                            <a href="">Goto Link<i
-                                    class="fa fa-angle-double-right"></i></a>
-                        </div>
-                    </div>
+
+                <div class="h2 font-weight-light text-center text-info py-3">
+                    {{ $dashboard['total_clients']}}
                 </div>
             </div>
-        </div>
+        </a>
 
-
-        <div class="col-lg-4 col-md-6 col-sm-12 col-xs-6">
-            <div class="techno_flipbox mb-30">
-                <div class="techno_flipbox_font">
-                    <div class="techno_flipbox_inner">
-                        <div class="techno_flipbox_icon">
-                            <div class="icon">
-                                <i class="flaticon-padlock"></i>
-                            </div>
-                        </div>
-                        <div class="flipbox_title">
-                            <h3 class="text-dark">Personal Information</h3>
-                        </div>
-                        <div class="flipbox_desc">
-                            <p class="text-dark">Porem asum molor sit amet, consectetur adipiscing do miusmod
-                                tempor.</p>
-                        </div>
-                    </div>
+        <a href="#" class="col-12 col-md-4 col-xl-3">
+            <div class="d-block p-2 border rounded-lg shadow-sm mb-5">
+                <div class="alert alert-warning mt-n4">
+                    <i class="fa fa-address-book"></i>
+                    <b>Total Staff</b>
                 </div>
 
-                <div class="techno_flipbox_back "
-                     style="background-image:url('{{asset('assets/images/feature1.jpg')}}');">
-                    <div class="techno_flipbox_inner">
-                        <div class="flipbox_title">
-                            <h3>Personal Information</h3>
-                        </div>
-                        <div class="flipbox_desc">
-                            <p>Porem asum molor sit amet, consectetur adipiscing do miusmod tempor.</p>
-                        </div>
-                        <div class="flipbox_button">
-                            <a href="{{('personal_information')}}">Goto Link<i
-                                    class="fa fa-angle-double-right"></i></a>
-                        </div>
-                    </div>
+
+                <div class="h2 font-weight-light text-center text-warning py-3">
+                    {{ $dashboard['total_staff']}}
                 </div>
             </div>
-        </div>
+        </a>
 
 
-        <div class="col-lg-4 col-md-6 col-sm-12 col-xs-6">
-            <div class="techno_flipbox mb-30">
-                <div class="techno_flipbox_font">
-                    <div class="techno_flipbox_inner">
-                        <div class="techno_flipbox_icon">
-                            <div class="icon">
-                                <i class="flaticon-padlock"></i>
-                            </div>
-                        </div>
-                        <div class="flipbox_title">
-                            <h3 class="text-dark">Personal Information</h3>
-                        </div>
-                        <div class="flipbox_desc">
-                            <p class="text-dark">Porem asum molor sit amet, consectetur adipiscing do miusmod
-                                tempor.</p>
-                        </div>
-                    </div>
+        <a href="#" class="col-12 col-md-4 col-xl-3">
+            <div class="d-block p-2 border rounded-lg shadow-sm mb-5">
+                <div class="alert alert-primary mt-n4">
+                    <i class="fa fa-dollar"></i>
+                    <b>Total Pain Invoice</b>
                 </div>
-
-                <div class="techno_flipbox_back "
-                     style="background-image:url('{{asset('assets/images/feature1.jpg')}}');">
-                    <div class="techno_flipbox_inner">
-                        <div class="flipbox_title">
-                            <h3>Personal Information</h3>
-                        </div>
-                        <div class="flipbox_desc">
-                            <p>Porem asum molor sit amet, consectetur adipiscing do miusmod tempor.</p>
-                        </div>
-                        <div class="flipbox_button">
-                            <a href="{{('personal_information')}}">Goto Link<i
-                                    class="fa fa-angle-double-right"></i></a>
-                        </div>
-                    </div>
+                <div class="h2 font-weight-light text-center text-primary py-3">
+                    {{ $dashboard['invoice_paid']}}
                 </div>
             </div>
-        </div>
+        </a>
 
-        <div class="col-lg-4 col-md-6 col-sm-12 col-xs-6">
-            <div class="techno_flipbox mb-30">
-                <div class="techno_flipbox_font">
-                    <div class="techno_flipbox_inner">
-                        <div class="techno_flipbox_icon">
-                            <div class="icon">
-                                <i class="flaticon-padlock"></i>
-                            </div>
-                        </div>
-                        <div class="flipbox_title">
-                            <h3 class="text-dark">Personal Information</h3>
-                        </div>
-                        <div class="flipbox_desc">
-                            <p class="text-dark">Porem asum molor sit amet, consectetur adipiscing do miusmod
-                                tempor.</p>
-                        </div>
-                    </div>
+        <a href="#" class="col-12 col-md-4 col-xl-3">
+            <div class="d-block p-2 border rounded-lg shadow-sm mb-5">
+                <div class="alert alert-danger mt-n4">
+                    <i class="fa fa-ofuser-secret"></i>
+                    <b>Total Pain Invoice</b>
                 </div>
-
-                <div class="techno_flipbox_back "
-                     style="background-image:url('{{asset('assets/images/feature1.jpg')}}');">
-                    <div class="techno_flipbox_inner">
-                        <div class="flipbox_title">
-                            <h3>Personal Information</h3>
-                        </div>
-                        <div class="flipbox_desc">
-                            <p>Porem asum molor sit amet, consectetur adipiscing do miusmod tempor.</p>
-                        </div>
-                        <div class="flipbox_button">
-                            <a href="{{('personal_information')}}">Goto Link<i
-                                    class="fa fa-angle-double-right"></i></a>
-                        </div>
-                    </div>
+                <div class="h2 font-weight-light text-center text-danger py-3">
+                    {{ $dashboard['invoice_unpaid']}}
                 </div>
             </div>
-        </div>
+        </a>
 
-        <div class="col-lg-4 col-md-6 col-sm-12 col-xs-6">
-            <div class="techno_flipbox mb-30">
-                <div class="techno_flipbox_font">
-                    <div class="techno_flipbox_inner">
-                        <div class="techno_flipbox_icon">
-                            <div class="icon">
-                                <i class="flaticon-padlock"></i>
-                            </div>
-                        </div>
-                        <div class="flipbox_title">
-                            <h3 class="text-dark">Personal Information</h3>
-                        </div>
-                        <div class="flipbox_desc">
-                            <p class="text-dark">Porem asum molor sit amet, consectetur adipiscing do miusmod
-                                tempor.</p>
-                        </div>
-                    </div>
+
+        <a href="#" class="col-12 col-md-4 col-xl-3">
+            <div class="d-block p-2 border rounded-lg shadow-sm mb-5">
+                <div class="alert alert-dark mt-n4">
+                    <i class="fa fa-file"></i>
+                    <b>File Completed</b>
                 </div>
-
-                <div class="techno_flipbox_back "
-                     style="background-image:url('{{asset('assets/images/feature1.jpg')}}');">
-                    <div class="techno_flipbox_inner">
-                        <div class="flipbox_title">
-                            <h3>Personal Information</h3>
-                        </div>
-                        <div class="flipbox_desc">
-                            <p>Porem asum molor sit amet, consectetur adipiscing do miusmod tempor.</p>
-                        </div>
-                        <div class="flipbox_button">
-                            <a href="{{('personal_information')}}">Goto Link<i
-                                    class="fa fa-angle-double-right"></i></a>
-                        </div>
-                    </div>
+                <div class="h2 font-weight-light text-center text-dark py-3">
+                    {{ $dashboard['total_file_completed']}}
                 </div>
             </div>
-        </div>
+        </a>
 
-        <div class="col-lg-4 col-md-6 col-sm-12 col-xs-6">
-            <div class="techno_flipbox mb-30">
-                <div class="techno_flipbox_font">
-                    <div class="techno_flipbox_inner">
-                        <div class="techno_flipbox_icon">
-                            <div class="icon">
-                                <i class="flaticon-padlock"></i>
-                            </div>
-                        </div>
-                        <div class="flipbox_title">
-                            <h3 class="text-dark">Personal Information</h3>
-                        </div>
-                        <div class="flipbox_desc">
-                            <p class="text-dark">Porem asum molor sit amet, consectetur adipiscing do miusmod
-                                tempor.</p>
-                        </div>
-                    </div>
+        <a href="#" class="col-12 col-md-4 col-xl-3">
+            <div class="d-block p-2 border rounded-lg shadow-sm mb-5">
+                <div class="alert alert-secondary mt-n4">
+                    <i class="fa fa-file-excel-o"></i>
+                    <b>File Uncompleted</b>
                 </div>
-
-                <div class="techno_flipbox_back "
-                     style="background-image:url('{{asset('assets/images/feature1.jpg')}}');">
-                    <div class="techno_flipbox_inner">
-                        <div class="flipbox_title">
-                            <h3>Personal Information</h3>
-                        </div>
-                        <div class="flipbox_desc">
-                            <p>Porem asum molor sit amet, consectetur adipiscing do miusmod tempor.</p>
-                        </div>
-                        <div class="flipbox_button">
-                            <a href="{{('personal_information')}}">Goto Link<i
-                                    class="fa fa-angle-double-right"></i></a>
-                        </div>
-                    </div>
+                <div class="h2 font-weight-light text-center text-secondary py-3">
+                    {{ $dashboard['total_file_uncompleted']}}
                 </div>
             </div>
-        </div>
-
-
+        </a>
     </div>
+
+
+    <admin-dashboard invoice="{{$dashboard['total_invoice']}}" revenue="{{$dashboard['total_revenue']}}"
+                     avg="{{$dashboard['avg_revenue']??0}}"></admin-dashboard>
+
 @endsection
+
