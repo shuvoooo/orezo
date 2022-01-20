@@ -30,7 +30,7 @@ class ServiceController extends Controller
             'name' => 'required',
             'description' => 'required',
             'image' => 'mimes:jpeg,png,jpg,gif,svg|max:2048',
-            'url' => 'required|unique:services,url',
+            'url' => 'required|unique:services',
             'icon' => 'nullable',
             'status' => 'required',
         ]);
@@ -69,7 +69,7 @@ class ServiceController extends Controller
             'name' => 'required',
             'description' => 'required',
             'image' => 'mimes:jpeg,png,jpg,gif,svg|max:2048',
-            'url' => 'url|nullable',
+            'url' => 'required|nullable',
             'icon' => 'nullable',
             'status' => 'required',
         ]);

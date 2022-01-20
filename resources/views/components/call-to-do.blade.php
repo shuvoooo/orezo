@@ -10,11 +10,11 @@
                         <h5>{{general_config('help center')}}</h5>
                     </div>
                     <div class="section_main_title">
-                        <h1>To make requests for the</h1>
-                        <h1>further information</h1>
+                        <h1>Get Highest Possible Refund</h1>
+                        <h1>Within IRS Limit</h1>
                     </div>
                     <div class="button three mt-40">
-                        <a href="#">Join With Now<i class="fa fa-long-arrow-right"></i></a>
+                        <a href="/register">Register Now<i class="fa fa-long-arrow-right"></i></a>
                     </div>
 
                 </div>

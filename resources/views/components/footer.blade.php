@@ -80,6 +80,7 @@
                 <div class="footer-bottom-right">
                     <div class="footer-bottom-right-text">
                         <a class="absod" href="{{route('page','privacy-policy')}}">Privacy Policy </a>
+                        <a class="absod" href="{{route('page','RSDP')}}">Refund Policy </a>
                         <a href="{{route('page','terms-and-conditions')}}"> Terms & Conditions</a>
                     </div>
                 </div>

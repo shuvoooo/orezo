@@ -51,7 +51,7 @@
 
                             <div class="form-group">
                                 <label class="text-dark" for="url">Redirect Url / Slug</label>
-                                <input type="url" class="form-control @error('url') is-invalid @endif " id="url"
+                                <input type="text" class="form-control @error('url') is-invalid @endif " id="url"
                                        name="url" value="{{old('url',$service->url)}}"
                                        placeholder="Enter Redirect Url / Slug">
                                 @error('url')

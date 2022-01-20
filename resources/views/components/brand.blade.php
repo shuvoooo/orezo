@@ -9,7 +9,7 @@
             <div class="col-lg-12">
                 <div class="section_title text_center mb-50 mt-3">
                     <div class="section_main_title">
-                        <h1>Our Brands</h1>
+                        <h1>Our Payment Partners</h1>
                     </div>
                     <div class="em_bar">
                         <div class="em_bar_bg"></div>
