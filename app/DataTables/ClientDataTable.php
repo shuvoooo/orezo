@@ -57,8 +57,8 @@ class ClientDataTable extends DataTable
             ->dom('Bfrtip')
             ->orderBy(1)
             ->buttons(
-                Button::make('export'),
-                Button::make('print'),
+                //Button::make('export'),
+                //Button::make('print'),
                 Button::make('reset'),
                 Button::make('reload')
             );
