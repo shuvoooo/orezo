@@ -96,7 +96,7 @@ class StaffController extends Controller
 
         $role = new RolePermission();
         $role->user_id = $user->id;
-        $role->details = json_decode($request->permission);
+        $role->details = $request->permission;
         $role->save();
 
         return redirect()->route('admin.staff.index')->with('success', 'Staff created successfully');
@@ -123,7 +123,7 @@ class StaffController extends Controller
     {
         $staff = User::findOrFail($id);
 
-        $permissions = json_decode(RolePermission::where('user_id', $id)->first()->details ?? "[]");
+        $permissions = json_decode(RolePermission::where('user_id', $id)->first()->details )??[];
 
 
         return response()->view('admin.staff.edit', ['staff' => $staff, 'menus' => get_admin_route(), 'permissions' => $permissions]);

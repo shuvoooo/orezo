@@ -5258,7 +5258,8 @@ __webpack_require__.r(__webpack_exports__);
       referrer: '',
       home_no: '',
       password: '',
-      password_confirmation: ''
+      password_confirmation: '',
+      google_site_key: window.google_site_key
     };
   },
   methods: {
@@ -6126,6 +6127,7 @@ window.axios.defaults.headers.common = {
 };
 window.axios.defaults.baseURL = "http://127.0.0.1:8001";
 window.Year = document.querySelector('meta[name="year"]').getAttribute('content');
+window.google_site_key = document.querySelector('meta[name="google-site-verification"]').getAttribute('content');
 
 var files = __webpack_require__("./resources/js sync recursive \\.vue$/");
 
@@ -25806,9 +25808,7 @@ var render = function () {
               _c("div", { staticClass: "col-lg-12 mb-4" }, [
                 _c("div", {
                   staticClass: "g-recaptcha",
-                  attrs: {
-                    "data-sitekey": "6LcvjgYeAAAAADUxnyea4-5uwai5av9tow6TfIrE",
-                  },
+                  attrs: { "data-sitekey": _vm.google_site_key },
                 }),
                 _vm._v(" "),
                 _vm.errors.has("g-recaptcha")

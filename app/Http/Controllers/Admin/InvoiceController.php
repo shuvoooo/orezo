@@ -221,7 +221,7 @@ class InvoiceController extends Controller
     {
 
         $app_name = env('APP_NAME');
-        $to = empty($invoice->user_email) ? $user->email : $invoice->user_email;
+        $to = empty($invoice->user_email) ? $invoice->user_email : $user->email;
 
         $invoice_link = route('invoice.show', ['id' => $invoice->id * $this->encrypt]);
 

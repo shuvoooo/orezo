@@ -23,7 +23,9 @@ use Illuminate\Support\Facades\Route;
 Route::group(['middleware' => ['auth', AdminMiddleware::class], 'prefix' => 'admin', 'as' => 'admin.'], function () {
     Route::get('/', [AdminDashboardController::class, 'dashboard'])->name('dashboard');
 
-    Route::get('client-details', [ClientListController::class, 'client_details'])->name('client_details');
+    Route::get('client', [ClientListController::class, 'client_index'])->name('client.index');
+    Route::get('client/{user}', [ClientListController::class, 'client_show'])->name('client.show');
+
     Route::get('client-list', [ClientListController::class, 'client_list'])->name('client_list');
 
     Route::get('invoice', [InvoiceController::class, 'index'])->name('invoice.index');
@@ -51,6 +53,8 @@ Route::group(['middleware' => ['auth', AdminMiddleware::class], 'prefix' => 'adm
     Route::get('file-status/{user}', [FileStatusController::class, 'file_status'])->name('file_status.file_status');
     Route::post('file-status/{user}/{year}', [FileStatusController::class, 'add_file_status'])->name('file_status.add_file_status');
     Route::get('file-status/{file_status}/delete', [FileStatusController::class, 'delete_file_status'])->name('file_status.delete_file_status');
+
+    Route::get('file-status', [FileStatusController::class, 'index'])->name('file_status.index');
 
 
     Route::get('download-tax-document/{user}', [TaxDocumentController::class, 'download_tax_document'])->name('download_tax_document');

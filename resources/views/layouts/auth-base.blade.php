@@ -29,7 +29,12 @@
 
     <title>@yield("title","Welcome to Dashboard")</title>
 
+
     <script src="//www.google.com/recaptcha/api.js" async defer></script>
+
+    <!-- google site key -->
+    <meta name="google-site-verification" content="{{env('recaptcha_site_key')}}">
+
 
     <style>
 

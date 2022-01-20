@@ -9,7 +9,7 @@ class RolePermission extends Model
     protected $fillable = ['user_id', 'details'];
 
     protected $casts = [
-        'details' => 'array',
+        'details' => 'json',
     ];
 
     public $timestamps = false;

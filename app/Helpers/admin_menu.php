@@ -1,12 +1,14 @@
 <?php
 return [
-    'admin.client_details' => [
+    'admin.client' => [
         'text' => 'Client List',
-        'url' => route('admin.client_details'),
+        'url' => route('admin.client.index'),
         'icon' => 'fa fa-users',
         'type' => 'single',
         'submenu' => []
     ],
+
+
     'admin.invoice' => [
         'text' => 'Invoice',
         'url' => route('admin.invoice.create'),
@@ -29,6 +31,20 @@ return [
             ],
         ]
     ],
+
+    "admin.file" => [
+        'text' => 'File Status',
+        'url' => null,
+        'icon' => 'fa fa-file',
+        'type' => 'submenu',
+        'submenu' => [
+            'admin.file.index' => [
+                'text' => 'File List',
+                'url' => route('admin.file_status.index'),
+            ],
+        ]
+    ],
+
     'web_setting' => [
         'text' => 'Web Setting',
         'url' => null,

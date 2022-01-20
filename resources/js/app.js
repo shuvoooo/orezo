@@ -17,7 +17,8 @@ window.axios.defaults.headers.common = {
     'Accept': 'application/json'
 };
 window.axios.defaults.baseURL = process.env.MIX_APP_URL;
-window.Year = document.querySelector('meta[name="year"]').getAttribute('content')
+window.Year = document.querySelector('meta[name="year"]').getAttribute('content');
+window.google_site_key = document.querySelector('meta[name="google-site-verification"]').getAttribute('content');
 
 const files = require.context('./', true, /\.vue$/i)
 files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))

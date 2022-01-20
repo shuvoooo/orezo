@@ -263,7 +263,7 @@
                         <div class="col-lg-12 mb-4">
                             <!-- reCAPTCHA -->
                             <div class="col-lg-12 mb-4">
-                                <div class="g-recaptcha" data-sitekey="6LcvjgYeAAAAADUxnyea4-5uwai5av9tow6TfIrE"></div>
+                                <div class="g-recaptcha" :data-sitekey="google_site_key"></div>
 
                                 <span v-if="errors.has('g-recaptcha')" class="small text-danger w-100">{{
                                         errors.first('g-recaptcha')
@@ -318,7 +318,9 @@ export default {
             referrer: '',
             home_no: '',
             password: '',
-            password_confirmation: ''
+            password_confirmation: '',
+
+            google_site_key: window.google_site_key,
         }
     },
     methods: {
@@ -339,7 +341,7 @@ export default {
                         home_no: this.home_no,
                         password: this.password,
                         password_confirmation: this.password_confirmation,
-                        'g-recaptcha-response' : grecaptcha.getResponse(),
+                        'g-recaptcha-response': grecaptcha.getResponse(),
                     }).then(response => {
                         this.isLoading = false;
                         location.href = response.data.redirect

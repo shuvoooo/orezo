@@ -14,7 +14,7 @@
     <div class="row">
 
         @if(($role == 'staff' && strpos($permissions, 'client') !== false) || $role == 'admin')
-            <a href="{{route('admin.client_details')}}" class="col-12 col-md-4 col-xl-3">
+            <a href="{{route('admin.client.index')}}" class="col-12 col-md-4 col-xl-3">
                 <div class="d-block p-2 border rounded-lg shadow-sm mb-5">
                     <div class="alert alert-info mt-n4">
                         <i class="fa fa-users"></i>

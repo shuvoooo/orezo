@@ -12,6 +12,10 @@ use Yajra\DataTables\Html\Builder;
 class FileStatusController extends Controller
 {
 
+    public function index()
+    {
+        $fileStatus = FileStatus::where('year', request('year') ?? date('Y'))->get();
+    }
 
     function file_status(Builder $dataTable, Request $request, User $user)
     {
@@ -46,7 +50,7 @@ class FileStatusController extends Controller
             ['data' => 'action', 'name' => 'action', 'title' => 'Action', 'orderable' => false, 'searchable' => false],
         ]);
 
-        return response()->view('admin.file_status.index', compact('user', 'statuses', 'dataTable'));
+        return response()->view('admin.file_status.user_file', compact('user', 'statuses', 'dataTable'));
 
     }
 
