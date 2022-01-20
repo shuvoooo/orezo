@@ -3,7 +3,7 @@
 
 @section('content')
     <!-- ============================================================== -->
-    <!-- Start Techno Breatcome Area -->
+    <!-- Start eTaxPlanner Breatcome Area -->
     <!-- ============================================================== -->
     <div class="breatcome_area d-flex align-items-center">
         <div class="container">
@@ -25,12 +25,12 @@
         </div>
     </div>
     <!-- ============================================================== -->
-    <!-- End Techno Breatcome Area -->
+    <!-- End eTaxPlanner Breatcome Area -->
     <!-- ============================================================== -->
 
 
     <!--==================================================-->
-    <!----- Start Techno About Area ----->
+    <!----- Start eTaxPlanner About Area ----->
     <!--==================================================-->
     <div class="about_area pt-85 pb-70">
         <div class="container">
@@ -73,7 +73,7 @@
         </div>
     </div>
     <!--==================================================-->
-    <!----- End Techno About Area ----->
+    <!----- End eTaxPlanner About Area ----->
     <!--==================================================-->
 
 

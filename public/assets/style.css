@@ -1,40 +1,40 @@
 /*===============================================
 
-Template Name: techno - IT Solutions & Services HTML5 Template
+Template Name: etaxplanner - IT Solutions & Services HTML5 Template
 Version: 0.1
 
 ================================================*/
 
 /*TABLE OF CONTENTS*/
 /*=====================
-01. techno	Main Menu Area Css
-02. techno Slider Area Css
-03. techno Shape Images Css
-04. techno Breatcome Area Css
-05. techno Feature Area Css
-06. techno Service Area Css
-07. techno Section TitleNAV
-08. techno About  Area  Css
-09. techno Counter Area  Css
-10. techno Feature Box Area  Css
-11. techno Team Area  Css
-12. techno Pricing Area  Css
-13. techno Portfolio Area  Css
-14. techno Testimonial Area  Css
-15. techno Call Do Action Area  Css
-16. techno Blog Area  Css
-17. techno Subscribe Area CSS
-18. techno Subscribe Area CSS
-19. techno Contact Now Area Css
-20. techno Contact Form Area Css
-21. techno GOOGLE MAP AREA CSS
-22. techno Middle Footer CSS
-23. techno Footer Bottom Area Css
-24. techno BLOG DETAILS AREA CSS
-25. techno Team Details Area Css
-26. techno Skill Area Css
-27. techno Error Page Area Css
-25. techno Team Details Area Css
+01. etaxplanner	Main Menu Area Css
+02. etaxplanner Slider Area Css
+03. etaxplanner Shape Images Css
+04. etaxplanner Breatcome Area Css
+05. etaxplanner Feature Area Css
+06. etaxplanner Service Area Css
+07. etaxplanner Section TitleNAV
+08. etaxplanner About  Area  Css
+09. etaxplanner Counter Area  Css
+10. etaxplanner Feature Box Area  Css
+11. etaxplanner Team Area  Css
+12. etaxplanner Pricing Area  Css
+13. etaxplanner Portfolio Area  Css
+14. etaxplanner Testimonial Area  Css
+15. etaxplanner Call Do Action Area  Css
+16. etaxplanner Blog Area  Css
+17. etaxplanner Subscribe Area CSS
+18. etaxplanner Subscribe Area CSS
+19. etaxplanner Contact Now Area Css
+20. etaxplanner Contact Form Area Css
+21. etaxplanner GOOGLE MAP AREA CSS
+22. etaxplanner Middle Footer CSS
+23. etaxplanner Footer Bottom Area Css
+24. etaxplanner BLOG DETAILS AREA CSS
+25. etaxplanner Team Details Area Css
+26. etaxplanner Skill Area Css
+27. etaxplanner Error Page Area Css
+25. etaxplanner Team Details Area Css
 
 =======================*/
 
@@ -43,16 +43,16 @@ Version: 0.1
 
 
 /*============================
- techno	Main Menu Area Css
+ etaxplanner	Main Menu Area Css
 ==============================*/
-.techno_nav_manu {
+.etaxplanner_nav_manu {
     background: #fff;
     transition: .5s;
     margin-bottom: 0;
     z-index: 999;
     position: relative;
 }
-.techno_nav_manu.transparent_menu {
+.etaxplanner_nav_manu.transparent_menu {
     background: transparent;
     margin-bottom: -87px;
     position: relative;
@@ -73,20 +73,20 @@ Version: 0.1
 .logo {
 
 }
-/* techno Menu Css*/
-.techno_menu {
+/* etaxplanner Menu Css*/
+.etaxplanner_menu {
     text-align: right;
 }
-.techno_menu ul {
+.etaxplanner_menu ul {
     text-align: right;
     list-style: none;
     display: inline-block;
 }
-.techno_menu>ul>li {
+.etaxplanner_menu>ul>li {
  display: inline-block;
  position: relative;
 }
-.techno_menu > ul > li > a {
+.etaxplanner_menu > ul > li > a {
     display: block;
     -webkit-transition: .5s;
     -o-transition: .5s;
@@ -98,20 +98,20 @@ Version: 0.1
     margin: 30px 10px;
     font-size: 17px;
 }
-.white .techno_menu > ul > li > a {
+.white .etaxplanner_menu > ul > li > a {
     color: #fff;
 }
-.techno_menu ul li:last-child a {
+.etaxplanner_menu ul li:last-child a {
  margin-right: 0px;
 }
-.techno_menu>ul>li.current>a {
+.etaxplanner_menu>ul>li.current>a {
  color: #00247E;
 }
-.white .techno_menu>ul>li.current>a {
+.white .etaxplanner_menu>ul>li.current>a {
  color: #fff;
 }
 /* sub menu style */
-.techno_menu ul .sub-menu {
+.etaxplanner_menu ul .sub-menu {
     position: absolute;
     left: 0;
     top: 130%;
@@ -130,17 +130,17 @@ Version: 0.1
     visibility: hidden;
     border-top: 2px solid #0c5adb;
 }
-.techno_menu ul li:hover>.sub-menu {
+.etaxplanner_menu ul li:hover>.sub-menu {
  opacity: 1;
  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
  visibility: visible;
  top: 100%;
  z-index: 9;
 }
-.techno_menu ul .sub-menu li {
+.etaxplanner_menu ul .sub-menu li {
  position: relative;
 }
-.techno_menu ul .sub-menu li a {
+.etaxplanner_menu ul .sub-menu li a {
     display: block;
     padding: 12px 20px;
     margin: 0;
@@ -155,23 +155,23 @@ Version: 0.1
     visibility: inherit !important;
     color: #333 !important;
 }
-.techno_menu ul .sub-menu li:hover>a,
-.techno_menu ul .sub-menu .sub-menu li:hover>a,
-.techno_menu ul .sub-menu .sub-menu .sub-menu li:hover>a,
-.techno_menu ul .sub-menu .sub-menu .sub-menu .sub-menu li:hover>a {
+.etaxplanner_menu ul .sub-menu li:hover>a,
+.etaxplanner_menu ul .sub-menu .sub-menu li:hover>a,
+.etaxplanner_menu ul .sub-menu .sub-menu .sub-menu li:hover>a,
+.etaxplanner_menu ul .sub-menu .sub-menu .sub-menu .sub-menu li:hover>a {
  background:#0c5adb;
  color: #fff !important;
 }
 
 /* sub menu 2 */
-.techno_menu ul .sub-menu .sub-menu {
+.etaxplanner_menu ul .sub-menu .sub-menu {
  left: 100%;
  top: 130%;
  opacity: 0;
  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
  visibility: hidden;
 }
-.techno_menu ul .sub-menu li:hover>.sub-menu {
+.etaxplanner_menu ul .sub-menu li:hover>.sub-menu {
  opacity: 1;
  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
  visibility: visible;
@@ -179,10 +179,10 @@ Version: 0.1
 }
 
 /* sub menu 3 */
-.techno_menu ul .sub-menu .sub-menu li {
+.etaxplanner_menu ul .sub-menu .sub-menu li {
  position: relative;
 }
-.techno_menu ul .sub-menu .sub-menu .sub-menu {
+.etaxplanner_menu ul .sub-menu .sub-menu .sub-menu {
  right: 100%;
  left: auto;
  top: 130%;
@@ -190,7 +190,7 @@ Version: 0.1
  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
  visibility: hidden;
 }
-.techno_menu ul .sub-menu .sub-menu li:hover>.sub-menu {
+.etaxplanner_menu ul .sub-menu .sub-menu li:hover>.sub-menu {
  opacity: 1;
  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
  visibility: visible;
@@ -198,12 +198,12 @@ Version: 0.1
 }
 
 /* sub menu 4 */
-.techno_menu ul .sub-menu .sub-menu .sub-menu li {
+.etaxplanner_menu ul .sub-menu .sub-menu .sub-menu li {
  position: relative;
 }
-.techno_menu ul .sub-menu .sub-menu .sub-menu .sub-menu {
+.etaxplanner_menu ul .sub-menu .sub-menu .sub-menu .sub-menu {
 }
-.techno_menu ul .sub-menu .sub-menu .sub-menu li:hover>.sub-menu {
+.etaxplanner_menu ul .sub-menu .sub-menu .sub-menu li:hover>.sub-menu {
  opacity: 1;
  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
  visibility: visible;
@@ -239,27 +239,27 @@ a.dtbtn:hover {
     background: #00247E;
     color: #fff;
 }
-.techno_menu li a:hover:before{
+.etaxplanner_menu li a:hover:before{
 	width:101%;
 }
-.techno_nav_manu.sticky .logo_img {
+.etaxplanner_nav_manu.sticky .logo_img {
     display: none;
 }
 .main_sticky {
     display: none;
 }
-.techno_nav_manu.sticky .main_sticky {
+.etaxplanner_nav_manu.sticky .main_sticky {
     display: inherit;
 }
-.techno_nav_manu.sticky .techno_menu li a {
+.etaxplanner_nav_manu.sticky .etaxplanner_menu li a {
     color: #fff;
 }
-.techno_nav_manu.sticky a.dtbtn {
+.etaxplanner_nav_manu.sticky a.dtbtn {
     color: #0c5adb;
 	background:#fff;
 	border: 2px solid #fff;
 }
-.techno_nav_manu.sticky a.dtbtn:hover {
+.etaxplanner_nav_manu.sticky a.dtbtn:hover {
     color: #0c5adb;
 }
 .mobile-menu.mean-container {
@@ -267,7 +267,7 @@ a.dtbtn:hover {
 }
 
 /*====================================================
---<	Techno Header Top Menu Area Css -->
+--<	eTaxPlanner Header Top Menu Area Css -->
 ======================================================*/
 .header_top_menu_address_inner ul {
     list-style: none;
@@ -300,7 +300,7 @@ a.dtbtn:hover {
 	margin:0 5px;
 }
 /*====================================================
---<	Techno Slider Area Css -->
+--<	eTaxPlanner Slider Area Css -->
 ======================================================*/
 .slider1 {
     background-image: url(assets/images/slider/slider-1.png);
@@ -649,7 +649,7 @@ right:30px;
 	background-color: rgba(255, 255, 255, 0.2);
 }
 /*====================================================
---<	Techno Banner Area Css -->
+--<	eTaxPlanner Banner Area Css -->
 ======================================================*/
 .banner1 {
     height: 800px;
@@ -844,7 +844,7 @@ right:30px;
 
 
 /*====================================================
---<	Techno Lines Css -->
+--<	eTaxPlanner Lines Css -->
 ======================================================*/
 .lines {
 position: absolute;
@@ -1009,7 +1009,7 @@ transform: translateY(0);
 }
 }
 /*====================================================
---<	Techno Nivo Slider Area Css -->
+--<	eTaxPlanner Nivo Slider Area Css -->
 ======================================================*/
 .nivo_slider_area {
 	position: relative;
@@ -1294,7 +1294,7 @@ a.em-active-button:hover {
 
 /*
 <!-- ============================================================== -->
-<!-- Techno - Breatcome Area Css -->
+<!-- eTaxPlanner - Breatcome Area Css -->
 <!-- ============================================================== -->*/
 .slider{
     position: relative;
@@ -1326,7 +1326,7 @@ a.em-active-button:hover {
 
 /*
 <!-- ============================================================== -->
-<!-- Techno - Breatcome Area Css -->
+<!-- eTaxPlanner - Breatcome Area Css -->
 <!-- ============================================================== -->*/
 .breatcome_area{
 	background:url(assets/images/slider/slider-10.jpg);
@@ -1374,7 +1374,7 @@ a.em-active-button:hover {
     opacity:1;
 }
 /*====================================================
---<	Techno Dark Slider Area Css -->
+--<	eTaxPlanner Dark Slider Area Css -->
 ======================================================*/
 .bg-dark{
 	background:#232435;
@@ -1396,10 +1396,10 @@ a.em-active-button:hover {
     background-repeat: no-repeat;
     height: 900px;
 }
-.dark.top_feature .techno_flipbox .techno_flipbox_font {
+.dark.top_feature .etaxplanner_flipbox .etaxplanner_flipbox_font {
     background: #181b2d;
 }
-.dark.top_feature .techno_flipbox .flipbox_title h3 {
+.dark.top_feature .etaxplanner_flipbox .flipbox_title h3 {
     color: #fff;
 }
 .dark .about_icon .icon {
@@ -1428,7 +1428,7 @@ a.em-active-button:hover {
     margin-bottom: -100px;
 }
 /*====================================================
---<	Techno Landing area Css -->
+--<	eTaxPlanner Landing area Css -->
 ======================================================*/
 .landing .slider_text_desc p {
     margin: auto;
@@ -1444,7 +1444,7 @@ a.em-active-button:hover {
     bottom: 0;
 }
 /*====================================================
---<	Techno Section Title Css -->
+--<	eTaxPlanner Section Title Css -->
 ======================================================*/
 .section_sub_title h6 {
     letter-spacing: 5px;
@@ -1554,7 +1554,7 @@ a.em-active-button:hover {
 }
 
 /*====================================================
---<	Techno Flipbox Top Feature Area Css -->
+--<	eTaxPlanner Flipbox Top Feature Area Css -->
 ======================================================*/
 .nagative_margin {
     position: relative;
@@ -1573,21 +1573,21 @@ a.em-active-button:hover {
     position: relative;
     margin-top: -70px;
 }
-.top_feature .techno_flipbox .techno_flipbox_font {
+.top_feature .etaxplanner_flipbox .etaxplanner_flipbox_font {
     background: #fff;
     border-radius: 8px;
     box-shadow: 0 5px 20px rgba(0,0,0,0.10);
     border: 0;
 }
-.top_feature .techno_flipbox .techno_flipbox_back {
+.top_feature .etaxplanner_flipbox .etaxplanner_flipbox_back {
     background: #0c5adb;
 	box-shadow:0 5px 20px rgba(0,0,0,0.10);
 	border-radius:8px;
 }
-.top_feature .techno_flipbox .techno_flipbox_inner {
+.top_feature .etaxplanner_flipbox .etaxplanner_flipbox_inner {
     padding: 0 30px;
 }
-.top_feature .techno_flipbox .techno_flipbox_back::before {
+.top_feature .etaxplanner_flipbox .etaxplanner_flipbox_back::before {
     display:none;
 }
 .top_feature .icon {
@@ -1596,7 +1596,7 @@ a.em-active-button:hover {
     display: inline-block;
     line-height: 46px;
 }
-.top_feature .techno_flipbox .flipbox_title h3 {
+.top_feature .etaxplanner_flipbox .flipbox_title h3 {
     font-size: 20px;
     color: #232323;
     font-weight: 700;
@@ -1677,13 +1677,13 @@ a.em-active-button:hover {
 }
 /* Top Feature Style Two */
 
-.top_feature.two .techno_flipbox .techno_flipbox_font, .top_feature.two .techno_flipbox .techno_flipbox_back {
+.top_feature.two .etaxplanner_flipbox .etaxplanner_flipbox_font, .top_feature.two .etaxplanner_flipbox .etaxplanner_flipbox_back {
     min-height: 223px;
 }
-.top_feature.two .techno_flipbox .techno_flipbox_back {
+.top_feature.two .etaxplanner_flipbox .etaxplanner_flipbox_back {
     background: #fff;
 }
-.top_feature.two .techno_flipbox .techno_flipbox_inner {
+.top_feature.two .etaxplanner_flipbox .etaxplanner_flipbox_inner {
     padding: 0 24px;
 }
 .top_feature.two .icon {
@@ -1695,15 +1695,15 @@ a.em-active-button:hover {
     background: #0c5adb;
     border-radius: 33% 66% 70% 30%/49% 62% 38% 51% !important;
 }
-.top_feature.two .techno_flipbox .flipbox_title h3 {
+.top_feature.two .etaxplanner_flipbox .flipbox_title h3 {
     padding-bottom: 0;
 	font-size:21px;
 }
-.top_feature.two .techno_flipbox .techno_flipbox_back .flipbox_title h3 {
+.top_feature.two .etaxplanner_flipbox .etaxplanner_flipbox_back .flipbox_title h3 {
     color: #232323;
 	font-size:21px;
 }
-.top_feature.two .techno_flipbox_back .flipbox_desc p {
+.top_feature.two .etaxplanner_flipbox_back .flipbox_desc p {
     color: #616161;
 }
 /* Feature Style Three */
@@ -2079,9 +2079,9 @@ a.em-active-button:hover {
     font-size: 20px;
 }
 /*====================================================
---<	Techno Flipbox Area Css -->
+--<	eTaxPlanner Flipbox Area Css -->
 ======================================================*/
-.techno_flipbox_font {
+.etaxplanner_flipbox_font {
     border: 1px solid #0c5adb;
     border-radius: 8px;
 }
@@ -2094,7 +2094,7 @@ a.em-active-button:hover {
 .flipbox .section_title{
 	margin-bottom:30px;
 }
-.techno_flipbox {
+.etaxplanner_flipbox {
 	perspective: 1000px;
 	position: relative;
 	transform-style: preserve-3d;
@@ -2102,8 +2102,8 @@ a.em-active-button:hover {
 	-webkit-transform-style: preserve-3d;
 	z-index: 1;
 }
-.techno_flipbox .techno_flipbox_font,
-.techno_flipbox .techno_flipbox_back {
+.etaxplanner_flipbox .etaxplanner_flipbox_font,
+.etaxplanner_flipbox .etaxplanner_flipbox_back {
 	min-height: 250px;
 	height: auto;
 	box-shadow: 0px 1px 51.3px 5.7px rgba(137,143,156,.15);
@@ -2116,7 +2116,7 @@ a.em-active-button:hover {
 	transition: transform .7s ease, -webkit-transform .7s ease;
 	position: relative;
 }
-.techno_flipbox .techno_flipbox_back::before {
+.etaxplanner_flipbox .etaxplanner_flipbox_back::before {
     position: absolute;
     content: "";
     left: 0;
@@ -2129,7 +2129,7 @@ a.em-active-button:hover {
     font-size: 45px;
     line-height: 45px;
 }
-.techno_flipbox .techno_flipbox_inner {
+.etaxplanner_flipbox .etaxplanner_flipbox_inner {
 	text-align: center;
 	padding: 0 25px;
 	border-radius: 2px;
@@ -2146,17 +2146,17 @@ a.em-active-button:hover {
 	transform: translateY(-50%) translateZ(60px) scale(0.94);
 	z-index: 2;
 }
-.techno_flipbox_icon {
+.etaxplanner_flipbox_icon {
 	font-size: 45px;
 	text-align: center;
 	display: inline-block;
 	color: #fff;
 	overflow: hidden;
 }
-.techno_flipbox_font .flipbox_desc p {
+.etaxplanner_flipbox_font .flipbox_desc p {
     color: #fff;
 }
-.techno_flipbox .flipbox_title h3 {
+.etaxplanner_flipbox .flipbox_title h3 {
     font-size: 22px;
     padding-bottom: 13px;
     text-transform: capitalize;
@@ -2164,7 +2164,7 @@ a.em-active-button:hover {
     transition: all 0.7s ease 0s;
     color: #fff;
 }
-.techno_flipbox .techno_flipbox_back {
+.etaxplanner_flipbox .etaxplanner_flipbox_back {
 	position: absolute;
 	top: 0;
 	left: 0;
@@ -2175,7 +2175,7 @@ a.em-active-button:hover {
 	-webkit-transform-style: preserve-3d;
 	transform-style: preserve-3d;
 }
-.techno_flipbox .techno_flipbox_back .flipbox_button a {
+.etaxplanner_flipbox .etaxplanner_flipbox_back .flipbox_button a {
     text-transform: capitalize;
     margin-top: 22px;
     background: #fff;
@@ -2186,46 +2186,46 @@ a.em-active-button:hover {
     border: 2px solid #fff;
     transition: .5s;
 }
-.techno_flipbox_back .flipbox_desc p{
+.etaxplanner_flipbox_back .flipbox_desc p{
     color: #fff;
 }
-.techno_flipbox .techno_flipbox_back .flipbox_button a i {
+.etaxplanner_flipbox .etaxplanner_flipbox_back .flipbox_button a i {
 	display: none;
 }
-.techno_flipbox .techno_flipbox_back .flipbox_title h3 {
+.etaxplanner_flipbox .etaxplanner_flipbox_back .flipbox_title h3 {
 	padding-bottom: 16px;
 	padding-top: 0;
 	color: #fff;
 	margin-bottom: 0;
 }
-.techno_flipbox .techno_flipbox_font .flipbox_desc,
-.techno_flipbox .techno_flipbox_back .flipbox_desc {
+.etaxplanner_flipbox .etaxplanner_flipbox_font .flipbox_desc,
+.etaxplanner_flipbox .etaxplanner_flipbox_back .flipbox_desc {
 	color: #fff;
 }
 
 /* Flipbox Hover Css */
-.techno_flipbox:hover .techno_flipbox_font {
+.etaxplanner_flipbox:hover .etaxplanner_flipbox_font {
 	-webkit-transform: rotateX(-180deg);
 	transform: rotateX(-180deg);
 }
-.techno_flipbox:hover .techno_flipbox_back {
+.etaxplanner_flipbox:hover .etaxplanner_flipbox_back {
 	-webkit-transform: rotateX(0deg);
 	transform: rotateX(0deg);
 }
-.techno_flipbox .techno_flipbox_back .flipbox_button a:hover {
+.etaxplanner_flipbox .etaxplanner_flipbox_back .flipbox_button a:hover {
 	color: #fff;
 	border-color: #0c5adb;
 	background: #0c5adb;
 }
 
-.pages .techno_flipbox .techno_flipbox_font .flipbox_title h3 {
+.pages .etaxplanner_flipbox .etaxplanner_flipbox_font .flipbox_title h3 {
     color: #444;
 }
-.pages .techno_flipbox_font .flipbox_desc p {
+.pages .etaxplanner_flipbox_font .flipbox_desc p {
     color: #666;
 }
 /*====================================================
---<	Techno About Area Css -->
+--<	eTaxPlanner About Area Css -->
 ======================================================*/
 .about_icon {
     float: left;
@@ -2355,7 +2355,7 @@ a.em-active-button:hover {
     text-align: center;
 }
 /*====================================================
---<	Techno Shape Images Css -->
+--<	eTaxPlanner Shape Images Css -->
 ======================================================*/
 
 
@@ -2516,7 +2516,7 @@ a.em-active-button:hover {
     color: #232323;
 }
 /*====================================================
---<	Techno Service Area Css -->
+--<	eTaxPlanner Service Area Css -->
 ======================================================*/
 .service_style_one {
     background: #fff;
@@ -3100,7 +3100,7 @@ a.em-active-button:hover {
 }
 
 /*====================================================
---<	Techno Service Details Area Css -->
+--<	eTaxPlanner Service Details Area Css -->
 ======================================================*/
 .service-details-pn-list ul li {
     margin-bottom: 2px;
@@ -3222,7 +3222,7 @@ a.em-active-button:hover {
 }
 
 /*====================================================
---<	Techno Team Area Css -->
+--<	eTaxPlanner Team Area Css -->
 ======================================================*/
 .single_team {
     overflow: hidden;
@@ -3492,7 +3492,7 @@ a.em-active-button:hover {
 }
 
 /*====================================================
---<	Techno Software Area Css -->
+--<	eTaxPlanner Software Area Css -->
 ======================================================*/
 .single_software_box{
 	margin-bottom:20px;
@@ -3560,7 +3560,7 @@ a.em-active-button:hover {
 
 
 /*====================================================
---<	Techno Case Study Area Css -->
+--<	eTaxPlanner Case Study Area Css -->
 ======================================================*/
 
 .single_case_study {
@@ -3755,7 +3755,7 @@ a.em-active-button:hover {
     color: #fff;
 }
 /*====================================================
---<	Techno Case Study Details Area Css -->
+--<	eTaxPlanner Case Study Details Area Css -->
 ======================================================*/
 .single-case-study-details {
     box-shadow: 0 0 30px rgba(0,0,0,0.10);
@@ -3805,7 +3805,7 @@ a.em-active-button:hover {
     width: 100%;
 }
 /*====================================================
---<	Techno Portfolio Area Css -->
+--<	eTaxPlanner Portfolio Area Css -->
 ======================================================*/
 
 /* Portfolio Nav */
@@ -4018,7 +4018,7 @@ a.em-active-button:hover {
 	height: 100%;
 }
 /*====================================================
---<	Techno  How It Work Area Css -->
+--<	eTaxPlanner  How It Work Area Css -->
 ======================================================*/
 .single_it_work {
     text-align: center;
@@ -4091,13 +4091,13 @@ a.em-active-button:hover {
 }
 
 /* How It Work Style Tow */
-.it_work_style_two .techno_flipbox .techno_flipbox_font, .it_work_style_two .techno_flipbox .techno_flipbox_back {
+.it_work_style_two .etaxplanner_flipbox .etaxplanner_flipbox_font, .it_work_style_two .etaxplanner_flipbox .etaxplanner_flipbox_back {
     min-height: 410px;
 }
-.it_work_style_two .it_work_style_two .techno_flipbox .techno_flipbox_inner {
+.it_work_style_two .it_work_style_two .etaxplanner_flipbox .etaxplanner_flipbox_inner {
     top: 50%;
 }
-.techno_flipbox_font .icon {
+.etaxplanner_flipbox_font .icon {
     color: #fff;
     font-size: 30px;
     line-height: 80px;
@@ -4107,20 +4107,20 @@ a.em-active-button:hover {
     border-radius: 33% 66% 70% 30%/49% 62% 38% 51% !important;
 	display:inline-block;
 }
-.it_work_style_two .techno_flipbox_font {
+.it_work_style_two .etaxplanner_flipbox_font {
     background: #ffffff;
     border: 2px solid #e8ecfc;
     border-radius: 7px 7px 7px 7px;
 }
-.it_work_style_two .techno_flipbox_font .flipbox_title h3 {
+.it_work_style_two .etaxplanner_flipbox_font .flipbox_title h3 {
     color: #444;
 	font-weight:700;
 	font-size:24px;
 }
-.it_work_style_two .techno_flipbox_font .flipbox_desc p {
+.it_work_style_two .etaxplanner_flipbox_font .flipbox_desc p {
     color: #666;
 }
-.it_work_style_two .techno_flipbox .techno_flipbox_back .flipbox_button a {
+.it_work_style_two .etaxplanner_flipbox .etaxplanner_flipbox_back .flipbox_button a {
     background:inherit;
     color: #fff;
     display: inline-block;
@@ -4131,7 +4131,7 @@ a.em-active-button:hover {
 	margin-top:5px;
 	font-weight:600;
 }
-.it_work_style_two .techno_flipbox .techno_flipbox_back::before {
+.it_work_style_two .etaxplanner_flipbox .etaxplanner_flipbox_back::before {
     background:inherit;
 }
 /* How IT Work Style Three */
@@ -4189,7 +4189,7 @@ a.em-active-button:hover {
 }
 
 /*====================================================
---<	Techno  Pricing Area Css -->
+--<	eTaxPlanner  Pricing Area Css -->
 ======================================================*/
 .single_pricing {
     padding: 51px 40px 60px;
@@ -4524,7 +4524,7 @@ a.em-active-button:hover {
 }
 
 /*====================================================
---<	Techno Process Area Css -->
+--<	eTaxPlanner Process Area Css -->
 ======================================================*/
 
 .single_process {
@@ -4581,7 +4581,7 @@ a.em-active-button:hover {
 /* Process Style Two */
 
 /*====================================================
---<	Techno Counter Area Css -->
+--<	eTaxPlanner Counter Area Css -->
 ======================================================*/
 .cntr_bg_up{
 	background: #ffffff;
@@ -4724,7 +4724,7 @@ a.em-active-button:hover {
 }
 
 /*====================================================
---<	Techno Testimonial Area Css -->
+--<	eTaxPlanner Testimonial Area Css -->
 ======================================================*/
 .single_testimonial_content_text {
     box-shadow: 0 18px 17px 0 rgba(0,0,0,.1);
@@ -4916,7 +4916,7 @@ to{-webkit-transform:rotate(360deg) translate(-10px) rotate(-360deg);-moz-transf
     color: #fff;
 }
 /*====================================================
---<	Techno Tab Area Css -->
+--<	eTaxPlanner Tab Area Css -->
 ======================================================*/
 .nagative_margin2 {
     position: relative;
@@ -4960,16 +4960,16 @@ to{-webkit-transform:rotate(360deg) translate(-10px) rotate(-360deg);-moz-transf
     margin-bottom: 5px;
 }
 /*====================================================
---<	Techno Choose Us Area Css -->
+--<	eTaxPlanner Choose Us Area Css -->
 ======================================================*/
-.choose_us .techno_flipbox .techno_flipbox_font, .choose_us .techno_flipbox .techno_flipbox_back {
+.choose_us .etaxplanner_flipbox .etaxplanner_flipbox_font, .choose_us .etaxplanner_flipbox .etaxplanner_flipbox_back {
     min-height: 410px;
 }
-.choose_us .techno_flipbox .techno_flipbox_font{
+.choose_us .etaxplanner_flipbox .etaxplanner_flipbox_font{
 	position:relative;
 	border:0 !important;
 }
-.choose_us .techno_flipbox .techno_flipbox_font::before {
+.choose_us .etaxplanner_flipbox .etaxplanner_flipbox_font::before {
     position: absolute;
     content: "";
     left: 0;
@@ -4978,10 +4978,10 @@ to{-webkit-transform:rotate(360deg) translate(-10px) rotate(-360deg);-moz-transf
     height: 100%;
     background: linear-gradient(0deg,black 0%,rgba(255,255,255,0) 100%) !important;
 }
-.choose_us .techno_flipbox .techno_flipbox_inner {
+.choose_us .etaxplanner_flipbox .etaxplanner_flipbox_inner {
     top: 72%;
 }
-.choose_us .techno_flipbox .techno_flipbox_back .techno_flipbox_inner {
+.choose_us .etaxplanner_flipbox .etaxplanner_flipbox_back .etaxplanner_flipbox_inner {
     top: 50%;
 }
 
@@ -5038,7 +5038,7 @@ to{-webkit-transform:rotate(360deg) translate(-10px) rotate(-360deg);-moz-transf
 
 }
 /*====================================================
---<	Techno Fun Faq Area Css -->
+--<	eTaxPlanner Fun Faq Area Css -->
 ======================================================*/
 .single_fun_faq {
     background: url(assets/images/new/fun1.jpg);
@@ -5050,7 +5050,7 @@ to{-webkit-transform:rotate(360deg) translate(-10px) rotate(-360deg);-moz-transf
     font-weight: 800;
 }
 /*====================================================
---<	Techno Accordion Area Css -->
+--<	eTaxPlanner Accordion Area Css -->
 ======================================================*/
 .main-accordion-lt {
     background: #2d2d2d;
@@ -5124,7 +5124,7 @@ to{-webkit-transform:rotate(360deg) translate(-10px) rotate(-360deg);-moz-transf
     font-weight: 700;
 }
 /*====================================================
---<	Techno Contact Area Css -->
+--<	eTaxPlanner Contact Area Css -->
 ======================================================*/
 .form_box input {
     width: 100%;
@@ -5260,7 +5260,7 @@ to{-webkit-transform:rotate(360deg) translate(-10px) rotate(-360deg);-moz-transf
     color: #232323;
 }
 /*====================================================
---<	Techno Contact Address Area Css -->
+--<	eTaxPlanner Contact Address Area Css -->
 ======================================================*/
 .single_contact_address {
     border: 1px solid #d0e5fb;
@@ -5356,7 +5356,7 @@ to{-webkit-transform:rotate(360deg) translate(-10px) rotate(-360deg);-moz-transf
 
 
 /*====================================================
---<	Techno Blog Area Css -->
+--<	eTaxPlanner Blog Area Css -->
 ======================================================*/
 .single_blog {
     border: 1px solid #ebebeb;
@@ -5403,12 +5403,12 @@ to{-webkit-transform:rotate(360deg) translate(-10px) rotate(-360deg);-moz-transf
 .blog_page_title a:hover {
     color:#0C5ADB;
 }
-.techno_blog_meta a {
+.etaxplanner_blog_meta a {
     color: #616161;
 	transition:.3s;
 	position:relative;
 }
-.techno_blog_meta a:before {
+.etaxplanner_blog_meta a:before {
     position: absolute;
     right: -6px;
     height: 14px;
@@ -5417,7 +5417,7 @@ to{-webkit-transform:rotate(360deg) translate(-10px) rotate(-360deg);-moz-transf
     content: "";
     top: 5px;
 }
-.techno_blog_meta a:hover{
+.etaxplanner_blog_meta a:hover{
 	color:#0C5ADB;
 }
 
@@ -5511,7 +5511,7 @@ to{-webkit-transform:rotate(360deg) translate(-10px) rotate(-360deg);-moz-transf
 	color:#fff;
 }
 /* Style Blog All */
-.techno_blog_meta.shado_bg {
+.etaxplanner_blog_meta.shado_bg {
     box-shadow: 0px 0px 35px 0px rgba(0, 0, 0, 0.11);
     padding: 10px 12px;
     position: relative;
@@ -5554,7 +5554,7 @@ to{-webkit-transform:rotate(360deg) translate(-10px) rotate(-360deg);-moz-transf
 }
 
 /*====================================================
---<	Techno Footer Middle Area Css -->
+--<	eTaxPlanner Footer Middle Area Css -->
 ======================================================*/
 
 .footer-middle {
@@ -5758,7 +5758,7 @@ to{-webkit-transform:rotate(360deg) translate(-10px) rotate(-360deg);-moz-transf
     background: #0c5adb;
 }
 /*====================================================
---<	Techno Footer Bottom Area Css -->
+--<	eTaxPlanner Footer Bottom Area Css -->
 ======================================================*/
 .footer-bottom {
 	border-top: 1px solid rgba(255,255,255,.23);
@@ -5789,7 +5789,7 @@ to{-webkit-transform:rotate(360deg) translate(-10px) rotate(-360deg);-moz-transf
 }
 
 /*====================================================
---<	Techno Blog Details Area Css -->
+--<	eTaxPlanner Blog Details Area Css -->
 ======================================================*/
 .blog-details-area {
     background: #fff;
@@ -5800,12 +5800,12 @@ to{-webkit-transform:rotate(360deg) translate(-10px) rotate(-360deg);-moz-transf
 	color: #fff;
 	border-radius: 30px;
 }
-.techno-blog-thumb img {
+.etaxplanner-blog-thumb img {
     transform: scale(1.01);
     transition: .5s;
     width: 100%;
 }
-.techno-single-blog.admin:hover .techno-blog-thumb img {
+.etaxplanner-single-blog.admin:hover .etaxplanner-blog-thumb img {
     transform: scale(1.2);
 }
 /* Blog Details  Content CSS */
@@ -5834,14 +5834,14 @@ to{-webkit-transform:rotate(360deg) translate(-10px) rotate(-360deg);-moz-transf
     padding-top: 20px;
     font-weight: 700;
 }
-.techno-blog-meta-left {
+.etaxplanner-blog-meta-left {
     padding: 12px 0 35px;
 }
-.techno-blog-meta-left span {
+.etaxplanner-blog-meta-left span {
     color: #0d1218;
     margin-right: 40px;
 }
-.techno-blog-meta-left i {
+.etaxplanner-blog-meta-left i {
     margin-right: 10px;
 }
 .blog_details_dtn_icon a i {
@@ -5979,7 +5979,7 @@ to{-webkit-transform:rotate(360deg) translate(-10px) rotate(-360deg);-moz-transf
 	margin: 0;
 }
 
-/* techno Form Css */
+/* etaxplanner Form Css */
 .blog_reply_coment_dtl .form_box input {
     border: 1px solid #e6e6e6;
     color: #495057;
@@ -6053,7 +6053,7 @@ to{-webkit-transform:rotate(360deg) translate(-10px) rotate(-360deg);-moz-transf
 
 
 /*=============================
-   techno Team Details Area Css
+   etaxplanner Team Details Area Css
  =============================*/
 .single_team_details {
     text-align: center;
@@ -6165,7 +6165,7 @@ to{-webkit-transform:rotate(360deg) translate(-10px) rotate(-360deg);-moz-transf
 
 
 /*==========================
-    techno Skill Area Css
+    etaxplanner Skill Area Css
  ===========================*/
 .skill_area{
     padding: 80px 0 70px;
@@ -6179,14 +6179,14 @@ to{-webkit-transform:rotate(360deg) translate(-10px) rotate(-360deg);-moz-transf
 }
 
 /*=========================
-   techno New Update Css
+   etaxplanner New Update Css
  =========================*/
 .call_do_thumb img {
     width: 100%;
 }
 
 /*=========================
-   techno Error Page Area Css
+   etaxplanner Error Page Area Css
  =========================*/
 .error_page_area {
     padding: 65px 0 98px;

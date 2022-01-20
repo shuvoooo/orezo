@@ -1,5 +1,5 @@
 <!--==================================================-->
-<!----- Start Techno Brand One Area ----->
+<!----- Start eTaxPlanner Brand One Area ----->
 <!--==================================================-->
 
 <div class="brand_area pt-50 pb-70 bg_color2">
@@ -29,7 +29,7 @@
                             <div class="col-lg-12">
                                 <div class="single_brand">
                                     <div class="single_brand_thumb">
-                                        <img style="width:8rem;" src="{{storage_asset($brand->logo)}}" alt=""/>
+                                        <img class="img-fluid" src="{{storage_asset($brand->logo)}}" alt=""/>
                                     </div>
                                 </div>
                             </div>
@@ -41,5 +41,5 @@
     </div>
 </div>
 <!--==================================================-->
-<!----- End Techno Brand One Area ----->
+<!----- End eTaxPlanner Brand One Area ----->
 <!--==================================================-->

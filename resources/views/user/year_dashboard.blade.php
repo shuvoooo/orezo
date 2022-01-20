@@ -59,10 +59,10 @@
                 <div class="row">
                     @foreach(range(date('Y')+1, 2020) as $year)
                         <div class="col-md-4">
-                            <div class="techno_flipbox mb-30">
-                                <div class="techno_flipbox_font">
-                                    <div class="techno_flipbox_inner">
-                                        <div class="techno_flipbox_icon">
+                            <div class="etaxplanner_flipbox mb-30">
+                                <div class="etaxplanner_flipbox_font">
+                                    <div class="etaxplanner_flipbox_inner">
+                                        <div class="etaxplanner_flipbox_icon">
                                             <div class="icon">
                                                 <i class="flaticon-global-1"></i>
                                             </div>
@@ -72,8 +72,8 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="techno_flipbox_back">
-                                    <div class="techno_flipbox_inner">
+                                <div class="etaxplanner_flipbox_back">
+                                    <div class="etaxplanner_flipbox_inner">
                                         <div class="flipbox_title">
                                             <h3>TAX YEAR {{$year}}</h3>
                                         </div>

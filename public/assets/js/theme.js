@@ -1,12 +1,12 @@
 (function($) {
     'use strict';
-	
+
 	// Mobile Menu
     $('.mobile-menu nav').meanmenu({
         meanScreenWidth: "990",
         meanMenuContainer: ".mobile-menu",
         onePage: false,
-    });	
+    });
 	 // Slider Active
     $('.slider_list').owlCarousel({
         loop: true,
@@ -32,15 +32,15 @@
                 items: 1
             }
         }
-    })	
+    })
 
 	/*---------------------
-    WOW active js 
+    WOW active js
     --------------------- */
     new WOW().init();
-	
+
 	/*---------------------
-    Nivo Slider active js 
+    Nivo Slider active js
     --------------------- */
     $('#mainSlider').nivoSlider({
         directionNav: true,
@@ -68,7 +68,7 @@
 			sticky.addClass('sticky');
 		}
 	});
-	
+
     /* Portfolio Isotope  */
     $('.image_load').imagesLoaded(function() {
 
@@ -108,7 +108,7 @@
         };
 
     });
-	
+
 		    // Venubox
 
     $('.venobox').venobox({
@@ -118,7 +118,7 @@
         infinigall: true
 
     });
-	
+
 	 // Case Study Active
     $('.case_study_list').owlCarousel({
         loop: true,
@@ -145,7 +145,7 @@
             }
         }
     })
-		
+
 	 // Case Study Active
     $('.case_study_list2').owlCarousel({
         loop: true,
@@ -171,7 +171,7 @@
                 items: 3
             }
         }
-    })	
+    })
 	// Case Study Active
     $('.case_study_list3').owlCarousel({
         loop: true,
@@ -228,7 +228,7 @@
                 items: 3
             }
         }
-    })	
+    })
 	 // Testimonial List Two Active
     $('.testimonial_list2').owlCarousel({
         loop: true,
@@ -254,7 +254,7 @@
                 items: 1
             }
         }
-    })	
+    })
  // Brand Active
     $('.brand_list').owlCarousel({
         loop: true,
@@ -352,12 +352,12 @@
         scrollSpeed: 900,
         animation: 'fade'
     });
-	
+
 	 /*--
    One Page Nav
     ----------------------------------- */
-     var top_offset = $('.techno_nav_manu').height() - 100;
-     $('.techno_nav_manu .techno_menu .nav_scroll').onePageNav({
+     var top_offset = $('.etaxplanner_nav_manu').height() - 100;
+     $('.etaxplanner_nav_manu .etaxplanner_menu .nav_scroll').onePageNav({
          currentClass: 'current',
          changeHash: false,
          scrollSpeed: 1000,

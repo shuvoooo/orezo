@@ -223,7 +223,7 @@ class InvoiceController extends Controller
         $app_name = env('APP_NAME');
         $to = empty($invoice->user_email) ? $user->email : $invoice->user_email;
 
-        $invoice_link = route('user.invoice.details', ['id' => $invoice->id * 123456]);
+        $invoice_link = route('invoice.show', ['id' => $invoice->id * $this->encrypt]);
 
         $message = "<p>Dear {$user->name},</p><br>";
         $message .= "<p>You are assigned an invoice.</p>";

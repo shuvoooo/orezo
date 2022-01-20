@@ -64,15 +64,11 @@ class LoginController extends Controller
 
     public function redirectTo()
     {
-        if (auth()->user()->role == 'admin') {
-            return route('admin.dashboard');
-        } elseif (auth()->user()->role == 'user') {
+        if (auth()->user()->role == 'user') {
             return route('year_dashboard');
-        } elseif (auth()->user()->role == 'staff') {
+        } else
             return route('admin.dashboard');
-        } else {
-            return route('home');
-        }
+
     }
 
     protected function validateLogin(Request $request)

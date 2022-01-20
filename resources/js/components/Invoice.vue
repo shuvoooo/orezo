@@ -104,8 +104,22 @@
                     <div class="row border-info border-top pt-3 mt-2">
                         <div class="col-md-12 d-flex justify-content-center">
                             <button class="btn btn-info mx-2" @click="addItem">+ Add More Item</button>
-                            <button class="btn btn-primary mx-2" @click="onSubmit(0)">Save</button>
-                            <button class="btn btn-success mx-2" @click="onSubmit(1)">Save & Email</button>
+
+                            <button class="btn btn-primary mx-2" @click="onSubmit(0)" :disabled="submitted">
+                                <span class="spinner" v-if="submitted">
+                                    <i class="fa fa-spinner fa-spin"></i>
+                                </span>
+
+                                Save
+                            </button>
+
+                            <button class="btn btn-success mx-2" @click="onSubmit(1)" :disabled="submittedEmail">
+                                <span class="spinner" v-if="submittedEmail">
+                                    <i class="fa fa-spinner fa-spin"></i>
+                                </span>
+
+                                Save & Email
+                            </button>
                         </div>
                     </div>
 
@@ -142,6 +156,8 @@ export default {
     },
     data() {
         return {
+            submitted: false,
+            submittedEmail: false,
             clientData: [],
             options: [],
             selectedClient: {},
@@ -218,6 +234,17 @@ export default {
     methods: {
 
         onSubmit(withEmail) {
+
+            if(this.user_id == '') {
+                alert('Please select a client');
+                return;
+            }
+
+            if (withEmail)
+                this.submittedEmail = true;
+            else
+                this.submitted = true;
+
             axios.post('/admin/invoice', {
                 email: this.email,
                 title: this.title,
@@ -226,10 +253,19 @@ export default {
                 invoiceItems: this.invoiceItems,
                 send_email: withEmail
             }).then(response => {
+                if (withEmail)
+                    this.submittedEmail = false;
+                else
+                    this.submitted = false;
+
                 alert(response.data.message);
                 location.href = response.data.redirect;
             }).catch(error => {
                 console.log(error);
+                if (withEmail)
+                    this.submittedEmail = false;
+                else
+                    this.submitted = false;
             });
         },
 

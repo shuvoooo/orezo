@@ -1,5 +1,5 @@
 <!--==================================================-->
-<!----- Start Techno Call Do Action Area ----->
+<!----- Start eTaxPlanner Call Do Action Area ----->
 <!--==================================================-->
 <div class="call_do_action pt-85 pb-50 bg_color" style="background-image:url(assets/images/slider/slider-4.jpg)" >
     <div class="container">
@@ -23,5 +23,5 @@
     </div>
 </div>
 <!--==================================================-->
-<!----- End Techno Call Do Action Area ----->
+<!----- End eTaxPlanner Call Do Action Area ----->
 <!--==================================================-->

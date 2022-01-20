@@ -11,14 +11,14 @@ a.dtbtn {
 	font-size: 15px !important;
 	padding: 9px 25px !important;
 }
-.techno_menu > ul > li > a {
+.etaxplanner_menu > ul > li > a {
 	font-size: 16px !important;
-	margin:30px 6px !important; 
+	margin:30px 6px !important;
 }
 .owl-prev, .owl-next{
 	display:none;
 }
-.top_feature .techno_flipbox .techno_flipbox_inner {
+.top_feature .etaxplanner_flipbox .etaxplanner_flipbox_inner {
 	padding: 0 20px !important;
 }
 .section_main_title h1, .section_main_title h2 {
@@ -59,13 +59,13 @@ a.dtbtn {
 .feature_style_three_title h4 {
 	font-size: 18px;
 }
-.techno_flipbox .techno_flipbox_font, .techno_flipbox .techno_flipbox_back {
+.etaxplanner_flipbox .etaxplanner_flipbox_font, .etaxplanner_flipbox .etaxplanner_flipbox_back {
 	min-height: 280px !important;
 }
-.choose_us .techno_flipbox .techno_flipbox_font, .choose_us .techno_flipbox .techno_flipbox_back {
+.choose_us .etaxplanner_flipbox .etaxplanner_flipbox_font, .choose_us .etaxplanner_flipbox .etaxplanner_flipbox_back {
 	min-height: 400px !important;
 }
-.it_work_style_two .techno_flipbox .techno_flipbox_font, .it_work_style_two .techno_flipbox .techno_flipbox_back {
+.it_work_style_two .etaxplanner_flipbox .etaxplanner_flipbox_font, .it_work_style_two .etaxplanner_flipbox .etaxplanner_flipbox_back {
 	min-height: 410px !important;
 }
 .appointment .slider_text_inner h1 {
@@ -269,10 +269,10 @@ a.dtbtn {
 .em-slider-main-title {
 	font-size: 90px !important;
 }
-.techno_flipbox .techno_flipbox_font, .techno_flipbox .techno_flipbox_back {
+.etaxplanner_flipbox .etaxplanner_flipbox_font, .etaxplanner_flipbox .etaxplanner_flipbox_back {
 	min-height: 280px !important;
 }
-.it_work_style_two .techno_flipbox .techno_flipbox_font, .it_work_style_two .techno_flipbox .techno_flipbox_back {
+.it_work_style_two .etaxplanner_flipbox .etaxplanner_flipbox_font, .it_work_style_two .etaxplanner_flipbox .etaxplanner_flipbox_back {
 	min-height: 350px !important;
 }
 .slider_area .appointment {
@@ -309,7 +309,7 @@ a.dtbtn {
 	margin-left: 0 !important;
 	text-align:center;
 }
-.choose_us .techno_flipbox .techno_flipbox_font, .choose_us .techno_flipbox .techno_flipbox_back {
+.choose_us .etaxplanner_flipbox .etaxplanner_flipbox_font, .choose_us .etaxplanner_flipbox .etaxplanner_flipbox_back {
 	min-height: 400px !important;
 }
 .call_do_action {
@@ -710,10 +710,10 @@ a.dtbtn {
 .section_button {
 	display: none;
 }
-.techno_flipbox .techno_flipbox_font, .techno_flipbox .techno_flipbox_back {
+.etaxplanner_flipbox .etaxplanner_flipbox_font, .etaxplanner_flipbox .etaxplanner_flipbox_back {
 	min-height: 280px !important;
 }
-.it_work_style_two .techno_flipbox .techno_flipbox_font, .it_work_style_two .techno_flipbox .techno_flipbox_back {
+.it_work_style_two .etaxplanner_flipbox .etaxplanner_flipbox_font, .it_work_style_two .etaxplanner_flipbox .etaxplanner_flipbox_back {
 	min-height: 350px !important;
 }
 .slider_area .appointment {
@@ -764,7 +764,7 @@ a.dtbtn {
 .call_do_action {
 	padding-bottom: 70px !important;
 }
-.choose_us .techno_flipbox .techno_flipbox_font, .choose_us .techno_flipbox .techno_flipbox_back {
+.choose_us .etaxplanner_flipbox .etaxplanner_flipbox_font, .choose_us .etaxplanner_flipbox .etaxplanner_flipbox_back {
 	min-height: 400px !important;
 }
 .choose_content_text_lft {

@@ -1,5 +1,5 @@
 <!--==================================================-->
-<!----- Start Techno Flipbox Area ----->
+<!----- Start eTaxPlanner Flipbox Area ----->
 <!--==================================================-->
 <div class="flipbox_area pages pt-85 pb-70">
     <div class="container">
@@ -22,10 +22,10 @@
 
             @foreach($services as $service)
                 <div class="col-lg-4 col-md-6 col-sm-12 col-xs-6">
-                    <div class="techno_flipbox mb-30">
-                        <div class="techno_flipbox_font">
-                            <div class="techno_flipbox_inner">
-                                <div class="techno_flipbox_icon">
+                    <div class="etaxplanner_flipbox mb-30">
+                        <div class="etaxplanner_flipbox_font">
+                            <div class="etaxplanner_flipbox_inner">
+                                <div class="etaxplanner_flipbox_icon">
                                     <div class="icon">
                                         <i class="fa fa-{{$service->icon}}"></i>
                                     </div>
@@ -38,9 +38,9 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="techno_flipbox_back "
+                        <div class="etaxplanner_flipbox_back "
                              style="background-image:url({{asset($service->image?\Storage::url($service->image):'assets/images/feature1.jpg')}});">
-                            <div class="techno_flipbox_inner">
+                            <div class="etaxplanner_flipbox_inner">
                                 <div class="flipbox_title">
                                     <h3>{{$service->name}}</h3>
                                 </div>
@@ -65,5 +65,5 @@
     </div>
 </div>
 <!--==================================================-->
-<!----- End Techno Flipbox Area ----->
+<!----- End eTaxPlanner Flipbox Area ----->
 <!--==================================================-->

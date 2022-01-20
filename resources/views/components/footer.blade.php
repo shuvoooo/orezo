@@ -1,5 +1,5 @@
 <!--==================================================-->
-<!----- Start Techno Footer Middle Area ----->
+<!----- Start eTaxPlanner Footer Middle Area ----->
 <!--==================================================-->
 <div class="footer-middle pt-95" style="background-image:url({{asset('assets/images/call-bg.png')}})">
     <div class="container">
@@ -88,5 +88,5 @@
     </div>
 </div>
 <!--==================================================-->
-<!----- End Techno Footer Middle Area ----->
+<!----- End eTaxPlanner Footer Middle Area ----->
 <!--==================================================-->

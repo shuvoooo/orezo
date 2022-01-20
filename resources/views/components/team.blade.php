@@ -1,5 +1,5 @@
 <!--==================================================-->
-<!----- Start Techno Team Three Area ----->
+<!----- Start eTaxPlanner Team Three Area ----->
 <!--==================================================-->
 <div class="team_area bg_color2 pt-80 pb-70">
     <div class="container">
@@ -64,5 +64,5 @@
     </div>
 </div>
 <!--==================================================-->
-<!----- End Techno Team Three Area ----->
+<!----- End eTaxPlanner Team Three Area ----->
 <!--==================================================-->

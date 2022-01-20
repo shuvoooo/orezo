@@ -5,7 +5,7 @@
 
 @section('content')
     <!-- ============================================================== -->
-    <!-- Start Techno Breatcome Area -->
+    <!-- Start eTaxPlanner Breatcome Area -->
     <!-- ============================================================== -->
     <div class="breatcome_area d-flex align-items-center">
         <div class="container">
@@ -27,7 +27,7 @@
         </div>
     </div>
     <!-- ============================================================== -->
-    <!-- End Techno Breatcome Area -->
+    <!-- End eTaxPlanner Breatcome Area -->
     <!-- ============================================================== -->
     <x-service></x-service>
 

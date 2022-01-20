@@ -4,7 +4,7 @@
 
 @section('content')
     <!--==================================================-->
-    <!----- Start Techno Slider Area ----->
+    <!----- Start eTaxPlanner Slider Area ----->
     <!--==================================================-->
     <div class="banner_area banner1 d-flex align-items-center">
         <div class="container">
@@ -76,7 +76,7 @@
         </div>
     </div>
     <!--==================================================-->
-    <!----- End Techno Slider Area ----->
+    <!----- End eTaxPlanner Slider Area ----->
     <!--==================================================-->
 
 
@@ -85,7 +85,7 @@
 
 
     <!--==================================================-->
-    <!----- Start Techno Counter Four Area ----->
+    <!----- Start eTaxPlanner Counter Four Area ----->
     <!--==================================================-->
     <div class="counter_area white bg_fixed pt-80 pb-70" style="background-image:url(assets/images/cn-bg.jpg)">
         <div class="container">
@@ -155,7 +155,7 @@
         </div>
     </div>
     <!--==================================================-->
-    <!----- End Techno Counter Four Area ----->
+    <!----- End eTaxPlanner Counter Four Area ----->
     <!--==================================================-->
 
 
@@ -163,7 +163,7 @@
 
 
     <!--==================================================-->
-    <!----- Start Techno  Feature New Style ----->
+    <!----- Start eTaxPlanner  Feature New Style ----->
     <!--==================================================-->
     <div class="feature_area pt-80">
         <div class="container">
@@ -215,7 +215,7 @@
         </div>
     </div>
     <!--==================================================-->
-    <!----- End Techno  Feature New Style ----->
+    <!----- End eTaxPlanner  Feature New Style ----->
     <!--==================================================-->
 
 

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\FileStatus;
 use App\Models\Invoice;
+use App\Models\RolePermission;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -35,6 +36,9 @@ class AdminDashboardController extends Controller
 
             return response()->json(['value' => $value]);
         } else {
+
+            $permissions = RolePermission::where('user_id', auth()->id())->first()->details ?? '';
+
             $dashboard = [];
 
             // $dashboard['total_clients'] = DB::table('users')->select(DB::raw('COUNT(*) as total'))->where('role', '=', 'user')->get();
@@ -51,7 +55,10 @@ class AdminDashboardController extends Controller
             $dashboard['total_revenue'] = Invoice::where('payment_status', 1)->sum('total_amount');
             $dashboard['avg_revenue'] = Invoice::where('payment_status', 1)->avg('total_amount');
 
-            return view('admin.dashboard', compact('dashboard'));
+
+            $role = auth()->user()->role;
+
+            return view('admin.dashboard', compact('dashboard', 'permissions', 'role'));
         }
 
     }

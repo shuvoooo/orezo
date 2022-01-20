@@ -1,24 +1,24 @@
 <!--==================================================-->
-<!----- Start	Techno Header Top Menu Area Css ----->
+<!----- Start	eTaxPlanner Header Top Menu Area Css ----->
 <!--==================================================-->
-<div class="header_top_menu bg_color">
+<div class="bg_color">
     <marquee class="p-0 m-0 text-white ">
         {{general_config('notification')}}
     </marquee>
 </div>
 <!--==================================================-->
-<!----- End	Techno Header Top Menu Area Css ----->
+<!----- End	eTaxPlanner Header Top Menu Area Css ----->
 <!--===================================================-->
 
 <!--==================================================-->
-<!----- Start Techno Main Menu Area ----->
+<!----- Start eTaxPlanner Main Menu Area ----->
 <!--==================================================-->
-<div id="sticky-header" class="techno_nav_manu d-md-none d-lg-block d-sm-none d-none">
+<div id="sticky-header" class="etaxplanner_nav_manu d-md-none d-lg-block d-sm-none d-none">
     <div class="container">
         <div class="row">
             <div class="col-md-3">
                 <div class="logo mt-4">
-                    <a class="logo_img" href="{{route('home')}}" title="techno">
+                    <a class="logo_img" href="{{route('home')}}" title="etaxplanner">
                         <div class="d-flex">
                             <img src="{{asset('assets/images/logo/etaxplanner_logo.png')}}" class="mr-4"
                                  style="width:3rem"
@@ -26,7 +26,7 @@
                             <div class="brand h3 font-weight-normal align-self-center mt-2">E Tax Planner</div>
                         </div>
                     </a>
-                    <a class="main_sticky" href="{{route('home')}}" title="techno">
+                    <a class="main_sticky" href="{{route('home')}}" title="etaxplanner">
                         <img src="{{asset('assets/images/logo/etaxplanner_logo.png')}}" style="width:3rem"
                              alt="astute"/>
 
@@ -34,14 +34,14 @@
                 </div>
             </div>
             <div class="col-md-9">
-                <nav class="techno_menu">
+                <nav class="etaxplanner_menu">
                     <ul class="nav_scroll">
                         <li><a href="{{route('home')}}">Home</a></li>
                         <li><a href="{{route('services')}}">Services</a></li>
                         <li><a href="{{route('about')}}">About Us</a></li>
                         <li><a href="{{route('contact')}}">Contact Us</a></li>
                         <li><a href="{{route('faq')}}">FAQ</a></li>
-                        <li><a href="{{url('tips')}}">Tips</a></li>
+                        <li><a href="{{route('page', 'tips')}}">Tips</a></li>
                     </ul>
                     <div class="donate-btn-header">
                         @auth('web')
@@ -50,7 +50,7 @@
                                 <a href="{{route('admin.dashboard')}}" class="btn btn-primary">Admin Panel</a>
 
                             @elseif(auth()->user()->role == "staff")
-                                <a href="#" class="btn btn-primary">Staff Panel</a>
+                                <a href="{{route('admin.dashboard')}}" class="btn btn-primary">Staff Panel</a>
 
                             @else
                                 <a href="{{route_with_year('dashboard')}}" class="btn btn-primary">Dashboard</a>
@@ -148,10 +148,11 @@
     </div>
 </div>
 
-<!----- Techno Mobile Menu Area ----->
+<!----- eTaxPlanner Mobile Menu Area ----->
 <div class="mobile-menu-area d-sm-block d-md-block d-lg-none ">
     <div class="mobile-menu">
-        <nav class="techno_menu">
+        <nav class="etaxplanner_menu">
+
             <ul class="nav_scroll">
                 <li><a href="{{route('home')}}">Home</a></li>
                 <li><a href="{{route('services')}}">Services</a></li>
@@ -186,7 +187,7 @@
     </div>
 </div>
 <!--==================================================-->
-<!----- End Techno Main Menu Area ----->
+<!----- End eTaxPlanner Main Menu Area ----->
 <!--==================================================-->
 
 

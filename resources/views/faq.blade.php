@@ -4,7 +4,7 @@
 @section('content')
 
     <!-- ============================================================== -->
-    <!-- Start Techno Breatcome Area -->
+    <!-- Start eTaxPlanner Breatcome Area -->
     <!-- ============================================================== -->
     <div class="breatcome_area d-flex align-items-center">
         <div class="container">
@@ -29,12 +29,12 @@
         </div>
     </div>
     <!-- ============================================================== -->
-    <!-- End Techno Breatcome Area -->
+    <!-- End eTaxPlanner Breatcome Area -->
     <!-- ============================================================== -->
 
 
     <!-- ============================================================== -->
-    <!-- Start - Techno FAQ Area -->
+    <!-- Start - eTaxPlanner FAQ Area -->
     <!-- ============================================================== -->
     <div class="faq_area bg_color2 pt-90 pb-70">
         <div class="container">
@@ -73,7 +73,7 @@
         </div>
     </div>
     <!-- ============================================================== -->
-    <!-- End - Techno Team Area -->
+    <!-- End - eTaxPlanner Team Area -->
     <!-- ============================================================== -->
 
 

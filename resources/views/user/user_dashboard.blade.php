@@ -12,10 +12,10 @@
     <div class="row">
         <div class="col-lg-4 col-md-6 col-sm-12 col-xs-6">
 
-            <div class="techno_flipbox mb-30">
-                <div class="techno_flipbox_font">
-                    <div class="techno_flipbox_inner">
-                        <div class="techno_flipbox_icon">
+            <div class="etaxplanner_flipbox mb-30">
+                <div class="etaxplanner_flipbox_font">
+                    <div class="etaxplanner_flipbox_inner">
+                        <div class="etaxplanner_flipbox_icon">
                             <div class="icon">
                                 <i class="flaticon-padlock"></i>
                             </div>
@@ -30,9 +30,9 @@
                     </div>
                 </div>
 
-                <div class="techno_flipbox_back "
+                <div class="etaxplanner_flipbox_back "
                      style="background-image:url('{{asset('assets/images/feature1.jpg')}}');">
-                    <div class="techno_flipbox_inner">
+                    <div class="etaxplanner_flipbox_inner">
                         <div class="flipbox_title">
                             <h3>Personal Information</h3>
                         </div>
@@ -49,10 +49,10 @@
         </div>
 
         <div class="col-lg-4 col-md-6 col-sm-12 col-xs-6">
-            <div class="techno_flipbox mb-30">
-                <div class="techno_flipbox_font">
-                    <div class="techno_flipbox_inner">
-                        <div class="techno_flipbox_icon">
+            <div class="etaxplanner_flipbox mb-30">
+                <div class="etaxplanner_flipbox_font">
+                    <div class="etaxplanner_flipbox_inner">
+                        <div class="etaxplanner_flipbox_icon">
                             <div class="icon">
                                 <i class="flaticon-intelligent"></i>
                             </div>
@@ -66,9 +66,9 @@
                         </div>
                     </div>
                 </div>
-                <div class="techno_flipbox_back "
+                <div class="etaxplanner_flipbox_back "
                      style="background-image:url('{{asset('assets/images/feature2.jpg')}}');">
-                    <div class="techno_flipbox_inner">
+                    <div class="etaxplanner_flipbox_inner">
                         <div class="flipbox_title">
                             <h3>Tax Information</h3>
                         </div>
@@ -84,10 +84,10 @@
             </div>
         </div>
         <div class="col-lg-4 col-md-6 col-sm-12 col-xs-6">
-            <div class="techno_flipbox mb-30">
-                <div class="techno_flipbox_font">
-                    <div class="techno_flipbox_inner">
-                        <div class="techno_flipbox_icon">
+            <div class="etaxplanner_flipbox mb-30">
+                <div class="etaxplanner_flipbox_font">
+                    <div class="etaxplanner_flipbox_inner">
+                        <div class="etaxplanner_flipbox_icon">
                             <div class="icon">
                                 <i class="flaticon-code"></i>
                             </div>
@@ -101,9 +101,9 @@
                         </div>
                     </div>
                 </div>
-                <div class="techno_flipbox_back "
+                <div class="etaxplanner_flipbox_back "
                      style="background-image:url('{{asset('assets/images/feature3.jpg')}}');">
-                    <div class="techno_flipbox_inner">
+                    <div class="etaxplanner_flipbox_inner">
                         <div class="flipbox_title">
                             <h3>Online Marketing</h3>
                         </div>
@@ -119,10 +119,10 @@
             </div>
         </div>
         <div class="col-lg-4 col-md-6 col-sm-12 col-xs-6">
-            <div class="techno_flipbox mb-30">
-                <div class="techno_flipbox_font">
-                    <div class="techno_flipbox_inner">
-                        <div class="techno_flipbox_icon">
+            <div class="etaxplanner_flipbox mb-30">
+                <div class="etaxplanner_flipbox_font">
+                    <div class="etaxplanner_flipbox_inner">
+                        <div class="etaxplanner_flipbox_icon">
                             <div class="icon">
                                 <i class="flaticon-content-writing"></i>
                             </div>
@@ -136,9 +136,9 @@
                         </div>
                     </div>
                 </div>
-                <div class="techno_flipbox_back "
+                <div class="etaxplanner_flipbox_back "
                      style="background-image:url('{{asset('assets/images/feature3.jpg')}}');">
-                    <div class="techno_flipbox_inner">
+                    <div class="etaxplanner_flipbox_inner">
                         <div class="flipbox_title">
                             <h3>Download Tax Documents</h3>
                         </div>
@@ -153,10 +153,10 @@
             </div>
         </div>
         <div class="col-lg-4 col-md-6 col-sm-12 col-xs-6">
-            <div class="techno_flipbox mb-30">
-                <div class="techno_flipbox_font">
-                    <div class="techno_flipbox_inner">
-                        <div class="techno_flipbox_icon">
+            <div class="etaxplanner_flipbox mb-30">
+                <div class="etaxplanner_flipbox_font">
+                    <div class="etaxplanner_flipbox_inner">
+                        <div class="etaxplanner_flipbox_icon">
                             <div class="icon">
                                 <i class="flaticon-bar-chart"></i>
                             </div>
@@ -170,9 +170,9 @@
                         </div>
                     </div>
                 </div>
-                <div class="techno_flipbox_back "
+                <div class="etaxplanner_flipbox_back "
                      style="background-image:url('{{asset('assets/images/feature1.jpg')}}');">
-                    <div class="techno_flipbox_inner">
+                    <div class="etaxplanner_flipbox_inner">
                         <div class="flipbox_title">
                             <h3>My File Status</h3>
                         </div>
@@ -188,10 +188,10 @@
             </div>
         </div>
         <div class="col-lg-4 col-md-6 col-sm-12 col-xs-6">
-            <div class="techno_flipbox mb-30">
-                <div class="techno_flipbox_font">
-                    <div class="techno_flipbox_inner">
-                        <div class="techno_flipbox_icon">
+            <div class="etaxplanner_flipbox mb-30">
+                <div class="etaxplanner_flipbox_font">
+                    <div class="etaxplanner_flipbox_inner">
+                        <div class="etaxplanner_flipbox_icon">
                             <div class="icon">
                                 <i class="flaticon-business-and-finance"></i>
                             </div>
@@ -205,9 +205,9 @@
                         </div>
                     </div>
                 </div>
-                <div class="techno_flipbox_back "
+                <div class="etaxplanner_flipbox_back "
                      style="background-image:url('{{asset('assets/images/feature2.jpg')}}');">
-                    <div class="techno_flipbox_inner">
+                    <div class="etaxplanner_flipbox_inner">
                         <div class="flipbox_title">
                             <h3>View Tax Summary</h3>
                         </div>

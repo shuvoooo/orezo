@@ -1,5 +1,5 @@
 <!--==================================================-->
-<!----- Start Techno Testimonial Area ----->
+<!----- Start eTaxPlanner Testimonial Area ----->
 <!--==================================================-->
 <div id="testimonial-section" class="testimonial-bg pt-80 pb-70">
     <div id="container-general" class="ready anim-section-features anim-section-desc anim-section-quote">
@@ -82,5 +82,5 @@
     </div>
 </div>
 <!--==================================================-->
-<!----- End Techno Testimonial Area ----->
+<!----- End eTaxPlanner Testimonial Area ----->
 <!--==================================================-->

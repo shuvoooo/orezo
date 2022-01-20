@@ -3551,6 +3551,20 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 var invoiceTopic = ['Federal Filing', 'State Filing', 'City Filing', 'County Filing', 'Credit', '2106 Planning', 'Schedule A', 'Sch E Planning', 'Sch C Planning', 'Stock Transaction', 'ITIN Application', 'Postal Charges'];
@@ -3560,6 +3574,8 @@ var invoiceTopic = ['Federal Filing', 'State Filing', 'City Filing', 'County Fil
   },
   data: function data() {
     return {
+      submitted: false,
+      submittedEmail: false,
       clientData: [],
       options: [],
       selectedClient: {},
@@ -3621,6 +3637,14 @@ var invoiceTopic = ['Federal Filing', 'State Filing', 'City Filing', 'County Fil
   },
   methods: {
     onSubmit: function onSubmit(withEmail) {
+      var _this2 = this;
+
+      if (this.user_id == '') {
+        alert('Please select a client');
+        return;
+      }
+
+      if (withEmail) this.submittedEmail = true;else this.submitted = true;
       axios.post('/admin/invoice', {
         email: this.email,
         title: this.title,
@@ -3629,10 +3653,12 @@ var invoiceTopic = ['Federal Filing', 'State Filing', 'City Filing', 'County Fil
         invoiceItems: this.invoiceItems,
         send_email: withEmail
       }).then(function (response) {
+        if (withEmail) _this2.submittedEmail = false;else _this2.submitted = false;
         alert(response.data.message);
         location.href = response.data.redirect;
       })["catch"](function (error) {
         console.log(error);
+        if (withEmail) _this2.submittedEmail = false;else _this2.submitted = false;
       });
     },
     removeItem: function removeItem(index) {
@@ -22069,26 +22095,46 @@ var render = function () {
                     "button",
                     {
                       staticClass: "btn btn-primary mx-2",
+                      attrs: { disabled: _vm.submitted },
                       on: {
                         click: function ($event) {
                           return _vm.onSubmit(0)
                         },
                       },
                     },
-                    [_vm._v("Save")]
+                    [
+                      _vm.submitted
+                        ? _c("span", { staticClass: "spinner" }, [
+                            _c("i", { staticClass: "fa fa-spinner fa-spin" }),
+                          ])
+                        : _vm._e(),
+                      _vm._v(
+                        "\n\n                            Save\n                        "
+                      ),
+                    ]
                   ),
                   _vm._v(" "),
                   _c(
                     "button",
                     {
                       staticClass: "btn btn-success mx-2",
+                      attrs: { disabled: _vm.submittedEmail },
                       on: {
                         click: function ($event) {
                           return _vm.onSubmit(1)
                         },
                       },
                     },
-                    [_vm._v("Save & Email")]
+                    [
+                      _vm.submittedEmail
+                        ? _c("span", { staticClass: "spinner" }, [
+                            _c("i", { staticClass: "fa fa-spinner fa-spin" }),
+                          ])
+                        : _vm._e(),
+                      _vm._v(
+                        "\n\n                            Save & Email\n                        "
+                      ),
+                    ]
                   ),
                 ]
               ),

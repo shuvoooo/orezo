@@ -16,7 +16,7 @@ class HomePageSeeder extends Seeder
     {
         HomePage::create([
             'title' => 'Data Analytics/Techniques with/Detox Systems./Data Marketing/Data Services',
-            'description' => 'Techno real-time data management technologies, global data science, and award-winning customer service make our unstacked data solutions dreamit authors team member.',
+            'description' => 'eTaxPlanner real-time data management etaxplannerlogies, global data science, and award-winning customer service make our unstacked data solutions dreamit authors team member.',
             'youtube_url' => 'https://youtu.be/BS4TUd7FJSg',
             'counters' => [
                 'clients' => '100',
