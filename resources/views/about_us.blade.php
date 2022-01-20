@@ -1,5 +1,6 @@
 @extends('layouts.base')
 
+@section('title', 'About Us')
 
 @section('content')
     <!-- ============================================================== -->

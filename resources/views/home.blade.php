@@ -94,7 +94,7 @@
                 <div class="col-lg-12">
                     <div class="section_title text_center white mb-50 mt-3">
                         <div class="section_main_title">
-                            <h1>Our Clients</h1>
+                            <h1>Company Profile</h1>
                         </div>
                         <div class="em_bar">
                             <div class="em_bar_bg"></div>
@@ -116,20 +116,11 @@
                             </h1>
                         </div>
                         <div class="counter_desc">
-                            <h5>Clients</h5>
+                            <h5>Happy Clients</h5>
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-3 col-md-6 col-sm-12">
-                    <div class="single_counter text_center mb-4">
-                        <div class="countr_text">
-                            <h1><span class="counter">   {{$homePage->counters['years_in_business']}}</span></h1>
-                        </div>
-                        <div class="counter_desc">
-                            <h5>Years In Business</h5>
-                        </div>
-                    </div>
-                </div>
+
                 <div class="col-lg-3 col-md-6 col-sm-12">
                     <div class="single_counter text_center mb-4">
                         <div class="countr_text">
@@ -147,6 +138,16 @@
                         </div>
                         <div class="counter_desc">
                             <h5>Staff Members</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-12">
+                    <div class="single_counter text_center mb-4">
+                        <div class="countr_text">
+                            <h1><span class="counter">   {{$homePage->counters['years_in_business']}}</span></h1>
+                        </div>
+                        <div class="counter_desc">
+                            <h5>Years In Business</h5>
                         </div>
                     </div>
                 </div>
@@ -171,7 +172,7 @@
                 <div class="col-lg-12">
                     <div class="section_title text_center mb-55">
                         <div class="section_main_title">
-                            <h1>Some Information</h1>
+                            <h1>Useful Information</h1>
                         </div>
                         <div class="em_bar">
                             <div class="em_bar_bg"></div>

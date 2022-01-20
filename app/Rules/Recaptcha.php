@@ -26,8 +26,9 @@ class Recaptcha implements Rule
      */
     public function passes($attribute, $value)
     {
-        return true;
-
+        // localhost
+        if ( in_array($_SERVER['REMOTE_ADDR'], ['127.0.0.1', '::1']) )
+            return true;
 
 
         $result = Http::post('https://www.google.com/recaptcha/api/siteverify', [

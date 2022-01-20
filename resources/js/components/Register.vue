@@ -80,10 +80,8 @@
                                     v-model="countryCode"
                                     v-validate="'required'"
                                     class="custom-select form-control bg-white border-left-0 border-md font-weight-bold text-muted ">
-                                <option value="+12">+12</option>
-                                <option value="+10">+10</option>
-                                <option value="+15">+15</option>
-                                <option value="+18">+18</option>
+                                <option value="+1">+1</option>
+                                <option value="+91">+91</option>
                             </select>
 
 
@@ -311,7 +309,7 @@ export default {
             fname: '',
             lname: '',
             email: '',
-            countryCode: '+12',
+            countryCode: '+1',
             phone: '',
             state: '',
             country: '',

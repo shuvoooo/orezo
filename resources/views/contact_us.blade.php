@@ -1,6 +1,6 @@
 @extends('layouts.base')
 
-
+@section('title', 'Contact Us')
 
 @section('content')
     <!-- ============================================================== -->
@@ -53,7 +53,7 @@
                             <i class="fa fa-map-o"></i>
                         </div>
                         <div class="contact_address_title pb-2">
-                            <h4>Enter Your Address</h4>
+                            <h4>Office Address</h4>
                         </div>
                         <div class="contact_address_text">
                             <p>{{general_config('company_address')}}</p>
@@ -66,7 +66,7 @@
                             <i class="fa fa-clock-o"></i>
                         </div>
                         <div class="contact_address_title pb-2">
-                            <h4>Opening Hours</h4>
+                            <h4>Working Hours</h4>
                         </div>
                         <div class="contact_address_text">
                             <p>{{general_config('operating_hours')}}</p>
@@ -79,7 +79,7 @@
                             <i class="fa fa-volume-control-phone"></i>
                         </div>
                         <div class="contact_address_title pb-2">
-                            <h4>Contact Directly</h4>
+                            <h4>Reach Us</h4>
                         </div>
                         <div class="contact_address_text">
                             <p>{{general_config('contact_email')}}, {{general_config('contact_phone')}}</p>
@@ -104,8 +104,7 @@
                             <h6>CONTACT US</h6>
                         </div>
                         <div class="section_main_title">
-                            <h1>Feel Free Contact</h1>
-                            <h1>Us Now</h1>
+                            <h1>Leave Us a Message</h1>
                         </div>
                         <div class="em_bar">
                             <div class="em_bar_bg"></div>
