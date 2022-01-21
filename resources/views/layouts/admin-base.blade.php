@@ -13,8 +13,6 @@
     <!-- Current Year -->
     <meta name="year" content="{{ request()->route('year') ?? date('Y') }}">
 
-    <!-- google site key -->
-    <meta name="google-site-verification" content="{{env('recaptcha_site_key')}}">
 
     <!-- font-awesome CSS -->
     <link type="text/css" rel="stylesheet" href="{{asset('assets/fonts/font-awesome/css/font-awesome.min.css')}}">

@@ -38,6 +38,13 @@ Route::get("{slug}", [HomeController::class, 'page'])->name('page');
 Route::get("service/{slug}", [HomeController::class, 'service_page'])->name('service-page');
 
 
+Route::get('/artisanCmdRun/clear', function () {
+    // delete storage folder in public/storage
+    \Artisan::call('cache:clear');
+    \Artisan::call('view:clear');
+    \Artisan::call('config:clear');
+    echo 'Done';
+});
 Route::get('/artisan/storage/link', function () {
     // delete storage folder in public/storage
     \Artisan::call('storage:link');

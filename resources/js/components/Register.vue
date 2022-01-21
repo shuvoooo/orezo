@@ -322,7 +322,7 @@ export default {
         }
     },
     mounted() {
-        alert(document.querySelector('meta[name="google-site-verification"]').getAttribute('content'));
+        //alert(document.querySelector('meta[name="google-site-verification"]').getAttribute('content'));
     },
     methods: {
         register(e) {
