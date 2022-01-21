@@ -3,7 +3,6 @@
 namespace App\Rules;
 
 use Illuminate\Contracts\Validation\Rule;
-use Illuminate\Support\Facades\Http;
 
 class Recaptcha implements Rule
 {
@@ -27,18 +26,15 @@ class Recaptcha implements Rule
     public function passes($attribute, $value)
     {
         // localhost
-        if ( in_array($_SERVER['REMOTE_ADDR'], ['127.0.0.1', '::1']) )
+        if (in_array($_SERVER['REMOTE_ADDR'], ['127.0.0.1', '::1']))
             return true;
 
 
-        $result = Http::post('https://www.google.com/recaptcha/api/siteverify', [
-            'secret' => env('RECAPTCHA_SECRET'),
-            'response' => $value,
-            'remoteip' => request()->ip(),
-        ]);
+        $recaptcha = new \ReCaptcha\ReCaptcha(env('RECAPTCHA_SECRET'));
 
-        return (bool)json_decode($result->body())->success;
+        $resp = $recaptcha->verify($value, $_SERVER['REMOTE_ADDR']);
 
+        return $resp->isSuccess();
     }
 
     /**

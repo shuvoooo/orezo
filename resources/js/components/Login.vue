@@ -114,6 +114,8 @@ export default {
                 if (result) {
                     this.isLoading = true;
 
+
+
                     axios.post('/login', {
                         email: this.email,
                         password: this.password,
