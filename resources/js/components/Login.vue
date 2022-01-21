@@ -102,7 +102,7 @@ export default {
             password: '',
             remember: false,
 
-            google_site_key: process.env.MIX_RECAPTCHA_SITE_KEY,
+            google_site_key: window.google_site_key
         }
     },
 
