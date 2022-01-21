@@ -318,7 +318,7 @@ export default {
             password: '',
             password_confirmation: '',
 
-            google_site_key: window.google_site_key,
+            google_site_key: process.env.MIX_RECAPTCHA_SITE_KEY,
         }
     },
     methods: {

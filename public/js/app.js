@@ -3968,7 +3968,8 @@ __webpack_require__.r(__webpack_exports__);
     return {
       email: '',
       password: '',
-      remember: false
+      remember: false,
+      google_site_key: "6LcvjgYeAAAAADUxnyea4-5uwai5av9tow6TfIrE"
     };
   },
   methods: {
@@ -5243,15 +5244,13 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
       fname: '',
       lname: '',
       email: '',
-      countryCode: '+12',
+      countryCode: '+1',
       phone: '',
       state: '',
       country: '',
@@ -5259,7 +5258,7 @@ __webpack_require__.r(__webpack_exports__);
       home_no: '',
       password: '',
       password_confirmation: '',
-      google_site_key: window.google_site_key
+      google_site_key: "6LcvjgYeAAAAADUxnyea4-5uwai5av9tow6TfIrE"
     };
   },
   methods: {
@@ -22809,10 +22808,7 @@ var render = function () {
                 _c("div", { staticClass: "col-lg-12 mb-4" }, [
                   _c("div", {
                     staticClass: "g-recaptcha",
-                    attrs: {
-                      "data-sitekey":
-                        "6LcvjgYeAAAAADUxnyea4-5uwai5av9tow6TfIrE",
-                    },
+                    attrs: { "data-sitekey": _vm.google_site_key },
                   }),
                   _vm._v(" "),
                   _vm.errors.has("g-recaptcha-response")
@@ -25309,13 +25305,9 @@ var render = function () {
                   },
                 },
                 [
-                  _c("option", { attrs: { value: "+12" } }, [_vm._v("+12")]),
+                  _c("option", { attrs: { value: "+1" } }, [_vm._v("+1")]),
                   _vm._v(" "),
-                  _c("option", { attrs: { value: "+10" } }, [_vm._v("+10")]),
-                  _vm._v(" "),
-                  _c("option", { attrs: { value: "+15" } }, [_vm._v("+15")]),
-                  _vm._v(" "),
-                  _c("option", { attrs: { value: "+18" } }, [_vm._v("+18")]),
+                  _c("option", { attrs: { value: "+91" } }, [_vm._v("+91")]),
                 ]
               ),
               _vm._v(" "),

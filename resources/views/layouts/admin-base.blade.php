@@ -28,6 +28,9 @@
     <link rel="stylesheet" href="{{asset('style.css')}}" type="text/css" media="all"/>
 
 
+    <!-- google site key -->
+    <meta name="google-site-verification" content="{{env('recaptcha_site_key')}}">
+
     <title>@yield("title","Welcome to Dashboard")</title>
 
 
