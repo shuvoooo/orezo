@@ -12,7 +12,7 @@ class Invoice extends Model
 
     protected $guarded = [];
 
-    public static $tax_percent = 16;
+    public static $tax_percent = 18;
     public static $tax_text = 'Tax';
 
     public function scopeByUserId($query, $user_id)
@@ -36,7 +36,7 @@ class Invoice extends Model
         $tax = 0;
         $discount = 0;
         $sub_total = 0;
-        $invoiceitem = Invoiceitem::byInvoiceId($invoice_id)->get();
+        $invoiceitem = InvoiceItem::byInvoiceId($invoice_id)->get();
 
         $sum_items = [];
         $discount_items = [];

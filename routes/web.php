@@ -17,6 +17,8 @@ Route::get("/faq", [HomeController::class, "faq"])->name('faq');
 
 Route::post("/contact_us_mail", [ContactRequestController::class, "store"])->name('contact_us_mail');
 Route::get('invoice/{id}', [InvoiceController::class, 'show'])->name('invoice.show');
+Route::post('invoice/paytabs/response', [InvoiceController::class, 'paytabsCheckoutResponse'])->name('invoice.paytabs.response');
+Route::get('invoice/payment/thank-you', [InvoiceController::class, 'customerInvoiceThankYou'])->name('invoice.thankyou');
 
 Auth::routes(['verify' => true]);
 

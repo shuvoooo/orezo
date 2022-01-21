@@ -13,6 +13,9 @@
     <!-- Current Year -->
     <meta name="year" content="{{ request()->route('year') ?? date('Y') }}">
 
+    <!-- google site key -->
+    <meta name="google-site-verification" content="{{env('recaptcha_site_key')}}">
+
     <!-- font-awesome CSS -->
     <link type="text/css" rel="stylesheet" href="{{asset('assets/fonts/font-awesome/css/font-awesome.min.css')}}">
     <!-- font-flaticon CSS -->
@@ -26,6 +29,8 @@
     <link rel="stylesheet" href="{{asset('assets/css/theme-default.css')}}" type="text/css" media="all"/>
     <!-- Main Style CSS -->
     <link rel="stylesheet" href="{{asset('style.css')}}" type="text/css" media="all"/>
+
+    <script src="//www.google.com/recaptcha/api.js" async defer></script>
 
 
     <title>@yield("title","Welcome to Dashboard")</title>

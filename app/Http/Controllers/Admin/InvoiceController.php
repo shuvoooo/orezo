@@ -139,7 +139,7 @@ class InvoiceController extends Controller
             return response()->json([
                 'success' => true,
                 'message' => 'Invoice created successfully.',
-                'redirect' => route('admin.invoice.index')
+                'redirect' => route('admin.invoice.edit', ['invoice'=>$invoice->id])
             ]);
         } catch (\Exception $e) {
             return response()->json([
@@ -207,7 +207,7 @@ class InvoiceController extends Controller
             return response()->json([
                 'success' => true,
                 'message' => 'Invoice updated successfully.',
-                'redirect' => route('admin.invoice.index')
+                'redirect' => route('admin.invoice.edit', ['invoice'=>$invoice->id])
             ]);
         } catch (\Exception $e) {
             return response()->json([
@@ -245,6 +245,66 @@ class InvoiceController extends Controller
         } catch (\Exception $e) {
             return $e->getMessage();
         }
+    }
+
+    // paytabs callback checkout js
+    public function paytabsCheckoutResponse(Request $request)
+    {
+
+        $result = (object)$request->all();
+//        dd($result);
+//{
+//"transaction_id":"944672",
+//"order_id":"25",
+//"response_code":"100",
+//"customer_name":"Test Test",
+//"customer_email":"abc@accept.com",
+//"transaction_amount":"4.000",
+//"transaction_currency":"SAR",
+//"customer_phone":"973 5486253",
+//"last_4_digits":"2346",
+//"first_4_digits":"5123",
+//"card_brand":"MasterCard",
+//"secure_sign":"aee501f44d55f81a2f9656f0a68ad79074ed39eb",
+//"datetime":"15-03-2018 06:29:59 AM",
+//"transaction_response_code":"100",
+//"address_shipping":"Manama",
+//"city_shipping":"Manama juffair",
+//"state_shipping":"Manama juffair",
+//"country_shipping":"BHR",
+//"postal_code_shipping":"00973",
+//"detail":"Transaction has been Accepted"
+//}
+
+        if($result->response_code == 100){ // success
+
+            $invoice_id = $request->order_id;
+            $order = Invoice::find($invoice_id);
+            if ( !empty($order) ) {
+
+//                $total = Invoice::getTotal($invoice_id);
+//                $order->total_amount = $total;
+                $order->total_amount = $result->transaction_amount;
+                $order->payment_method = 2; // paytabs
+
+                $order->payment_status = 1;
+                $order->invoice_id = $result->transaction_id;
+                $order->response = json_encode($result); // object json encode
+                $order->save();
+
+                $request->session()->flash('alert-success', 'Payment has been sent successfully');
+                return redirect()->route('user.invoice.payment.thankyou');
+            }
+
+        }
+        else{
+            $request->session()->flash('alert-danger', $result->detail);
+            return redirect()->back();
+        }
+    }
+
+    public function customerInvoiceThankYou(Request $request){
+        return view('admin.invoice.thankyou');
     }
 
 }

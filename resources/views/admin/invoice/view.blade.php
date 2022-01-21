@@ -42,11 +42,50 @@
                 </div>
 
                 <div class="d-flex justify-content-center">
-                    <a href="#">
-                        <img src="https://www.paytabs.com/theme/express_checkout/images/checkout.png" height="60"/>
-                    </a>
+                    {{--<a href="#">--}}
+                        {{--<img src="https://www.paytabs.com/theme/express_checkout/images/checkout.png" height="60"/>--}}
+                    {{--</a>--}}
+
+                    <!-- Button Code for PayTabs Express Checkout -->
+                    <div class="text-center">
+                        <div class="PT_express_checkout"></div>
+                    </div>
+
                 </div>
             </div>
         </div>
     </div>
 @endsection
+
+@push('scripts')
+    <link rel="stylesheet" href="https://www.paytabs.com/theme/express_checkout/css/express.css">
+    <script src="https://www.paytabs.com/theme/express_checkout/js/jquery-1.11.1.min.js"></script>
+    <script src="https://www.paytabs.com/express/express_checkout_v3.js"></script>
+    <script type="text/javascript">
+        jQuery(document).ready(function(){
+            Paytabs("#express_checkout").expresscheckout({
+                settings: {
+                    merchant_id: "{{env('MERCHANT_ID')}}",
+                    secret_key: "{{env('SECRET_KEY')}}",
+                    amount: {{$invoice->total_amount}},
+                    currency: "USD",
+                    title: "{{$invoice->user->name}}",
+                    product_names: "{{ $invoice->name }}",
+                    order_id: {{$invoice->id}},
+                    url_redirect: "{{ route('invoice.paytabs.response') }}",
+                    display_customer_info: 1,
+                    display_billing_fields: 1,
+                    display_shipping_fields: 0,
+                    language: "en",
+                    redirect_on_reject: 0,
+                }
+            });
+        })
+    </script>
+    <style type="text/css">
+        #en_button { height: 50px; width:300px; background-size: contain;}
+        input, select, textarea { display: inline-block; width: 80%; padding:3px;}
+        table td{ padding-bottom: 10px;}
+    </style>
+
+@endpush
