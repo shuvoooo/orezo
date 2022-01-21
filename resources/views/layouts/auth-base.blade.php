@@ -34,7 +34,7 @@
     <script src="//www.google.com/recaptcha/api.js" async defer></script>
 
     <!-- google site key -->
-    <meta name="google-site-verification" content="{{env('recaptcha_site_key')}}">
+    <meta name="google-site-verification" content="{{env('RECAPTCHA_SITE_KEY')}}">
 
 
     <style>

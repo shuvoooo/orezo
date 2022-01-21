@@ -261,7 +261,7 @@
                         <div class="col-lg-12 mb-4">
                             <!-- reCAPTCHA -->
                             <div class="col-lg-12 mb-4">
-                                <div class="g-recaptcha" :data-sitekey="google_site_key"></div>
+                                <div class="g-recaptcha" :data-sitekey="site_key"></div>
 
                                 <span v-if="errors.has('g-recaptcha')" class="small text-danger w-100">{{
                                         errors.first('g-recaptcha')
@@ -318,8 +318,11 @@ export default {
             password: '',
             password_confirmation: '',
 
-            google_site_key: window.google_site_key,
+            site_key: document.querySelector('meta[name="google-site-verification"]').getAttribute('content')
         }
+    },
+    mounted() {
+        alert(document.querySelector('meta[name="google-site-verification"]').getAttribute('content'));
     },
     methods: {
         register(e) {

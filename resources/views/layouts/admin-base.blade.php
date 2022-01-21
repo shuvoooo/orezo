@@ -34,7 +34,7 @@
 
 
     <!-- google site key -->
-    <meta name="google-site-verification" content="{{env('recaptcha_site_key')}}">
+    <meta name="google-site-verification" content="{{env('RECAPTCHA_SITE_KEY')}}">
 
     <title>@yield("title","Welcome to Dashboard")</title>
 

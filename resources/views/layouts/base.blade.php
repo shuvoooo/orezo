@@ -13,7 +13,7 @@
     <meta name="year" content="{{ request()->route('year') ?? date('Y') }}">
 
     <!-- google site key -->
-    <meta name="google-site-verification" content="{{env('recaptcha_site_key')}}">
+    <meta name="google-site-verification" content="{{env('RECAPTCHA_SITE_KEY')}}">
 
     <!-- Favicon -->
     <link rel="icon" type="image/png" sizes="56x56" href="{{asset('assets/images/fav-icon/icon.png')}}">

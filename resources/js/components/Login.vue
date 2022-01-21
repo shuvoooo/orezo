@@ -49,7 +49,7 @@
 
                         <!-- reCAPTCHA -->
                         <div class="col-lg-12 mb-4">
-                            <div class="g-recaptcha" :data-sitekey="google_site_key"></div>
+                            <div class="g-recaptcha" :data-sitekey="site_key"></div>
 
                             <span v-if="errors.has('g-recaptcha-response')" class="small text-danger w-100">{{
                                     errors.first('g-recaptcha-response')
@@ -102,7 +102,7 @@ export default {
             password: '',
             remember: false,
 
-            google_site_key: window.google_site_key
+            site_key: document.querySelector('meta[name="google-site-verification"]').getAttribute('content')
         }
     },
 
