@@ -78,7 +78,7 @@
                             <div class="form-group">
                                 <input id="taxV" type="text" class="form-control" disabled value="0"
                                        placeholder="Item"/>
-                                <span class="help-block">Tax will be auto calculated 16% once saved</span>
+                                <span class="help-block">Tax will be auto calculated 18% once saved</span>
                             </div>
                         </div>
 
