@@ -43,8 +43,8 @@ class PersonalInformationController extends Controller
             if ($personalInfo) {
                 $personalInfo->update($request->all());
             } else {
+                $request->merge(['user_id' => Auth::user()->id]);
                 $personalInfo = PersonalInformation::create($request->all());
-                $personalInfo->user()->associate(Auth::user());
                 $personalInfo->save();
             }
 
@@ -58,8 +58,8 @@ class PersonalInformationController extends Controller
             ]);
         } catch (\Exception $e) {
             return response()->json([
-                'error' => 'Something went wrong.'
-            ]);
+                'error' => $e->getMessage()
+            ], 500);
         }
     }
 
@@ -85,8 +85,8 @@ class PersonalInformationController extends Controller
                 if ($spouseInfo) {
                     $spouseInfo->update($request->all());
                 } else {
+                    $request->merge(['user_id' => Auth::user()->id]);
                     $spouseInfo = SpouseInformation::create($request->except('spouse_status'));
-                    $spouseInfo->user()->associate(Auth::user());
                     $spouseInfo->save();
                 }
             } else {
@@ -108,7 +108,7 @@ class PersonalInformationController extends Controller
         } catch (\Exception $e) {
             return response()->json([
                 'error' => $e->getMessage()
-            ]);
+            ], 500);
         }
     }
 
@@ -142,7 +142,7 @@ class PersonalInformationController extends Controller
         } catch (\Exception $e) {
             return response()->json([
                 'error' => $e->getMessage()
-            ]);
+            ], 500);
         }
 
     }
@@ -158,7 +158,7 @@ class PersonalInformationController extends Controller
         } catch (\Exception $e) {
             return response()->json([
                 'error' => $e->getMessage()
-            ]);
+            ], 500);
         }
     }
 
@@ -176,8 +176,9 @@ class PersonalInformationController extends Controller
         if ($bank) {
             $bank->update($request->all());
         } else {
+            $request->merge(['user_id' => Auth::user()->id]);
+
             $bank = Bank::create($request->all());
-            $bank->user()->associate(Auth::user());
             $bank->save();
         }
 

@@ -15,7 +15,7 @@ class CreateMiscellaneousesTable extends Migration
     {
         Schema::create('miscellaneouses', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->nullable()->constrained();
+            $table->foreignId('user_id')->constrained()->cascadeOnDelete()->cascadeOnUpdate();
             $table->longText('details')->nullable();
             $table->string('year')->default(date('Y'))->nullable();
             $table->timestamps();

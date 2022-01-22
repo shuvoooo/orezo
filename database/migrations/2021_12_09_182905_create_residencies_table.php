@@ -15,7 +15,7 @@ class CreateResidenciesTable extends Migration
     {
         Schema::create('residencies', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->nullable()->constrained();
+            $table->foreignId('user_id')->constrained()->cascadeOnDelete()->cascadeOnUpdate();
             $table->string('payer',20)->nullable();
             $table->string('spouse',20)->nullable();
             $table->date('start_date')->nullable();

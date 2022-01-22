@@ -15,7 +15,7 @@ class CreateFileStatusesTable extends Migration
     {
         Schema::create('file_statuses', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->nullable()->constrained();
+            $table->foreignId('user_id')->nullable()->constrained()->cascadeOnDelete();
             $table->integer('status');
             $table->unsignedInteger('added_by')->nullable();
             $table->string('year')->nullable();

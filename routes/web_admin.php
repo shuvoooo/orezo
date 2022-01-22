@@ -25,6 +25,7 @@ Route::group(['middleware' => ['auth', AdminMiddleware::class], 'prefix' => 'adm
 
     Route::get('client', [ClientListController::class, 'client_index'])->name('client.index');
     Route::get('client/{user}', [ClientListController::class, 'client_show'])->name('client.show');
+    Route::delete('client/{user}', [ClientListController::class, 'client_delete'])->name('client.delete');
 
     Route::get('client-list', [ClientListController::class, 'client_list'])->name('client_list');
 

@@ -23,41 +23,50 @@ class ClientListController extends Controller
         return $dataTable->render('admin.client.index');
     }
 
-    public function client_show(User $client)
+    public function client_show(User $user)
     {
 
-        $personal_information = PersonalInformation::where('user_id', $client->id)->first();
-        $spouse_information = SpouseInformation::where('user_id', $client->id)->first();
-        $dependent_details = DependentDetails::where('user_id', $client->id)->get();
-        $bank_detail = Bank::where('user_id', $client->id)->first();
-        $employer_details = Employer::where('user_id', $client->id)->get();
-        $project_details = Project::where('user_id', $client->id)->get();
-        $residency_details = Residency::where('user_id', $client->id)->get();
-        $expenses_details = Expense::where('user_id', $client->id)->first();
-        $asset_details = Asset::where('user_id', $client->id)->first();
-        $miscell_details = Miscellaneous::where('user_id', $client->id)->first();
+        $personal_information = PersonalInformation::where('user_id', $user->id)->first();
+        $spouse_information = SpouseInformation::where('user_id', $user->id)->first();
+        $dependent_details = DependentDetails::where('user_id', $user->id)->get();
 
 
-        $expense_details = json_decode($expenses_details->details ?? "[]");
+        $bank_detail = Bank::where('user_id', $user->id)->first();
+        $employer_details = Employer::where('user_id', $user->id)->get();
+        $project_details = Project::where('user_id', $user->id)->get();
+        $residency_details = Residency::where('user_id', $user->id)->get();
+        $expenses_details = Expense::where('user_id', $user->id)->first();
+        $asset_details = Asset::where('user_id', $user->id)->first();
+        $miscell_details = Miscellaneous::where('user_id', $user->id)->first();
 
 
-        $assets_details = json_decode($asset_details->details ?? "[]");
+        $expense_details = $expenses_details->details ?? [];
 
 
-        $miscell_details = json_decode($miscell_details->details ?? "[]");
+        $assets_details = $asset_details->details ?? [];
 
-        return response()->view('admin.client.details', compact('client', 'personal_information', 'spouse_information', 'dependent_details', 'bank_detail', 'employer_details', 'project_details', 'residency_details', 'expense_details', 'asset_details', 'miscell_details'));
+
+        $miscell_details = $miscell_details->details ?? [];
+
+        return response()->view('admin.client.details', compact('user', 'personal_information', 'spouse_information', 'dependent_details', 'bank_detail', 'employer_details', 'project_details', 'residency_details', 'expense_details', 'asset_details', 'miscell_details'));
     }
 
     public function client_list()
     {
-        $clients = User::where('role', 'user')->get()->map(function ($item) {
+        $users = User::where('role', 'user')->get()->map(function ($item) {
             return [
                 'id' => $item->id,
                 'name' => $item->name,
                 'email' => $item->email,
             ];
         });
-        return response()->json($clients);
+        return response()->json($users);
+    }
+
+    public function client_delete(User $user)
+    {
+
+        $user->delete();
+        return redirect()->route('admin.client.index')->with('success', 'Client deleted successfully');
     }
 }

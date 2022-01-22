@@ -16,8 +16,13 @@
                         </div>
                         <div class="breatcome_content">
                             <ul>
-                                <li><a href="{{route('home')}}">Home</a> <i class="fa fa-angle-right"></i> <a href="#">
-                                        Pages</a> <i class="fa fa-angle-right"></i> <span>Contact Us</span></li>
+                                <li>
+                                    <a href="{{route('home')}}">Home</a>
+                                    <i class="fa fa-angle-right"></i>
+                                    <a href="#">Pages</a>
+                                    <i class="fa fa-angle-right"></i>
+                                    <span>Contact Us</span>
+                                </li>
                             </ul>
                         </div>
                     </div>
@@ -116,6 +121,7 @@
                 <div class="col-xl-12">
                     <div class="contact_from">
                         <form id="contact_form" action="{{route('contact_us_mail')}}" method="POST">
+                            @csrf
                             <div class="row">
                                 <div class="col-lg-6">
                                     <div class="form_box mb-30">
@@ -201,9 +207,6 @@
                     type: 'POST',
                     url: $(form).attr('action'),
                     data: formData,
-                    headers: {
-                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                    },
                 })
                     .done(function (response) {
                         // Make sure that the formMessages div has the 'success' class.
