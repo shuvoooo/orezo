@@ -26,18 +26,18 @@ class ClientListController extends Controller
     public function client_show(User $user)
     {
 
-        $personal_information = PersonalInformation::where('user_id', $user->id)->first();
-        $spouse_information = SpouseInformation::where('user_id', $user->id)->first();
-        $dependent_details = DependentDetails::where('user_id', $user->id)->get();
+        $personal_information = PersonalInformation::where('user_id', $user->id)->where('year',request('year')??date('Y'))->first();
+        $spouse_information = SpouseInformation::where('user_id', $user->id)->where('year',request('year')??date('Y'))->first();
+        $dependent_details = DependentDetails::where('user_id', $user->id)->where('year',request('year')??date('Y'))->get();
 
 
-        $bank_detail = Bank::where('user_id', $user->id)->first();
-        $employer_details = Employer::where('user_id', $user->id)->get();
-        $project_details = Project::where('user_id', $user->id)->get();
-        $residency_details = Residency::where('user_id', $user->id)->get();
-        $expenses_details = Expense::where('user_id', $user->id)->first();
-        $asset_details = Asset::where('user_id', $user->id)->first();
-        $miscell_details = Miscellaneous::where('user_id', $user->id)->first();
+        $bank_detail = Bank::where('user_id', $user->id)->where('year',request('year')??date('Y'))->first();
+        $employer_details = Employer::where('user_id', $user->id)->where('year',request('year')??date('Y'))->get();
+        $project_details = Project::where('user_id', $user->id)->where('year',request('year')??date('Y'))->get();
+        $residency_details = Residency::where('user_id', $user->id)->where('year',request('year')??date('Y'))->get();
+        $expenses_details = Expense::where('user_id', $user->id)->where('year',request('year')??date('Y'))->first();
+        $asset_details = Asset::where('user_id', $user->id)->where('year',request('year')??date('Y'))->first();
+        $miscell_details = Miscellaneous::where('user_id', $user->id)->where('year',request('year')??date('Y'))->first();
 
 
         $expense_details = $expenses_details->details ?? [];

@@ -15,7 +15,9 @@
     <a @if($invoice_link == '#')  onclick="alert('No Invoice Found!')" @else target="_blank" href="{{$invoice_link}}"
        @endif  class="btn btn-warning btn-sm mr-1">Invoice</a>
 
-    <a target="_blank" href="{{route('admin.client.show',$user['id'])}}" class="btn btn-secondary btn-sm mr-1">View</a>
+    <a target="_blank"
+       href="{{route('admin.client.show', ['user'=>$user['id'], 'year' => request('year') ?? date("Y")])}}"
+       class="btn btn-secondary btn-sm mr-1">View</a>
 
     <form action="{{route('admin.client.delete',$user['id'])}}" method="post">
         @csrf

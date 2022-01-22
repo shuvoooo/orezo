@@ -10,7 +10,11 @@
                 <tr>
                     <td style="padding-left:4px; width:250px">Are you Married? :</td>
                     <td>
-                        {{$spouse_information->marital_status ?? ''}}
+                        @if($user->spouse == 1)
+                            Yes
+                        @else
+                            No
+                        @endif
                     </td>
                 </tr>
 
