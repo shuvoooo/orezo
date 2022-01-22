@@ -3550,24 +3550,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 
-var invoiceTopic = ['Federal Filing', 'State Filing', 'City Filing', 'County Filing', 'Credit', '2106 Planning', 'Schedule A', 'Sch E Planning', 'Sch C Planning', 'Stock Transaction', 'ITIN Application', 'Postal Charges'];
+var invoiceTopic = ['Federal Filing', 'State Filing', 'City Filing', 'County Filing', 'Credit', '2106 Planning', 'Schedule A', 'Sch E Planning', 'Sch C Planning', 'Stock Transaction', 'ITIN Application', 'Postal Charges', 'Discount'];
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   components: {
     "vue-select": (vue_select__WEBPACK_IMPORTED_MODULE_0___default())
@@ -3618,6 +3603,9 @@ var invoiceTopic = ['Federal Filing', 'State Filing', 'City Filing', 'County Fil
         price: 0
       }, {
         title: invoiceTopic[11],
+        price: 0
+      }, {
+        title: invoiceTopic[12],
         price: 0
       }]
     };
@@ -3695,19 +3683,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var vue_select_dist_vue_select_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue-select/dist/vue-select.css */ "./node_modules/vue-select/dist/vue-select.css");
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 //
 //
 //
@@ -5267,8 +5242,7 @@ __webpack_require__.r(__webpack_exports__);
       site_key: document.querySelector('meta[name="google-site-verification"]').getAttribute('content')
     };
   },
-  mounted: function mounted() {
-    alert(document.querySelector('meta[name="google-site-verification"]').getAttribute('content'));
+  mounted: function mounted() {//alert(document.querySelector('meta[name="google-site-verification"]').getAttribute('content'));
   },
   methods: {
     register: function register(e) {
@@ -22084,8 +22058,6 @@ var render = function () {
             _vm._v(" "),
             _vm._m(1),
             _vm._v(" "),
-            _vm._m(2),
-            _vm._v(" "),
             _c("div", { staticClass: "row border-info border-top pt-3 mt-2" }, [
               _c(
                 "div",
@@ -22200,41 +22172,6 @@ var staticRenderFns = [
           _c("span", { staticClass: "help-block" }, [
             _vm._v("Tax will be auto calculated 18% once saved"),
           ]),
-        ]),
-      ]),
-    ])
-  },
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "row" }, [
-      _c("div", { staticClass: "col-md-5" }, [
-        _c("div", { staticClass: "form-group" }, [
-          _c("input", {
-            staticClass: "form-control",
-            attrs: {
-              id: "dis",
-              type: "text",
-              disabled: "",
-              value: "Discount",
-              placeholder: "Item",
-            },
-          }),
-        ]),
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "col-md-5 col-9" }, [
-        _c("div", { staticClass: "form-group" }, [
-          _c("input", {
-            staticClass: "form-control",
-            attrs: {
-              id: "dics",
-              type: "text",
-              value: "0",
-              placeholder: "Item",
-            },
-          }),
         ]),
       ]),
     ])
@@ -22532,8 +22469,6 @@ var render = function () {
               ])
             }),
             _vm._v(" "),
-            _vm._m(2),
-            _vm._v(" "),
             _c("div", { staticClass: "row border-info border-top pt-3 mt-2" }, [
               _c(
                 "div",
@@ -22620,41 +22555,6 @@ var staticRenderFns = [
             placeholder: "Item",
           },
         }),
-      ]),
-    ])
-  },
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "row" }, [
-      _c("div", { staticClass: "col-md-5" }, [
-        _c("div", { staticClass: "form-group" }, [
-          _c("input", {
-            staticClass: "form-control",
-            attrs: {
-              id: "dis",
-              type: "text",
-              disabled: "",
-              value: "Discount",
-              placeholder: "Item",
-            },
-          }),
-        ]),
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "col-md-5 col-9" }, [
-        _c("div", { staticClass: "form-group" }, [
-          _c("input", {
-            staticClass: "form-control",
-            attrs: {
-              id: "dics",
-              type: "text",
-              value: "0",
-              placeholder: "Item",
-            },
-          }),
-        ]),
       ]),
     ])
   },

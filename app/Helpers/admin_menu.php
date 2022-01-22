@@ -32,18 +32,18 @@ return [
         ]
     ],
 
-    "admin.file" => [
-        'text' => 'File Status',
-        'url' => null,
-        'icon' => 'fa fa-file',
-        'type' => 'submenu',
-        'submenu' => [
-            'admin.file.index' => [
-                'text' => 'File List',
-                'url' => route('admin.file_status.index'),
-            ],
-        ]
-    ],
+//    "admin.file" => [
+//        'text' => 'File Status',
+//        'url' => null,
+//        'icon' => 'fa fa-file',
+//        'type' => 'submenu',
+//        'submenu' => [
+//            'admin.file.index' => [
+//                'text' => 'File List',
+//                'url' => route('admin.file_status.index'),
+//            ],
+//        ]
+//    ],
 
     'web_setting' => [
         'text' => 'Web Setting',

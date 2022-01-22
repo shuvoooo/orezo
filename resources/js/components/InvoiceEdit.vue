@@ -82,20 +82,7 @@
                         </div>
                     </div>
 
-                    <div class="row">
-                        <div class="col-md-5">
-                            <div class="form-group">
-                                <input id="dis" type="text" class="form-control" disabled value="Discount"
-                                       placeholder="Item"/>
-                            </div>
-                        </div>
 
-                        <div class="col-md-5 col-9">
-                            <div class="form-group">
-                                <input id="dics" type="text" class="form-control" value="0" placeholder="Item"/>
-                            </div>
-                        </div>
-                    </div>
 
                     <div class="row border-info border-top pt-3 mt-2">
                         <div class="col-md-12 d-flex justify-content-center">
