@@ -14,8 +14,35 @@
 @endpush
 
 @section('content')
-    <invoice-edit :user='@json($user)' :invoice='@json($invoice)'
-                  :last-invoice-items='@json($invoiceItems)'></invoice-edit>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+
+                <div class="card-header  d-flex justify-content-between align-items-center">
+                    <div class="h4">Edit Invoice</div>
+
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb py-0 my-0">
+                            @foreach(range((request('year')??date("Y"))-1, (request('year')??date("Y"))+1 ) as $year)
+                                <li class="breadcrumb-item @if($year == request('year')) active @endif ">
+                                    @if($year != request('year'))
+                                        <a href="{{route(\Illuminate\Support\Facades\Route::currentRouteName(),['user'=>$invoice->user_id, 'year'=>$year])}}">
+                                            {{$year}}
+                                        </a>
+                                    @else
+                                        {{$year}}
+                                    @endif
+                                </li>
+                            @endforeach
+                        </ol>
+                    </nav>
+                </div>
+
+                <invoice-edit :user='@json($user)' :invoice='@json($invoice)'
+                              :last-invoice-items='@json($invoiceItems)' invoice-link="{{$invoiceLink}}"></invoice-edit>
+            </div>
+        </div>
+    </div>
 @endsection
 
 

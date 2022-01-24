@@ -32,8 +32,8 @@ Route::group(['middleware' => ['auth', AdminMiddleware::class], 'prefix' => 'adm
     Route::get('invoice', [InvoiceController::class, 'index'])->name('invoice.index');
     Route::get('invoice/create', [InvoiceController::class, 'create'])->name('invoice.create');
     Route::post('invoice', [InvoiceController::class, 'store'])->name('invoice.store');
-    Route::get('invoice/{invoice}/edit', [InvoiceController::class, 'edit'])->name('invoice.edit');
-    Route::post('invoice/{invoice}/edit', [InvoiceController::class, 'update'])->name('invoice.update');
+    Route::get('invoice/{user}/edit', [InvoiceController::class, 'edit'])->name('invoice.edit');
+    Route::post('invoice/{user}/edit', [InvoiceController::class, 'update'])->name('invoice.update');
     Route::get('invoice/{id}', [InvoiceController::class, 'show'])->name('invoice.show');
 
 

@@ -11,7 +11,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <!-- Current Year -->
-    <meta name="year" content="{{ request()->route('year') ?? date('Y') }}">
+    <meta name="year" content="{{ request()->route('year') ?? request('year') ?? date('Y') }}">
 
 
     <!-- font-awesome CSS -->

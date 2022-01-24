@@ -14,7 +14,34 @@
 @endpush
 
 @section('content')
-    <invoice></invoice>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+
+                <div class="card-header  d-flex justify-content-between align-items-center">
+                    <h5>Invoice</h5>
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb py-0 my-0">
+                            @foreach(range((request('year')??date('Y'))-1, (request('year')??date('Y'))+1 ) as $year)
+                                <li class="breadcrumb-item @if($year == request('year')) active @endif ">
+                                    @if($year != request('year'))
+                                        <a href="{{route(\Illuminate\Support\Facades\Route::currentRouteName(),['year'=>$year])}}">
+                                            {{$year}}
+                                        </a>
+                                    @else
+                                        {{$year}}
+                                    @endif
+                                </li>
+                            @endforeach
+                        </ol>
+                    </nav>
+                </div>
+
+
+                <invoice></invoice>
+            </div>
+        </div>
+    </div>
 @endsection
 
 

@@ -35,10 +35,12 @@ class InvoiceController extends Controller
                 'title' => $invoice->name,
                 'description' => $invoice->description,
                 'invoice_id' => $invoice->id,
+                'user_id' => $invoice->user_id,
                 'amount' => '$' . $total,
                 'status' => $invoice->payment_status == 1 ? "paid" : "pending",
                 'added_by' => $invoice->addedBy->name,
                 'datetime' => $invoice->updated_at->format('d-m-Y'),
+                'year' => $invoice->year
             ]);
         }
 
@@ -46,9 +48,11 @@ class InvoiceController extends Controller
         if (request()->ajax()) {
             return DataTables::collection($invCollect)
                 ->addColumn('action', function ($invoice) {
+
+
                     $view = '<a href="' . route('invoice.show', ($invoice['id'] * $this->encrypt)) . '" class="btn btn-xs btn-warning btn-sm"><i class="fa fa-eye"></i> View</a>';
                     if ($invoice['status'] != 'paid')
-                        $view .= '<a href="' . route('admin.invoice.edit', $invoice['id']) . '" class="btn btn-xs btn-primary btn-sm ml-2"><i class="fa fa-edit"></i> Edit</a>';
+                        $view .= '<a href="' . route('admin.invoice.edit', ['user' => $invoice['user_id'], 'year' => $invoice['year']]) . '" class="btn btn-xs btn-primary btn-sm ml-2"><i class="fa fa-edit"></i> Edit</a>';
 
                     return '<div class="d-flex">' . $view . '</div>';
                 })
@@ -73,8 +77,8 @@ class InvoiceController extends Controller
 
     public function create()
     {
-        $invoices = Invoice::orderBy('id', 'desc')->get();
-        return view('admin.invoice.create', compact('invoices'));
+
+        return view('admin.invoice.create');
     }
 
     public function show($id)
@@ -97,12 +101,18 @@ class InvoiceController extends Controller
         try {
             $user = User::findOrFail($request->user_id);
 
+            $year = request('year') ?? date('Y');
+
+            if (Invoice::where('year', $year)->where('user_id', $request->user_id)->count())
+                throw new \Exception('Invoice already created for this year');
+
             $invoice = Invoice::create([
                 'name' => $request->title,
                 'description' => $request->input('comment'),
                 'user_id' => $user->id,
                 'added_by' => Auth::id(),
                 'user_email' => $request->email,
+                'year' => $year,
             ]);
 
             foreach ($request->invoiceItems as $item) {
@@ -139,25 +149,33 @@ class InvoiceController extends Controller
             return response()->json([
                 'success' => true,
                 'message' => 'Invoice created successfully.',
-                'redirect' => route('admin.invoice.edit', ['invoice'=>$invoice->id])
+                'redirect' => route('admin.invoice.edit', ['user' => $user->id, 'year' => request('year') ?? date('Y')])
             ]);
         } catch (\Exception $e) {
             return response()->json([
                 'success' => false,
-                'error' => $e->getMessage()
+                'message' => $e->getMessage()
             ], 500);
         }
     }
 
-    public function edit(Invoice $invoice)
+    public function edit(User $user)
     {
-        $user = auth()->user();
+        $invoice = Invoice::where('user_id', $user->id)->where('year', request('year') ?? date('Y'))->first();
+
+
+
+        if (!$invoice)
+            abort(404, 'Invoice not found');
+
         $invoiceItems = InvoiceItem::where('invoice_id', $invoice->id)->get();
+
+        $invoiceLink = route('invoice.show', $invoice->id * $this->encrypt);
         //dd($invoiceItems);
-        return response()->view('admin.invoice.edit', compact('invoice', 'user', 'invoiceItems'));
+        return response()->view('admin.invoice.edit', compact('invoice', 'user', 'invoiceItems', 'invoiceLink'));
     }
 
-    public function update(Invoice $invoice, Request $request)
+    public function update(User $user, Request $request)
     {
         $request->validate([
             'invoiceItems' => 'required|array',
@@ -166,6 +184,12 @@ class InvoiceController extends Controller
         ]);
 
         try {
+            $invoice = Invoice::where('user_id', $user->id)->where('year', request('year') ?? date('Y'))->first();
+
+
+            if (!$invoice)
+                throw new \Exception('Invoice not found');
+
             $invoice->update([
                 'name' => $request->title,
                 'description' => $request->input('comment'),
@@ -207,13 +231,13 @@ class InvoiceController extends Controller
             return response()->json([
                 'success' => true,
                 'message' => 'Invoice updated successfully.',
-                'redirect' => route('admin.invoice.edit', ['invoice'=>$invoice->id])
+                'redirect' => route('admin.invoice.edit', ['user' => $user->id, 'year' => request('year') ?? date('Y')])
             ]);
         } catch (\Exception $e) {
             return response()->json([
                 'success' => false,
-                'error' => $e->getMessage()
-            ]);
+                'message' => $e->getMessage()
+            ], 500);
         }
     }
 
@@ -276,11 +300,11 @@ class InvoiceController extends Controller
 //"detail":"Transaction has been Accepted"
 //}
 
-        if($result->response_code == 100){ // success
+        if ($result->response_code == 100) { // success
 
             $invoice_id = $request->order_id;
             $order = Invoice::find($invoice_id);
-            if ( !empty($order) ) {
+            if (!empty($order)) {
 
 //                $total = Invoice::getTotal($invoice_id);
 //                $order->total_amount = $total;
@@ -296,14 +320,14 @@ class InvoiceController extends Controller
                 return redirect()->route('user.invoice.payment.thankyou');
             }
 
-        }
-        else{
+        } else {
             $request->session()->flash('alert-danger', $result->detail);
             return redirect()->back();
         }
     }
 
-    public function customerInvoiceThankYou(Request $request){
+    public function customerInvoiceThankYou(Request $request)
+    {
         return view('admin.invoice.thankyou');
     }
 

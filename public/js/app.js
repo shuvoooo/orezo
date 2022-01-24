@@ -3543,13 +3543,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
 
 
 var invoiceTopic = ['Federal Filing', 'State Filing', 'City Filing', 'County Filing', 'Credit', '2106 Planning', 'Schedule A', 'Sch E Planning', 'Sch C Planning', 'Stock Transaction', 'ITIN Application', 'Postal Charges', 'Discount'];
@@ -3633,7 +3626,7 @@ var invoiceTopic = ['Federal Filing', 'State Filing', 'City Filing', 'County Fil
       }
 
       if (withEmail) this.submittedEmail = true;else this.submitted = true;
-      axios.post('/admin/invoice', {
+      axios.post('/admin/invoice?year=' + window.Year, {
         email: this.email,
         title: this.title,
         comment: this.comment,
@@ -3647,6 +3640,8 @@ var invoiceTopic = ['Federal Filing', 'State Filing', 'City Filing', 'County Fil
       })["catch"](function (error) {
         console.log(error);
         if (withEmail) _this2.submittedEmail = false;else _this2.submitted = false;
+
+        _this2.backendError(error);
       });
     },
     removeItem: function removeItem(index) {
@@ -3789,10 +3784,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  props: ['invoice', 'lastInvoiceItems', 'user'],
+  props: ['invoice', 'lastInvoiceItems', 'user', 'invoiceLink'],
   data: function data() {
     return {
       email: '',
@@ -3815,6 +3809,8 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     onSubmit: function onSubmit(withEmail) {
+      var _this = this;
+
       var data = {
         email: this.email,
         title: this.title,
@@ -3822,9 +3818,11 @@ __webpack_require__.r(__webpack_exports__);
         invoiceItems: this.invoiceItems,
         withEmail: withEmail
       };
-      axios.post('/admin/invoice/' + this.invoice.id + '/edit', data).then(function (response) {
+      axios.post('/admin/invoice/' + this.user.id + '/edit?year=' + window.Year, data).then(function (response) {
         alert(response.data.message);
         location.href = response.data.redirect;
+      })["catch"](function (error) {
+        _this.backendError(error);
       });
     },
     removeItem: function removeItem(index) {
@@ -21823,162 +21821,488 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "row" }, [
-    _c("div", { staticClass: "col-md-12" }, [
-      _c("div", { staticClass: "card" }, [
-        _vm._m(0),
+  return _c(
+    "div",
+    { staticClass: "card-body" },
+    [
+      _c("div", { staticClass: "row border-bottom pb-3 mb-3" }, [
+        _c("div", { staticClass: "col-md-3" }, [
+          _c(
+            "div",
+            { staticClass: "form-group" },
+            [
+              _c(
+                "label",
+                {
+                  staticClass: "text-dark",
+                  attrs: { for: "invoice_assign_to" },
+                },
+                [_vm._v("Invoice Assign To")]
+              ),
+              _vm._v(" "),
+              _c("vue-select", {
+                staticClass: "vue-select3",
+                attrs: { name: "select3", options: _vm.options },
+                model: {
+                  value: _vm.selectedClient,
+                  callback: function ($$v) {
+                    _vm.selectedClient = $$v
+                  },
+                  expression: "selectedClient",
+                },
+              }),
+            ],
+            1
+          ),
+        ]),
         _vm._v(" "),
-        _c(
-          "div",
-          { staticClass: "card-body" },
-          [
-            _c("div", { staticClass: "row border-bottom pb-3 mb-3" }, [
-              _c("div", { staticClass: "col-md-3" }, [
-                _c(
-                  "div",
-                  { staticClass: "form-group" },
-                  [
-                    _c(
-                      "label",
-                      {
-                        staticClass: "text-dark",
-                        attrs: { for: "invoice_assign_to" },
-                      },
-                      [_vm._v("Invoice Assign To")]
-                    ),
-                    _vm._v(" "),
-                    _c("vue-select", {
-                      staticClass: "vue-select3",
-                      attrs: { name: "select3", options: _vm.options },
-                      model: {
-                        value: _vm.selectedClient,
-                        callback: function ($$v) {
-                          _vm.selectedClient = $$v
-                        },
-                        expression: "selectedClient",
-                      },
-                    }),
-                  ],
-                  1
-                ),
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "col-md-3" }, [
-                _c("div", { staticClass: "form-group" }, [
-                  _c(
-                    "label",
-                    { staticClass: "text-dark", attrs: { for: "email" } },
-                    [_vm._v("Send to (Email)")]
-                  ),
-                  _vm._v(" "),
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.email,
-                        expression: "email",
-                      },
-                    ],
-                    staticClass: "form-control",
-                    attrs: {
-                      name: "email",
-                      type: "email",
-                      id: "email",
-                      placeholder: "Email",
-                    },
-                    domProps: { value: _vm.email },
-                    on: {
-                      input: function ($event) {
-                        if ($event.target.composing) {
-                          return
-                        }
-                        _vm.email = $event.target.value
-                      },
-                    },
-                  }),
-                ]),
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "col-md-3" }, [
-                _c("div", { staticClass: "form-group" }, [
-                  _c(
-                    "label",
-                    { staticClass: "text-dark", attrs: { for: "title" } },
-                    [_vm._v("Invoice Title")]
-                  ),
-                  _vm._v(" "),
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.title,
-                        expression: "title",
-                      },
-                    ],
-                    staticClass: "form-control",
-                    attrs: {
-                      name: "title",
-                      type: "text",
-                      id: "title",
-                      placeholder: "Invoice Title",
-                    },
-                    domProps: { value: _vm.title },
-                    on: {
-                      input: function ($event) {
-                        if ($event.target.composing) {
-                          return
-                        }
-                        _vm.title = $event.target.value
-                      },
-                    },
-                  }),
-                ]),
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "col-md-3" }, [
-                _c("div", { staticClass: "form-group" }, [
-                  _c(
-                    "label",
-                    { staticClass: "text-dark", attrs: { for: "comment" } },
-                    [_vm._v("Comments")]
-                  ),
-                  _vm._v(" "),
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.comment,
-                        expression: "comment",
-                      },
-                    ],
-                    staticClass: "form-control",
-                    attrs: {
-                      name: "comment",
-                      type: "text",
-                      id: "comment",
-                      placeholder: "Comments",
-                    },
-                    domProps: { value: _vm.comment },
-                    on: {
-                      input: function ($event) {
-                        if ($event.target.composing) {
-                          return
-                        }
-                        _vm.comment = $event.target.value
-                      },
-                    },
-                  }),
-                ]),
-              ]),
+        _c("div", { staticClass: "col-md-3" }, [
+          _c("div", { staticClass: "form-group" }, [
+            _c("label", { staticClass: "text-dark", attrs: { for: "email" } }, [
+              _vm._v("Send to (Email)"),
             ]),
             _vm._v(" "),
-            _c("h5", { staticClass: "py-3" }, [_vm._v("Items")]),
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.email,
+                  expression: "email",
+                },
+              ],
+              staticClass: "form-control",
+              attrs: {
+                name: "email",
+                type: "email",
+                id: "email",
+                placeholder: "Email",
+              },
+              domProps: { value: _vm.email },
+              on: {
+                input: function ($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.email = $event.target.value
+                },
+              },
+            }),
+          ]),
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "col-md-3" }, [
+          _c("div", { staticClass: "form-group" }, [
+            _c("label", { staticClass: "text-dark", attrs: { for: "title" } }, [
+              _vm._v("Invoice Title"),
+            ]),
             _vm._v(" "),
-            _vm._l(_vm.invoiceItems, function (n, i) {
-              return _c("div", { staticClass: "row border-bottom mb-3" }, [
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.title,
+                  expression: "title",
+                },
+              ],
+              staticClass: "form-control",
+              attrs: {
+                name: "title",
+                type: "text",
+                id: "title",
+                placeholder: "Invoice Title",
+              },
+              domProps: { value: _vm.title },
+              on: {
+                input: function ($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.title = $event.target.value
+                },
+              },
+            }),
+          ]),
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "col-md-3" }, [
+          _c("div", { staticClass: "form-group" }, [
+            _c(
+              "label",
+              { staticClass: "text-dark", attrs: { for: "comment" } },
+              [_vm._v("Comments")]
+            ),
+            _vm._v(" "),
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.comment,
+                  expression: "comment",
+                },
+              ],
+              staticClass: "form-control",
+              attrs: {
+                name: "comment",
+                type: "text",
+                id: "comment",
+                placeholder: "Comments",
+              },
+              domProps: { value: _vm.comment },
+              on: {
+                input: function ($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.comment = $event.target.value
+                },
+              },
+            }),
+          ]),
+        ]),
+      ]),
+      _vm._v(" "),
+      _c("h5", { staticClass: "py-3" }, [_vm._v("Items")]),
+      _vm._v(" "),
+      _vm._l(_vm.invoiceItems, function (n, i) {
+        return _c("div", { staticClass: "row border-bottom mb-3" }, [
+          _c("div", { staticClass: "col-md-5" }, [
+            _c("div", { staticClass: "form-group" }, [
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: n.title,
+                    expression: "n.title",
+                  },
+                ],
+                staticClass: "form-control",
+                attrs: { id: "item" + i, type: "text", placeholder: "Item" },
+                domProps: { value: n.title },
+                on: {
+                  input: function ($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(n, "title", $event.target.value)
+                  },
+                },
+              }),
+            ]),
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "col-md-5 col-9" }, [
+            _c("div", { staticClass: "form-group" }, [
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: n.price,
+                    expression: "n.price",
+                  },
+                ],
+                staticClass: "form-control",
+                attrs: { id: "price" + i, type: "text", placeholder: "Price" },
+                domProps: { value: n.price },
+                on: {
+                  input: function ($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(n, "price", $event.target.value)
+                  },
+                },
+              }),
+            ]),
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "col-md-2 col-3" }, [
+            _c(
+              "button",
+              {
+                staticClass: "btn btn-danger",
+                on: {
+                  click: function ($event) {
+                    return _vm.removeItem(i)
+                  },
+                },
+              },
+              [_vm._v("×")]
+            ),
+          ]),
+        ])
+      }),
+      _vm._v(" "),
+      _vm._m(0),
+      _vm._v(" "),
+      _c("div", { staticClass: "row border-info border-top pt-3 mt-2" }, [
+        _c("div", { staticClass: "col-md-12 d-flex justify-content-center" }, [
+          _c(
+            "button",
+            { staticClass: "btn btn-info mx-2", on: { click: _vm.addItem } },
+            [_vm._v("+ Add More Item")]
+          ),
+          _vm._v(" "),
+          _c(
+            "button",
+            {
+              staticClass: "btn btn-primary mx-2",
+              attrs: { disabled: _vm.submitted },
+              on: {
+                click: function ($event) {
+                  return _vm.onSubmit(0)
+                },
+              },
+            },
+            [
+              _vm.submitted
+                ? _c("span", { staticClass: "spinner" }, [
+                    _c("i", { staticClass: "fa fa-spinner fa-spin" }),
+                  ])
+                : _vm._e(),
+              _vm._v("\n\n                Save\n            "),
+            ]
+          ),
+          _vm._v(" "),
+          _c(
+            "button",
+            {
+              staticClass: "btn btn-success mx-2",
+              attrs: { disabled: _vm.submittedEmail },
+              on: {
+                click: function ($event) {
+                  return _vm.onSubmit(1)
+                },
+              },
+            },
+            [
+              _vm.submittedEmail
+                ? _c("span", { staticClass: "spinner" }, [
+                    _c("i", { staticClass: "fa fa-spinner fa-spin" }),
+                  ])
+                : _vm._e(),
+              _vm._v("\n\n                Save & Email\n            "),
+            ]
+          ),
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "col-12" }, [
+          _vm.msg
+            ? _c("div", { staticClass: "alert alert-info mt-2" }, [
+                _vm._v(
+                  "\n                " + _vm._s(_vm.msg) + "\n            "
+                ),
+              ])
+            : _vm._e(),
+        ]),
+      ]),
+    ],
+    2
+  )
+}
+var staticRenderFns = [
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "col-md-5" }, [
+        _c("div", { staticClass: "form-group" }, [
+          _c("input", {
+            staticClass: "form-control",
+            attrs: {
+              id: "tax",
+              type: "text",
+              disabled: "",
+              value: "Tax",
+              placeholder: "Item",
+            },
+          }),
+        ]),
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-md-5 col-9" }, [
+        _c("div", { staticClass: "form-group" }, [
+          _c("input", {
+            staticClass: "form-control",
+            attrs: {
+              id: "taxV",
+              type: "text",
+              disabled: "",
+              value: "0",
+              placeholder: "Item",
+            },
+          }),
+          _vm._v(" "),
+          _c("span", { staticClass: "help-block" }, [
+            _vm._v("Tax will be auto calculated 18% once saved"),
+          ]),
+        ]),
+      ]),
+    ])
+  },
+]
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/InvoiceEdit.vue?vue&type=template&id=f4450388&":
+/*!***********************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/InvoiceEdit.vue?vue&type=template&id=f4450388& ***!
+  \***********************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* binding */ render),
+/* harmony export */   "staticRenderFns": () => (/* binding */ staticRenderFns)
+/* harmony export */ });
+var render = function () {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    { staticClass: "card-body" },
+    [
+      _c("div", { staticClass: "row border-bottom pb-3 mb-3" }, [
+        _c("div", { staticClass: "col-md-3" }, [
+          _c("div", { staticClass: "form-group" }, [
+            _c(
+              "label",
+              { staticClass: "text-dark", attrs: { for: "invoice_assign_to" } },
+              [_vm._v("Invoice Assign To")]
+            ),
+            _vm._v(" "),
+            _c("input", {
+              staticClass: "form-control",
+              attrs: { disabled: "" },
+              domProps: { value: _vm.user.name },
+            }),
+          ]),
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "col-md-3" }, [
+          _c("div", { staticClass: "form-group" }, [
+            _c("label", { staticClass: "text-dark", attrs: { for: "email" } }, [
+              _vm._v("Send to (Email)"),
+            ]),
+            _vm._v(" "),
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.email,
+                  expression: "email",
+                },
+              ],
+              staticClass: "form-control",
+              attrs: {
+                name: "email",
+                type: "email",
+                id: "email",
+                placeholder: "Email",
+              },
+              domProps: { value: _vm.email },
+              on: {
+                input: function ($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.email = $event.target.value
+                },
+              },
+            }),
+          ]),
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "col-md-3" }, [
+          _c("div", { staticClass: "form-group" }, [
+            _c("label", { staticClass: "text-dark", attrs: { for: "title" } }, [
+              _vm._v("Invoice Title"),
+            ]),
+            _vm._v(" "),
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.title,
+                  expression: "title",
+                },
+              ],
+              staticClass: "form-control",
+              attrs: {
+                name: "title",
+                type: "text",
+                id: "title",
+                placeholder: "Invoice Title",
+              },
+              domProps: { value: _vm.title },
+              on: {
+                input: function ($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.title = $event.target.value
+                },
+              },
+            }),
+          ]),
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "col-md-3" }, [
+          _c("div", { staticClass: "form-group" }, [
+            _c(
+              "label",
+              { staticClass: "text-dark", attrs: { for: "comment" } },
+              [_vm._v("Comments")]
+            ),
+            _vm._v(" "),
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.comment,
+                  expression: "comment",
+                },
+              ],
+              staticClass: "form-control",
+              attrs: {
+                name: "comment",
+                type: "text",
+                id: "comment",
+                placeholder: "Comments",
+              },
+              domProps: { value: _vm.comment },
+              on: {
+                input: function ($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.comment = $event.target.value
+                },
+              },
+            }),
+          ]),
+        ]),
+      ]),
+      _vm._v(" "),
+      _c("h5", { staticClass: "py-3" }, [_vm._v("Items")]),
+      _vm._v(" "),
+      _vm._l(_vm.invoiceItems, function (n, i) {
+        return _c("div", [
+          n.title !== "Tax"
+            ? _c("div", { staticClass: "row border-bottom mb-3" }, [
                 _c("div", { staticClass: "col-md-5" }, [
                   _c("div", { staticClass: "form-group" }, [
                     _c("input", {
@@ -22054,491 +22378,120 @@ var render = function () {
                   ),
                 ]),
               ])
-            }),
-            _vm._v(" "),
-            _vm._m(1),
-            _vm._v(" "),
-            _c("div", { staticClass: "row border-info border-top pt-3 mt-2" }, [
-              _c(
-                "div",
-                { staticClass: "col-md-12 d-flex justify-content-center" },
-                [
-                  _c(
-                    "button",
-                    {
-                      staticClass: "btn btn-info mx-2",
-                      on: { click: _vm.addItem },
-                    },
-                    [_vm._v("+ Add More Item")]
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "button",
-                    {
-                      staticClass: "btn btn-primary mx-2",
-                      attrs: { disabled: _vm.submitted },
-                      on: {
-                        click: function ($event) {
-                          return _vm.onSubmit(0)
-                        },
-                      },
-                    },
-                    [
-                      _vm.submitted
-                        ? _c("span", { staticClass: "spinner" }, [
-                            _c("i", { staticClass: "fa fa-spinner fa-spin" }),
-                          ])
-                        : _vm._e(),
-                      _vm._v(
-                        "\n\n                            Save\n                        "
-                      ),
-                    ]
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "button",
-                    {
-                      staticClass: "btn btn-success mx-2",
-                      attrs: { disabled: _vm.submittedEmail },
-                      on: {
-                        click: function ($event) {
-                          return _vm.onSubmit(1)
-                        },
-                      },
-                    },
-                    [
-                      _vm.submittedEmail
-                        ? _c("span", { staticClass: "spinner" }, [
-                            _c("i", { staticClass: "fa fa-spinner fa-spin" }),
-                          ])
-                        : _vm._e(),
-                      _vm._v(
-                        "\n\n                            Save & Email\n                        "
-                      ),
-                    ]
-                  ),
-                ]
-              ),
-            ]),
-          ],
-          2
-        ),
-      ]),
-    ]),
-  ])
-}
-var staticRenderFns = [
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "card-header" }, [
-      _c("h5", [_vm._v("Invoice")]),
-    ])
-  },
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "row" }, [
-      _c("div", { staticClass: "col-md-5" }, [
-        _c("div", { staticClass: "form-group" }, [
-          _c("input", {
-            staticClass: "form-control",
-            attrs: {
-              id: "tax",
-              type: "text",
-              disabled: "",
-              value: "Tax",
-              placeholder: "Item",
-            },
-          }),
-        ]),
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "col-md-5 col-9" }, [
-        _c("div", { staticClass: "form-group" }, [
-          _c("input", {
-            staticClass: "form-control",
-            attrs: {
-              id: "taxV",
-              type: "text",
-              disabled: "",
-              value: "0",
-              placeholder: "Item",
-            },
-          }),
+            : _vm._e(),
           _vm._v(" "),
-          _c("span", { staticClass: "help-block" }, [
-            _vm._v("Tax will be auto calculated 18% once saved"),
+          n.title == "Tax"
+            ? _c("div", { staticClass: "row" }, [
+                _vm._m(0, true),
+                _vm._v(" "),
+                _c("div", { staticClass: "col-md-5 col-9" }, [
+                  _c("div", { staticClass: "form-group" }, [
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: n.price,
+                          expression: "n.price",
+                        },
+                      ],
+                      staticClass: "form-control",
+                      attrs: {
+                        id: "taxV",
+                        type: "text",
+                        disabled: "",
+                        value: "0",
+                        placeholder: "Item",
+                      },
+                      domProps: { value: n.price },
+                      on: {
+                        input: function ($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.$set(n, "price", $event.target.value)
+                        },
+                      },
+                    }),
+                    _vm._v(" "),
+                    _c("span", { staticClass: "help-block" }, [
+                      _vm._v("Tax will be auto calculated 18% once saved"),
+                    ]),
+                  ]),
+                ]),
+              ])
+            : _vm._e(),
+        ])
+      }),
+      _vm._v(" "),
+      _c("div", { staticClass: "row border-info border-top pt-3 mt-2" }, [
+        _c("div", { staticClass: "col-md-12 d-flex justify-content-center" }, [
+          _c("div", { staticClass: "alert alert-info" }, [
+            _vm._v("Total: " + _vm._s(_vm.invoice.total_amount)),
+          ]),
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "col-12" }, [
+          _c("div", { staticClass: "d-flex justify-content-center" }, [
+            _c("div", [_vm._v("Invoice Link :")]),
+            _vm._v(" "),
+            _c("div", { staticClass: "user-select-all text-primary ml-2" }, [
+              _vm._v(_vm._s(_vm.invoiceLink)),
+            ]),
           ]),
         ]),
       ]),
-    ])
-  },
-]
-render._withStripped = true
-
-
-
-/***/ }),
-
-/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/InvoiceEdit.vue?vue&type=template&id=f4450388&":
-/*!***********************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/InvoiceEdit.vue?vue&type=template&id=f4450388& ***!
-  \***********************************************************************************************************************************************************************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "render": () => (/* binding */ render),
-/* harmony export */   "staticRenderFns": () => (/* binding */ staticRenderFns)
-/* harmony export */ });
-var render = function () {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "row" }, [
-    _c("div", { staticClass: "col-md-12" }, [
-      _c("div", { staticClass: "card" }, [
-        _vm._m(0),
+      _vm._v(" "),
+      _c("div", { staticClass: "row border-info border-top pt-3 mt-2" }, [
+        _c("div", { staticClass: "col-md-12 d-flex justify-content-center" }, [
+          _c(
+            "button",
+            { staticClass: "btn btn-info mx-2", on: { click: _vm.addItem } },
+            [_vm._v("+ Add More Item")]
+          ),
+          _vm._v(" "),
+          _c(
+            "button",
+            {
+              staticClass: "btn btn-primary mx-2",
+              on: {
+                click: function ($event) {
+                  return _vm.onSubmit(0)
+                },
+              },
+            },
+            [_vm._v("Save")]
+          ),
+          _vm._v(" "),
+          _c(
+            "button",
+            {
+              staticClass: "btn btn-success mx-2",
+              on: {
+                click: function ($event) {
+                  return _vm.onSubmit(1)
+                },
+              },
+            },
+            [_vm._v("Save & Email")]
+          ),
+        ]),
         _vm._v(" "),
-        _c(
-          "div",
-          { staticClass: "card-body" },
-          [
-            _c("div", { staticClass: "row border-bottom pb-3 mb-3" }, [
-              _c("div", { staticClass: "col-md-3" }, [
-                _c("div", { staticClass: "form-group" }, [
-                  _c(
-                    "label",
-                    {
-                      staticClass: "text-dark",
-                      attrs: { for: "invoice_assign_to" },
-                    },
-                    [_vm._v("Invoice Assign To")]
-                  ),
-                  _vm._v(" "),
-                  _c("input", {
-                    staticClass: "form-control",
-                    attrs: { disabled: "" },
-                    domProps: { value: _vm.user.name },
-                  }),
-                ]),
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "col-md-3" }, [
-                _c("div", { staticClass: "form-group" }, [
-                  _c(
-                    "label",
-                    { staticClass: "text-dark", attrs: { for: "email" } },
-                    [_vm._v("Send to (Email)")]
-                  ),
-                  _vm._v(" "),
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.email,
-                        expression: "email",
-                      },
-                    ],
-                    staticClass: "form-control",
-                    attrs: {
-                      name: "email",
-                      type: "email",
-                      id: "email",
-                      placeholder: "Email",
-                    },
-                    domProps: { value: _vm.email },
-                    on: {
-                      input: function ($event) {
-                        if ($event.target.composing) {
-                          return
-                        }
-                        _vm.email = $event.target.value
-                      },
-                    },
-                  }),
-                ]),
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "col-md-3" }, [
-                _c("div", { staticClass: "form-group" }, [
-                  _c(
-                    "label",
-                    { staticClass: "text-dark", attrs: { for: "title" } },
-                    [_vm._v("Invoice Title")]
-                  ),
-                  _vm._v(" "),
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.title,
-                        expression: "title",
-                      },
-                    ],
-                    staticClass: "form-control",
-                    attrs: {
-                      name: "title",
-                      type: "text",
-                      id: "title",
-                      placeholder: "Invoice Title",
-                    },
-                    domProps: { value: _vm.title },
-                    on: {
-                      input: function ($event) {
-                        if ($event.target.composing) {
-                          return
-                        }
-                        _vm.title = $event.target.value
-                      },
-                    },
-                  }),
-                ]),
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "col-md-3" }, [
-                _c("div", { staticClass: "form-group" }, [
-                  _c(
-                    "label",
-                    { staticClass: "text-dark", attrs: { for: "comment" } },
-                    [_vm._v("Comments")]
-                  ),
-                  _vm._v(" "),
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.comment,
-                        expression: "comment",
-                      },
-                    ],
-                    staticClass: "form-control",
-                    attrs: {
-                      name: "comment",
-                      type: "text",
-                      id: "comment",
-                      placeholder: "Comments",
-                    },
-                    domProps: { value: _vm.comment },
-                    on: {
-                      input: function ($event) {
-                        if ($event.target.composing) {
-                          return
-                        }
-                        _vm.comment = $event.target.value
-                      },
-                    },
-                  }),
-                ]),
-              ]),
-            ]),
-            _vm._v(" "),
-            _c("h5", { staticClass: "py-3" }, [_vm._v("Items")]),
-            _vm._v(" "),
-            _vm._l(_vm.invoiceItems, function (n, i) {
-              return _c("div", [
-                n.title !== "Tax"
-                  ? _c("div", { staticClass: "row border-bottom mb-3" }, [
-                      _c("div", { staticClass: "col-md-5" }, [
-                        _c("div", { staticClass: "form-group" }, [
-                          _c("input", {
-                            directives: [
-                              {
-                                name: "model",
-                                rawName: "v-model",
-                                value: n.title,
-                                expression: "n.title",
-                              },
-                            ],
-                            staticClass: "form-control",
-                            attrs: {
-                              id: "item" + i,
-                              type: "text",
-                              placeholder: "Item",
-                            },
-                            domProps: { value: n.title },
-                            on: {
-                              input: function ($event) {
-                                if ($event.target.composing) {
-                                  return
-                                }
-                                _vm.$set(n, "title", $event.target.value)
-                              },
-                            },
-                          }),
-                        ]),
-                      ]),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "col-md-5 col-9" }, [
-                        _c("div", { staticClass: "form-group" }, [
-                          _c("input", {
-                            directives: [
-                              {
-                                name: "model",
-                                rawName: "v-model",
-                                value: n.price,
-                                expression: "n.price",
-                              },
-                            ],
-                            staticClass: "form-control",
-                            attrs: {
-                              id: "price" + i,
-                              type: "text",
-                              placeholder: "Price",
-                            },
-                            domProps: { value: n.price },
-                            on: {
-                              input: function ($event) {
-                                if ($event.target.composing) {
-                                  return
-                                }
-                                _vm.$set(n, "price", $event.target.value)
-                              },
-                            },
-                          }),
-                        ]),
-                      ]),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "col-md-2 col-3" }, [
-                        _c(
-                          "button",
-                          {
-                            staticClass: "btn btn-danger",
-                            on: {
-                              click: function ($event) {
-                                return _vm.removeItem(i)
-                              },
-                            },
-                          },
-                          [_vm._v("×")]
-                        ),
-                      ]),
-                    ])
-                  : _vm._e(),
-                _vm._v(" "),
-                n.title == "Tax"
-                  ? _c("div", { staticClass: "row" }, [
-                      _vm._m(1, true),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "col-md-5 col-9" }, [
-                        _c("div", { staticClass: "form-group" }, [
-                          _c("input", {
-                            directives: [
-                              {
-                                name: "model",
-                                rawName: "v-model",
-                                value: n.price,
-                                expression: "n.price",
-                              },
-                            ],
-                            staticClass: "form-control",
-                            attrs: {
-                              id: "taxV",
-                              type: "text",
-                              disabled: "",
-                              value: "0",
-                              placeholder: "Item",
-                            },
-                            domProps: { value: n.price },
-                            on: {
-                              input: function ($event) {
-                                if ($event.target.composing) {
-                                  return
-                                }
-                                _vm.$set(n, "price", $event.target.value)
-                              },
-                            },
-                          }),
-                          _vm._v(" "),
-                          _c("span", { staticClass: "help-block" }, [
-                            _vm._v(
-                              "Tax will be auto calculated 18% once saved"
-                            ),
-                          ]),
-                        ]),
-                      ]),
-                    ])
-                  : _vm._e(),
+        _c("div", { staticClass: "col-12" }, [
+          _vm.msg
+            ? _c("div", { staticClass: "alert alert-info mt-2" }, [
+                _vm._v(
+                  "\n                " + _vm._s(_vm.msg) + "\n            "
+                ),
               ])
-            }),
-            _vm._v(" "),
-            _c("div", { staticClass: "row border-info border-top pt-3 mt-2" }, [
-              _c(
-                "div",
-                { staticClass: "col-md-12 d-flex justify-content-center" },
-                [
-                  _c("div", { staticClass: "alert alert-info" }, [
-                    _vm._v("Total: " + _vm._s(_vm.invoice.total_amount)),
-                  ]),
-                ]
-              ),
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "row border-info border-top pt-3 mt-2" }, [
-              _c(
-                "div",
-                { staticClass: "col-md-12 d-flex justify-content-center" },
-                [
-                  _c(
-                    "button",
-                    {
-                      staticClass: "btn btn-info mx-2",
-                      on: { click: _vm.addItem },
-                    },
-                    [_vm._v("+ Add More Item")]
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "button",
-                    {
-                      staticClass: "btn btn-primary mx-2",
-                      on: {
-                        click: function ($event) {
-                          return _vm.onSubmit(0)
-                        },
-                      },
-                    },
-                    [_vm._v("Save")]
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "button",
-                    {
-                      staticClass: "btn btn-success mx-2",
-                      on: {
-                        click: function ($event) {
-                          return _vm.onSubmit(1)
-                        },
-                      },
-                    },
-                    [_vm._v("Save & Email")]
-                  ),
-                ]
-              ),
-            ]),
-          ],
-          2
-        ),
+            : _vm._e(),
+        ]),
       ]),
-    ]),
-  ])
+    ],
+    2
+  )
 }
 var staticRenderFns = [
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "card-header" }, [
-      _c("h5", [_vm._v("Edit Invoice")]),
-    ])
-  },
   function () {
     var _vm = this
     var _h = _vm.$createElement
