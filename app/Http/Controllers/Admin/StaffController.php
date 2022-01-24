@@ -8,6 +8,7 @@ use App\Models\User;
 use App\Notifications\GeneralNotification;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 use Yajra\DataTables\Facades\DataTables;
 use Yajra\DataTables\Html\Builder;
 
@@ -123,7 +124,7 @@ class StaffController extends Controller
     {
         $staff = User::findOrFail($id);
 
-        $permissions = json_decode(RolePermission::where('user_id', $id)->first()->details )??[];
+        $permissions = json_decode(RolePermission::where('user_id', $id)->first()->details ?? '[]' )??[];
 
 
         return response()->view('admin.staff.edit', ['staff' => $staff, 'menus' => get_admin_route(), 'permissions' => $permissions]);
@@ -147,6 +148,11 @@ class StaffController extends Controller
         // dd($request->permission);
 
         $staff->name = $request->name;
+
+        if ($request->has('password')) {
+            $staff->password = Hash::make($request->password);
+        }
+
         $staff->save();
 
         $role = RolePermission::where('user_id', $id)->first();

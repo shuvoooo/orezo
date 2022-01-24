@@ -1,6 +1,6 @@
 <?php
 return [
-    'admin.client' => [
+    'admin.client.index' => [
         'text' => 'Client List',
         'url' => route('admin.client.index'),
         'icon' => 'fa fa-users',
@@ -18,16 +18,11 @@ return [
             'admin.invoice.create' => [
                 'text' => 'Create Invoice',
                 'url' => route('admin.invoice.create'),
-                'icon' => 'fa fa-plus',
-                'type' => 'single',
-                'submenu' => []
+
             ],
             'admin.invoice.index' => [
                 'text' => 'Invoice List',
                 'url' => route('admin.invoice.index'),
-                'icon' => 'fa fa-list',
-                'type' => 'single',
-                'submenu' => []
             ],
         ]
     ],
@@ -115,6 +110,14 @@ return [
                 'url' => route('admin.staff.create'),
             ],
         ]
+    ],
+
+    'admin.year_access.edit' => [
+        'text' => 'Year Access',
+        'url' => route('admin.year_access.edit'),
+        'icon' => 'fa fa-calendar',
+        'type' => 'single',
+        'submenu' => []
     ],
 ];
 

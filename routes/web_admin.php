@@ -13,6 +13,7 @@ use App\Http\Controllers\Admin\StaffController;
 use App\Http\Controllers\Admin\TaxDocumentController;
 use App\Http\Controllers\Admin\TeamController;
 use App\Http\Controllers\Admin\TestimonialController;
+use App\Http\Controllers\Admin\YearAccessController;
 use App\Http\Controllers\GeneralConfigController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\UserController;
@@ -71,6 +72,9 @@ Route::group(['middleware' => ['auth', AdminMiddleware::class], 'prefix' => 'adm
     Route::resource('staff', StaffController::class);
 
     Route::resource('page', PageController::class);
+
+    Route::get('year_access', [YearAccessController::class, 'edit'])->name('year_access.edit');
+    Route::post('year_access', [YearAccessController::class, 'update'])->name('year_access.update');
 
     Route::get('/account-settings', [UserController::class, 'update_profile_view'])->name('profile_view');
 });

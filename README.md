@@ -10,3 +10,7 @@ This is a project of calculating Tax of the USA Person.
 > Run the command "php artisan migrate"
 > 
 > Run the command "php artisan db:seed"
+> 
+> Run the command "yarn install"
+> 
+> Run the command "yarn prod"

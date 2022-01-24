@@ -46,7 +46,7 @@
                                 @endif
 
                                 @if($team->social_link['google_chat']??false)
-                                    <a href="googlechat:{{$team->social_link['google_chat']??''}}"><i
+                                    <a href="{{$team->social_link['google_chat']??'#'}}"><i
                                             class="fa fa-meetup"></i></a>
                                 @endif
 

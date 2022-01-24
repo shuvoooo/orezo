@@ -57,6 +57,17 @@
                             @enderror
                         </div>
 
+                        <div class="form-group">
+                            <label class="text-dark" for="email">Password</label>
+                            <input type="password" class="form-control" id="password" name="password" placeholder="Password"
+                                   value="{{ old('password') }}">
+                            @error('password')
+                            <div class="alert alert-danger">{{ $message }}</div>
+                            @enderror
+                        </div>
+
+
+
 
                     </div>
 

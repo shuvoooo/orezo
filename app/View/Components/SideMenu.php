@@ -83,6 +83,7 @@ class SideMenu extends Component
         }
 
 
+
         return view('components.side-menu', compact('menus'));
     }
 }

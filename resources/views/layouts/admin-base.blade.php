@@ -176,7 +176,7 @@
         });
 
         for (const sel in $('select')) {
-            if ($('select')[sel].dataset.old) {
+            if ($('select')[sel].dataset.old || false) {
                 $('select')[sel].value = $('select')[sel].dataset.old;
             }
         }
