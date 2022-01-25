@@ -222,9 +222,13 @@
                     $(formMessages).removeClass('success');
                     $(formMessages).addClass('error');
 
-                    // Set the message text.
-                    if (data.responseText !== '') {
-                        $(formMessages).text(data.responseText);
+                    if (data.status === 422) {
+                        var errors = data.responseJSON.errors;
+                        var errorsHtml = '';
+                        $.each(errors, function (key, value) {
+                            errorsHtml += '<li>' + value[0] + '</li>';
+                        });
+                        $(formMessages).html(errorsHtml);
                     } else {
                         $(formMessages).text('Oops! An error occurred and your message could not be sent.');
                     }
