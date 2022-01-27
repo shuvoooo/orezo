@@ -296,7 +296,7 @@ export default {
                     }
                 });
                 this.tax = (total * .18).toFixed(2);
-                this.totalAmount = total + parseFloat(this.tax);
+                this.totalAmount = (total + parseFloat(this.tax)).toFixed(2);
 
             },
             deep: true
