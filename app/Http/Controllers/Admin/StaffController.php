@@ -97,7 +97,7 @@ class StaffController extends Controller
 
         $role = new RolePermission();
         $role->user_id = $user->id;
-        $role->details = $request->permission;
+        $role->details = json_encode($request->permission);
         $role->save();
 
         return redirect()->route('admin.staff.index')->with('success', 'Staff created successfully');
