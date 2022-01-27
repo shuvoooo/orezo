@@ -45,7 +45,7 @@
 
                 <div class="col-md-5 col-9">
                     <div class="form-group">
-                        <input :id="'price'+i" v-model="n.price" type="text" class="form-control"
+                        <input :id="'price'+i" v-model="n.price" type="number" step="0.001" class="form-control"
                                placeholder="Price"/>
                     </div>
                 </div>
@@ -64,8 +64,7 @@
 
                 <div class="col-md-5 col-9">
                     <div class="form-group">
-                        <input id="taxV" type="text" class="form-control" disabled v-model="n.price"
-                               value="0"
+                        <input id="taxV" type="text" class="form-control" disabled v-model="tax"
                                placeholder="Item"/>
                         <span class="help-block">Tax will be auto calculated 18% once saved</span>
                     </div>
@@ -77,7 +76,7 @@
 
         <div class="row border-info border-top pt-3 mt-2">
             <div class="col-md-12 d-flex justify-content-center">
-                <div class="alert alert-info">Total: {{ invoice.total_amount }}</div>
+                <div class="alert alert-info">Total: {{ totalAmount }}</div>
             </div>
             <div class="col-12">
                 <div class="d-flex justify-content-center">
@@ -114,6 +113,8 @@ export default {
             email: '',
             title: '',
             comment: '',
+            tax: 0,
+            totalAmount: 0,
             invoiceItems: [],
         }
     },
@@ -128,6 +129,19 @@ export default {
                 price: item.price,
             }
         });
+
+        let total = 0;
+        this.invoiceItems.forEach(item => {
+            if (item.price != "" && item.title != "Tax") {
+                if (item.title == 'Discount')
+                    total -= parseFloat(item.price);
+                else
+                    total += parseFloat(item.price);
+            }
+        });
+
+        this.tax = (total * .18).toFixed(2);
+        this.totalAmount = total + total * .18;
     },
     methods: {
         onSubmit(withEmail) {
@@ -160,6 +174,30 @@ export default {
                 price: 0,
             });
         },
+
+
     },
+
+    watch: {
+        invoiceItems: {
+            handler(value) {
+
+
+                let total = 0;
+                this.invoiceItems.forEach(item => {
+                    if (item.price != "" && item.title != "Tax") {
+                        if (item.title == 'Discount')
+                            total -= parseFloat(item.price);
+                        else
+                            total += parseFloat(item.price);
+                    }
+                });
+                this.tax = (total * .18).toFixed(2);
+                this.totalAmount = total + parseFloat(this.tax);
+
+            },
+            deep: true
+        }
+    }
 }
 </script>

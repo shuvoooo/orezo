@@ -3543,6 +3543,14 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 var invoiceTopic = ['Federal Filing', 'State Filing', 'City Filing', 'County Filing', 'Credit', '2106 Planning', 'Schedule A', 'Sch E Planning', 'Sch C Planning', 'Stock Transaction', 'ITIN Application', 'Postal Charges', 'Discount'];
@@ -3561,6 +3569,8 @@ var invoiceTopic = ['Federal Filing', 'State Filing', 'City Filing', 'County Fil
       title: '',
       comment: '',
       user_id: '',
+      totalAmount: 0,
+      tax: 0,
       invoiceItems: [{
         title: invoiceTopic[0],
         price: 0
@@ -3660,6 +3670,19 @@ var invoiceTopic = ['Federal Filing', 'State Filing', 'City Filing', 'County Fil
       this.email = this.clientData.find(function (v) {
         return v.id === value.value;
       }).email;
+    },
+    invoiceItems: {
+      handler: function handler(value) {
+        var total = 0;
+        this.invoiceItems.forEach(function (item) {
+          if (item.price != "") {
+            if (item.title == 'Discount') total -= parseFloat(item.price);else total += parseFloat(item.price);
+          }
+        });
+        this.tax = (total * .18).toFixed(2);
+        this.totalAmount = total + parseFloat(this.tax);
+      },
+      deep: true
     }
   }
 });
@@ -3783,7 +3806,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: ['invoice', 'lastInvoiceItems', 'user', 'invoiceLink'],
@@ -3792,6 +3814,8 @@ __webpack_require__.r(__webpack_exports__);
       email: '',
       title: '',
       comment: '',
+      tax: 0,
+      totalAmount: 0,
       invoiceItems: []
     };
   },
@@ -3806,6 +3830,14 @@ __webpack_require__.r(__webpack_exports__);
         price: item.price
       };
     });
+    var total = 0;
+    this.invoiceItems.forEach(function (item) {
+      if (item.price != "" && item.title != "Tax") {
+        if (item.title == 'Discount') total -= parseFloat(item.price);else total += parseFloat(item.price);
+      }
+    });
+    this.tax = (total * .18).toFixed(2);
+    this.totalAmount = total + total * .18;
   },
   methods: {
     onSubmit: function onSubmit(withEmail) {
@@ -3834,6 +3866,21 @@ __webpack_require__.r(__webpack_exports__);
         title: '',
         price: 0
       });
+    }
+  },
+  watch: {
+    invoiceItems: {
+      handler: function handler(value) {
+        var total = 0;
+        this.invoiceItems.forEach(function (item) {
+          if (item.price != "" && item.title != "Tax") {
+            if (item.title == 'Discount') total -= parseFloat(item.price);else total += parseFloat(item.price);
+          }
+        });
+        this.tax = (total * .18).toFixed(2);
+        this.totalAmount = total + parseFloat(this.tax);
+      },
+      deep: true
     }
   }
 });
@@ -6105,7 +6152,7 @@ window.axios.defaults.headers.common = {
   'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
   'Accept': 'application/json'
 };
-window.axios.defaults.baseURL = "http://127.0.0.1:8001";
+window.axios.defaults.baseURL = "http://127.0.0.1:8000";
 window.Year = document.querySelector('meta[name="year"]').getAttribute('content');
 
 var files = __webpack_require__("./resources/js sync recursive \\.vue$/");
@@ -22006,7 +22053,12 @@ var render = function () {
                   },
                 ],
                 staticClass: "form-control",
-                attrs: { id: "price" + i, type: "text", placeholder: "Price" },
+                attrs: {
+                  id: "price" + i,
+                  type: "number",
+                  step: "0.001",
+                  placeholder: "Price",
+                },
                 domProps: { value: n.price },
                 on: {
                   input: function ($event) {
@@ -22037,9 +22089,65 @@ var render = function () {
         ])
       }),
       _vm._v(" "),
-      _vm._m(0),
+      _c("div", { staticClass: "row" }, [
+        _vm._m(0),
+        _vm._v(" "),
+        _c("div", { staticClass: "col-md-5 col-9" }, [
+          _c("div", { staticClass: "form-group" }, [
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.tax,
+                  expression: "tax",
+                },
+              ],
+              staticClass: "form-control",
+              attrs: {
+                id: "taxV",
+                type: "text",
+                disabled: "",
+                placeholder: "Item",
+              },
+              domProps: { value: _vm.tax },
+              on: {
+                input: function ($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.tax = $event.target.value
+                },
+              },
+            }),
+            _vm._v(" "),
+            _c("span", { staticClass: "help-block" }, [
+              _vm._v("Tax will be auto calculated 18% once saved"),
+            ]),
+          ]),
+        ]),
+      ]),
       _vm._v(" "),
-      _c("div", { staticClass: "row border-info border-top pt-3 mt-2" }, [
+      _c(
+        "div",
+        {
+          staticClass:
+            "row  border-info border-top border-bottom justify-content-center",
+        },
+        [
+          _c("div", { staticClass: "col-auto" }, [
+            _c("div", { staticClass: "alert alert-danger  mt-3" }, [
+              _c("strong", [_vm._v("Total:")]),
+              _vm._v(" "),
+              _c("span", { attrs: { id: "total" } }, [
+                _vm._v(_vm._s(_vm.totalAmount) + " $"),
+              ]),
+            ]),
+          ]),
+        ]
+      ),
+      _vm._v(" "),
+      _c("div", { staticClass: "row pt-3 mt-2" }, [
         _c("div", { staticClass: "col-md-12 d-flex justify-content-center" }, [
           _c(
             "button",
@@ -22109,39 +22217,18 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "row" }, [
-      _c("div", { staticClass: "col-md-5" }, [
-        _c("div", { staticClass: "form-group" }, [
-          _c("input", {
-            staticClass: "form-control",
-            attrs: {
-              id: "tax",
-              type: "text",
-              disabled: "",
-              value: "Tax",
-              placeholder: "Item",
-            },
-          }),
-        ]),
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "col-md-5 col-9" }, [
-        _c("div", { staticClass: "form-group" }, [
-          _c("input", {
-            staticClass: "form-control",
-            attrs: {
-              id: "taxV",
-              type: "text",
-              disabled: "",
-              value: "0",
-              placeholder: "Item",
-            },
-          }),
-          _vm._v(" "),
-          _c("span", { staticClass: "help-block" }, [
-            _vm._v("Tax will be auto calculated 18% once saved"),
-          ]),
-        ]),
+    return _c("div", { staticClass: "col-md-5" }, [
+      _c("div", { staticClass: "form-group" }, [
+        _c("input", {
+          staticClass: "form-control",
+          attrs: {
+            id: "tax",
+            type: "text",
+            disabled: "",
+            value: "Tax",
+            placeholder: "Item",
+          },
+        }),
       ]),
     ])
   },
@@ -22347,7 +22434,8 @@ var render = function () {
                       staticClass: "form-control",
                       attrs: {
                         id: "price" + i,
-                        type: "text",
+                        type: "number",
+                        step: "0.001",
                         placeholder: "Price",
                       },
                       domProps: { value: n.price },
@@ -22391,8 +22479,8 @@ var render = function () {
                         {
                           name: "model",
                           rawName: "v-model",
-                          value: n.price,
-                          expression: "n.price",
+                          value: _vm.tax,
+                          expression: "tax",
                         },
                       ],
                       staticClass: "form-control",
@@ -22400,16 +22488,15 @@ var render = function () {
                         id: "taxV",
                         type: "text",
                         disabled: "",
-                        value: "0",
                         placeholder: "Item",
                       },
-                      domProps: { value: n.price },
+                      domProps: { value: _vm.tax },
                       on: {
                         input: function ($event) {
                           if ($event.target.composing) {
                             return
                           }
-                          _vm.$set(n, "price", $event.target.value)
+                          _vm.tax = $event.target.value
                         },
                       },
                     }),
@@ -22427,7 +22514,7 @@ var render = function () {
       _c("div", { staticClass: "row border-info border-top pt-3 mt-2" }, [
         _c("div", { staticClass: "col-md-12 d-flex justify-content-center" }, [
           _c("div", { staticClass: "alert alert-info" }, [
-            _vm._v("Total: " + _vm._s(_vm.invoice.total_amount)),
+            _vm._v("Total: " + _vm._s(_vm.totalAmount)),
           ]),
         ]),
         _vm._v(" "),
@@ -25701,9 +25788,9 @@ var render = function () {
                   attrs: { "data-sitekey": _vm.site_key },
                 }),
                 _vm._v(" "),
-                _vm.errors.has("g-recaptcha")
+                _vm.errors.has("g-recaptcha-response")
                   ? _c("span", { staticClass: "small text-danger w-100" }, [
-                      _vm._v(_vm._s(_vm.errors.first("g-recaptcha"))),
+                      _vm._v(_vm._s(_vm.errors.first("g-recaptcha-response"))),
                     ])
                   : _vm._e(),
               ]),

@@ -50,7 +50,7 @@
 
             <div class="col-md-5 col-9">
                 <div class="form-group">
-                    <input :id="'price'+i" v-model="n.price" type="text" class="form-control"
+                    <input :id="'price'+i" v-model="n.price" type="number" step="0.001" class="form-control"
                            placeholder="Price"/>
                 </div>
             </div>
@@ -69,7 +69,7 @@
 
             <div class="col-md-5 col-9">
                 <div class="form-group">
-                    <input id="taxV" type="text" class="form-control" disabled value="0"
+                    <input id="taxV" type="text" class="form-control" disabled v-model="tax"
                            placeholder="Item"/>
                     <span class="help-block">Tax will be auto calculated 18% once saved</span>
                 </div>
@@ -77,8 +77,15 @@
 
         </div>
 
+        <div class="row  border-info border-top border-bottom justify-content-center">
+            <div class="col-auto">
+                <div class="alert alert-danger  mt-3">
+                    <strong>Total:</strong> <span id="total">{{ totalAmount }} $</span>
+                </div>
+            </div>
+        </div>
 
-        <div class="row border-info border-top pt-3 mt-2">
+        <div class="row pt-3 mt-2">
             <div class="col-md-12 d-flex justify-content-center">
                 <button class="btn btn-info mx-2" @click="addItem">+ Add More Item</button>
 
@@ -98,6 +105,7 @@
                     Save & Email
                 </button>
             </div>
+
             <div class="col-12">
                 <div class="alert alert-info mt-2" v-if="msg">
                     {{ msg }}
@@ -144,6 +152,8 @@ export default {
             title: '',
             comment: '',
             user_id: '',
+            totalAmount: 0,
+            tax: 0,
             invoiceItems: [
                 {
                     title: invoiceTopic[0],
@@ -270,6 +280,26 @@ export default {
         selectedClient(value) {
             this.user_id = value.value;
             this.email = this.clientData.find(v => v.id === value.value).email;
+        },
+
+        invoiceItems: {
+            handler(value) {
+
+
+                let total = 0;
+                this.invoiceItems.forEach(item => {
+                    if (item.price != "") {
+                        if (item.title == 'Discount')
+                            total -= parseFloat(item.price);
+                        else
+                            total += parseFloat(item.price);
+                    }
+                });
+                this.tax = (total * .18).toFixed(2);
+                this.totalAmount = total + parseFloat(this.tax);
+
+            },
+            deep: true
         }
     }
 }

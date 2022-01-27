@@ -263,8 +263,8 @@
                             <div class="col-lg-12 mb-4">
                                 <div class="g-recaptcha" :data-sitekey="site_key"></div>
 
-                                <span v-if="errors.has('g-recaptcha')" class="small text-danger w-100">{{
-                                        errors.first('g-recaptcha')
+                                <span v-if="errors.has('g-recaptcha-response')" class="small text-danger w-100">{{
+                                        errors.first('g-recaptcha-response')
                                     }}</span>
                             </div>
                         </div>

@@ -66,7 +66,7 @@ class RegisterController extends Controller
             'state' => ['required', 'string'],
             'home_no' => ['required', 'string'],
             'referrer' => ['nullable', 'string'],
-            'g-recaptcha-response' => new Recaptcha(),
+            'g-recaptcha-response' => [new Recaptcha()],
         ]);
     }
 

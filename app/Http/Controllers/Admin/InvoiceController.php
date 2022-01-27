@@ -120,7 +120,7 @@ class InvoiceController extends Controller
                     'invoice_id' => $invoice->id,
                     'title' => $item['title'],
                     'quantity' => 1,
-                    'price' => $item['price'],
+                    'price' => $item['price'] ?? 0,
                 ]);
             }
 
@@ -132,7 +132,7 @@ class InvoiceController extends Controller
             ]);
 
             //Tax Row
-            Invoiceitem::create([
+            InvoiceItem::create([
                 'invoice_id' => $invoice->id,
                 'title' => Invoice::$tax_text,
                 'quantity' => 1,
@@ -164,7 +164,6 @@ class InvoiceController extends Controller
         $invoice = Invoice::where('user_id', $user->id)->where('year', request('year') ?? date('Y'))->first();
 
 
-
         if (!$invoice)
             abort(404, 'Invoice not found');
 
@@ -179,8 +178,6 @@ class InvoiceController extends Controller
     {
         $request->validate([
             'invoiceItems' => 'required|array',
-            'title' => 'required',
-            'comment' => 'required',
         ]);
 
         try {
@@ -204,7 +201,7 @@ class InvoiceController extends Controller
 
                     'title' => $item['title'],
                     'quantity' => 1,
-                    'price' => $item['price'],
+                    'price' => $item['price'] ?? 0,
                 ]);
             }
 
@@ -216,7 +213,7 @@ class InvoiceController extends Controller
             ]);
 
             //Tax Row
-            Invoiceitem::updateOrCreate([
+            InvoiceItem::updateOrCreate([
                 'title' => Invoice::$tax_text,
                 'invoice_id' => $invoice->id
             ], [

@@ -55,7 +55,7 @@ class ClientDataTable extends DataTable
             ->columns($this->getColumns())
             ->minifiedAjax()
             ->dom('Bfrtip')
-            ->orderBy(1)
+            ->orderBy(3)
             ->buttons(
             //Button::make('export'),
             //Button::make('print'),
