@@ -115,7 +115,6 @@ export default {
                     this.isLoading = true;
 
 
-
                     axios.post('/login', {
                         email: this.email,
                         password: this.password,
@@ -125,7 +124,8 @@ export default {
                         this.isLoading = false;
                         location.href = response.data.redirect;
                     }).catch(error => {
-                        this.backendError(error);
+                        grecaptcha.reset();
+                        this.backendError(error)
                     });
                 }
             })
@@ -133,3 +133,4 @@ export default {
     }
 }
 </script>
+

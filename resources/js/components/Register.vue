@@ -346,7 +346,10 @@ export default {
                     }).then(response => {
                         this.isLoading = false;
                         location.href = response.data.redirect
-                    }).catch(e => this.backendError(e));
+                    }).catch(e => {
+                        grecaptcha.reset();
+                        this.backendError(e)
+                    });
                 }
             });
         }

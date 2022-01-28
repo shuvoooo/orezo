@@ -218,6 +218,7 @@
                     // Clear the form.
                     $('#contact-form input,#contact-form textarea').val('');
                 }).fail(function (data) {
+                    grecaptcha.reset();
                     // Make sure that the formMessages div has the 'error' class.
                     $(formMessages).removeClass('success');
                     $(formMessages).addClass('error');

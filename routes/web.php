@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\InvoiceController;
 use App\Http\Controllers\ContactRequestController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\NotificationController;
+use App\Http\Controllers\ReferralController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -19,6 +20,8 @@ Route::post("/contact_us_mail", [ContactRequestController::class, "store"])->nam
 Route::get('invoice/{id}', [InvoiceController::class, 'show'])->name('invoice.show');
 Route::post('invoice/paytabs/response', [InvoiceController::class, 'paytabsCheckoutResponse'])->name('invoice.paytabs.response');
 Route::get('invoice/payment/thank-you', [InvoiceController::class, 'customerInvoiceThankYou'])->name('invoice.thankyou');
+
+Route::resource('referrals', ReferralController::class)->only(['create', 'store']);
 
 Auth::routes(['verify' => true]);
 

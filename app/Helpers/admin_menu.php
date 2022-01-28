@@ -119,6 +119,15 @@ return [
         'type' => 'single',
         'submenu' => []
     ],
+
+    'admin.referrals.index' => [
+        'text' => 'Referral',
+        'url' => route('admin.referrals.index'),
+        'icon' => 'fa fa-user-plus',
+        'type' => 'single',
+        'submenu' => []
+    ],
+
 ];
 
 ?>

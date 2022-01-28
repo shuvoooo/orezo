@@ -16,6 +16,7 @@ use App\Http\Controllers\Admin\TestimonialController;
 use App\Http\Controllers\Admin\YearAccessController;
 use App\Http\Controllers\GeneralConfigController;
 use App\Http\Controllers\PageController;
+use App\Http\Controllers\ReferralController;
 use App\Http\Controllers\UserController;
 use App\Http\Middleware\AdminMiddleware;
 use Illuminate\Support\Facades\Route;
@@ -76,5 +77,9 @@ Route::group(['middleware' => ['auth', AdminMiddleware::class], 'prefix' => 'adm
     Route::get('year_access', [YearAccessController::class, 'edit'])->name('year_access.edit');
     Route::post('year_access', [YearAccessController::class, 'update'])->name('year_access.update');
 
-    Route::get('/account-settings', [UserController::class, 'update_profile_view'])->name('profile_view');
+
+    Route::get('referrals', [ReferralController::class, 'index'])->name('referrals.index');
+    Route::get('referrals/{refer}/delete', [ReferralController::class, 'delete'])->name('referrals.delete');
+
+    Route::get('account-settings', [UserController::class, 'update_profile_view'])->name('profile_view');
 });

@@ -16,5 +16,5 @@
 @endpush
 
 @section('content')
-    {{$dataTable->table()}}
+    {{$dataTable->table(['class' => 'table table-bordered table-hover table-striped'], false)}}
 @endsection
