@@ -94,7 +94,7 @@ class RegisterController extends Controller
             'home_no' => $data['home_no'],
         ]);
 
-        $admins = User::where('role', 'admin')->where('role', 'staff')->get();
+        $admins = User::where('role', 'admin')->orWhere('role', 'staff')->get();
 
 
         Notification::send($admins, new GeneralNotification('New Member', 'New member has registered.'));

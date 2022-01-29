@@ -29,7 +29,7 @@ class ExpenseController extends Controller
         $expense->details = $request->details;
         $expense->save();
 
-        $admins = User::where('role', 'admin')->where('role', 'staff')->get();
+        $admins = User::where('role', 'admin')->orWhere('role', 'staff')->get();
         Notification::send($admins, new GeneralNotification('Expense Details', 'Expense Details has been updated by ' . auth()->user()->name));
 
         return response()->json([

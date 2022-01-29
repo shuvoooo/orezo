@@ -37,7 +37,7 @@ class EmployerController extends Controller
             Employer::create($data);
 
 
-            $admins = User::where('role', 'admin')->where('role', 'staff')->get();
+            $admins = User::where('role', 'admin')->orWhere('role', 'staff')->get();
             Notification::send($admins, new GeneralNotification('Employer Details', Auth::user()->name . ' has added a new employer'));
 
             return response()->json(['success' => 'Employer Details Added Successfully.']);

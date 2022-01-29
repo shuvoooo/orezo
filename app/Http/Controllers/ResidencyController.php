@@ -28,7 +28,7 @@ class ResidencyController extends Controller
             $data['user_id'] = Auth::id();
             Residency::create($data);
 
-            $admins = User::where('role', 'admin')->where('role', 'staff')->get();
+            $admins = User::where('role', 'admin')->orWhere('role', 'staff')->get();
             Notification::send($admins, new GeneralNotification("Residency Updated", Auth::user()->name . ' has added a new residency'));
 
             return response()->json(['success' => 'Residency added successfully.']);

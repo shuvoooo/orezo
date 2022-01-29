@@ -39,7 +39,7 @@ class AssetController extends Controller
             ]);
 
 
-            $admins = User::where('role', 'admin')->where('role', 'staff')->get();
+            $admins = User::where('role', 'admin')->orWhere('role', 'staff')->get();
 
             Notification::send($admins, new GeneralNotification('Asset Updated', 'Asset Details Updated  by ' . auth()->user()->name));
 

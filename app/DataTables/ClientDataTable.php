@@ -23,13 +23,13 @@ class ClientDataTable extends DataTable
         $userList = collect();
 
         foreach ($users as $user) {
-            $personInfo = PersonalInformation::where('user_id', $user->id)->orderBy('created_at', 'DESC')->first();
+            $personInfo = PersonalInformation::where('user_id', $user->id)->where('year', date('Y'))->first();
             $userList->push([
                 'id' => $user->id,
                 'name' => $user->name,
                 'email' => $user->email,
                 'phone' => $personInfo->phone ?? '',
-                'created_at' => $user->created_at->format('d/m/Y'),
+                'created_at' => $user->created_at->timestamp,
             ]);
         }
 
@@ -45,6 +45,7 @@ class ClientDataTable extends DataTable
             return view('datatables.client_action', ['user' => $user, 'invoice_link' => $invoice_link]);
 
         })->rawColumns(['action']);
+
     }
 
 
@@ -76,7 +77,7 @@ class ClientDataTable extends DataTable
             Column::make('name'),
             Column::make('email'),
             Column::make('phone'),
-            Column::make('created_at')->title('Reg Date'),
+            Column::make('created_at')->title('Reg Date')->orderDataType('time-stamp'),
             Column::computed('action')
                 ->exportable(false)
                 ->printable(false)

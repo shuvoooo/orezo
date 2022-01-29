@@ -29,7 +29,7 @@ class ProjectController extends Controller
             Project::create($data);
 
 
-            $admins = User::where('role', 'admin')->where('role', 'staff')->get();
+            $admins = User::where('role', 'admin')->orWhere('role', 'staff')->get();
             Notification::send($admins, new GeneralNotification("Project Details", "New Project Details Added"));
 
             return response()->json(['success' => 'Project added successfully.']);

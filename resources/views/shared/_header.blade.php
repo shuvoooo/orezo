@@ -76,7 +76,7 @@
                                     style="height:2.8rem; width:2.8rem;" type="button" id="dropdownMenuButton"
                                     data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     <i class="fa fa-bell"></i>
-                                    @if(auth()->user()->unreadNotifications->count() == 0)
+                                    @if(auth()->user()->unreadNotifications->count() !== 0)
                                         <div class="position-absolute" style="top:-5px; right: -8px;"
                                              id="notificationCount">
                                         <span

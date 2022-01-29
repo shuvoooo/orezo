@@ -49,7 +49,7 @@ class PersonalInformationController extends Controller
             }
 
 
-            $admins = User::where('role', 'admin')->where('role', 'staff')->get();
+            $admins = User::where('role', 'admin')->orWhere('role', 'staff')->get();
             Notification::send($admins, new GeneralNotification("Personal Information", "Spouse Information Updated by " . Auth::user()->name));
 
             return response()->json([
@@ -95,7 +95,7 @@ class PersonalInformationController extends Controller
             $user->save();
 
 
-            $admins = User::where('role', 'admin')->where('role', 'staff')->get();
+            $admins = User::where('role', 'admin')->orWhere('role', 'staff')->get();
             Notification::send($admins, new GeneralNotification("Spouse Information Updated", "Spouse Information Updated by " . $user->name));
 
 
@@ -131,7 +131,7 @@ class PersonalInformationController extends Controller
             DependentDetails::create($data);
 
 
-            $admins = User::where('role', 'admin')->where('role', 'staff')->get();
+            $admins = User::where('role', 'admin')->orWhere('role', 'staff')->get();
             Notification::send($admins, new GeneralNotification("Dependent Details", Auth::user()->name . ' has added a dependent.'));
 
 
@@ -182,7 +182,7 @@ class PersonalInformationController extends Controller
             $bank->save();
         }
 
-        $admins = User::where('role', 'admin')->where('role', 'staff')->get();
+        $admins = User::where('role', 'admin')->orWhere('role', 'staff')->get();
         Notification::send($admins, new GeneralNotification('Bank Details', Auth::user()->name . ' has updated bank details.'));
 
 
