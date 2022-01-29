@@ -34,7 +34,7 @@ class ClientListController extends Controller
                 'id' => $item->id,
                 'name' => $item->name,
                 'email' => $item->email,
-                'phone' => $personInfo->phone ?? '',
+                'phone' => $personInfo->mobile ?? '',
                 'created_at' => $item->created_at->format('d/m/Y'),
                 'created_att' => $item->created_at->timestamp,
             ]);
