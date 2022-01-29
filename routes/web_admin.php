@@ -25,7 +25,7 @@ use Illuminate\Support\Facades\Route;
 Route::group(['middleware' => ['auth', AdminMiddleware::class], 'prefix' => 'admin', 'as' => 'admin.'], function () {
     Route::get('/', [AdminDashboardController::class, 'dashboard'])->name('dashboard');
 
-    Route::get('client', [ClientListController::class, 'client_index'])->name('client.index');
+    Route::get('client', [ClientListController::class, 'index'])->name('client.index');
     Route::get('client/{user}', [ClientListController::class, 'client_show'])->name('client.show');
     Route::delete('client/{user}', [ClientListController::class, 'client_delete'])->name('client.delete');
 
