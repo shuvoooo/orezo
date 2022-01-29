@@ -45,7 +45,6 @@ class ClientListController extends Controller
             return DataTables::collection($clientCollection)
                 ->addColumn('action', function ($user) {
                     $invoice_link = Invoice::where('user_id', $user['id'])->where('year', request('year') ?? date('Y'))->orderBy('created_at', 'DESC')->first();
-
                     $invoice_link = $invoice_link ? route('admin.invoice.edit', ['user' => $invoice_link->user_id, 'year' => request('year') ?? date('Y')]) : '#';
                     return view('datatables.client_action', ['user' => $user, 'invoice_link' => $invoice_link]);
                 })

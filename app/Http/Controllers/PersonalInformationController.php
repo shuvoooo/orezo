@@ -50,7 +50,7 @@ class PersonalInformationController extends Controller
 
 
             $admins = User::where('role', 'admin')->orWhere('role', 'staff')->get();
-            Notification::send($admins, new GeneralNotification("Personal Information", "Spouse Information Updated by " . Auth::user()->name));
+            Notification::send($admins, new GeneralNotification("Personal Information", "Personal Information Updated by " . Auth::user()->name));
 
             return response()->json([
                 'success' => 'Personal Information saved successfully.',
