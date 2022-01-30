@@ -16,5 +16,7 @@
 @endpush
 
 @section('content')
-    {{$dataTable->table(['class' => 'table table-bordered table-hover table-striped'], false)}}
+    <div class="table-responsive">
+        {{$dataTable->table(['class' => 'table table-bordered table-hover table-striped'], false)}}
+    </div>
 @endsection
