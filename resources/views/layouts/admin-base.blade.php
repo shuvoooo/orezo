@@ -22,6 +22,10 @@
     <!-- Favicon -->
     <link rel="icon" type="image/png" sizes="56x56" href="{{asset('assets/images/fav-icon/icon.png')}}">
     <!-- bootstrap CSS -->
+
+    <!-- meanmenu CSS -->
+    <link rel="stylesheet" href="{{asset('assets/css/meanmenu.min.css')}}" type="text/css" media="all"/>
+
     <link rel="stylesheet" href="{{asset('assets/css/bootstrap.min.css')}}" type="text/css" media="all"/>
     <!-- theme-default CSS -->
     <link rel="stylesheet" href="{{asset('assets/css/theme-default.css')}}" type="text/css" media="all"/>
@@ -45,6 +49,10 @@
             font-size: .85rem;
         }
 
+        .sidebar-container.closed {
+            left: -16rem;
+        }
+
         .main-container {
             flex: 1;
             background-color: #fff;
@@ -62,12 +70,14 @@
 
 <hr class="p-0 m-0"/>
 
-<div class="d-flex flex-nowrap">
-    <div class="sidebar-container">
-        @include('shared._sidebar')
+<div class="d-block">
+    <div class="float-left">
+        <div class="sidebar-container">
+            @include('shared._sidebar')
+        </div>
     </div>
 
-    <div class="main-container" id="app">
+    <div class="main-container f" id="app">
         <div class="container-fluid">
 
         @if(auth()->user()->role == 'user')
@@ -138,14 +148,19 @@
 
 <!-- jquery js -->
 <script type="text/javascript" src="{{asset('assets/js/vendor/jquery-3.2.1.min.js')}}"></script>
-<script src="//cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
         integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
         crossorigin="anonymous"></script>
-<script src="//stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
         integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
         crossorigin="anonymous"></script>
+<!-- jquery meanmenu js -->
+<script type="text/javascript" src="{{asset('assets/js/jquery.meanmenu.js')}}"></script>
+<!-- jquery scrollup js -->
+<script type="text/javascript" src="{{asset('assets/js/jquery.scrollUp.js')}}"></script>
+<!-- theme js -->
+<script type="text/javascript" src="{{asset('assets/js/theme.js')}}"></script>
 
-{{--<script src="//cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>--}}
 
 <!-- Main App Script -->
 <script type="text/javascript" src="{{asset('js/app.js')}}"></script>
