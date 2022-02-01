@@ -55,7 +55,7 @@
 
                 <div class="form-group">
                     <label class="col-form-label text-dark" for="ssn">SSN/ITIN </label>
-                    <input type="text" class="form-control" id="ssn" name="ssn" placeholder="SSN/ITIN"
+                    <input type="number" class="form-control" id="ssn" name="ssn" placeholder="SSN/ITIN"
                            v-model="ssn">
                     <small v-if="errors.has('ssn')"
                            class="form-text text-danger">{{ errors.first('ssn') }}</small>

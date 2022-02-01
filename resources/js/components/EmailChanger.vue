@@ -8,7 +8,7 @@
 
             <div>Step 1 : Send OTP to Verify your current email</div>
             <div class="input-group mb-3">
-                <input type="text" class="form-control" placeholder="Your Current Email Address"
+                <input type="email" class="form-control" placeholder="Your Current Email Address"
                        aria-label="Your Current Email Address" :value="user.email" disabled>
                 <div class="input-group-append">
                     <button class="btn btn-outline-secondary" type="button" @click="sendOTP" :disabled="otp_sent">
@@ -40,7 +40,7 @@
             <template v-if="otp_verified">
                 <div>Step 3 : Change your email</div>
                 <div class="input-group mb-3">
-                    <input type="text" class="form-control" placeholder="Your New Email Address" v-model="email"
+                    <input type="email" class="form-control" placeholder="Your New Email Address" v-model="email"
                            aria-label="Your New Email Address">
                 </div>
 

@@ -61,7 +61,8 @@ class RegisterController extends Controller
             'lname' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:6', 'confirmed'],
-            'phone' => ['required', 'string', 'max:255'],
+            //USA phone Number Validation
+            'phone' => ['required', 'string', 'regex:/^\+?1?\d{9,10}$/'],
             'country' => ['required', 'string'],
             'state' => ['required', 'string'],
             'home_no' => ['required', 'string'],

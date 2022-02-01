@@ -68,7 +68,7 @@
                             <div class="form-group row">
                                 <label class=" text-dark  col-md-3 col-form-label" for="ssn">SSN/ITIN</label>
                                 <div class="col-md-9">
-                                    <input type="text" class="form-control" id="ssn" name="ssn" placeholder="SSN/ITIN"
+                                    <input type="number" class="form-control" id="ssn" name="ssn" placeholder="SSN/ITIN"
                                            v-model="ssn">
                                 </div>
                             </div>
@@ -193,7 +193,7 @@
                                 <label class=" text-dark  col-md-3 col-form-label" for="mobile">Mobile Number
                                 </label>
                                 <div class="col-md-9">
-                                    <input type="number" class="form-control" id="mobile" name="mobile"
+                                    <input type="tel" class="form-control" id="mobile" name="mobile"
                                            placeholder="Mobile Number"
                                            v-model="mobile">
                                 </div>
@@ -211,7 +211,7 @@
                             <div class="form-group row">
                                 <label class=" text-dark  col-md-3 col-form-label" for="email">Email Address</label>
                                 <div class="col-md-9">
-                                    <input type="text" class="form-control" id="email" name="email"
+                                    <input type="email" class="form-control" id="email" name="email"
                                            placeholder="Email Address"
                                            v-model="email">
                                 </div>

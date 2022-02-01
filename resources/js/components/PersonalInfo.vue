@@ -125,7 +125,7 @@
                             </label>
                             <div class="col-md-9">
                                 <input
-                                    type="text"
+                                    type="number"
                                     class="form-control"
                                     id="ssn"
                                     v-model="ssn"
@@ -370,7 +370,7 @@
                             </label>
                             <div class="col-md-9">
                                 <input
-                                    type="text"
+                                    type="tel"
                                     class="form-control"
                                     id="mobile"
                                     v-model="mobile"
@@ -410,7 +410,7 @@
                             </label>
                             <div class="col-md-9">
                                 <input
-                                    type="text"
+                                    type="email"
                                     class="form-control"
                                     id="email"
                                     v-model="email"
