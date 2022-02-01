@@ -166,6 +166,11 @@ export default {
             formData.append('comments', this.comments[i]);
             formData.append('deletedFileIds', JSON.stringify(this.deletedFileIds[i]));
 
+            if (this.files[i].length === 0) {
+                alert('No file selected');
+                return;
+            }
+
             for (let file of this.files[i]) {
                 if (file.origin === 'local') {
                     formData.append('files[]', file.file);
@@ -188,7 +193,7 @@ export default {
                 }
             }).catch(error => {
                 this.fileLoading[i] = false;
-                alert(error.response.data.message);
+                this.backendError(error);
             });
         }
 

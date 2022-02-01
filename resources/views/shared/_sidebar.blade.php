@@ -2,7 +2,7 @@
     <ul class="sidebar-menu">
         <li class="sub-menu @if(Route::is('*dashboard')) active @endif ">
             @if(auth()->user()->role ==  'user')
-                <a href="{{route_with_year('dashboard')}}">
+                <a href="{{route('dashboard')}}">
                     <i class="fa fa-dashboard"></i>
                     <span>Dashboard</span>
                 </a>

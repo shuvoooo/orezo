@@ -16,10 +16,10 @@ use App\Http\Middleware\YearMiddleware;
 use Illuminate\Support\Facades\Route;
 
 Route::group(['middleware' => ['auth', UserMiddleware::class, 'verified']], function () {
-    Route::get('year_profile', [DashboardController::class, 'year_dashboard'])->name('year_dashboard');
+    Route::get('dashboard', [DashboardController::class, 'year_dashboard'])->name('dashboard');
 
     Route::group(['prefix' => '{year}', 'middleware' => [YearMiddleware::class]], function () {
-        Route::get('dashboard', [DashboardController::class, 'user_dashboard'])->name('dashboard');
+        Route::get('dashboard', [DashboardController::class, 'user_dashboard'])->name('year.dashboard');
 
 
         Route::group(['prefix' => 'info'], function () {

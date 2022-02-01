@@ -54,7 +54,7 @@
                                 <a href="{{route('admin.dashboard')}}" class="btn btn-primary">Staff Panel</a>
 
                             @else
-                                <a href="{{route_with_year('dashboard')}}" class="btn btn-primary">Dashboard</a>
+                                <a href="{{route_with_year('year.dashboard')}}" class="btn btn-primary">Dashboard</a>
                             @endif
 
                         @else
@@ -171,7 +171,7 @@
                     @elseif(auth()->user()->role == "staff")
                         <li><a href="#">Staff Panel</a></li>
                     @else
-                        <li><a href="{{route_with_year('dashboard')}}">Dashboard</a></li>
+                        <li><a href="{{route_with_year('year.dashboard')}}">Dashboard</a></li>
                     @endif
 
                 @else

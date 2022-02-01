@@ -63,7 +63,7 @@
                         <span class="spinner" v-if="isLoading">
                           <i class="fa fa-spinner fa-spin"></i>
                         </span>
-                        Save
+                        Save & Continue
                     </button>
                     <span class="badge badge-info ml-4" v-if="msg">{{ msg }}</span>
                 </div>

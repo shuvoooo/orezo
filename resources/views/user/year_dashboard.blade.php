@@ -79,7 +79,7 @@
                                         </div>
                                         <div class="flipbox_desc">
                                             {{--                                            <p>Whether bringing new amazing products and services to market</p>--}}
-                                            <a href="{{route_with_year('dashboard', ['year'=>$year])}}"
+                                            <a href="{{route_with_year('year.dashboard', ['year'=>$year])}}"
                                                class="btn btn-light">Click Here to Proceed</a>
                                         </div>
                                     </div>

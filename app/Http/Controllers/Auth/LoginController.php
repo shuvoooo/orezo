@@ -65,7 +65,7 @@ class LoginController extends Controller
     public function redirectTo()
     {
         if (auth()->user()->role == 'user') {
-            return route('year_dashboard');
+            return route('dashboard');
         } else
             return route('admin.dashboard');
 
