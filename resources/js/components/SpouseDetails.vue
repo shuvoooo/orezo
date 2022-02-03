@@ -316,7 +316,6 @@ export default {
                 location.href = response.data.url;
             }).catch(error => {
                 this.backendError(error);
-                this.msg = error.response.data.message;
             });
         }
     }

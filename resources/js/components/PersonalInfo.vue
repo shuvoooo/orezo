@@ -556,7 +556,6 @@ export default {
 
                     }).catch(error => {
                         this.backendError(error);
-                        this.msg = error.response.data.message;
                     });
                 }
             });

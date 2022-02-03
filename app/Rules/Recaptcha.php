@@ -29,16 +29,37 @@ class Recaptcha implements Rule
             return false;
 
 
-        // localhost
-        if (in_array($_SERVER['REMOTE_ADDR'], ['127.0.0.1', '::1']))
-            return true;
+//        // localhost
+//        if (in_array($_SERVER['REMOTE_ADDR'], ['127.0.0.1', '::1']))
+//            return true;
 
 
-        $recaptcha = new \ReCaptcha\ReCaptcha(env('RECAPTCHA_SECRET'));
+//        $recaptcha = new \ReCaptcha\ReCaptcha(env('RECAPTCHA_SECRET'));
+//
+//        $resp = $recaptcha->verify($value, $_SERVER['REMOTE_ADDR']);
+//
+//        return $resp->isSuccess();
 
-        $resp = $recaptcha->verify($value, $_SERVER['REMOTE_ADDR']);
+        // ReCaptcha verify via url
 
-        return $resp->isSuccess();
+        $url = 'https://www.google.com/recaptcha/api/siteverify';
+        $data = [
+            'secret' => env('RECAPTCHA_SECRET'),
+            'response' => $value,
+            'remoteip' => $_SERVER['REMOTE_ADDR']
+        ];
+
+        curl_setopt($ch = curl_init(), CURLOPT_URL, $url);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_POST, true);
+        curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($data));
+        $response = curl_exec($ch);
+        curl_close($ch);
+
+        $response = json_decode($response);
+
+        return $response->success;
+
     }
 
     /**

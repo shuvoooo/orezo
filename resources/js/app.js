@@ -40,16 +40,21 @@ Vue.mixin({
             this.isLoading = false;
 
             if (errors.response.status === 422) {
+                var msg = "";
                 for (let field in errors.response.data.errors) {
                     this.errors.add({
                         field: field,
                         msg: errors.response.data.errors[field].join(', '),
                     });
+
+                    msg += errors.response.data.errors[field].join(', ') + ',\n';
                 }
+                this.msg = msg;
             } else {
                 alert(errors.response.data.message);
+                this.msg = errors.response.data.message;
             }
-            this.msg = errors.response.data.message;
+
         }
     }
 });

@@ -105,7 +105,7 @@
                     <li class="ml-auto"></li>
                     @foreach(range(date('Y')+1, date('Y')-1) as $year)
                         <li class="ml-3 pl-3 border-left">
-                            <a href="{{route_with_year('dashboard',['year'=>$year])}}"
+                            <a href="{{route_with_year(Route::currentRouteName(),['year'=>$year])}}"
                                class="@if(request()->route('year') == $year) font-weight-bold text-success @endif ">{{$year}}</a>
                         </li>
                     @endforeach

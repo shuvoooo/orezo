@@ -97,15 +97,16 @@
                                     </div>
 
 
-                                    @foreach(auth()->user()->unreadNotifications()->limit(12)->get() as $notification)
-                                        <a href="{{$notification['link']}}" class="dropdown-item d-flex px-2 mt-2">
+                                    @foreach(auth()->user()->unreadNotifications()->limit(6)->get() as $notification)
+                                        <a href="{{$notification['link']}}" class="dropdown-item d-flex px-2 mt-2"
+                                           style="width:25rem;">
 
                                             <div
                                                 class="bg-light rounded-lg d-flex justify-content-center align-items-center mr-2"
                                                 style="height: 3.2rem; width: 3.2rem;">
                                                 <i class="{{$notification->data['icon']}}"></i>
                                             </div>
-                                            <div>
+                                            <div class="flex-grow-1">
                                                 <div class="d-flex justify-content-between">
                                                     @if($notification->read_at == null)
                                                         <div

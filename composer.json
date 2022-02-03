@@ -19,7 +19,8 @@
         "laravel/tinker": "^2.5",
         "laravel/ui": "^3.4",
         "shuvoo/larahepler": "dev-master",
-        "yajra/laravel-datatables": "^1.5"
+        "yajra/laravel-datatables": "^1.5",
+      "ext-curl": "*"
     },
     "require-dev": {
         "facade/ignition": "^2.5",

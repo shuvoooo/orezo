@@ -9,6 +9,8 @@ use Illuminate\Support\Facades\Route;
 
 class ProgressControl
 {
+    // This progress List related with route name
+
     public static $progressList = [
         "personal_information" => 1,
         "personal_information_store" => 9,

@@ -82,8 +82,6 @@
 
 <!-- venobox js -->
 <script type="text/javascript" src="{{asset('venobox/venobox.js')}}"></script>
-<!-- ajax mail js -->
-<script type="text/javascript" src="{{asset('assets/js/ajax-mail.js')}}"></script>
 <!--  testimonial js -->
 <script type="text/javascript" src="{{asset('assets/js/testimonial.js')}}"></script>
 <!--  animated-text js -->

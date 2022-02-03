@@ -149,7 +149,6 @@ export default {
             }).catch(error => {
                 this.isLoading = false;
                 this.backendError(error);
-                this.msg = error.response.data.message;
             });
         }
     }

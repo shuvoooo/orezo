@@ -75,6 +75,7 @@ class PersonalInformationController extends Controller
     {
         $request->validate([
             'spouse_status' => 'required',
+            'email' => 'required|email',
         ]);
         $user = Auth::user();
 
