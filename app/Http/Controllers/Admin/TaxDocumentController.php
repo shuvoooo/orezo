@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Comment;
 use App\Models\Document;
 use App\Models\DownloadSave;
+use App\Models\Upload;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -18,7 +19,6 @@ class TaxDocumentController extends Controller
         $comments = Comment::where('user_id', $user->id)->where('year', request('year'))->orderBy('created_at', 'desc')->get();
 
 
-
         $user_downloads = $downloads->filter(function ($item) use ($user) {
             return $item->added_by == $user->id;
         });
@@ -26,7 +26,6 @@ class TaxDocumentController extends Controller
         $org_downloads = $downloads->filter(function ($item) use ($user) {
             return $item->added_by != $user->id;
         });
-
 
 
         return response()->view('admin.tax_document.download_tax_document', compact('user', 'user_downloads', 'org_downloads', 'comments'));
@@ -38,6 +37,11 @@ class TaxDocumentController extends Controller
         $documents = Document::where('user_id', $user->id)->get();
 
         return response()->view('admin.tax_document.user_tax_document', compact('documents'));
+    }
+
+    public function download_user_tax_document(Upload $upload)
+    {
+        return Storage::download($upload->path, $upload->filename);
     }
 
     public function download_tax_document_store(Request $request, User $user, $year)

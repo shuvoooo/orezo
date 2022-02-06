@@ -28,19 +28,10 @@ class Recaptcha implements Rule
         if ($value == null)
             return false;
 
+        // localhost
+        if (in_array($_SERVER['REMOTE_ADDR'], ['127.0.0.1', '::1']))
+            return true;
 
-//        // localhost
-//        if (in_array($_SERVER['REMOTE_ADDR'], ['127.0.0.1', '::1']))
-//            return true;
-
-
-//        $recaptcha = new \ReCaptcha\ReCaptcha(env('RECAPTCHA_SECRET'));
-//
-//        $resp = $recaptcha->verify($value, $_SERVER['REMOTE_ADDR']);
-//
-//        return $resp->isSuccess();
-
-        // ReCaptcha verify via url
 
         $url = 'https://www.google.com/recaptcha/api/siteverify';
         $data = [

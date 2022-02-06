@@ -68,6 +68,7 @@ Route::group(['middleware' => ['auth', AdminMiddleware::class], 'prefix' => 'adm
     Route::post('comment/{user}/{year}', [TaxDocumentController::class, 'comment_store'])->name('comment.store');
 
     Route::get('user-tax-document/{user}', [TaxDocumentController::class, 'user_tax_document'])->name('user_tax_document');
+    Route::get('user-tax-document/{upload}/download', [TaxDocumentController::class, 'download_user_tax_document'])->name('download_user_tax_document');
 
 
     Route::resource('staff', StaffController::class);

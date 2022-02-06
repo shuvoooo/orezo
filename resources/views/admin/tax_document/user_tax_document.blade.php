@@ -41,8 +41,9 @@
                                 <li class="list-group-item  d-flex justify-content-between align-items-center py-1 px-2">
                                     <span>{{$file->filename}}</span>
                                     <div class="d-flex justify-content-center">
-                                        <a href="#" class="mx-3"><i class="fa fa-download"></i></a>
-                                        <a href="#" class="text-danger"><i class="fa fa-trash"></i></a>
+
+                                        <a href="{{route('download_user_tax_document', $file->id)}}" class="mx-3"><i
+                                                class="fa fa-download"></i></a>
                                     </div>
                                 </li>
                             @endforeach

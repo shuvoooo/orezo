@@ -2,10 +2,11 @@
 <!----- Start	eTaxPlanner Header Top Menu Area Css ----->
 <!--==================================================-->
 <div class="bg_color">
-    <marquee class="p-0 m-0 text-white ">
+    <marquee class="p-0 m-0 text-white">
         {{general_config('notification')}}
     </marquee>
 </div>
+
 <!--==================================================-->
 <!----- End	eTaxPlanner Header Top Menu Area Css ----->
 <!--===================================================-->
@@ -54,7 +55,7 @@
                                 <a href="{{route('admin.dashboard')}}" class="btn btn-primary">Staff Panel</a>
 
                             @else
-                                <a href="{{route_with_year('year.dashboard')}}" class="btn btn-primary">Dashboard</a>
+                                <a href="{{route_with_year('dashboard')}}" class="btn btn-primary">Dashboard</a>
                             @endif
 
                         @else

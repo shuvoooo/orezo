@@ -10,8 +10,7 @@
                     <div class="d-flex flex-column align-items-center my-4">
                         <div>
                             <div class="avatar avatar-xl">
-                                <img src="//placehold.it/300x300.jpg" alt="..." style="height: 6rem; width: 6rem;"
-                                     class="avatar-img rounded-circle">
+                                <i class="fa fa-user-circle fa-5x"></i>
                             </div>
                         </div>
                         <div>

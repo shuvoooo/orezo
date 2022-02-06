@@ -7,6 +7,7 @@ use App\Models\Address;
 use App\Models\User;
 use App\Notifications\GeneralNotification;
 use App\Providers\RouteServiceProvider;
+use App\Rules\Phone;
 use App\Rules\Recaptcha;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Foundation\Auth\RegistersUsers;
@@ -61,8 +62,9 @@ class RegisterController extends Controller
             'lname' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:6', 'confirmed'],
-            //USA phone Number Validation
-            'phone' => ['required', 'string', 'regex:/^\+?1?\d{9,10}$/'],
+            //USA Phone Number Validation
+            'phone' => ['required', 'string', new Phone()],
+            'countryCode' => ['required', 'string'],
             'country' => ['required', 'string'],
             'state' => ['required', 'string'],
             'home_no' => ['required', 'string'],
@@ -91,7 +93,7 @@ class RegisterController extends Controller
             'lname' => $data['lname'],
             'country' => $data['country'],
             'state' => $data['state'],
-            'mobile' => $data['phone'],
+            'mobile' => $data['countryCode'] . $data['phone'],
             'home_no' => $data['home_no'],
         ]);
 

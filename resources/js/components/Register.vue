@@ -85,7 +85,7 @@
                             </select>
 
 
-                            <input id="phone" type="tel" name="phone" placeholder="Phone Number" v-model="phone"
+                            <input id="phone" type="number" name="phone" placeholder="Phone Number" v-model="phone"
                                    v-validate="'required'"
                                    class="form-control bg-white border-md border-left-0 pl-3">
 
@@ -335,7 +335,8 @@ export default {
                         fname: this.fname,
                         lname: this.lname,
                         email: this.email,
-                        phone: this.countryCode + this.phone,
+                        countryCode: this.countryCode,
+                        phone: this.phone,
                         state: this.state,
                         country: this.country,
                         referrer: this.referrer,
