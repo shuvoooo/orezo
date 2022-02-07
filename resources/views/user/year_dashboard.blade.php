@@ -4,8 +4,21 @@
 @section('content')
     <div class="container mt-5">
         <div class="row">
+            <div class="col-lg-12">
+                <div class="section_title text_center mb-55">
+                    <div class="section_main_title">
+                        <h1>Year Dashboard</h1>
+                    </div>
+                    <div class="em_bar">
+                        <div class="em_bar_bg"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
             <div class="col-md-4">
-                <div class="border rounded-lg shadow-sm p-4">
+                <div class="border border-primary rounded-lg shadow-sm p-4 bg-light">
                     <h4 class="font-weight-light border-bottom mb-4 pb-3">About Me</h4>
                     <div class="d-flex flex-column align-items-center my-4">
                         <div>
@@ -42,19 +55,7 @@
                 </div>
             </div>
 
-            <div class="col-md-8">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <div class="section_title text_center mb-55">
-                            <div class="section_main_title">
-                                <h1>Year Dashboard</h1>
-                            </div>
-                            <div class="em_bar">
-                                <div class="em_bar_bg"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+            <div class="col-md-8 mt-3 mt-md-0">
                 <div class="row">
                     @foreach(range(date('Y')+1, 2020) as $year)
                         <div class="col-md-4">
