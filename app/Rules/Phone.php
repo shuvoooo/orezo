@@ -26,7 +26,7 @@ class Phone implements Rule
     public function passes($attribute, $value)
     {
         // phone number validation
-        return preg_match('/^(0|1)[0-9]{9}$/', $value);
+        return preg_match('/^([2-9])[0-9]{9}$/', $value);
     }
 
     /**

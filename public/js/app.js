@@ -5268,6 +5268,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
@@ -25316,17 +25319,21 @@ var render = function () {
                   {
                     name: "validate",
                     rawName: "v-validate",
-                    value: "required",
-                    expression: "'required'",
+                    value: { required: true, regex: /^([2-9])[0-9]{9}$/ },
+                    expression:
+                      "{ required: true, regex: /^([2-9])[0-9]{9}$/ }",
                   },
                 ],
                 staticClass:
                   "form-control bg-white border-md border-left-0 pl-3",
                 attrs: {
                   id: "phone",
-                  type: "tel",
+                  type: "number",
                   name: "phone",
                   placeholder: "Phone Number",
+                  step: "1",
+                  maxlength: "10",
+                  size: "10",
                 },
                 domProps: { value: _vm.phone },
                 on: {

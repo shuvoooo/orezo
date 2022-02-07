@@ -86,8 +86,11 @@
 
 
                             <input id="phone" type="number" name="phone" placeholder="Phone Number" v-model="phone"
-                                   v-validate="'required'"
-                                   class="form-control bg-white border-md border-left-0 pl-3">
+                                   step="1"
+                                   maxlength="10"
+                                   size="10"
+                                   v-validate="{ required: true, regex: /^([2-9])[0-9]{9}$/ }"
+                                   class="form-control bg-white border-md border-left-0 pl-3"/>
 
                             <span v-if="errors.has('phone')" class="small text-danger w-100">{{
                                     errors.first('phone')
