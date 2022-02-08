@@ -171,7 +171,11 @@ class PersonalInformationController extends Controller
 
     public function bank_details_store(Request $request)
     {
-        $request->validate(['name' => 'required']);
+        $request->validate([
+            'account_number'=>'required',
+            'name' => 'required',
+            'routing_number'=>'required'
+        ]);
 
         $bank = Bank::where('user_id', Auth::user()->id)->year()->first();
         if ($bank) {
