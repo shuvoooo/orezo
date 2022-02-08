@@ -68,7 +68,7 @@ class TaxDocumentController extends Controller
 
         }
 
-        return redirect()->back()->with('success', 'File downloaded successfully');
+        return redirect()->back()->with('success', 'File uploaded successfully');
     }
 
     public function download_tax_document_delete($id)
