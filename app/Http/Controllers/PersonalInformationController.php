@@ -9,6 +9,7 @@ use App\Models\PersonalInformation;
 use App\Models\SpouseInformation;
 use App\Models\User;
 use App\Notifications\GeneralNotification;
+use App\Rules\Phone;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Notification;
@@ -28,13 +29,10 @@ class PersonalInformationController extends Controller
 
         $request->validate([
             'fname' => 'required|min:3|max:20',
-//            'lname' => 'required',
-//            'email' => 'required',
-//            'phone' => 'required',
-//            'city' => 'required',
-//            'state' => 'required',
-//            'zip' => 'required',
-//            'country' => 'required',
+
+            'mobile' => ['nullable', new Phone()],
+            'email' => 'nullable|email',
+            'work' => ['nullable', new Phone()],
         ]);
 
         $personalInfo = PersonalInformation::where('user_id', Auth::user()->id)->year()->first();
@@ -75,7 +73,9 @@ class PersonalInformationController extends Controller
     {
         $request->validate([
             'spouse_status' => 'required',
-            'email' => 'required|email',
+            'email' => 'nullable|email',
+            'mobile' => ['nullable', new Phone()],
+            'work' => ['nullable', new Phone()],
         ]);
         $user = Auth::user();
 
@@ -184,6 +184,7 @@ class PersonalInformationController extends Controller
         }
 
         $admins = User::where('role', 'admin')->orWhere('role', 'staff')->get();
+
         Notification::send($admins, new GeneralNotification('Bank Details', Auth::user()->name . ' has updated bank details.'));
 
 

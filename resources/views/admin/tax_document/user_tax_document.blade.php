@@ -42,7 +42,7 @@
                                     <span>{{$file->filename}}</span>
                                     <div class="d-flex justify-content-center">
 
-                                        <a href="{{route('download_user_tax_document', $file->id)}}" class="mx-3"><i
+                                        <a href="{{route('admin.download_user_tax_document', $file->id)}}" class="mx-3"><i
                                                 class="fa fa-download"></i></a>
                                     </div>
                                 </li>

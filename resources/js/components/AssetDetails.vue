@@ -38,25 +38,25 @@
 
                         <div class="col-2 px-1">
                             <div class="form-group">
-                                <input type="text" class="form-control" :name="'title'+1"
+                                <input type="date" class="form-control" :name="n+i"
                                        v-model="assets.dateofpurchase[i]">
                             </div>
                         </div>
 
                         <div class="col-2  px-1">
                             <div class="form-group">
-                                <input type="text" class="form-control" :name="'title'+1" v-model="assets.business[i]">
+                                <input type="number" class="form-control" :name="n+i+1" v-model="assets.business[i]">
                             </div>
                         </div>
                         <div class="col-2 pl-1">
                             <div class="form-group">
-                                <input type="text" class="form-control" :name="'title'+1"
+                                <input type="number" class="form-control" :name="n+i+2"
                                        v-model="assets.acquisition[i]">
                             </div>
                         </div>
                         <div class="col-3 pl-1">
                             <div class="form-group">
-                                <input type="text" class="form-control" :name="'title'+1"
+                                <input type="text" class="form-control" :name="n+i+3"
                                        v-model="assets.reiumbersement[i]">
                             </div>
                         </div>

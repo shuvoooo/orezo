@@ -4154,7 +4154,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
-//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: 'ExpenseDetails',
   props: ['miscellaneousDetails'],
@@ -4214,6 +4213,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
+//
+//
 //
 //
 //
@@ -5842,6 +5843,21 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: ['spouseDetails', 'userSpouseStatus'],
   data: function data() {
@@ -5871,31 +5887,36 @@ __webpack_require__.r(__webpack_exports__);
     submit: function submit() {
       var _this = this;
 
-      axios.post(Year + '/info/spouse-details', {
-        fname: this.fname,
-        mname: this.mname,
-        lname: this.lname,
-        date_of_birth: this.date_of_birth,
-        ssn: this.ssn,
-        occupation: this.occupation,
-        street_no: this.street_no,
-        apartment_no: this.apartment_no,
-        zip_code: this.zip_code,
-        city: this.city,
-        state: this.state,
-        country: this.country,
-        mobile: this.mobile,
-        work: this.work,
-        email: this.email,
-        visa_status: this.visa_status,
-        date_of_entry_in_us: this.date_of_entry_in_us,
-        spouse_status: this.spouse_status
-      }).then(function (response) {
-        _this.isLoading = false;
-        _this.msg = response.data.success;
-        location.href = response.data.url;
-      })["catch"](function (error) {
-        _this.backendError(error);
+      this.$validator.validateAll().then(function (result) {
+        if (result) {
+          _this.isLoading = true;
+          axios.post(Year + '/info/spouse-details', {
+            fname: _this.fname,
+            mname: _this.mname,
+            lname: _this.lname,
+            date_of_birth: _this.date_of_birth,
+            ssn: _this.ssn,
+            occupation: _this.occupation,
+            street_no: _this.street_no,
+            apartment_no: _this.apartment_no,
+            zip_code: _this.zip_code,
+            city: _this.city,
+            state: _this.state,
+            country: _this.country,
+            mobile: _this.mobile,
+            work: _this.work,
+            email: _this.email,
+            visa_status: _this.visa_status,
+            date_of_entry_in_us: _this.date_of_entry_in_us,
+            spouse_status: _this.spouse_status
+          }).then(function (response) {
+            _this.isLoading = false;
+            _this.msg = response.data.success;
+            location.href = response.data.url;
+          })["catch"](function (error) {
+            _this.backendError(error);
+          });
+        }
       });
     }
   }
@@ -19765,7 +19786,7 @@ var render = function () {
                         },
                       ],
                       staticClass: "form-control",
-                      attrs: { type: "text", name: "title" + 1 },
+                      attrs: { type: "date", name: n + i },
                       domProps: { value: _vm.assets.dateofpurchase[i] },
                       on: {
                         input: function ($event) {
@@ -19795,7 +19816,7 @@ var render = function () {
                         },
                       ],
                       staticClass: "form-control",
-                      attrs: { type: "text", name: "title" + 1 },
+                      attrs: { type: "number", name: n + i + 1 },
                       domProps: { value: _vm.assets.business[i] },
                       on: {
                         input: function ($event) {
@@ -19821,7 +19842,7 @@ var render = function () {
                         },
                       ],
                       staticClass: "form-control",
-                      attrs: { type: "text", name: "title" + 1 },
+                      attrs: { type: "number", name: n + i + 2 },
                       domProps: { value: _vm.assets.acquisition[i] },
                       on: {
                         input: function ($event) {
@@ -19851,7 +19872,7 @@ var render = function () {
                         },
                       ],
                       staticClass: "form-control",
-                      attrs: { type: "text", name: "title" + 1 },
+                      attrs: { type: "text", name: n + i + 3 },
                       domProps: { value: _vm.assets.reiumbersement[i] },
                       on: {
                         input: function ($event) {
@@ -20006,7 +20027,7 @@ var render = function () {
                     },
                   ],
                   staticClass: "form-control",
-                  attrs: { type: "text", placeholder: "Bank Account Number" },
+                  attrs: { type: "number", placeholder: "Bank Account Number" },
                   domProps: { value: _vm.account_number },
                   on: {
                     input: function ($event) {
@@ -20102,7 +20123,11 @@ var render = function () {
                     },
                   ],
                   staticClass: "form-control",
-                  attrs: { type: "text", placeholder: "Routing Number" },
+                  attrs: {
+                    type: "number",
+                    step: "1",
+                    placeholder: "Routing Number",
+                  },
                   domProps: { value: _vm.routing_number },
                   on: {
                     input: function ($event) {
@@ -20189,7 +20214,9 @@ var render = function () {
                       _c("i", { staticClass: "fa fa-spinner fa-spin" }),
                     ])
                   : _vm._e(),
-                _vm._v("\n                        Save\n                    "),
+                _vm._v(
+                  "\n                            Save\n                    "
+                ),
               ]
             ),
             _vm._v(" "),
@@ -22986,7 +23013,7 @@ var render = function () {
                 _vm._v(" "),
                 _c(
                   "div",
-                  { staticClass: "col-3   d-flex align-items-center " },
+                  { staticClass: "col-3   d-flex align-items-center" },
                   [_c("p", { staticClass: "py-2" }, [_vm._v(_vm._s(n) + " ")])]
                 ),
                 _vm._v(" "),
@@ -23067,7 +23094,11 @@ var render = function () {
                           },
                         ],
                         staticClass: "form-control",
-                        attrs: { type: "text", name: "amount" + i },
+                        attrs: {
+                          type: "number",
+                          step: "0.01",
+                          name: "amount" + i,
+                        },
                         domProps: { value: _vm.miscellaneous.amount[i] },
                         on: {
                           input: function ($event) {
@@ -23197,7 +23228,11 @@ var render = function () {
                           },
                         ],
                         staticClass: "form-control",
-                        attrs: { type: "text", name: "s_amount" + i },
+                        attrs: {
+                          type: "number",
+                          step: "0.01",
+                          name: "s_amount" + i,
+                        },
                         domProps: { value: _vm.miscellaneous.s_amount[i] },
                         on: {
                           input: function ($event) {
@@ -23744,7 +23779,7 @@ var render = function () {
                     staticClass: "col-md-3 col-form-label text-dark",
                     attrs: { for: "occupation" },
                   },
-                  [_vm._v("Occupation\n                        ")]
+                  [_vm._v("Occupation")]
                 ),
                 _vm._v(" "),
                 _c("div", { staticClass: "col-md-9" }, [
@@ -23776,7 +23811,11 @@ var render = function () {
                   _vm._v(" "),
                   _vm.errors.has("occupation")
                     ? _c("small", { staticClass: "form-text text-danger" }, [
-                        _vm._v(_vm._s(_vm.errors.first("occupation"))),
+                        _vm._v(
+                          "\n                                " +
+                            _vm._s(_vm.errors.first("occupation")) +
+                            "\n                            "
+                        ),
                       ])
                     : _vm._e(),
                 ]),
@@ -23894,7 +23933,7 @@ var render = function () {
                     ],
                     staticClass: "form-control",
                     attrs: {
-                      type: "text",
+                      type: "number",
                       id: "zip_code",
                       placeholder: "Zip Code",
                     },
@@ -24293,12 +24332,19 @@ var render = function () {
                         value: _vm.mobile,
                         expression: "mobile",
                       },
+                      {
+                        name: "validate",
+                        rawName: "v-validate",
+                        value: "regex:^([2-9])[0-9]{9}$",
+                        expression: "'regex:^([2-9])[0-9]{9}$'",
+                      },
                     ],
                     staticClass: "form-control",
                     attrs: {
-                      type: "tel",
+                      type: "number",
                       id: "mobile",
                       name: "mobile",
+                      maxlength: "10",
                       placeholder: "Mobile Number",
                     },
                     domProps: { value: _vm.mobile },
@@ -24314,7 +24360,11 @@ var render = function () {
                   _vm._v(" "),
                   _vm.errors.has("mobile")
                     ? _c("small", { staticClass: "form-text text-danger" }, [
-                        _vm._v(_vm._s(_vm.errors.first("mobile"))),
+                        _vm._v(
+                          "\n                                " +
+                            _vm._s(_vm.errors.first("mobile")) +
+                            "\n                            "
+                        ),
                       ])
                     : _vm._e(),
                 ]),
@@ -24339,13 +24389,20 @@ var render = function () {
                         value: _vm.work,
                         expression: "work",
                       },
+                      {
+                        name: "validate",
+                        rawName: "v-validate",
+                        value: "regex:^([2-9])[0-9]{9}$",
+                        expression: "'regex:^([2-9])[0-9]{9}$'",
+                      },
                     ],
                     staticClass: "form-control",
                     attrs: {
-                      type: "text",
+                      type: "number",
                       id: "work",
                       name: "work",
                       placeholder: "Work Number",
+                      maxlength: "10",
                     },
                     domProps: { value: _vm.work },
                     on: {
@@ -24385,6 +24442,12 @@ var render = function () {
                         value: _vm.email,
                         expression: "email",
                       },
+                      {
+                        name: "validate",
+                        rawName: "v-validate",
+                        value: "email",
+                        expression: "'email'",
+                      },
                     ],
                     staticClass: "form-control",
                     attrs: {
@@ -24406,7 +24469,11 @@ var render = function () {
                   _vm._v(" "),
                   _vm.errors.has("email")
                     ? _c("small", { staticClass: "form-text text-danger" }, [
-                        _vm._v(_vm._s(_vm.errors.first("email"))),
+                        _vm._v(
+                          "\n                                " +
+                            _vm._s(_vm.errors.first("email")) +
+                            "\n                            "
+                        ),
                       ])
                     : _vm._e(),
                 ]),
@@ -27713,6 +27780,12 @@ var render = function () {
                         _c("input", {
                           directives: [
                             {
+                              name: "validate",
+                              rawName: "v-validate",
+                              value: "regex:^([2-9])[0-9]{9}$",
+                              expression: "'regex:^([2-9])[0-9]{9}$'",
+                            },
+                            {
                               name: "model",
                               rawName: "v-model",
                               value: _vm.mobile,
@@ -27721,10 +27794,11 @@ var render = function () {
                           ],
                           staticClass: "form-control",
                           attrs: {
-                            type: "tel",
+                            type: "number",
                             id: "mobile",
                             name: "mobile",
                             placeholder: "Mobile Number",
+                            maxlength: "10",
                           },
                           domProps: { value: _vm.mobile },
                           on: {
@@ -27736,6 +27810,20 @@ var render = function () {
                             },
                           },
                         }),
+                        _vm._v(" "),
+                        _vm.errors.has("mobile")
+                          ? _c(
+                              "small",
+                              { staticClass: "form-text text-danger" },
+                              [
+                                _vm._v(
+                                  "\n                                    " +
+                                    _vm._s(_vm.errors.first("mobile")) +
+                                    "\n                                "
+                                ),
+                              ]
+                            )
+                          : _vm._e(),
                       ]),
                     ]),
                     _vm._v(" "),
@@ -27753,6 +27841,12 @@ var render = function () {
                         _c("input", {
                           directives: [
                             {
+                              name: "validate",
+                              rawName: "v-validate",
+                              value: "regex:^([2-9])[0-9]{9}$",
+                              expression: "'regex:^([2-9])[0-9]{9}$'",
+                            },
+                            {
                               name: "model",
                               rawName: "v-model",
                               value: _vm.work,
@@ -27765,6 +27859,7 @@ var render = function () {
                             id: "work",
                             name: "work",
                             placeholder: "Work Number",
+                            maxlength: "10",
                           },
                           domProps: { value: _vm.work },
                           on: {
@@ -27776,6 +27871,20 @@ var render = function () {
                             },
                           },
                         }),
+                        _vm._v(" "),
+                        _vm.errors.has("work")
+                          ? _c(
+                              "small",
+                              { staticClass: "form-text text-danger" },
+                              [
+                                _vm._v(
+                                  "\n                                    " +
+                                    _vm._s(_vm.errors.first("work")) +
+                                    "\n                                "
+                                ),
+                              ]
+                            )
+                          : _vm._e(),
                       ]),
                     ]),
                     _vm._v(" "),
@@ -27792,6 +27901,12 @@ var render = function () {
                       _c("div", { staticClass: "col-md-9" }, [
                         _c("input", {
                           directives: [
+                            {
+                              name: "validate",
+                              rawName: "v-validate",
+                              value: "email",
+                              expression: "'email'",
+                            },
                             {
                               name: "model",
                               rawName: "v-model",
@@ -27816,6 +27931,20 @@ var render = function () {
                             },
                           },
                         }),
+                        _vm._v(" "),
+                        _vm.errors.has("email")
+                          ? _c(
+                              "small",
+                              { staticClass: "form-text text-danger" },
+                              [
+                                _vm._v(
+                                  "\n                                    " +
+                                    _vm._s(_vm.errors.first("email")) +
+                                    "\n                                "
+                                ),
+                              ]
+                            )
+                          : _vm._e(),
                       ]),
                     ]),
                     _vm._v(" "),

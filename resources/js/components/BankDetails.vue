@@ -12,7 +12,7 @@
                         <div class="form-group row">
                             <label class="col-md-3 col-form-label text-dark">Bank Account Number</label>
                             <div class="col-md-9">
-                                <input type="text" class="form-control" v-model="account_number"
+                                <input type="number" class="form-control" v-model="account_number"
                                        placeholder="Bank Account Number">
                             </div>
                         </div>
@@ -35,7 +35,7 @@
                         <div class="form-group row">
                             <label class="col-md-3 col-form-label text-dark">Routing Number</label>
                             <div class="col-md-9">
-                                <input type="text" class="form-control" v-model="routing_number"
+                                <input type="number" step="1" class="form-control" v-model="routing_number"
                                        placeholder="Routing Number">
                             </div>
                         </div>
@@ -62,10 +62,10 @@
                             @click.prevent="save"
                             :disabled="isLoading"
                         >
-                        <span class="spinner" v-if="isLoading">
-                          <i class="fa fa-spinner fa-spin"></i>
-                        </span>
-                            Save
+                            <span class="spinner" v-if="isLoading">
+                              <i class="fa fa-spinner fa-spin"></i>
+                            </span>
+                                Save
                         </button>
                         <span class="badge badge-info ml-4" v-if="msg">{{ msg }}</span>
                     </div>
@@ -98,10 +98,12 @@ export default {
                 account_holder_name: this.account_holder_name,
                 routing_number: this.routing_number,
                 account_type: this.account_type,
+
             }).then(response => {
                 this.isLoading = false;
                 this.msg = response.data.success;
                 location.href = response.data.url;
+
             }).catch(error => {
                 this.backendError(error);
             });

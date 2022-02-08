@@ -161,15 +161,13 @@
                                 <small
                                     v-if="errors.has('marital_status')"
                                     class="form-text text-danger"
-                                >{{ errors.first('marital_status') }}</small
-                                >
+                                >{{ errors.first('marital_status') }}</small>
                             </div>
                         </div>
 
                         <div class="form-group row">
-                            <label for="occupation" class="col-md-3 col-form-label text-dark"
-                            >Occupation
-                            </label>
+                            <label for="occupation" class="col-md-3 col-form-label text-dark">Occupation</label>
+
                             <div class="col-md-9">
                                 <input
                                     type="text"
@@ -178,11 +176,10 @@
                                     v-model="occupation"
                                     placeholder="Occupation"
                                 />
-                                <small
-                                    v-if="errors.has('occupation')"
-                                    class="form-text text-danger"
-                                >{{ errors.first('occupation') }}</small
-                                >
+
+                                <small v-if="errors.has('occupation')" class="form-text text-danger">
+                                    {{ errors.first('occupation') }}
+                                </small>
                             </div>
                         </div>
 
@@ -234,7 +231,7 @@
                             </label>
                             <div class="col-md-9">
                                 <input
-                                    type="text"
+                                    type="number"
                                     class="form-control"
                                     id="zip_code"
                                     v-model="zip_code"
@@ -276,7 +273,6 @@
                                     class="form-control"
                                     id="state"
                                     v-model="state"
-
                                 >
                                     <option value="">Select State</option>
                                     <option value="Alabama">Alabama</option>
@@ -370,18 +366,21 @@
                             </label>
                             <div class="col-md-9">
                                 <input
-                                    type="tel"
+                                    type="number"
                                     class="form-control"
                                     id="mobile"
                                     v-model="mobile"
                                     name="mobile"
+                                    maxlength="10"
                                     placeholder="Mobile Number"
+                                    v-validate="'regex:^([2-9])[0-9]{9}$'"
                                 />
                                 <small
                                     v-if="errors.has('mobile')"
                                     class="form-text text-danger"
-                                >{{ errors.first('mobile') }}</small
                                 >
+                                    {{ errors.first('mobile') }}
+                                </small>
                             </div>
                         </div>
 
@@ -391,12 +390,14 @@
                             </label>
                             <div class="col-md-9">
                                 <input
-                                    type="text"
+                                    type="number"
                                     class="form-control"
                                     id="work"
+
                                     v-model="work"
                                     name="work"
                                     placeholder="Work Number"
+                                    maxlength="10" v-validate="'regex:^([2-9])[0-9]{9}$'"
                                 />
                                 <small v-if="errors.has('work')" class="form-text text-danger">{{
                                         errors.first('work')
@@ -416,12 +417,11 @@
                                     v-model="email"
                                     name="email"
                                     placeholder="Email Address"
+                                    v-validate="'email'"
                                 />
-                                <small
-                                    v-if="errors.has('email')"
-                                    class="form-text text-danger"
-                                >{{ errors.first('email') }}</small
-                                >
+                                <small v-if="errors.has('email')" class="form-text text-danger">
+                                    {{ errors.first('email') }}
+                                </small>
                             </div>
                         </div>
 
@@ -453,6 +453,7 @@
                             >Date Of Entry in US
                             </label>
                             <div class="col-md-9">
+
                                 <input
                                     type="date"
                                     class="form-control"
@@ -461,6 +462,7 @@
                                     name="date_of_entry_in_us"
                                     placeholder="Date Of Entry in US"
                                 />
+
                                 <small
                                     v-if="errors.has('date_of_entry_in_us')"
                                     class="form-text text-danger"
@@ -549,6 +551,7 @@ export default {
                         email: this.email,
                         visa_status: this.visa_status,
                         date_of_entry_in_us: this.date_of_entry_in_us,
+
                     }).then(response => {
                         this.isLoading = false;
                         this.msg = response.data.success;

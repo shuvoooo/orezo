@@ -38,12 +38,11 @@
                             {{ i + 1 }}
                         </div>
 
-                        <div class="col-3   d-flex align-items-center ">
+                        <div class="col-3   d-flex align-items-center">
                             <p class="py-2">{{ n }} </p>
                         </div>
 
-                        <div
-                            class="col-1 pl-1  d-flex align-items-center justify-content-center">
+                        <div class="col-1 pl-1  d-flex align-items-center justify-content-center">
                             <div class="custom-control custom-switch">
                                 <input type="checkbox" v-model="miscellaneous.taxpayer[i]" class="custom-control-input"
                                        :id="'idCustomSw'+i">
@@ -53,7 +52,7 @@
 
                         <div class="col-1   d-flex align-items-center  pl-1">
                             <div class="form-group">
-                                <input type="text" class="form-control" :name="'amount'+i"
+                                <input type="number" step="0.01" class="form-control" :name="'amount'+i"
                                        v-model="miscellaneous.amount[i]"/>
                             </div>
                         </div>
@@ -76,7 +75,7 @@
 
                         <div class="col-1   d-flex align-items-center  px-1">
                             <div class="form-group">
-                                <input type="text" class="form-control" :name="'s_amount'+i"
+                                <input type="number" step="0.01" class="form-control" :name="'s_amount'+i"
                                        v-model="miscellaneous.s_amount[i]"/>
                             </div>
                         </div>
@@ -154,7 +153,7 @@ export default {
                 //
                 this.isLoading = false;
                 this.msg = response.data.message;
-                location.href=response.data.url;
+                location.href = response.data.url;
             }).catch(error => {
                 this.backendError(error)
             });

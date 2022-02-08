@@ -71,7 +71,7 @@
 <hr class="p-0 m-0"/>
 
 <div class="d-flex">
-    <div class="float-left">
+    <div class="float-left align-self-stretch border-right">
         <div class="sidebar-container">
             @include('shared._sidebar')
         </div>

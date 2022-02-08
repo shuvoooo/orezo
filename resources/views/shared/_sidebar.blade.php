@@ -91,17 +91,6 @@
         z-index: 100;
     }
 
-    /*.sidebar ul {*/
-    /*    margin-bottom: 180px !important;*/
-    /*}*/
-
-    .sidebar .navbar-search {
-        border: 0px;
-        -webkit-box-shadow: none !important;
-        -moz-box-shadow: none !important;
-        box-shadow: none !important;
-    }
-
     .sidebar.closed {
         display: none;
     }
@@ -247,7 +236,7 @@
         content: "";
         width: 10%;
         height: 100%;
-        background: #0c5adb;
+        /*background: #0c5adb;*/
         top: 0;
         transition: .5s;
         z-index: -1;

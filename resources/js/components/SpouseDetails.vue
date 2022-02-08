@@ -193,9 +193,14 @@
                                 <label class=" text-dark  col-md-3 col-form-label" for="mobile">Mobile Number
                                 </label>
                                 <div class="col-md-9">
-                                    <input type="tel" class="form-control" id="mobile" name="mobile"
+                                    <input type="number" class="form-control" id="mobile" name="mobile"
                                            placeholder="Mobile Number"
-                                           v-model="mobile">
+                                           maxlength="10" v-validate="'regex:^([2-9])[0-9]{9}$'"
+                                           v-model="mobile"/>
+
+                                    <small v-if="errors.has('mobile')" class="form-text text-danger">
+                                        {{ errors.first('mobile') }}
+                                    </small>
                                 </div>
                             </div>
 
@@ -204,7 +209,12 @@
                                 <div class="col-md-9">
                                     <input type="number" class="form-control" id="work" name="work"
                                            placeholder="Work Number"
-                                           v-model="work">
+                                           maxlength="10" v-validate="'regex:^([2-9])[0-9]{9}$'"
+                                           v-model="work"/>
+
+                                    <small v-if="errors.has('work')" class="form-text text-danger">
+                                        {{ errors.first('work') }}
+                                    </small>
                                 </div>
                             </div>
 
@@ -213,7 +223,12 @@
                                 <div class="col-md-9">
                                     <input type="email" class="form-control" id="email" name="email"
                                            placeholder="Email Address"
-                                           v-model="email">
+                                           v-validate="'email'"
+                                           v-model="email"/>
+
+                                    <small v-if="errors.has('email')" class="form-text text-danger">
+                                        {{ errors.first('email') }}
+                                    </small>
                                 </div>
                             </div>
 
@@ -291,31 +306,37 @@ export default {
 
     methods: {
         submit() {
-            axios.post(Year + '/info/spouse-details', {
-                fname: this.fname,
-                mname: this.mname,
-                lname: this.lname,
-                date_of_birth: this.date_of_birth,
-                ssn: this.ssn,
-                occupation: this.occupation,
-                street_no: this.street_no,
-                apartment_no: this.apartment_no,
-                zip_code: this.zip_code,
-                city: this.city,
-                state: this.state,
-                country: this.country,
-                mobile: this.mobile,
-                work: this.work,
-                email: this.email,
-                visa_status: this.visa_status,
-                date_of_entry_in_us: this.date_of_entry_in_us,
-                spouse_status: this.spouse_status,
-            }).then(response => {
-                this.isLoading = false;
-                this.msg = response.data.success;
-                location.href = response.data.url;
-            }).catch(error => {
-                this.backendError(error);
+
+            this.$validator.validateAll().then(result => {
+                if (result) {
+                    this.isLoading = true;
+                    axios.post(Year + '/info/spouse-details', {
+                        fname: this.fname,
+                        mname: this.mname,
+                        lname: this.lname,
+                        date_of_birth: this.date_of_birth,
+                        ssn: this.ssn,
+                        occupation: this.occupation,
+                        street_no: this.street_no,
+                        apartment_no: this.apartment_no,
+                        zip_code: this.zip_code,
+                        city: this.city,
+                        state: this.state,
+                        country: this.country,
+                        mobile: this.mobile,
+                        work: this.work,
+                        email: this.email,
+                        visa_status: this.visa_status,
+                        date_of_entry_in_us: this.date_of_entry_in_us,
+                        spouse_status: this.spouse_status,
+                    }).then(response => {
+                        this.isLoading = false;
+                        this.msg = response.data.success;
+                        location.href = response.data.url;
+                    }).catch(error => {
+                        this.backendError(error);
+                    });
+                }
             });
         }
     }
