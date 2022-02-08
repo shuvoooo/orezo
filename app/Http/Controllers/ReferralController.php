@@ -93,19 +93,24 @@ class ReferralController extends Controller
             'mobile' => ['required', new Phone()],
             'email' => 'required|email',
             'by_email' => 'required|email',
-            'by_phone' => ['required', new Phone()]¬,
+            'by_phone' => ['required', new Phone()],
         ]);
 
-
-        Mail::raw('You are welcome to https://www.etaxplanner.com/ the invitation submitted by ' . $request->by_name, function ($message) use ($request) {
-            $message->to($request->email);
-            $message->subject('Refer a Friends!');
-        });
-
-        $referral = Refer::create($request->all());
+        try {
 
 
-        return redirect()->route('referrals.create')->with('success', 'Your Referral Code is: ' . $request->mobile);
+            Mail::raw('You are welcome to https://www.etaxplanner.com/ the invitation submitted by ' . $request->by_name, function ($message) use ($request) {
+                $message->to($request->email);
+                $message->subject('Refer a Friends!');
+            });
+
+            $referral = Refer::create($request->all());
+
+
+            return redirect()->route('referrals.create')->with('success', 'Your Referral Code is: ' . $request->mobile);
+        } catch (\Exception $e) {
+            return redirect()->route('referrals.create')->with('danger', 'Something went wrong, please try again later');
+        }
     }
 
     /**
