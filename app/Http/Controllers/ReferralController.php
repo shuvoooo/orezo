@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Refer;
+use App\Rules\Phone;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 use Yajra\DataTables\Facades\DataTables;
@@ -89,8 +90,10 @@ class ReferralController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'mobile' => 'required',
-            'email' => 'required|required',
+            'mobile' => ['required', new Phone()],
+            'email' => 'required|email',
+            'by_email' => 'required|email',
+            'by_phone' => ['required', new Phone()]¬,
         ]);
 
 
