@@ -13,27 +13,27 @@ class ProgressControl
 
     public static $progressList = [
         "personal_information" => 1,
-        "personal_information_store" => 9,
+        "personal_information_store" => 19,
         "spouse_details" => 1,
         "spouse_details_store" => 9,
-        "dependent_details" => 1,
-        "dependent_details_store" => 9,
+        "dependent_details" => 0,
+        "dependent_details_store" => 0,
         "bank_details" => 1,
         "bank_details_store" => 9,
-        "employer_details" => 1,
-        "employer_details_store" => 7,
-        "project_details" => 1,
-        "project_details_store" => 7,
+        "employer_details" => 0,
+        "employer_details_store" => 0,
+        "project_details" => 0,
+        "project_details_store" => 0,
         "residency_details" => 1,
-        "residency_details_store" => 7,
+        "residency_details_store" => 9,
         "expense_details" => 1,
-        "expense_details_store" => 7,
+        "expense_details_store" => 9,
         "asset_details" => 1,
-        "asset_details_store" => 7,
+        "asset_details_store" => 9,
         "miscellaneous_details" => 1,
-        "miscellaneous_details_store" => 7,
-        "upload_tax_documents" => 1,
-        "upload_tax_documents_store" => 11
+        "miscellaneous_details_store" => 9,
+        "upload_tax_documents" => 5,
+        "upload_tax_documents_store" => 15
     ];
 
     public static function processUpdate(): bool
