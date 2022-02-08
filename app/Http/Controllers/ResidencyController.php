@@ -38,10 +38,13 @@ class ResidencyController extends Controller
     }
 
 
-    public function residency_details_destroy($id)
+    public function residency_details_destroy($year, Residency $residency)
     {
-        $residency_details = Residency::find($id);
-        $residency_details->delete();
-        return redirect()->back()->with('success', 'Project Deleted Successfully');
+        try {
+            $residency->delete();
+            return redirect()->back()->with('success', 'Residency deleted successfully.');
+        } catch (\Exception $e) {
+            return redirect()->back()->with('error', $e->getMessage());
+        }
     }
 }

@@ -39,10 +39,13 @@ class ProjectController extends Controller
     }
 
 
-    public function project_details_destroy($id)
+    public function project_details_destroy($year, Project $project)
     {
-        $project_details = Project::find($id);
-        $project_details->delete();
-        return redirect()->back()->with('success', 'Project Deleted Successfully');
+        try {
+            $project->delete();
+            return redirect()->back()->with('success', 'Project deleted successfully.');
+        } catch (\Exception $e) {
+            return redirect()->back()->with('error', $e->getMessage());
+        }
     }
 }

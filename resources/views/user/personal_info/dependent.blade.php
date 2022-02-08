@@ -29,7 +29,7 @@
                             <td>{{$item->visa_status}}</td>
                             <td>
                                 <form method="post"
-                                      action="{{route_with_year('dependent_details_destroy',['dependent_details'=>$item->id])}}">
+                                      action="{{route_with_year('dependent_details_destroy',['dependentDetail'=>$item->id])}}">
                                     @method('DELETE')
                                     @csrf
                                     <button type="submit" class="btn btn-danger btn-sm">

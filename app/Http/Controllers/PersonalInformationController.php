@@ -148,18 +148,14 @@ class PersonalInformationController extends Controller
 
     }
 
-    public function dependent_details_destroy(DependentDetails $dependentDetails)
+    public function dependent_details_destroy($year, DependentDetails $dependentDetail)
     {
         try {
-            $dependentDetails->delete();
-            return response()->json([
-                'success' => 'Dependent Details deleted successfully.',
-                'url' => route_with_year('dependent_details')
-            ]);
+            $dependentDetail->delete();
+
+            return redirect()->back()->with('success', 'Dependent Details deleted successfully.');
         } catch (\Exception $e) {
-            return response()->json([
-                'error' => $e->getMessage()
-            ], 500);
+            return redirect()->back()->with('error', $e->getMessage());
         }
     }
 

@@ -32,7 +32,7 @@ Route::group(['middleware' => ['auth', UserMiddleware::class, 'verified']], func
 
             Route::get('dependent-details', [PersonalInformationController::class, 'dependent_details'])->name('dependent_details');
             Route::post('dependent-details', [PersonalInformationController::class, 'dependent_details_store'])->name('dependent_details_store');
-            Route::delete('dependent-details/{dependent_details}', [PersonalInformationController::class, 'dependent_details_destroy'])->name('dependent_details_destroy');
+            Route::delete('dependent-details/{dependentDetail}', [PersonalInformationController::class, 'dependent_details_destroy'])->name('dependent_details_destroy');
 
             Route::get('bank_details', [PersonalInformationController::class, 'bank_details'])->name('bank_details');
             Route::post('bank_details', [PersonalInformationController::class, 'bank_details_store'])->name('bank_details_store');
@@ -43,7 +43,7 @@ Route::group(['middleware' => ['auth', UserMiddleware::class, 'verified']], func
         Route::group(['prefix' => 'tax'], function () {
             Route::get('employer_details', [EmployerController::class, 'employer_details'])->name('employer_details');
             Route::post('employer_details', [EmployerController::class, 'employer_details_store'])->name('employer_details_store');
-            Route::delete('employer_details/{tax}', [EmployerController::class, 'employer_details_destroy'])->name('employer_details_destroy');
+            Route::delete('employer_details/{employer}', [EmployerController::class, 'employer_details_destroy'])->name('employer_details_destroy');
 
             Route::get('project', [ProjectController::class, 'project_details'])->name('project_details');
             Route::post('project', [ProjectController::class, 'project_details_store'])->name('project_details_store');

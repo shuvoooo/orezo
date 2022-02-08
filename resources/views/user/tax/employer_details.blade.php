@@ -32,7 +32,7 @@
                             <td>{{$item->state}}</td>
                             <td>
                                 <form method="post"
-                                      action="{{route_with_year('employer_details_destroy',['tax'=>$item->id])}}">
+                                      action="{{route_with_year('employer_details_destroy',['employer'=>$item->id])}}">
                                     @method('DELETE')
                                     @csrf
                                     <button type="submit" class="btn btn-danger btn-sm">

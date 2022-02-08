@@ -115,9 +115,11 @@
             @endif
 
 
-            @foreach (['danger', 'warning', 'success', 'info','error'] as $message)
+            @foreach (['danger', 'warning', 'success', 'info', 'error'] as $message)
                 @if(session()->has( $message))
-                    <div class="alert alert-{{ $message }}">{{ session()->get($message) }}</div>
+                    <div class="alert alert-{{ $message == 'error' ? 'danger' : $message }}">
+                        {{ session()->get($message) }}
+                    </div>
                 @endif
             @endforeach
 

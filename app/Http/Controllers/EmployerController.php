@@ -47,9 +47,9 @@ class EmployerController extends Controller
     }
 
 
-    public function employer_details_destroy(Employer $employer): RedirectResponse
+    public function employer_details_destroy($year, Employer $employer): RedirectResponse
     {
         $employer->delete();
-        return redirect()->back()->with('message', 'Employer Details Deleted Successfully');
+        return redirect()->back()->with('success', 'Employer Details Deleted Successfully');
     }
 }
