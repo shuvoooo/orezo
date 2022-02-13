@@ -54,12 +54,19 @@
                         </div>
 
                         <div class="col-1 pl-1">
-                            <button @click="handleSave(i)" class="btn btn-success ">
+                            <button title="Click to Save" @click="handleSave(i)" class="btn btn-success ">
                                 <span class="spinner" v-if="fileLoading[i]">
                                   <i class="fa fa-spinner fa-spin"></i>
                                 </span>
                                 <i class="fa fa-save"></i>
                             </button>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-12 text-center mt-10">
+                            <button @click="handleFinish()" class="btn btn-primary" style="width: 200px">Finish</button>
+                            <p class="text-danger">NB: Before click on finish button please SAVE the each row data from action column.</p>
                         </div>
                     </div>
 
@@ -195,8 +202,13 @@ export default {
                 this.fileLoading[i] = false;
                 this.backendError(error);
             });
+        },
+        handleFinish(){
+            if (confirm('Did you save and you want to finish?') ){
+                location.reload();
+            }
+            return false;
         }
-
 
     }
 }
