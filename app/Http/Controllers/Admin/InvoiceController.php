@@ -55,6 +55,9 @@ class InvoiceController extends Controller
                     if ($invoice['status'] != 'paid')
                         $view .= '<a href="' . route('admin.invoice.edit', ['user' => $invoice['user_id'], 'year' => $invoice['year']]) . '" class="btn btn-xs btn-primary btn-sm ml-2"><i class="fa fa-edit"></i> Edit</a>';
 
+                    //delete
+                    $view .= '<a href="' . route('admin.invoice.delete', ['id' => $invoice['id'] * $this->encrypt]) . '" class="btn btn-xs btn-danger btn-sm ml-2"><i class="fa fa-trash"></i> Delete</a>';
+
                     return '<div class="d-flex">' . $view . '</div>';
                 })
                 ->rawColumns(['action'])
@@ -311,4 +314,22 @@ class InvoiceController extends Controller
         return view('admin.invoice.thankyou');
     }
 
+
+    public function delete($id)
+    {
+        $id = $id / $this->encrypt;
+
+        $invoice = Invoice::find($id);
+        if (!empty($invoice)) {
+            $invoiceItems = InvoiceItem::where('invoice_id', $invoice->id)->get();
+            foreach ($invoiceItems as $item) {
+                $item->delete();
+            }
+
+            $invoice->delete();
+
+            return redirect()->back()->with('success', 'Invoice deleted successfully');
+        }
+        return redirect()->back()->with('error', 'Invoice not found');
+    }
 }
