@@ -89,8 +89,18 @@
         <div class="row border-info border-top pt-3 mt-2">
             <div class="col-md-12 d-flex justify-content-center">
                 <button class="btn btn-info mx-2" @click="addItem">+ Add More Item</button>
-                <button class="btn btn-primary mx-2" @click="onSubmit(0)">Save</button>
-                <button class="btn btn-success mx-2" @click="onSubmit(1)">Save & Email</button>
+                <button class="btn btn-primary mx-2" @click="onSubmit(0)">
+                    <span class="spinner" v-if="isLoading">
+                        <i class="fa fa-spinner fa-spin"></i>
+                    </span>
+                    Save
+                </button>
+                <button class="btn btn-success mx-2" @click="onSubmit(1)">
+                    <span class="spinner" v-if="isLoadingEmail">
+                        <i class="fa fa-spinner fa-spin"></i>
+                    </span>
+                    Save & Email
+                </button>
             </div>
 
             <div class="col-12">
@@ -116,6 +126,8 @@ export default {
             tax: 0,
             totalAmount: 0,
             invoiceItems: [],
+            isLoading: false,
+            isLoadingEmail: false,
         }
     },
     created() {
@@ -146,12 +158,18 @@ export default {
     methods: {
         onSubmit(withEmail) {
 
+            if (withEmail) {
+                this.isLoadingEmail = true;
+            } else {
+                this.isLoading = true;
+            }
+
             let data = {
                 email: this.email,
                 title: this.title,
                 comment: this.comment,
                 invoiceItems: this.invoiceItems,
-                withEmail: withEmail,
+                send_email: withEmail,
             };
 
 
@@ -160,6 +178,12 @@ export default {
                 location.href = response.data.redirect;
             }).catch(error => {
                 this.backendError(error)
+            }).finally(() => {
+                if (withEmail) {
+                    this.isLoadingEmail = false;
+                } else {
+                    this.isLoading = false;
+                }
             });
         },
 

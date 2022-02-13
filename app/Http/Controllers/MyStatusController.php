@@ -20,15 +20,20 @@ class MyStatusController extends Controller
     public function view_tax_summary()
     {
         $user_id = Auth::user()->id;
-        // $invoiceList = Invoice::where('user_id', $user_id)->orderBy('id', 'desc')->get();
 
-        $invoice = Invoice::where(['user_id' => $user_id, 'payment_status' => 0])->orderBy('id', 'desc')->first();
 
-        $invoiceitems = empty($invoice) ? [] : Invoiceitem::byInvoiceId($invoice->id)->get();
-        $total = empty($invoice) ? 0 : Invoice::getTotal($invoice->id);
-        // dd($total);
+        $invoice = Invoice::where(['user_id' => $user_id, 'year' => request('year')])->first();
 
-        return view('user.view_tax_summary', compact('invoiceitems', 'invoice', 'total'));
+        if (!$invoice) {
+            return redirect()->back()->with('error', 'No invoice found for this year');
+        }
+
+        $invoiceItems = InvoiceItem::where(['invoice_id' => $invoice->id])->get();
+
+        $total = Invoice::getTotal($invoice->id);
+
+
+        return view('user.view_tax_summary', compact('invoiceItems', 'invoice', 'total'));
     }
 
 

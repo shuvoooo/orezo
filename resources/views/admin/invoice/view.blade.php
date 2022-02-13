@@ -37,19 +37,27 @@
                 <div class="col-md-8">
                     <div class="form-group">
                         <label for="" class="col-form-label text-dark">Remakes</label>
-                        <textarea class="form-control"></textarea>
+                        <textarea class="form-control">{{$invoice->description}}</textarea>
                     </div>
                 </div>
 
                 <div class="d-flex justify-content-center">
-                    {{--<a href="#">--}}
-                        {{--<img src="https://www.paytabs.com/theme/express_checkout/images/checkout.png" height="60"/>--}}
-                    {{--</a>--}}
+                {{--<a href="#">--}}
+                {{--<img src="https://www.paytabs.com/theme/express_checkout/images/checkout.png" height="60"/>--}}
+                {{--</a>--}}
 
-                    <!-- Button Code for PayTabs Express Checkout -->
-                    <div class="text-center">
-                        <div class="PT_express_checkout"></div>
-                    </div>
+                <!-- Button Code for PayTabs Express Checkout -->
+                    @if($invoice->payment_status == 0)
+                        <div class="text-center">
+                            <div class="PT_express_checkout"></div>
+                        </div>
+                    @else
+                        <div class="text-center">
+                            <div class="alert alert-success">
+                                <strong> Payment has been made.</strong>
+                            </div>
+                        </div>
+                    @endif
 
                 </div>
             </div>
@@ -62,7 +70,7 @@
     <script src="https://www.paytabs.com/theme/express_checkout/js/jquery-1.11.1.min.js"></script>
     <script src="https://www.paytabs.com/express/express_checkout_v3.js"></script>
     <script type="text/javascript">
-        jQuery(document).ready(function(){
+        jQuery(document).ready(function () {
             Paytabs("#express_checkout").expresscheckout({
                 settings: {
                     merchant_id: "{{env('MERCHANT_ID')}}",
@@ -83,9 +91,21 @@
         })
     </script>
     <style type="text/css">
-        #en_button { height: 50px; width:300px; background-size: contain;}
-        input, select, textarea { display: inline-block; width: 80%; padding:3px;}
-        table td{ padding-bottom: 10px;}
+        #en_button {
+            height: 50px;
+            width: 300px;
+            background-size: contain;
+        }
+
+        input, select, textarea {
+            display: inline-block;
+            width: 80%;
+            padding: 3px;
+        }
+
+        table td {
+            padding-bottom: 10px;
+        }
     </style>
 
 @endpush

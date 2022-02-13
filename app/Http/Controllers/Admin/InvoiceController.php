@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Mail\InvoiceMail;
 use App\Models\Invoice;
 use App\Models\InvoiceItem;
 use App\Models\User;
@@ -177,7 +178,7 @@ class InvoiceController extends Controller
     public function update(User $user, Request $request)
     {
         $request->validate([
-            'invoiceItems' => 'required|array',
+            'invoiceItems' => 'required|array'
         ]);
 
         try {
@@ -240,29 +241,11 @@ class InvoiceController extends Controller
 
     public function sendInvoice($invoice, $user)
     {
-
-        $app_name = env('APP_NAME');
         $to = empty($invoice->user_email) ? $invoice->user_email : $user->email;
-
         $invoice_link = route('invoice.show', ['id' => $invoice->id * $this->encrypt]);
 
-        $message = "<p>Dear {$user->name},</p><br>";
-        $message .= "<p>You are assigned an invoice.</p>";
-        $message .= "<p>Invoice Title: {$invoice->name}</p>";
-        $message .= "<p>Description: {$invoice->description}</p>";
-        $message .= "Please click on the below button or copy the below link and paste on the url to see the invoice details.";
-        $message .= "<p><a class='btn' href='{$invoice_link}'>Invoice Details</a></p>";
-        $message .= "<p>Link: {$invoice_link}</p>";
-        $message .= "<br><p>Thanks<br>{$app_name}</p>";
-
-
-        $title = "An Invoice from {$app_name}";
-
         try {
-            Mail::send('email.default', ['title' => $title, 'content' => $message], function ($message) use ($title, $to) {
-                $message->to($to);
-                $message->subject($title);
-            });
+            Mail::to($to)->send(new InvoiceMail($invoice, $user, $invoice_link));
         } catch (\Exception $e) {
             return $e->getMessage();
         }

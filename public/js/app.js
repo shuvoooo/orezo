@@ -3804,6 +3804,16 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: ['invoice', 'lastInvoiceItems', 'user', 'invoiceLink'],
@@ -3814,7 +3824,9 @@ __webpack_require__.r(__webpack_exports__);
       comment: '',
       tax: 0,
       totalAmount: 0,
-      invoiceItems: []
+      invoiceItems: [],
+      isLoading: false,
+      isLoadingEmail: false
     };
   },
   created: function created() {
@@ -3841,18 +3853,30 @@ __webpack_require__.r(__webpack_exports__);
     onSubmit: function onSubmit(withEmail) {
       var _this = this;
 
+      if (withEmail) {
+        this.isLoadingEmail = true;
+      } else {
+        this.isLoading = true;
+      }
+
       var data = {
         email: this.email,
         title: this.title,
         comment: this.comment,
         invoiceItems: this.invoiceItems,
-        withEmail: withEmail
+        send_email: withEmail
       };
       axios.post('/admin/invoice/' + this.user.id + '/edit?year=' + window.Year, data).then(function (response) {
         alert(response.data.message);
         location.href = response.data.redirect;
       })["catch"](function (error) {
         _this.backendError(error);
+      })["finally"](function () {
+        if (withEmail) {
+          _this.isLoadingEmail = false;
+        } else {
+          _this.isLoading = false;
+        }
       });
     },
     removeItem: function removeItem(index) {
@@ -22586,7 +22610,14 @@ var render = function () {
                 },
               },
             },
-            [_vm._v("Save")]
+            [
+              _vm.isLoading
+                ? _c("span", { staticClass: "spinner" }, [
+                    _c("i", { staticClass: "fa fa-spinner fa-spin" }),
+                  ])
+                : _vm._e(),
+              _vm._v("\n                Save\n            "),
+            ]
           ),
           _vm._v(" "),
           _c(
@@ -22599,7 +22630,14 @@ var render = function () {
                 },
               },
             },
-            [_vm._v("Save & Email")]
+            [
+              _vm.isLoadingEmail
+                ? _c("span", { staticClass: "spinner" }, [
+                    _c("i", { staticClass: "fa fa-spinner fa-spin" }),
+                  ])
+                : _vm._e(),
+              _vm._v("\n                Save & Email\n            "),
+            ]
           ),
         ]),
         _vm._v(" "),
