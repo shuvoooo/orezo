@@ -65,7 +65,9 @@ Route::group(['middleware' => ['auth', UserMiddleware::class, 'verified']], func
             Route::post('miscellaneous', [MiscellaneousController::class, 'miscellaneous_details_store'])->name('miscellaneous_details_store');
 
             Route::get('upload-tax-documents', [DocumentController::class, 'upload_tax_documents'])->name('upload_tax_documents');
-            Route::post('upload-tax-documents', [DocumentController::class, 'upload_tax_documents_store'])->name('upload_tax_documents_store');
+            Route::post('upload-tax-documents-file', [DocumentController::class, 'upload_tax_documents_store_file'])->name('upload_tax_documents_store_file');
+            Route::post('upload-tax-documents-file-delete', [DocumentController::class, 'upload_tax_documents_file_delete'])->name('upload_tax_documents_file_delete');
+            Route::post('upload-tax-documents-comments', [DocumentController::class, 'upload_tax_documents_store_comments'])->name('upload_tax_documents_store_comments');
 
         });
 

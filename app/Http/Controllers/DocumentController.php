@@ -34,37 +34,27 @@ class DocumentController extends Controller
         return view('user.documents.tax_document_upload', compact('document'));
     }
 
-    public function upload_tax_documents_store(Request $request): JsonResponse
+    public function upload_tax_documents_store_file(Request $request): JsonResponse
     {
         $request->validate([
-            'files.*' => 'required|mimes:pdf,doc,docx,jpg,jpeg,png,bmp,gif,svg,xlsx,csv',
-            'title' => 'required',
-            'comments' => 'nullable',
-            'deletedFileIds' => 'json'
+            'file' => 'required|mimes:pdf,doc,docx,jpg,jpeg,png,bmp,gif,svg,xlsx,csv',
+            'title' => 'required'
         ]);
-
-        foreach (json_decode($request->deletedFileIds) ?? [] as $deletedFileId) {
-            $fileDelete = Upload::find($deletedFileId);
-            if ($fileDelete) {
-                Storage::delete($fileDelete->path);
-                $fileDelete->delete();
-            }
-        }
 
 
         $file_url = collect();
-        if ($request->hasFile('files')) {
-            foreach ($request->file('files') as $file) {
-                $file_name = $file->getClientOriginalName();
-                $file_ext = $file->getClientOriginalExtension();
-                $file_name_only = basename($file_name, '.' . $file_ext);
-                $file_new_name = $file_name_only . '_' . time() . '.' . $file_ext;
+        if ($request->hasFile('file')) {
+            $file = $request->file('file');
+            $file_name = $file->getClientOriginalName();
+            $file_ext = $file->getClientOriginalExtension();
+            $file_name_only = basename($file_name, '.' . $file_ext);
+            $file_new_name = $file_name_only . '_' . time() . '.' . $file_ext;
 
-                $file_url->push([
-                    'filename' => $file_name,
-                    'path' => $file->storeAs('public/tax_documents', $file_new_name)
-                ]);
-            }
+            $file_url->push([
+                'filename' => $file_name,
+                'path' => $file->storeAs('public/tax_documents', $file_new_name)
+            ]);
+
         }
 
         $document = Document::where([
@@ -72,21 +62,17 @@ class DocumentController extends Controller
             ['title', $request->title]
         ])->year()->first();
 
-        if ($document) {
-            $document->update([
-                'title' => $request->title,
-                'comments' => $request->comments
-            ]);
-        } else {
-            $document = Document::create([
-                'user_id' => auth()->user()->id,
-                'title' => $request->title,
-                'comments' => $request->comments
-            ]);
+        if (!$document) {
+            $document = new Document();
+            $document->user_id = auth()->user()->id;
+            $document->title = $request->title;
+            $document->save();
         }
 
+
+        $upload = null;
         foreach ($file_url as $item) {
-            Upload::create([
+            $upload = Upload::create([
                 'document_id' => $document->id,
                 'filename' => $item['filename'],
                 'path' => $item['path']
@@ -97,7 +83,55 @@ class DocumentController extends Controller
 
         Notification::send($admins, new GeneralNotification('Document Updated', 'Documents update by ' . auth()->user()->name));
 
-        return response()->json(['message' => 'Document uploaded successfully']);
+        return response()->json([
+            'message' => 'Document uploaded successfully',
+            'id' => $upload->id,
+            'name' => $upload->filename,
+        ]);
+    }
+
+    public function upload_tax_documents_file_delete(Request $request)
+    {
+        $request->validate([
+            'fileId' => 'required'
+        ]);
+
+        $fileDelete = Upload::find($request->fileId);
+        if ($fileDelete) {
+            Storage::delete($fileDelete->path);
+            $fileDelete->delete();
+        }
+
+
+        return response()->json(['message' => 'File deleted successfully']);
+    }
+
+    public function upload_tax_documents_store_comments(Request $request): JsonResponse
+    {
+        $request->validate([
+            'title' => 'required',
+            'comments' => 'required',
+        ]);
+
+        $document = Document::where([
+            ['user_id', auth()->user()->id],
+            ['title', $request->title]
+        ])->year()->first();
+
+
+        if ($document) {
+            $document->update([
+                'comments' => $request->comments
+            ]);
+        } else {
+            $document = Document::create([
+                'user_id' => auth()->user()->id,
+                'title' => $request->title,
+                'comments' => $request->comments
+            ]);
+        }
+
+        return response()->json(['message' => 'Document commented successfully']);
     }
 
     public function download_tax_documents()

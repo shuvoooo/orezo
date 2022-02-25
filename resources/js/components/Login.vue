@@ -47,14 +47,14 @@
                             </div>
                         </div>
 
-                        <!-- reCAPTCHA -->
-                        <div class="col-lg-12 mb-4">
-                            <div class="g-recaptcha" :data-sitekey="site_key"></div>
+<!--                        &lt;!&ndash; reCAPTCHA &ndash;&gt;-->
+<!--                        <div class="col-lg-12 mb-4">-->
+<!--                            <div class="g-recaptcha" :data-sitekey="site_key"></div>-->
 
-                            <span v-if="errors.has('g-recaptcha-response')" class="small text-danger w-100">{{
-                                    errors.first('g-recaptcha-response')
-                                }}</span>
-                        </div>
+<!--                            <span v-if="errors.has('g-recaptcha-response')" class="small text-danger w-100">{{-->
+<!--                                    errors.first('g-recaptcha-response')-->
+<!--                                }}</span>-->
+<!--                        </div>-->
 
 
                         <!-- Submit Button -->
@@ -119,7 +119,7 @@ export default {
                         email: this.email,
                         password: this.password,
                         remember: this.remember,
-                        'g-recaptcha-response': grecaptcha.getResponse(),
+                       // 'g-recaptcha-response': grecaptcha.getResponse(),
                     }).then(response => {
                         this.isLoading = false;
                         location.href = response.data.redirect;
