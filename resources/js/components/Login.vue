@@ -124,7 +124,7 @@ export default {
                         this.isLoading = false;
                         location.href = response.data.redirect;
                     }).catch(error => {
-                        grecaptcha.reset();
+                       // grecaptcha.reset();
                         this.backendError(error)
                     });
                 }
