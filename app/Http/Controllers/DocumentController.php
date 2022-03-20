@@ -139,6 +139,7 @@ class DocumentController extends Controller
         $downloads = DownloadSave::where('user_id', auth()->user()->id)->year()->get();
         $comments = Comment::where('user_id', auth()->user()->id)->year()->orderBy('created_at', 'desc')->get();
 
+        //dd($downloads);
         $user_downloads = $downloads->filter(function ($item) {
             return $item->added_by == auth()->id();
         });

@@ -90,24 +90,22 @@
 
                         <div class="col-md-8 offset-md-4">
                             <ul class="list-group">
-                                @foreach($user_downloads as $download)
-                                    @if(auth()->id() != $download->added_by)
-                                        <li class="list-group-item  d-flex justify-content-between align-items-center">
-                                            <span>{{$download->filename}}</span>
-                                            <div class="d-flex justify-content-center">
-                                                <form
-                                                    action="{{route_with_year('download_tax_documents_download',['id'=>$download->id])}}"
-                                                    method="post">
-                                                    @csrf
-                                                    <button type="submit" class="btn btn-primary btn-sm"><i
-                                                            class="fa fa-download"></i></button>
-                                                </form>
-                                            </div>
-                                        </li>
-                                    @endif
+                                @foreach($org_downloads as $download)
+                                    <li class="list-group-item  d-flex justify-content-between align-items-center">
+                                        <span>{{$download->filename}}</span>
+                                        <div class="d-flex justify-content-center">
+                                            <form
+                                                action="{{route_with_year('download_tax_documents_download',['id'=>$download->id])}}"
+                                                method="post">
+                                                @csrf
+                                                <button type="submit" class="btn btn-primary btn-sm"><i
+                                                        class="fa fa-download"></i></button>
+                                            </form>
+                                        </div>
+                                    </li>
                                 @endforeach
 
-                                @if(count($user_downloads) == 0)
+                                @if(count($org_downloads) == 0)
                                     <li class="list-group-item  d-flex justify-content-between align-items-center">
                                         <span>No documents uploaded</span>
                                     </li>
